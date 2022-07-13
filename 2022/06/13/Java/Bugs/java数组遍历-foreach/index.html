@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
@@ -7,7 +7,7 @@
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/sword.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"kiml-rgb.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"kiml-rgb.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="前言在练习数组的使用时，想用foreach循环给数组赋值，但得到了一个空数组。">
 <meta property="og:type" content="article">
@@ -26,13 +26,13 @@
 <meta property="og:url" content="http://kiml-rgb.github.io/2022/06/13/Java/Bugs/java%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach/index.html">
 <meta property="og:site_name" content="kiml-rgb&#39;s blog">
 <meta property="og:description" content="前言在练习数组的使用时，想用foreach循环给数组赋值，但得到了一个空数组。">
-<meta property="og:locale">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://kiml-rgb.github.io/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C1.jpg">
 <meta property="og:image" content="http://kiml-rgb.github.io/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C2.jpg">
 <meta property="og:image" content="http://kiml-rgb.github.io/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C3.jpg">
 <meta property="og:image" content="http://kiml-rgb.github.io/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C4.jpg">
 <meta property="article:published_time" content="2022-06-13T03:08:06.000Z">
-<meta property="article:modified_time" content="2022-07-10T10:48:35.033Z">
+<meta property="article:modified_time" content="2022-07-13T12:03:35.748Z">
 <meta property="article:author" content="kiml-rgb">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Bugs">
@@ -44,7 +44,7 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"http://kiml-rgb.github.io/2022/06/13/Java/Bugs/java%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach/","path":"2022/06/13/Java/Bugs/java数组遍历-foreach/","title":"java数组遍历--foreach"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://kiml-rgb.github.io/2022/06/13/Java/Bugs/java%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach/","path":"2022/06/13/Java/Bugs/java数组遍历-foreach/","title":"java数组遍历--foreach"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>java数组遍历--foreach | kiml-rgb's blog</title>
@@ -66,7 +66,10 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -82,15 +85,46 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -106,10 +140,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          المحتويات
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          عام
+          站点概览
         </li>
       </ul>
 
@@ -122,6 +156,8 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="kiml-rgb"
+      src="/images/avatar.gif">
   <p class="site-author-name" itemprop="name">kiml-rgb</p>
   <div class="site-description" itemprop="description"></div>
 </div>
@@ -130,21 +166,29 @@
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
           <span class="site-state-item-count">9</span>
-          <span class="site-state-item-name">المقالات</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
         <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">التصنيفات</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">الوسوم</span></a>
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kiml-rgb" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kiml-rgb" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1162278448@qq.com" title="E-Mail → mailto:1162278448@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
@@ -158,7 +202,7 @@
     </header>
 
     
-  <div class="back-to-top" role="button" aria-label="Back to top">
+  <div class="back-to-top" role="button" aria-label="返回顶部">
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
@@ -178,7 +222,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://kiml-rgb.github.io/2022/06/13/Java/Bugs/java%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -206,26 +250,26 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">نُشر في</span>
+      <span class="post-meta-item-text">发表于</span>
 
-      <time title="أُنشأ: 2022-06-13 11:08:06" itemprop="dateCreated datePublished" datetime="2022-06-13T11:08:06+08:00">2022-06-13</time>
+      <time title="创建时间：2022-06-13 11:08:06" itemprop="dateCreated datePublished" datetime="2022-06-13T11:08:06+08:00">2022-06-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
-      <span class="post-meta-item-text">عُدل في</span>
-      <time title="عُدل: 2022-07-10 18:48:35" itemprop="dateModified" datetime="2022-07-10T18:48:35+08:00">2022-07-10</time>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-07-13 20:03:35" itemprop="dateModified" datetime="2022-07-13T20:03:35+08:00">2022-07-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">في</span>
+      <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
         </span>
-          ، 
+          ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Java/Bugs/" itemprop="url" rel="index"><span itemprop="name">Bugs</span></a>
         </span>
@@ -251,16 +295,16 @@
 <p>For (类型 变量名:集合) { 语句块; }</p>
 </blockquote>
 <p>此处的 <em><strong>类型 变量名</strong></em> 指的是使用第三方变量<strong>复制了</strong>迭代指向的数据。这里我简单的理解为一个temp。</p>
-<h5 id="基本数据类型数组（int）"><a href="#基本数据类型数组（int）" class="headerlink" title="基本数据类型数组（int）"></a>基本数据类型数组（int）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] list1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量i记录</span></span><br><span class="line"><span class="comment">// 没有对原有数据作出改变</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i : list1) &#123;</span><br><span class="line">    i = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i : list1) &#123;</span><br><span class="line">    System.out.print(i + <span class="string">&quot; &quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="基本数据类型数组（int）"><a href="#基本数据类型数组（int）" class="headerlink" title="基本数据类型数组（int）"></a>基本数据类型数组（int）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] list1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量i记录</span></span><br><span class="line"><span class="comment">// 没有对原有数据作出改变</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i : list1) &#123;</span><br><span class="line">    i = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(Arrays.toString(list1));</span><br></pre></td></tr></table></figure>
 <p>与原有的例子一样，此处遍历得到的结果如下：<br><img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C1.jpg"></p>
 <p>既然foreach只是用第三方变量记录，记录基本数据类型不存在赋值过程，自然不会对原数组作出改变。如此，记录引用数据类型，记录的是地址，照理说应该能对原数组作出改变了。</p>
-<h5 id="引用数据类型数组（String）"><a href="#引用数据类型数组（String）" class="headerlink" title="引用数据类型数组（String）"></a>引用数据类型数组（String）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list2 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    list2.add(<span class="string">&quot;s&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量s记录</span></span><br><span class="line"><span class="comment">// 引用数据类型，改变原有地址值中的数据</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">for</span> (String s : list2) &#123;</span><br><span class="line">    s = <span class="string">&quot;l&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (String s : list2) &#123;</span><br><span class="line">    System.out.print(s + <span class="string">&quot; &quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="引用数据类型数组（String）"><a href="#引用数据类型数组（String）" class="headerlink" title="引用数据类型数组（String）"></a>引用数据类型数组（String）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list2 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    list2.add(<span class="string">&quot;s&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量s记录</span></span><br><span class="line"><span class="comment">// 引用数据类型，改变原有地址值中的数据</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">for</span> (String s : list2) &#123;</span><br><span class="line">    s = <span class="string">&quot;l&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(list2.toString());</span><br></pre></td></tr></table></figure>
 <p>此处遍历得到的结果如下：<br><img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C2.jpg"></p>
 <p>对原数组依然没有作出改变，理由是String被final修饰，s &#x3D; “l”只是在内存中new了一个对象，使String指向新的对象，但是此处s为第三变量，第三变量的引用改变，对于原list中记录的值不会有任何改变。既然如此，记录了地址的二维数组，没有被final修饰，应该就可以改变第二层循环内的的数据了。</p>
-<h5 id="引用数据类型-（二维数组（int-））"><a href="#引用数据类型-（二维数组（int-））" class="headerlink" title="引用数据类型 （二维数组（int[][]））"></a>引用数据类型 （二维数组（int[][]））</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] a1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="type">int</span>[] a2 = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="type">int</span>[] a3 = &#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">int</span>[][] arr = &#123;a1, a2, a3&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量s记录</span></span><br><span class="line"><span class="comment">// 引用数据类型，改变原有地址值中的数据</span></span><br><span class="line"><span class="comment">// arr没有被final修饰，此处就是在源地址处改变，改变成功</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span>[] ints : arr) &#123;</span><br><span class="line">    ints[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span>[] ints : arr) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> anInt : ints) &#123;</span><br><span class="line">        System.out.print(anInt + <span class="string">&quot; &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="引用数据类型-（二维数组（int-））"><a href="#引用数据类型-（二维数组（int-））" class="headerlink" title="引用数据类型 （二维数组（int[][]））"></a>引用数据类型 （二维数组（int[][]））</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] a1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="type">int</span>[] a2 = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="type">int</span>[] a3 = &#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">int</span>[][] arr = &#123;a1, a2, a3&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量s记录</span></span><br><span class="line"><span class="comment">// 引用数据类型，改变原有地址值中的数据</span></span><br><span class="line"><span class="comment">// arr没有被final修饰，此处就是在源地址处改变，改变成功</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span>[] ints : arr) &#123;</span><br><span class="line">    ints[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span>[] ints : arr) &#123;</span><br><span class="line">    System.out.println(Arrays.toString(ints));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>此处遍历得到的结果如下：<br><img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C3.jpg"></p>
 <p>可以看到第二层循环内的改变成功。如此推断，如果数组中的元素是没有被final修饰的引用数据类型，应该就是可以通过foreach改变。可以自建一个JavaBean格式的Num类测试一下。</p>
-<h5 id="引用数据类型（普通类）"><a href="#引用数据类型（普通类）" class="headerlink" title="引用数据类型（普通类）"></a>引用数据类型（普通类）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Num&gt; list3 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    list3.add(<span class="keyword">new</span> <span class="title class_">Num</span>(<span class="string">&quot;s&quot;</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量s记录</span></span><br><span class="line"><span class="comment">// 引用数据类型，记录为地址，改变原有地址值中的数据</span></span><br><span class="line"><span class="comment">// 改变成功</span></span><br><span class="line"><span class="keyword">for</span> (Num num : list3) &#123;</span><br><span class="line">    num.setNum(<span class="string">&quot;l&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (Num num : list3) &#123;</span><br><span class="line">    System.out.print(num.getNum() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="引用数据类型（普通类）"><a href="#引用数据类型（普通类）" class="headerlink" title="引用数据类型（普通类）"></a>引用数据类型（普通类）</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Num&gt; list3 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    list3.add(<span class="keyword">new</span> <span class="title class_">Num</span>(<span class="string">&quot;s&quot;</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量s记录</span></span><br><span class="line"><span class="comment">// 引用数据类型，记录为地址，改变原有地址值中的数据</span></span><br><span class="line"><span class="comment">// 改变成功</span></span><br><span class="line"><span class="keyword">for</span> (Num num : list3) &#123;</span><br><span class="line">    num.setNum(<span class="string">&quot;l&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(list3);</span><br></pre></td></tr></table></figure>
 <p>此处遍历得到的结果如下：<br><img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C4.jpg"></p>
 <p>可以看到，改变成功。当然如果只是final修饰类，没有修饰属性，属性也是可以进行修改的。</p>
 <p><strong>总结</strong>:数组中元素是引用数据类型，并且该数据类型不是jdk提供的被final修饰的数据类型（例如String, Integer…），那么就可以通过foreach修改原数组中存储的数据。<em>此处也有点像方法中的传参</em>。</p>
@@ -315,17 +359,17 @@
   </span>
   <span class="author" itemprop="copyrightHolder">kiml-rgb</span>
 </div>
-  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
-  </div>
 
     </div>
   </footer>
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 

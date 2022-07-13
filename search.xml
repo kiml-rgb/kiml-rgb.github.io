@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>辗转相除法</title>
+    <url>/2022/07/07/Java/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>做50道编程拓展题，求两个数的最大公约数和最小公倍数，</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人学习参考</title>
+    <url>/2022/06/02/%E4%B8%AA%E4%BA%BA/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E5%8F%82%E8%80%83/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>很多时候环境部署，网站搭建等使用到的各种参考资源记录在此。</p>
+<span id="more"></span>
+
+<h3 id="hexo搭建博客相关"><a href="#hexo搭建博客相关" class="headerlink" title="hexo搭建博客相关"></a>hexo搭建博客相关</h3><h4 id="利用Github-hexo搭建个人博客"><a href="#利用Github-hexo搭建个人博客" class="headerlink" title="利用Github+hexo搭建个人博客"></a>利用Github+hexo搭建个人博客</h4><p><a href="https://www.cnblogs.com/chenlove/p/15058170.html">https://www.cnblogs.com/chenlove/p/15058170.html</a></p>
+<h4 id="hexo主题next-theme-x2F-hexo-theme-next的配置"><a href="#hexo主题next-theme-x2F-hexo-theme-next的配置" class="headerlink" title="hexo主题next-theme&#x2F;hexo-theme-next的配置"></a>hexo主题next-theme&#x2F;hexo-theme-next的配置</h4><p><a href="https://theme-next.js.org/">https://theme-next.js.org/</a></p>
+]]></content>
+      <categories>
+        <category>个人</category>
+      </categories>
+      <tags>
+        <tag>环境部署</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JDK 8 四大函数型接口</title>
+    <url>/2022/07/09/Java/JDK-8-%E5%9B%9B%E5%A4%A7%E5%87%BD%E6%95%B0%E5%9E%8B%E6%8E%A5%E5%8F%A3/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>学lambda表达式，针对这一部分进行了拓展。工作中会经常用到这四大函数型接口。</p>
+<span id="more"></span>
+<h3 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h3><blockquote>
+<p>函数式接口(Functional Interface)就是一个有且仅有一个抽象方法，但是可以有多个非抽象方法的接口。</p>
+</blockquote>
+<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h4><p>lambda表达式的使用前提是接口为函数式接口，对于函数式接口，java提供了一个注释@FunctionalInterface，用于检测当前接口是否只含有一个抽象方法。</p>
+<h3 id="四大函数式接口"><a href="#四大函数式接口" class="headerlink" title="四大函数式接口"></a>四大函数式接口</h3><table>
+<thead>
+<tr>
+<th>函数式接口</th>
+<th>参数类型</th>
+<th>返回值类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Consumer</td>
+<td>T</td>
+<td>无</td>
+<td>消费型</td>
+</tr>
+<tr>
+<td>Supplier</td>
+<td>无</td>
+<td>T</td>
+<td>供给型</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>T</td>
+<td>R</td>
+<td>函数型</td>
+</tr>
+<tr>
+<td>Predicate</td>
+<td>T</td>
+<td>boolean</td>
+<td>断言型</td>
+</tr>
+</tbody></table>
+<h4 id="消费型接口"><a href="#消费型接口" class="headerlink" title="消费型接口"></a>消费型接口</h4><p>接受一个输入参数并且无返回值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Consumer</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(T t)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Consumer&lt;T&gt; <span class="title function_">andThen</span><span class="params">(Consumer&lt;? <span class="built_in">super</span> T&gt; after)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(after);</span><br><span class="line">        <span class="keyword">return</span> (T t) -&gt; &#123; accept(t); after.accept(t); &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Consumer&lt;T&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(T t)</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        handle(<span class="number">5</span>, (x) -&gt; System.out.println(x + <span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">handle</span><span class="params">(<span class="type">int</span> value, Consumer&lt;Integer&gt; consumer)</span> &#123;</span><br><span class="line">        consumer.accept(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h5><p>因为没有出参，所以常用于打印、发送短信等消费动作。</p>
+<h4 id="供给型接口"><a href="#供给型接口" class="headerlink" title="供给型接口"></a>供给型接口</h4><p>无输入参数，返回一个结果T。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Supplier</span>&lt;T&gt; &#123;</span><br><span class="line">    T <span class="title function_">get</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="基本格式-1"><a href="#基本格式-1" class="headerlink" title="基本格式"></a>基本格式</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Supplier&lt;T&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法调用-1"><a href="#方法调用-1" class="headerlink" title="方法调用"></a>方法调用</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">T <span class="title function_">get</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(getObject(() -&gt; <span class="string">&quot;Supplier&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getObject</span><span class="params">(Supplier&lt;String&gt; supplier)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> supplier.get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="用法-1"><a href="#用法-1" class="headerlink" title="用法"></a>用法</h5><p>常用于符合条件时调用获取结果；运行结果提前定义，但不运行</p>
+<h4 id="函数型接口"><a href="#函数型接口" class="headerlink" title="函数型接口"></a>函数型接口</h4><p>接受一个输入参数T，返回一个结果R。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Function</span>&lt;T, R&gt; &#123;</span><br><span class="line"></span><br><span class="line">    R <span class="title function_">apply</span><span class="params">(T t)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> &lt;V&gt; Function&lt;V, R&gt; <span class="title function_">compose</span><span class="params">(Function&lt;? <span class="built_in">super</span> V, ? extends T&gt; before)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(before);</span><br><span class="line">        <span class="keyword">return</span> (V v) -&gt; apply(before.apply(v));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> &lt;V&gt; Function&lt;T, V&gt; <span class="title function_">andThen</span><span class="params">(Function&lt;? <span class="built_in">super</span> R, ? extends V&gt; after)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(after);</span><br><span class="line">        <span class="keyword">return</span> (T t) -&gt; after.apply(apply(t));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; Function&lt;T, T&gt; <span class="title function_">identity</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> t -&gt; t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="基本格式-2"><a href="#基本格式-2" class="headerlink" title="基本格式"></a>基本格式</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Function&lt;T,R&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法调用-2"><a href="#方法调用-2" class="headerlink" title="方法调用"></a>方法调用</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">R <span class="title function_">apply</span><span class="params">(T t)</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> plusTwo(<span class="number">5</span>, x -&gt; x + <span class="number">2</span>);</span><br><span class="line">        System.out.println(i);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">before</span> <span class="operator">=</span> before(<span class="number">5</span>, x -&gt; x + <span class="number">2</span>, x -&gt; x * <span class="number">2</span>);</span><br><span class="line">        System.out.println(before);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">after</span> <span class="operator">=</span> after(<span class="number">5</span>, x -&gt; x + <span class="number">2</span>, x -&gt; x * <span class="number">2</span>);</span><br><span class="line">        System.out.println(after);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">plusTwo</span><span class="params">(<span class="type">int</span> origen, Function&lt;Integer, Integer&gt; function)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> function.apply(origen);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">before</span><span class="params">(<span class="type">int</span> value, Function&lt;Integer, Integer&gt; function1, Function&lt;Integer, Integer&gt; function2)</span> &#123;</span><br><span class="line">        <span class="comment">// value作为function2的参数，返回一个结果，该结果作为function1的参数，返回一个最终结果</span></span><br><span class="line">        <span class="keyword">return</span> function1.compose(function2).apply(value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title function_">after</span><span class="params">(<span class="type">int</span> value, Function&lt;Integer, Integer&gt; function1, Function&lt;Integer, Integer&gt; function2)</span> &#123;</span><br><span class="line">        <span class="comment">// value作为function1的参数，返回一个结果，该结果作为function2的参数，返回一个最终结果</span></span><br><span class="line">        <span class="keyword">return</span> function1.andThen(function2).apply(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="断言型接口"><a href="#断言型接口" class="headerlink" title="断言型接口"></a>断言型接口</h4><p>接受一个输入参数T，返回一个布尔值结果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Predicate</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">test</span><span class="params">(T t)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Predicate&lt;T&gt; <span class="title function_">and</span><span class="params">(Predicate&lt;? <span class="built_in">super</span> T&gt; other)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) &amp;&amp; other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Predicate&lt;T&gt; <span class="title function_">negate</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; !test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Predicate&lt;T&gt; <span class="title function_">or</span><span class="params">(Predicate&lt;? <span class="built_in">super</span> T&gt; other)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) || other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; Predicate&lt;T&gt; <span class="title function_">isEqual</span><span class="params">(Object targetRef)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="literal">null</span> == targetRef)</span><br><span class="line">                ? Objects::isNull</span><br><span class="line">                : object -&gt; targetRef.equals(object);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; Predicate&lt;T&gt; <span class="title function_">not</span><span class="params">(Predicate&lt;? <span class="built_in">super</span> T&gt; target)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(target);</span><br><span class="line">        <span class="keyword">return</span> (Predicate&lt;T&gt;)target.negate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="基本格式-3"><a href="#基本格式-3" class="headerlink" title="基本格式"></a>基本格式</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Predicate&lt;T&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法调用-3"><a href="#方法调用-3" class="headerlink" title="方法调用"></a>方法调用</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="title function_">test</span><span class="params">(T t)</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; list = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>);</span><br><span class="line">        <span class="comment">// 输出所有数据</span></span><br><span class="line">        eval(list, x -&gt; <span class="literal">true</span>);</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出所有偶数</span></span><br><span class="line">        eval(list, x -&gt; (x &amp; <span class="number">1</span>) != <span class="number">1</span>);</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出所有大于3的数</span></span><br><span class="line">        eval(list, x -&gt; x &gt; <span class="number">3</span>);</span><br><span class="line">        System.out.println();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断输入是否不为空并且长度小于3</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">valid</span> <span class="operator">=</span> valid(<span class="string">&quot;许仙&quot;</span>, x -&gt; !x.isEmpty() &amp;&amp; x.length() &lt;= <span class="number">3</span>);</span><br><span class="line">        System.out.println(valid);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">judge</span><span class="params">(Integer input, Predicate&lt;Integer&gt; predicate)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> predicate.test(input);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">eval</span><span class="params">(List&lt;Integer&gt; list, Predicate&lt;Integer&gt; predicate)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Integer integer : list) &#123;</span><br><span class="line">            <span class="keyword">if</span> (predicate.test(integer)) &#123;</span><br><span class="line">                System.out.print(integer + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">valid</span><span class="params">(String name, Predicate&lt;String&gt; predicate)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> predicate.test(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="用法-2"><a href="#用法-2" class="headerlink" title="用法"></a>用法</h5><p>常用于条件判断</p>
+<p><strong>本篇转载自<a href="https://blog.csdn.net/NarutoConanKing/article/details/86573449">https://blog.csdn.net/NarutoConanKing/article/details/86573449</a></strong></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>函数型接口</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人游戏整理</title>
+    <url>/2022/05/28/%E4%B8%AA%E4%BA%BA/%E4%B8%AA%E4%BA%BA%E6%B8%B8%E6%88%8F%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>毕业季找工作看到很多游戏相关，游戏本身给我带来的乐趣确实让我对游戏行业很心动，也是觉得好游戏能被算上第九艺术的一个群体。这几年也玩了不少游戏，在这里做个汇总和评测，也为后续可能进入游戏行业做个准备。</p>
+<span id="more"></span>
+
+<h2 id="游戏汇总"><a href="#游戏汇总" class="headerlink" title="游戏汇总"></a>游戏汇总</h2><h3 id="风来之国"><a href="#风来之国" class="headerlink" title="风来之国"></a>风来之国</h3><p>属于<strong>国产像素RPG</strong></p>
+]]></content>
+      <categories>
+        <category>个人</category>
+      </categories>
+      <tags>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试题目 jvm内存模型</title>
+    <url>/2022/07/06/Java%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE-jvm%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java面试</category>
+        <category>面试题目</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试记录20220601</title>
+    <url>/2022/06/01/Java%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%9520220601/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>通勤时间太长真的会让人感觉想亖，大概4个多小时的往返，瘫在沙发上一动都不想动。<br>面试了华信咨询设计研究院的开发岗，结果就是不自量力。不知道为什么所有人都在催催催，投简历，得到一个面试，然后就去了，真的很烦，其实知道自己不太行，代码写的太少很多东西都不是很会。但是没办法，所有人都在催，好像这个月找不到工作，就会亖一样，中国人有个屁的gap，每天都活得像头驴一样，被吊着往前走。<br>大学毕业找不到工作，确实很可笑吧，又怎么样呢，确实在校期间没有好好练习，仅仅卡着及格线过线就行。确实也不知道自己在干什么。</p>
+<span id="more"></span>
+
+<p>在boss上看到的这个职位。</p>
+<blockquote>
+<p>初级Java开发工程师<br>7-9K，13薪</p>
+<blockquote>
+<p>22年计算机相关专业应届毕业生，有实习经验<br>后端，熟练使用SSM框架<br>SQL语句能力要好点，优先考虑有Oracle使用经验</p>
+</blockquote>
+</blockquote>
+<p>其实看了要求就知道自己不太行了，但确实应聘软件上甚至23届应届生也是这个要求，还是回到原点，太垃圾了某人。</p>
+<p>面试过程其实还行，到的稍微早了一点，就在楼下等了一会儿，还没到约定的3：30，就被hr带上楼了。<br>一开始也不用自我介绍，就是看着简历问。问了实习经历，就实习经历开始讲实习做的项目，介绍了主要功能，然后问了项目面向的使用对象（完全不知道。。。）<strong>技术面试不是校招，志愿者经历完全没用，不如写在校写的项目！！！</strong><br>然后就是问了一些技术问题。</p>
+<h4 id="面试题1：基于以下数据表，输出每个用户在每个月的登陆次数的sql语句"><a href="#面试题1：基于以下数据表，输出每个用户在每个月的登陆次数的sql语句" class="headerlink" title="面试题1：基于以下数据表，输出每个用户在每个月的登陆次数的sql语句"></a>面试题1：基于以下数据表，输出每个用户在每个月的登陆次数的sql语句</h4><table>
+<thead>
+<tr>
+<th>name</th>
+<th>time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>张三</td>
+<td>2022-6-1 19:54:58</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>2022-7-1 19:54:58</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>2022-6-5 19:54:58</td>
+</tr>
+</tbody></table>
+<p>额额，没写出来，完全不知道数据库里还有DATE_FORMAT。。。</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="type">name</span>,</span><br><span class="line">    DATE_FORMAT(<span class="type">time</span>,<span class="string">&#x27;%Y.%m&#x27;</span>) <span class="keyword">as</span> month,</span><br><span class="line">    COUNT(*) <span class="keyword">as</span> <span class="type">time</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    <span class="type">time</span></span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="type">NAME</span>, DATE_FORMAT(<span class="type">time</span>,<span class="string">&#x27;%Y.%m&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="面试题2：在Spring-MVC中常用的注解"><a href="#面试题2：在Spring-MVC中常用的注解" class="headerlink" title="面试题2：在Spring MVC中常用的注解"></a>面试题2：在Spring MVC中常用的注解</h4><p>答了一个@RequestMapping<br>然后问前端传进来一个url怎么获取端口，当然还是不会</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">request.getServerName() <span class="regexp">//</span>获取域名</span><br><span class="line">request.getServerPort(); <span class="regexp">//</span>获取端口号</span><br></pre></td></tr></table></figure>
+
+<h4 id="面试题3：Java中的数据结构"><a href="#面试题3：Java中的数据结构" class="headerlink" title="面试题3：Java中的数据结构"></a>面试题3：Java中的数据结构</h4><p>好不容易答出ArrayList，HashMap</p>
+<h4 id="面试题4：ArrayList有几种遍历方式"><a href="#面试题4：ArrayList有几种遍历方式" class="headerlink" title="面试题4：ArrayList有几种遍历方式"></a>面试题4：ArrayList有几种遍历方式</h4><p>三种。（知道答案，没敢回答）<br>1、迭代器遍历（继续问迭代器遍历怎么实现的。不会了，没怎么用过，脑子里一片空白）</p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line">Iterator&lt;Integer&gt; <span class="literal">it</span> = arrayList.iterator();</span><br><span class="line"><span class="keyword">while</span>(<span class="literal">it</span>.hasNext())&#123;</span><br><span class="line">    System.out.<span class="built_in">print</span>(<span class="literal">it</span>.next() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、索引值遍历</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; arrayList.size(); i++)&#123;</span><br><span class="line">   <span class="keyword">System</span>.<span class="keyword">out</span>.print(arrayList.<span class="keyword">get</span>(i) + &quot; &quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、for循环遍历</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; arrayList.size(); i++)&#123;</span><br><span class="line">   <span class="keyword">System</span>.<span class="keyword">out</span>.print(arrayList.<span class="keyword">get</span>(i) + &quot; &quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="面试题5：HashMap的实现原理"><a href="#面试题5：HashMap的实现原理" class="headerlink" title="面试题5：HashMap的实现原理"></a>面试题5：HashMap的实现原理</h4><p>完全不会。。。贴一个链接<br><a href="https://zhuanlan.zhihu.com/p/127147909">https://zhuanlan.zhihu.com/p/127147909</a></p>
+<h4 id="面试题6：熟不熟悉前端，js，html，css"><a href="#面试题6：熟不熟悉前端，js，html，css" class="headerlink" title="面试题6：熟不熟悉前端，js，html，css"></a>面试题6：熟不熟悉前端，js，html，css</h4><p>完全没复习到前端。。。<br>举了例子form的标签是什么。。。</p>
+<p>最后问有没有兴趣发展测试。。。尬住了说没想过</p>
+<p>总结：少吹逼。。。要求不匹配就不要去面试。。。</p>
+]]></content>
+      <categories>
+        <category>Java面试</category>
+        <category>面试记录</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试题目 23种设计模式</title>
+    <url>/2022/07/06/Java%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE-23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Java面试</category>
+        <category>面试题目</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java数组遍历--foreach</title>
+    <url>/2022/06/13/Java/Bugs/java%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>在练习数组的使用时，想用foreach循环给数组赋值，但得到了一个空数组。</p>
+<span id="more"></span>
+<h4 id="bug出处"><a href="#bug出处" class="headerlink" title="bug出处"></a>bug出处</h4><p>原示例代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="type">int</span> arr[] = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;[&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt; arr.length; i++) &#123;</span><br><span class="line">            arr[i] = random.nextInt(<span class="number">889</span>-<span class="number">22</span>) + <span class="number">22</span>;<span class="comment">//[0, 889-22) + 22</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;打印数组元素：&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i : arr) &#123;</span><br><span class="line">            s += i + <span class="string">&quot;, &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        s = s.substring(<span class="number">0</span>, s.length()-<span class="number">2</span>) + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">        System.out.println(s);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;打印数组中是3的整倍数的元素：&quot;</span>);</span><br><span class="line">        s = <span class="string">&quot;[&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                s += i + <span class="string">&quot;, &quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        s = s.substring(<span class="number">0</span>, s.length()-<span class="number">2</span>) + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此段代码给数组元素赋值时，使用foreach循环，赋值失败。<br>通过后续查资料想进一步完善其用法，发现foreach循环<strong>不是完全的不能改变原有数组的值</strong>。</p>
+<h4 id="四种情况"><a href="#四种情况" class="headerlink" title="四种情况"></a>四种情况</h4><p>首先foreach的格式如下：</p>
+<blockquote>
+<p>For (类型 变量名:集合) { 语句块; }</p>
+</blockquote>
+<p>此处的 <em><strong>类型 变量名</strong></em> 指的是使用第三方变量<strong>复制了</strong>迭代指向的数据。这里我简单的理解为一个temp。</p>
+<h5 id="基本数据类型数组（int）"><a href="#基本数据类型数组（int）" class="headerlink" title="基本数据类型数组（int）"></a>基本数据类型数组（int）</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] list1 = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>];</span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量i记录</span></span><br><span class="line"><span class="comment">// 没有对原有数据作出改变</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i : list1) &#123;</span><br><span class="line">    i = <span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(Arrays.toString(list1));</span><br></pre></td></tr></table></figure>
+<p>与原有的例子一样，此处遍历得到的结果如下：<br><img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C1.jpg"></p>
+<p>既然foreach只是用第三方变量记录，记录基本数据类型不存在赋值过程，自然不会对原数组作出改变。如此，记录引用数据类型，记录的是地址，照理说应该能对原数组作出改变了。</p>
+<h5 id="引用数据类型数组（String）"><a href="#引用数据类型数组（String）" class="headerlink" title="引用数据类型数组（String）"></a>引用数据类型数组（String）</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; list2 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    list2.add(<span class="string">&quot;s&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量s记录</span></span><br><span class="line"><span class="comment">// 引用数据类型，改变原有地址值中的数据</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">for</span> (String s : list2) &#123;</span><br><span class="line">    s = <span class="string">&quot;l&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(list2.toString());</span><br></pre></td></tr></table></figure>
+<p>此处遍历得到的结果如下：<br><img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C2.jpg"></p>
+<p>对原数组依然没有作出改变，理由是String被final修饰，s &#x3D; “l”只是在内存中new了一个对象，使String指向新的对象，但是此处s为第三变量，第三变量的引用改变，对于原list中记录的值不会有任何改变。既然如此，记录了地址的二维数组，没有被final修饰，应该就可以改变第二层循环内的的数据了。</p>
+<h5 id="引用数据类型-（二维数组（int-））"><a href="#引用数据类型-（二维数组（int-））" class="headerlink" title="引用数据类型 （二维数组（int[][]））"></a>引用数据类型 （二维数组（int[][]））</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[] a1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="type">int</span>[] a2 = &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="type">int</span>[] a3 = &#123;<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line"><span class="type">int</span>[][] arr = &#123;a1, a2, a3&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量s记录</span></span><br><span class="line"><span class="comment">// 引用数据类型，改变原有地址值中的数据</span></span><br><span class="line"><span class="comment">// arr没有被final修饰，此处就是在源地址处改变，改变成功</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span>[] ints : arr) &#123;</span><br><span class="line">    ints[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span>[] ints : arr) &#123;</span><br><span class="line">    System.out.println(Arrays.toString(ints));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处遍历得到的结果如下：<br><img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C3.jpg"></p>
+<p>可以看到第二层循环内的改变成功。如此推断，如果数组中的元素是没有被final修饰的引用数据类型，应该就是可以通过foreach改变。可以自建一个JavaBean格式的Num类测试一下。</p>
+<h5 id="引用数据类型（普通类）"><a href="#引用数据类型（普通类）" class="headerlink" title="引用数据类型（普通类）"></a>引用数据类型（普通类）</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Num&gt; list3 = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    list3.add(<span class="keyword">new</span> <span class="title class_">Num</span>(<span class="string">&quot;s&quot;</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 迭代，循环依次指向数组中元素，用第三方变量s记录</span></span><br><span class="line"><span class="comment">// 引用数据类型，记录为地址，改变原有地址值中的数据</span></span><br><span class="line"><span class="comment">// 改变成功</span></span><br><span class="line"><span class="keyword">for</span> (Num num : list3) &#123;</span><br><span class="line">    num.setNum(<span class="string">&quot;l&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(list3);</span><br></pre></td></tr></table></figure>
+<p>此处遍历得到的结果如下：<br><img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C4.jpg"></p>
+<p>可以看到，改变成功。当然如果只是final修饰类，没有修饰属性，属性也是可以进行修改的。</p>
+<p><strong>总结</strong>:数组中元素是引用数据类型，并且该数据类型不是jdk提供的被final修饰的数据类型（例如String, Integer…），那么就可以通过foreach修改原数组中存储的数据。<em>此处也有点像方法中的传参</em>。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Bugs</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Bugs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>找不到或无法加载主类 java.lang.ClassNotFoundException</title>
+    <url>/2022/06/10/Java/Bugs/%E6%89%BE%E4%B8%8D%E5%88%B0%E6%88%96%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%BB%E7%B1%BB-java-lang-ClassNotFoundException/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>很尴尬，找不到工作来报了个班，结果一开始用nodepad++写代码编译就出问题，为什么之前没有我也不知道。。。</p>
+<span id="more"></span>
+
+<p>可以编译成功，PATH环境变量配置正确，代码无问题时出现以下错误。<br><img src="/img/%E6%89%BE%E4%B8%8D%E5%88%B0%E6%88%96%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%BB%E7%B1%BB-java-lang-ClassNotFoundException/ClassNotFoundException.png"></p>
+<p>引起原因：<br>1、CLASSPATH环境变量配置问题<br>java指令默认在寻找class文件时是根据CLASSPATH环境变量指定的目录寻找的。<br>环境变量配置应该如下：</p>
+<figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">.;<span class="meta">%</span>JAVE_HOME<span class="meta">%</span>\lib\dt.jar;<span class="meta">%</span>JAVA_HOME<span class="meta">%</span>\lib\tools.jar</span><br></pre></td></tr></table></figure>
+<p>其中“.”表示当前文件夹，原先配置时，“.”后忘记添加“;”导致出现错误java.lang.ClassNotFoundException</p>
+<p><strong>注意：</strong> 在定义CLASSPATH环境变量时，如果没有定义环境变量CLASSPATH，java启动jvm后，会在当前目录下查找要运行的类文件；如果指定了CLASSPATH，那么会在指定的目录下查找要运行的类文件。</p>
+<p><strong>CLASSPATH是什么？它的作用是什么？</strong><br>它是javac编译器的一个环境变量。它的作用与import、package关键字有关。当你写下improt java.util.*时，编译器面对import关键字时，就知道你要引入java.util这个package中的类；但是编译器如何知道你把这个package放在哪里了呢？所以你首先得告诉编译器这个package的所在位置。如果java.util这个package在c:&#x2F;jdk&#x2F;目录下，把c:&#x2F;jdk&#x2F;这个路径设置到CLASSPATH中，当编译器面对import java.util.*这个语句时，它先会查找CLASSPATH所指定的目录，并检视子目录java&#x2F;util是否存在，然后找出名称吻合的已编译文件（.class文件）。<br>JDK 5.0开始，默认在当前工作目录即上述设置中寻找Java程序。因此，在安装之后，即使完全没有设定CLASSPATH，你仍然能够编译基本的JAVA程序，并且加以执行。<br>总之，设置CLASSPATH的目的，在于告诉Java执行环境，在哪些目录下可以找到所要执行的Java程序（.class文件）</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Bugs</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Bugs</tag>
+      </tags>
+  </entry>
+</search>
