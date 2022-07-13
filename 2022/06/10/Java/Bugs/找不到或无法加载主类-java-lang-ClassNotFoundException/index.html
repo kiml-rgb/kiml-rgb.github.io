@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://kiml-rgb.github.io/img/%E6%89%BE%E4%B8%8D%E5%88%B0%E6%88%96%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%BB%E7%B1%BB-java-lang-ClassNotFoundException/ClassNotFoundException.png">
 <meta property="article:published_time" content="2022-06-10T04:33:35.000Z">
-<meta property="article:modified_time" content="2022-07-13T13:01:43.257Z">
+<meta property="article:modified_time" content="2022-07-13T13:16:38.053Z">
 <meta property="article:author" content="kiml-rgb">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="Bugs">
@@ -147,7 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E8%B5%B7%E5%8E%9F%E5%9B%A0"><span class="nav-number">2.</span> <span class="nav-text">引起原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%93%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">拓展</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -258,7 +258,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-07-13 21:01:43" itemprop="dateModified" datetime="2022-07-13T21:01:43+08:00">2022-07-13</time>
+      <time title="修改时间：2022-07-13 21:16:38" itemprop="dateModified" datetime="2022-07-13T21:16:38+08:00">2022-07-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -288,10 +288,10 @@
 <span id="more"></span>
 
 <p>可以编译成功，PATH环境变量配置正确，代码无问题时出现以下错误。<br><img src="/img/%E6%89%BE%E4%B8%8D%E5%88%B0%E6%88%96%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%BB%E7%B1%BB-java-lang-ClassNotFoundException/ClassNotFoundException.png"></p>
-<p>引起原因：<br>1、CLASSPATH环境变量配置问题<br>java指令默认在寻找class文件时是根据CLASSPATH环境变量指定的目录寻找的。<br>环境变量配置应该如下：</p>
+<h4 id="引起原因"><a href="#引起原因" class="headerlink" title="引起原因"></a>引起原因</h4><p>1、CLASSPATH环境变量配置问题<br>java指令默认在寻找class文件时是根据CLASSPATH环境变量指定的目录寻找的。<br>环境变量配置应该如下：</p>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.;<span class="meta">%</span>JAVE_HOME<span class="meta">%</span>\lib\dt.jar;<span class="meta">%</span>JAVA_HOME<span class="meta">%</span>\lib\tools.jar</span><br></pre></td></tr></table></figure>
 <p>其中“.”表示当前文件夹，原先配置时，“.”后忘记添加“;”导致出现错误java.lang.ClassNotFoundException</p>
-<p><strong>注意：</strong> 在定义CLASSPATH环境变量时，如果没有定义环境变量CLASSPATH，java启动jvm后，会在当前目录下查找要运行的类文件；如果指定了CLASSPATH，那么会在指定的目录下查找要运行的类文件。</p>
+<h4 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h4><p><strong>注意：</strong> 在定义CLASSPATH环境变量时，如果没有定义环境变量CLASSPATH，java启动jvm后，会在当前目录下查找要运行的类文件；如果指定了CLASSPATH，那么会在指定的目录下查找要运行的类文件。</p>
 <p><strong>CLASSPATH是什么？它的作用是什么？</strong><br>它是javac编译器的一个环境变量。它的作用与import、package关键字有关。当你写下improt java.util.*时，编译器面对import关键字时，就知道你要引入java.util这个package中的类；但是编译器如何知道你把这个package放在哪里了呢？所以你首先得告诉编译器这个package的所在位置。如果java.util这个package在c:&#x2F;jdk&#x2F;目录下，把c:&#x2F;jdk&#x2F;这个路径设置到CLASSPATH中，当编译器面对import java.util.*这个语句时，它先会查找CLASSPATH所指定的目录，并检视子目录java&#x2F;util是否存在，然后找出名称吻合的已编译文件（.class文件）。<br>JDK 5.0开始，默认在当前工作目录即上述设置中寻找Java程序。因此，在安装之后，即使完全没有设定CLASSPATH，你仍然能够编译基本的JAVA程序，并且加以执行。<br>总之，设置CLASSPATH的目的，在于告诉Java执行环境，在哪些目录下可以找到所要执行的Java程序（.class文件）</p>
 
     </div>
