@@ -3,11 +3,12 @@
   <entry>
     <title>个人学习参考</title>
     <url>/2022/06/02/%E4%B8%AA%E4%BA%BA/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E5%8F%82%E8%80%83/</url>
-    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>很多时候环境部署，网站搭建等使用到的各种参考资源记录在此。</p>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>很多时候环境部署，网站搭建，学习练习等使用到的各种参考资源记录在此。</p>
 <span id="more"></span>
 
-<h5 id="hexo搭建博客相关"><a href="#hexo搭建博客相关" class="headerlink" title="hexo搭建博客相关"></a>hexo搭建博客相关</h5><h6 id="利用Github-hexo搭建个人博客"><a href="#利用Github-hexo搭建个人博客" class="headerlink" title="利用Github+hexo搭建个人博客"></a>利用Github+hexo搭建个人博客</h6><p><a href="https://www.cnblogs.com/chenlove/p/15058170.html">https://www.cnblogs.com/chenlove/p/15058170.html</a></p>
+<h5 id="hexo搭建博客"><a href="#hexo搭建博客" class="headerlink" title="hexo搭建博客"></a>hexo搭建博客</h5><h6 id="利用Github-hexo搭建个人博客"><a href="#利用Github-hexo搭建个人博客" class="headerlink" title="利用Github+hexo搭建个人博客"></a>利用Github+hexo搭建个人博客</h6><p><a href="https://www.cnblogs.com/chenlove/p/15058170.html">https://www.cnblogs.com/chenlove/p/15058170.html</a></p>
 <h6 id="hexo主题next-theme-x2F-hexo-theme-next的配置"><a href="#hexo主题next-theme-x2F-hexo-theme-next的配置" class="headerlink" title="hexo主题next-theme&#x2F;hexo-theme-next的配置"></a>hexo主题next-theme&#x2F;hexo-theme-next的配置</h6><p><a href="https://theme-next.js.org/">https://theme-next.js.org/</a><br><a href="https://hexo-next.readthedocs.io/zh_CN/latest/">https://hexo-next.readthedocs.io/zh_CN/latest/</a></p>
+<h5 id="打字练习"><a href="#打字练习" class="headerlink" title="打字练习"></a>打字练习</h5><h6 id="快捷键练习"><a href="#快捷键练习" class="headerlink" title="快捷键练习"></a>快捷键练习</h6><p><a href="https://www.shortcutfoo.com/">https://www.shortcutfoo.com/</a></p>
 ]]></content>
       <categories>
         <category>个人</category>
@@ -29,18 +30,6 @@
       </categories>
       <tags>
         <tag>游戏</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>辗转相除法</title>
-    <url>/2022/07/07/Java/%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>做50道编程拓展题，求两个数的最大公约数和最小公倍数，</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -167,37 +156,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面试题目 23种设计模式</title>
-    <url>/2022/07/06/Java%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE-23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Java面试</category>
-        <category>面试题目</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>面试题目 jvm内存模型</title>
-    <url>/2022/07/06/Java%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE/%E9%9D%A2%E8%AF%95%E9%A2%98%E7%9B%AE-jvm%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Java面试</category>
-        <category>面试题目</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JAVA 8 日期时间API</title>
-    <url>/2022/07/15/JAVA-8-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4API/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>JAVA 8 四大函数型接口</title>
     <url>/2022/07/09/Java/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/JAVA-8-%E5%9B%9B%E5%A4%A7%E5%87%BD%E6%95%B0%E5%9E%8B%E6%8E%A5%E5%8F%A3/</url>
     <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>学lambda表达式，针对这一部分进行了拓展。工作中会经常用到这四大函数型接口。</p>
@@ -209,7 +167,11 @@
 <blockquote>
 <p>接口默认继承java.lang.Object，所以如果接口显示声明覆盖了Object中方法，那么也不算抽象方法</p>
 </blockquote>
-<p>但是还是不理解此接口覆盖equals方法的用意，也没有找到相应的例子。</p>
+<p>但是还是不理解此接口覆盖equals方法的用意，也没有找到相应的例子。在API文档中可以看到</p>
+<blockquote>
+<p>Note that it is always safe not to override Object.equals(Object). However, overriding this method may, in some cases, improve performance by allowing programs to determine that two distinct comparators impose the same order. </p>
+</blockquote>
+<p>可能后续遇到了，才会有所理解。</p>
 <h4 id="四大函数式接口"><a href="#四大函数式接口" class="headerlink" title="四大函数式接口"></a>四大函数式接口</h4><table>
 <thead>
 <tr>
@@ -285,6 +247,92 @@
 
 <h6 id="用法-2"><a href="#用法-2" class="headerlink" title="用法"></a>用法</h6><p>常用于条件判断</p>
 <p><strong>本篇转载自<a href="https://blog.csdn.net/NarutoConanKing/article/details/86573449">https://blog.csdn.net/NarutoConanKing/article/details/86573449</a></strong></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Java 8 新特性</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Java 8 新特性</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JAVA 8 日期时间API</title>
+    <url>/2022/07/15/Java/Java%208%20%E6%96%B0%E7%89%B9%E6%80%A7/JAVA-8-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4API/</url>
+    <content><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>对于<code>JAVA 8</code>中新引入的日期时间API只是简单的提了一嘴，但是又说很好用，建议大家去了解一下（是不是不发火就。。。）<br>于是就自己查阅资料并试了几个例子。目前学习的<code>java.util.Date</code>，是在<code>JDK 1.0</code>的时候引入的，目前已知这个API存在诸多问题；在<code>JDK 1.1</code>的时候引入了功能更强大的<code>java.util.Calendar</code>，但是Date存在的部分问题还是没有解决。在<code>JDK 1.8</code>的时候，Java引入了新的API，这才真正修改了过去的缺陷，且更为好用。本篇就详细介绍一下<code>JDK 1.8</code>的日期和时间API。</p>
+<span id="more"></span>
+<h4 id="java-time包结构"><a href="#java-time包结构" class="headerlink" title="java.time包结构"></a>java.time包结构</h4><p><img src="/img%5CJAVA-8-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4API%5C1.JPG"><br>新版<code>java.time</code>下面分为5个部分，大部分情况下用到基础包和format包就行</p>
+<blockquote>
+<p>java.time – 包含值对象的基础包<br>java.time.chrono – 提供对不同的日历系统的访问<br>java.time.format – 格式化和解析时间和日期<br>java.time.temporal – 包括底层框架和扩展特性<br>java.time.zone – 包含时区支持的类</p>
+</blockquote>
+<h4 id="基础包的使用"><a href="#基础包的使用" class="headerlink" title="基础包的使用"></a>基础包的使用</h4><h5 id="java-time-LocalDateTime"><a href="#java-time-LocalDateTime" class="headerlink" title="java.time.LocalDateTime"></a>java.time.LocalDateTime</h5><p><code>java.time.LocalDateTime</code>包括年月日时分秒，<code>java.time.LocalDate</code>包括年月日，<code>java.time.LocalTime</code>包括时分秒，在源码中可以看到<code>java.time.LocalDateTime</code>就是在类中创建了两个LocalDate和LocalTime的final对象，并对其中的方法进行调用，因此这里只介绍<code>java.time.LocalDateTime</code>中的方法。</p>
+<ul>
+<li><p>从日期和时间中获取单独部分</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LocalDateTimeTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">now</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line">        <span class="comment">// 获取当前时间 格式为：2022-07-16T21:20:50.325202900</span></span><br><span class="line">        System.out.println(now.toString());</span><br><span class="line">        <span class="comment">// 获取当前年份 返回int值</span></span><br><span class="line">        System.out.println(now.getYear());</span><br><span class="line">        <span class="comment">// 获取当前月份 返回enum值</span></span><br><span class="line">        System.out.println(now.getMonth());</span><br><span class="line">        <span class="comment">// 获取当前月份 返回int值</span></span><br><span class="line">        System.out.println(now.getMonthValue());</span><br><span class="line">        <span class="comment">// 获取当前日期是所在年份的第几天 返回int值</span></span><br><span class="line">        System.out.println(now.getDayOfYear());</span><br><span class="line">        <span class="comment">// 获取当前日期是所在月份的第几天 返回int值</span></span><br><span class="line">        System.out.println(now.getDayOfMonth());</span><br><span class="line">        <span class="comment">// 获取星期 返回enum值</span></span><br><span class="line">        System.out.println(now.getDayOfWeek());</span><br><span class="line">        <span class="comment">// 获取小时 返回int值 24小时制</span></span><br><span class="line">        System.out.println(now.getHour());</span><br><span class="line">        <span class="comment">// 获取分钟 返回int值</span></span><br><span class="line">        System.out.println(now.getMinute());</span><br><span class="line">        <span class="comment">// 获取秒数 返回int值</span></span><br><span class="line">        System.out.println(now.getSecond());</span><br><span class="line">        <span class="comment">// 获取纳秒</span></span><br><span class="line">        System.out.println(now.getNano());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>简单增删改</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 自定义时间</span></span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">time</span> <span class="operator">=</span> LocalDateTime.of(<span class="number">2000</span>, <span class="number">2</span>, <span class="number">29</span>, <span class="number">21</span>, <span class="number">21</span>, <span class="number">21</span>);</span><br><span class="line">System.out.println(time);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用plus方法增加年份 同理增加年月日时分秒毫秒星期都行</span></span><br><span class="line"><span class="comment">// 此方法返回一个新的对象，原有对象值不能修改</span></span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">plusYears</span> <span class="operator">=</span> time.plusYears(<span class="number">22</span>);</span><br><span class="line">System.out.println(time);</span><br><span class="line">System.out.println(plusYears);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用minus方法减少年份</span></span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">minusYears</span> <span class="operator">=</span> time.minusYears(<span class="number">1</span>);</span><br><span class="line">System.out.println(minusYears);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用with方法设置年份</span></span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">withYear</span> <span class="operator">=</span> time.withYear(<span class="number">2018</span>);</span><br><span class="line">System.out.println(withYear);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断当前年份是否为闰年</span></span><br><span class="line"><span class="type">LocalDate</span> <span class="variable">date</span> <span class="operator">=</span> LocalDate.now();</span><br><span class="line">System.out.println(date.isLeapYear());</span><br></pre></td></tr></table></figure>
+<p>需要注意的是isLeapYear()这个方法是LocalDate类所特有的</p>
+</li>
+<li><p>复杂的日期操作<br>比较复杂的日期操作，比如将时间调到下一个工作日，或者是下个月的最后一天，这时候我们可以使用with()方法的另一个重载方法，它接收一个TemporalAdjuster参数，可以使我们更加灵活的调整日期。<br>底层。。。暂时不想研究。总之，根据jdk提供的注解只需要知道可以使用，并且推荐使用TemporalAdjusters中提供的方法就行。TemporalAdjusters类在<code>java.time.temporal</code>中。</p>
+<blockquote>
+<p>There are two equivalent ways of using a TemporalAdjuster. The first is to invoke the method on this interface directly. The second is to use Temporal.with(TemporalAdjuster):<br>&#x2F;&#x2F; these two lines are equivalent, but <strong>the second approach is recommended</strong><br>temporal &#x3D; thisAdjuster.adjustInto(temporal);<br>temporal &#x3D; temporal.with(thisAdjuster);<br>It is recommended to use the second approach, with(TemporalAdjuster), as it is a lot clearer to read in code.</p>
+</blockquote>
+<p>使用格式如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">LocalDateTime</span> <span class="variable">now</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回当前月份的第一天</span></span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">firstDayOfMonth</span> <span class="operator">=</span> now.with(TemporalAdjusters.firstDayOfMonth());</span><br><span class="line">System.out.println(firstDayOfMonth);</span><br></pre></td></tr></table></figure>
+
+<p>下面列出时间调节器TemporalAdjuster提供的一些方法</p>
+</li>
+</ul>
+<h5 id="java-time-Instant"><a href="#java-time-Instant" class="headerlink" title="java.time.Instant"></a>java.time.Instant</h5><ul>
+<li>常用方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.Instant;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">InstantTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Instant</span> <span class="variable">now</span> <span class="operator">=</span> Instant.now();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取当前时间毫秒值 返回long值</span></span><br><span class="line">        System.out.println(now.toEpochMilli());</span><br><span class="line">        <span class="comment">// 获取当前时间的秒值 返回long值</span></span><br><span class="line">        System.out.println(now.getEpochSecond());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断当前时间是否在参数中的时间之后</span></span><br><span class="line">        System.out.println(now.isAfter(now));</span><br><span class="line">        <span class="comment">// 判断当前时间是否在参数中的时间之前</span></span><br><span class="line">        System.out.println(now.isBefore(now));</span><br><span class="line">        <span class="comment">// 当前时间与参数中的时间进行对比，在参数之前，相同，之后分别为（-1, 0, 1）</span></span><br><span class="line">        System.out.println(now.compareTo(now));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 用一个时间戳去创建一个Instance实例，用法和new Date（时间戳）创建一个Date实例是一样的</span></span><br><span class="line">        Instant.ofEpochMilli(System.currentTimeMillis());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="java-time-Instant和java-time-LocalDateTime互转"><a href="#java-time-Instant和java-time-LocalDateTime互转" class="headerlink" title="java.time.Instant和java.time.LocalDateTime互转"></a>java.time.Instant和java.time.LocalDateTime互转</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.Instant;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"><span class="keyword">import</span> java.time.ZoneId;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Instant2LocalDateTime</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Instant</span> <span class="variable">instant</span> <span class="operator">=</span> Instant.ofEpochMilli(System.currentTimeMillis());</span><br><span class="line">        <span class="comment">// 时区设置为系统默认时区</span></span><br><span class="line">        <span class="type">ZoneId</span> <span class="variable">zoneId</span> <span class="operator">=</span> ZoneId.systemDefault();</span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">instant2LocalDateTime</span> <span class="operator">=</span> LocalDateTime.ofInstant(instant, zoneId);</span><br><span class="line">        </span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">now</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line">        <span class="type">Instant</span> <span class="variable">localDateTime2Instant</span> <span class="operator">=</span> now.atZone(ZoneId.systemDefault()).toInstant();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="java-time-Duration"><a href="#java-time-Duration" class="headerlink" title="java.time.Duration"></a>java.time.Duration</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.Duration;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DurationTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">startTime</span> <span class="operator">=</span> LocalDateTime.of(<span class="number">2000</span>, <span class="number">2</span>, <span class="number">29</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="type">LocalDateTime</span> <span class="variable">endTime</span> <span class="operator">=</span> LocalDateTime.now();</span><br><span class="line"></span><br><span class="line">        <span class="type">Duration</span> <span class="variable">between</span> <span class="operator">=</span> Duration.between(startTime, endTime);</span><br><span class="line">        System.out.println(between);</span><br><span class="line">        <span class="comment">// 计算同类型日期的时间差，也可以to分秒...</span></span><br><span class="line">        <span class="comment">// 这两个方法在源码里看起来好像没区别 toDaysPart()是在jdk1.9提供的</span></span><br><span class="line">        System.out.println(between.toDays());</span><br><span class="line">        System.out.println(between.toDaysPart());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="java-time-chrono包介绍"><a href="#java-time-chrono包介绍" class="headerlink" title="java.time.chrono包介绍"></a>java.time.chrono包介绍</h4><p>除默认ISO之外的日历系统的通用API。<br>主API基于ISO-8601中定义的日历系统（即日常用的公历）。但是，还有其他日历系统，此软件包为它们提供基本支持。java.time.chrono包中提供了备用日历。<br>支持的日历系统包括：</p>
+<ul>
+<li>Hijrah calendar</li>
+<li>Japanese calendar</li>
+<li>Minguo calendar</li>
+<li>Thai Buddhist calendar</li>
+</ul>
+<p>现阶段应该用不到，了解一下就行</p>
+<h4 id="java-time-format包介绍"><a href="#java-time-format包介绍" class="headerlink" title="java.time.format包介绍"></a>java.time.format包介绍</h4><p>提供打印和解析日期和时间的类。<br>打印和解析基于DateTimeFormatter类。实例通常从DateTimeFormatter获得，但是如果需要更多功率则可以使用DateTimeFormatterBuilder。</p>
+<h5 id="java-time-format-DateTimeFormatter"><a href="#java-time-format-DateTimeFormatter" class="headerlink" title="java.time.format.DateTimeFormatter"></a>java.time.format.DateTimeFormatter</h5><h4 id="java-time-zone包介绍"><a href="#java-time-zone包介绍" class="headerlink" title="java.time.zone包介绍"></a>java.time.zone包介绍</h4><p>支持时区及其规则。<br>夏令时和时区是各国政府用来改变当地时间的概念。此软件包为时区，其规则以及由夏令时引起的本地时间线产生的间隙和重叠提供支持。<br>定义了时区转换的各种方法。</p>
+<h4 id="java-time-temporal包介绍"><a href="#java-time-temporal包介绍" class="headerlink" title="java.time.temporal包介绍"></a>java.time.temporal包介绍</h4><p>使用字段和单位以及日期时间调整器访问日期和时间。<br>该软件包扩展了基础软件包，为更强大的用例提供了额外的功能。支持包括：</p>
+<ul>
+<li>日期时间单位，例如年，月，日和小时</li>
+<li>日期时间字段，例如月份，星期几或小时</li>
+<li>日期时间调整功能</li>
+<li>周的不同定义</li>
+</ul>
+<blockquote>
+<p>Java8中的日期时间类都是实现了temporal包中的时间单位（Temporal）、时间调节器（TemporalAdjuster）和各种属性的接口，所以在后面的日期的操作方法中都是以最基本的时间单位和各种属性为参数的。</p>
+</blockquote>
+<h5 id="TemporalAdjusters提供的修改方法"><a href="#TemporalAdjusters提供的修改方法" class="headerlink" title="TemporalAdjusters提供的修改方法"></a>TemporalAdjusters提供的修改方法</h5><h4 id="新旧API比较"><a href="#新旧API比较" class="headerlink" title="新旧API比较"></a>新旧API比较</h4><h5 id="旧版API存在的问题"><a href="#旧版API存在的问题" class="headerlink" title="旧版API存在的问题"></a>旧版API存在的问题</h5><ul>
+<li><strong>非线程安全</strong>：<code>java.util.Date</code>是非线程安全的，所有的日期类都是可变的，这是Java日期类最大的问题之一。</li>
+<li><strong>设计很差</strong>：Java的日期&#x2F;时间类的定义并不一致，在<code>java.util</code>和<code>java.sql</code>的包中都有日期类，此外用于格式化和解析的类在<code>java.text</code>包中定义。<code>java.util.Date</code>同时包含日期和时间，而<code>java.sql.Date</code>仅包含日期，将其纳入<code>java.sql</code>包并不合理。另外这两个类都有相同的名字，这本身就是一个非常糟糕的设计。</li>
+<li><strong>时区处理很麻烦</strong>：日期类并不提供国际化，没有时区支持，因此Java引入了<code>java.util.Calendar</code>和<code>java.util.TimeZone</code>类，但他们同样存在上述所有的问题。</li>
+<li><strong>编码问题</strong>：<code>java.util.Calendar</code>中的月份从0开始，从中获取月份需要加一才能表示当前月份；星期的计算从星期日开始，这些都使得它的使用变得不便。</li>
+</ul>
+<h5 id="新版API优势"><a href="#新版API优势" class="headerlink" title="新版API优势"></a>新版API优势</h5><ul>
+<li>它涵盖了所有处理日期，时间，日期&#x2F;时间，时区，时刻（instants），过程（during）与时钟（clock）的操作。</li>
+<li><strong>所有的类都是不可变的、线程安全的。</strong></li>
+<li>新时间API类都实现了一系列方法用以完成通用的任务，如：加、减、格式化、解析、从日期&#x2F;时间中提取单独部分，等等</li>
+<li>time包里面的类实例如果用了上面的方法而被修改了,那么会返回一个新的实例过来,而不像Calendar那样可以在同一个实例进行不同的修改,体现了不可变</li>
+</ul>
+<blockquote>
+<p>在jdk8中可以使用Instant代替Date，LocalDateTime代替Calendar，DateTimeFormatter代替SimpleDateFormat。</p>
+</blockquote>
+<h5 id="java-util-Date或java-util-Calendar到新库类的转换"><a href="#java-util-Date或java-util-Calendar到新库类的转换" class="headerlink" title="java.util.Date或java.util.Calendar到新库类的转换"></a>java.util.Date或java.util.Calendar到新库类的转换</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.time.Instant;</span><br><span class="line"><span class="keyword">import</span> java.util.Calendar;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 旧版Date转新版Instant</span></span><br><span class="line">        <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">        <span class="type">Instant</span> <span class="variable">date2Instant</span> <span class="operator">=</span> date.toInstant();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 新版Instant转旧版Date</span></span><br><span class="line">        <span class="type">Instant</span> <span class="variable">instant</span> <span class="operator">=</span> Instant.now();</span><br><span class="line">        <span class="type">Date</span> <span class="variable">instant2Date</span> <span class="operator">=</span> Date.from(instant);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 旧版Calendar转成新版Instant</span></span><br><span class="line">        <span class="type">Calendar</span> <span class="variable">calendar</span> <span class="operator">=</span> Calendar.getInstance();</span><br><span class="line">        <span class="type">Instant</span> <span class="variable">calendar2Instant</span> <span class="operator">=</span> calendar.toInstant();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h4><p>最新JDBC映射将把数据库的日期类型和Java 8的新类型关联起来：</p>
+<blockquote>
+<p>date -&gt; LocalDate<br>time -&gt; LocalTime<br>timestamp -&gt; LocalDateTime</p>
+</blockquote>
+<p><strong>本篇参考如下:</strong><br><a href="https://zhuanlan.zhihu.com/p/374623222">https://zhuanlan.zhihu.com/p/374623222</a><br><a href="https://www.jianshu.com/p/19bd58b30660">https://www.jianshu.com/p/19bd58b30660</a><br><a href="https://cloud.tencent.com/developer/article/1588693">https://cloud.tencent.com/developer/article/1588693</a><br><a href="https://www.runoob.com/java/java8-datetime-api.html">https://www.runoob.com/java/java8-datetime-api.html</a></p>
 ]]></content>
       <categories>
         <category>Java</category>
