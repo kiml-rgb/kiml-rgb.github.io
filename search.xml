@@ -854,7 +854,7 @@ JDK 5.0开始，默认在当前工作目录即上述设置中寻找Java程序。
   <entry>
     <title>面试记录20220601</title>
     <url>/2022/06/01/java-interview/diary/20220601/</url>
-    <content><![CDATA[<h4 id="前言-8">前言</h4>
+    <content><![CDATA[<h4 id="前言">前言</h4>
 <p>通勤时间太长真的会让人感觉想亖，大概4个多小时的往返，瘫在沙发上一动都不想动。面试了华信咨询设计研究院的开发岗，结果就是不自量力。不知道为什么所有人都在催催催，投简历，得到一个面试，然后就去了，真的很烦，其实知道自己不太行，代码写的太少很多东西都不是很会。但是没办法，所有人都在催，好像这个月找不到工作，就会亖一样，中国人有个屁的gap，每天都活得像头驴一样，被吊着往前走。大学毕业找不到工作，确实很可笑吧，又怎么样呢，确实在校期间没有好好练习，仅仅卡着及格线过线就行。确实也不知道自己在干什么。</p>
 <span id="more"></span>
 <p>在boss上看到的这个职位。</p>
@@ -893,7 +893,7 @@ SQL语句能力要好点，优先考虑有Oracle使用经验</p>
 </tbody>
 </table>
 <p>额额，没写出来，完全不知道数据库里还有DATE_FORMAT。。。</p>
-<pre class="line-numbers language-none"><code class="language-none">SELECT name,
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">SELECT name,
     DATE_FORMAT(time,&#39;%Y.%m&#39;) as month,
     COUNT(*) as time
 FROM
@@ -902,23 +902,23 @@ GROUP BY NAME, DATE_FORMAT(time,&#39;%Y.%m&#39;)</code></pre>
 <h5 id="面试题2：在Spring-MVC中常用的注解">面试题2：在Spring MVC中常用的注解</h5>
 <p>答了一个@RequestMapping<br>
 然后问前端传进来一个url怎么获取端口，当然还是不会</p>
-<pre class="line-numbers language-none"><code class="language-none">request.getServerName() &#x2F;&#x2F;获取域名
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">request.getServerName() &#x2F;&#x2F;获取域名
 request.getServerPort(); &#x2F;&#x2F;获取端口号</code></pre>
 <h5 id="面试题3：Java中的数据结构">面试题3：Java中的数据结构</h5>
 <p>好不容易答出ArrayList，HashMap</p>
 <h5 id="面试题4：ArrayList有几种遍历方式">面试题4：ArrayList有几种遍历方式</h5>
 <p>三种。（知道答案，没敢回答）<br>
 1、迭代器遍历（继续问迭代器遍历怎么实现的。不会了，没怎么用过，脑子里一片空白）</p>
-<pre class="line-numbers language-none"><code class="language-none">Iterator&lt;Integer&gt; it &#x3D; arrayList.iterator();
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">Iterator&lt;Integer&gt; it &#x3D; arrayList.iterator();
 while(it.hasNext())&#123;
     System.out.print(it.next() + &quot; &quot;);
 &#125;</code></pre>
 <p>2、索引值遍历</p>
-<pre class="line-numbers language-none"><code class="language-none">for(int i &#x3D; 0; i &lt; arrayList.size(); i++)&#123;
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">for(int i &#x3D; 0; i &lt; arrayList.size(); i++)&#123;
    System.out.print(arrayList.get(i) + &quot; &quot;);
 &#125;</code></pre>
 <p>3、for循环遍历</p>
-<pre class="line-numbers language-none"><code class="language-none">for(int i &#x3D; 0; i &lt; arrayList.size(); i++)&#123;
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">for(int i &#x3D; 0; i &lt; arrayList.size(); i++)&#123;
    System.out.print(arrayList.get(i) + &quot; &quot;);
 &#125;</code></pre>
 <h5 id="面试题5：HashMap的实现原理">面试题5：HashMap的实现原理</h5>
