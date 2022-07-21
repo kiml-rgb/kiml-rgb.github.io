@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>个人游戏整理</title>
+    <url>/2022/05/28/personal/games/</url>
+    <content><![CDATA[<h4 id="前言">前言</h4>
+<p>毕业季找工作看到很多游戏相关，游戏本身给我带来的乐趣确实让我对游戏行业很心动，也是觉得好游戏能被算上第九艺术的一个群体。这几年也玩了不少游戏，在这里做个汇总和评测，也为后续可能进入游戏行业做个准备。</p>
+<span id="more"></span>
+<h2 id="游戏汇总">游戏汇总</h2>
+<h3 id="风来之国">风来之国</h3>
+<p>属于<strong>国产像素RPG</strong></p>
+]]></content>
+      <categories>
+        <category>个人</category>
+      </categories>
+      <tags>
+        <tag>游戏</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>next配置中遇到的问题</title>
     <url>/2022/07/20/hexo/next/</url>
-    <content><![CDATA[<h4 id="前言">前言</h4>
+    <content><![CDATA[<h4 id="前言-2">前言</h4>
 <p>受不了了，感觉自从写这个博客开始，大部分的时间就是在配置hexo和next主题，各种莫名奇妙的错误操作，所以打算自己写一篇配置记录。</p>
 <span id="more"></span>
 <h4 id="官方配置网站">官方配置网站</h4>
@@ -74,23 +91,6 @@ pre[class*&#x3D;&quot;language-&quot;]:after &#123;
       </categories>
   </entry>
   <entry>
-    <title>个人游戏整理</title>
-    <url>/2022/05/28/personal/games/</url>
-    <content><![CDATA[<h4 id="前言-2">前言</h4>
-<p>毕业季找工作看到很多游戏相关，游戏本身给我带来的乐趣确实让我对游戏行业很心动，也是觉得好游戏能被算上第九艺术的一个群体。这几年也玩了不少游戏，在这里做个汇总和评测，也为后续可能进入游戏行业做个准备。</p>
-<span id="more"></span>
-<h2 id="游戏汇总">游戏汇总</h2>
-<h3 id="风来之国">风来之国</h3>
-<p>属于<strong>国产像素RPG</strong></p>
-]]></content>
-      <categories>
-        <category>个人</category>
-      </categories>
-      <tags>
-        <tag>游戏</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>个人学习参考</title>
     <url>/2022/06/02/personal/references/</url>
     <content><![CDATA[<h4 id="前言-3">前言</h4>
@@ -114,238 +114,9 @@ pre[class*&#x3D;&quot;language-&quot;]:after &#123;
       </tags>
   </entry>
   <entry>
-    <title>面试记录20220601</title>
-    <url>/2022/06/01/java_interview/diary/20220601/</url>
-    <content><![CDATA[<h4 id="前言-4">前言</h4>
-<p>通勤时间太长真的会让人感觉想亖，大概4个多小时的往返，瘫在沙发上一动都不想动。面试了华信咨询设计研究院的开发岗，结果就是不自量力。不知道为什么所有人都在催催催，投简历，得到一个面试，然后就去了，真的很烦，其实知道自己不太行，代码写的太少很多东西都不是很会。但是没办法，所有人都在催，好像这个月找不到工作，就会亖一样，中国人有个屁的gap，每天都活得像头驴一样，被吊着往前走。大学毕业找不到工作，确实很可笑吧，又怎么样呢，确实在校期间没有好好练习，仅仅卡着及格线过线就行。确实也不知道自己在干什么。</p>
-<span id="more"></span>
-<p>在boss上看到的这个职位。</p>
-<blockquote>
-<p>初级Java开发工程师<br>
-7-9K，13薪</p>
-<blockquote>
-<p>22年计算机相关专业应届毕业生，有实习经验后端，熟练使用SSM框架<br>
-SQL语句能力要好点，优先考虑有Oracle使用经验</p>
-</blockquote>
-</blockquote>
-<p>其实看了要求就知道自己不太行了，但确实应聘软件上甚至23届应届生也是这个要求，还是回到原点，太垃圾了某人。</p>
-<p>面试过程其实还行，到的稍微早了一点，就在楼下等了一会儿，还没到约定的3：30，就被hr带上楼了。一开始也不用自我介绍，就是看着简历问。问了实习经历，就实习经历开始讲实习做的项目，介绍了主要功能，然后问了项目面向的使用对象（完全不知道。。。）<strong>技术面试不是校招，志愿者经历完全没用，不如写在校写的项目！！！</strong><br>
-然后就是问了一些技术问题。</p>
-<h5 id="面试题1：基于以下数据表，输出每个用户在每个月的登陆次数的sql语句">面试题1：基于以下数据表，输出每个用户在每个月的登陆次数的sql语句</h5>
-<table>
-<thead>
-<tr>
-<th>name</th>
-<th>time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>张三</td>
-<td>2022-6-1 19:54:58</td>
-</tr>
-<tr>
-<td>李四</td>
-<td>2022-7-1 19:54:58</td>
-</tr>
-<tr>
-<td>张三</td>
-<td>2022-6-5 19:54:58</td>
-</tr>
-</tbody>
-</table>
-<p>额额，没写出来，完全不知道数据库里还有DATE_FORMAT。。。</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">SELECT name,
-    DATE_FORMAT(time,&#39;%Y.%m&#39;) as month,
-    COUNT(*) as time
-FROM
-    time
-GROUP BY NAME, DATE_FORMAT(time,&#39;%Y.%m&#39;)</code></pre>
-<h5 id="面试题2：在Spring-MVC中常用的注解">面试题2：在Spring MVC中常用的注解</h5>
-<p>答了一个@RequestMapping<br>
-然后问前端传进来一个url怎么获取端口，当然还是不会</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">request.getServerName() &#x2F;&#x2F;获取域名
-request.getServerPort(); &#x2F;&#x2F;获取端口号</code></pre>
-<h5 id="面试题3：Java中的数据结构">面试题3：Java中的数据结构</h5>
-<p>好不容易答出ArrayList，HashMap</p>
-<h5 id="面试题4：ArrayList有几种遍历方式">面试题4：ArrayList有几种遍历方式</h5>
-<p>三种。（知道答案，没敢回答）<br>
-1、迭代器遍历（继续问迭代器遍历怎么实现的。不会了，没怎么用过，脑子里一片空白）</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">Iterator&lt;Integer&gt; it &#x3D; arrayList.iterator();
-while(it.hasNext())&#123;
-    System.out.print(it.next() + &quot; &quot;);
-&#125;</code></pre>
-<p>2、索引值遍历</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">for(int i &#x3D; 0; i &lt; arrayList.size(); i++)&#123;
-   System.out.print(arrayList.get(i) + &quot; &quot;);
-&#125;</code></pre>
-<p>3、for循环遍历</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">for(int i &#x3D; 0; i &lt; arrayList.size(); i++)&#123;
-   System.out.print(arrayList.get(i) + &quot; &quot;);
-&#125;</code></pre>
-<h5 id="面试题5：HashMap的实现原理">面试题5：HashMap的实现原理</h5>
-<p>完全不会。。。贴一个链接<br>
-<a href="https://zhuanlan.zhihu.com/p/127147909">https://zhuanlan.zhihu.com/p/127147909</a></p>
-<h5 id="面试题6：熟不熟悉前端，js，html，css">面试题6：熟不熟悉前端，js，html，css</h5>
-<p>完全没复习到前端。。。举了例子form的标签是什么。。。</p>
-<p>最后问有没有兴趣发展测试。。。尬住了说没想过</p>
-<p>总结：少吹逼。。。要求不匹配就不要去面试。。。</p>
-]]></content>
-      <categories>
-        <category>Java面试</category>
-        <category>面试记录</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>找不到或无法加载主类 java.lang.ClassNotFoundException</title>
-    <url>/2022/06/10/java/bugs/java_lang_ClassNotFoundException/</url>
-    <content><![CDATA[<h4 id="前言-5">前言</h4>
-<p>很尴尬，找不到工作来报了个班，结果一开始用nodepad++写代码编译就出问题，为什么之前没有我也不知道。。。</p>
-<span id="more"></span>
-<p>可以编译成功，PATH环境变量配置正确，代码无问题时出现以下错误。<br>
-<img src="/img/%E6%89%BE%E4%B8%8D%E5%88%B0%E6%88%96%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%BB%E7%B1%BB-java-lang-ClassNotFoundException/ClassNotFoundException.png" alt></p>
-<h4 id="引起原因">引起原因</h4>
-<p>1、CLASSPATH环境变量配置问题<br>
-java指令默认在寻找class文件时是根据CLASSPATH环境变量指定的目录寻找的。环境变量配置应该如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">.;%JAVE_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</code></pre>
-<p>其中“.”表示当前文件夹，原先配置时，“.”后忘记添加“;”导致出现错误java.lang.ClassNotFoundException</p>
-<h4 id="拓展">拓展</h4>
-<p><strong>注意：</strong> 在定义CLASSPATH环境变量时，如果没有定义环境变量CLASSPATH，java启动jvm后，会在当前目录下查找要运行的类文件；如果指定了CLASSPATH，那么会在指定的目录下查找要运行的类文件。</p>
-<p><strong>CLASSPATH是什么？它的作用是什么？</strong><br>
-它是javac编译器的一个环境变量。它的作用与import、package关键字有关。当你写下improt java.util.*时，编译器面对import关键字时，就知道你要引入java.util这个package中的类；但是编译器如何知道你把这个package放在哪里了呢？所以你首先得告诉编译器这个package的所在位置。如果java.util这个package在c:/jdk/目录下，把c:/jdk/这个路径设置到CLASSPATH中，当编译器面对import java.util.*这个语句时，它先会查找CLASSPATH所指定的目录，并检视子目录java/util是否存在，然后找出名称吻合的已编译文件（.class文件）。<br>
-JDK 5.0开始，默认在当前工作目录即上述设置中寻找Java程序。因此，在安装之后，即使完全没有设定CLASSPATH，你仍然能够编译基本的JAVA程序，并且加以执行。总之，设置CLASSPATH的目的，在于告诉Java执行环境，在哪些目录下可以找到所要执行的Java程序（.class文件）</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-        <category>Bugs</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Bugs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java数组遍历--foreach</title>
-    <url>/2022/06/13/java/bugs/javaenhancedforloop/</url>
-    <content><![CDATA[<h4 id="前言-6">前言</h4>
-<p>在练习数组的使用时，想用foreach循环给数组赋值，但得到了一个空数组。</p>
-<span id="more"></span>
-<h4 id="bug出处">bug出处</h4>
-<p>原示例代码：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Random;
-public class Test &#123;
-    public static void main(String[] args) &#123;
-        Random random &#x3D; new Random();
-        int arr[] &#x3D; new int[10];
-        String s &#x3D; &quot;[&quot;;
-
-        for (int i &#x3D; 0 ; i &lt; arr.length; i++) &#123;
-            arr[i] &#x3D; random.nextInt(889-22) + 22;&#x2F;&#x2F;[0, 889-22) + 22
-        &#125;
-
-        System.out.println(&quot;打印数组元素：&quot;);
-        for (int i : arr) &#123;
-            s +&#x3D; i + &quot;, &quot;;
-        &#125;
-        s &#x3D; s.substring(0, s.length()-2) + &quot;]&quot;;
-        System.out.println(s);
-
-        System.out.println(&quot;打印数组中是3的整倍数的元素：&quot;);
-        s &#x3D; &quot;[&quot;;
-        for (int i : arr) &#123;
-            if (i % 3 &#x3D;&#x3D; 0) &#123;
-                s +&#x3D; i + &quot;, &quot;;
-            &#125;
-        &#125;
-        s &#x3D; s.substring(0, s.length()-2) + &quot;]&quot;;
-        System.out.println(s);
-    &#125;
-&#125;</code></pre>
-<p>此段代码给数组元素赋值时，使用foreach循环，赋值失败。通过后续查资料想进一步完善其用法，发现foreach循环<strong>不是完全的不能改变原有数组的值</strong>。</p>
-<h4 id="四种情况">四种情况</h4>
-<p>首先foreach的格式如下：</p>
-<blockquote>
-<p>For (类型 变量名:集合) { 语句块; }</p>
-</blockquote>
-<p>此处的 <em><strong>类型 变量名</strong></em> 指的是使用第三方变量<strong>复制了</strong>迭代指向的数据。这里我简单的理解为一个temp。</p>
-<h5 id="基本数据类型数组（int）">基本数据类型数组（int）</h5>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">int[] list1 &#x3D; new int[10];
-&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量i记录
-&#x2F;&#x2F; 没有对原有数据作出改变
-for (int i : list1) &#123;
-    i &#x3D; 10;
-&#125;
-System.out.println(Arrays.toString(list1));</code></pre>
-<p>与原有的例子一样，此处遍历得到的结果如下：<br>
-<img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C1.jpg" alt></p>
-<p>既然foreach只是用第三方变量记录，记录基本数据类型不存在赋值过程，自然不会对原数组作出改变。如此，记录引用数据类型，记录的是地址，照理说应该能对原数组作出改变了。</p>
-<h5 id="引用数据类型数组（String）">引用数据类型数组（String）</h5>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">List&lt;String&gt; list2 &#x3D; new ArrayList&lt;&gt;();
-for (int i &#x3D; 0; i &lt; 10; i++) &#123;
-    list2.add(&quot;s&quot;);
-&#125;
-&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量s记录
-&#x2F;&#x2F; 引用数据类型，改变原有地址值中的数据
-&#x2F;&#x2F; 
-for (String s : list2) &#123;
-    s &#x3D; &quot;l&quot;;
-&#125;
-System.out.println(list2.toString());</code></pre>
-<p>此处遍历得到的结果如下：<br>
-<img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C2.jpg" alt></p>
-<p>对原数组依然没有作出改变，理由是String被final修饰，s = &quot;l&quot;只是在内存中new了一个对象，使String指向新的对象，但是此处s为第三变量，第三变量的引用改变，对于原list中记录的值不会有任何改变。既然如此，记录了地址的二维数组，没有被final修饰，应该就可以改变第二层循环内的的数据了。</p>
-<h5 id="引用数据类型-（二维数组（int-））">引用数据类型 （二维数组（int[][]））</h5>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">int[] a1 &#x3D; &#123;1, 2, 3&#125;;
-int[] a2 &#x3D; &#123;4, 5, 6&#125;;
-int[] a3 &#x3D; &#123;7, 8, 9&#125;;
-int[][] arr &#x3D; &#123;a1, a2, a3&#125;;
-
-&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量s记录
-&#x2F;&#x2F; 引用数据类型，改变原有地址值中的数据
-&#x2F;&#x2F; arr没有被final修饰，此处就是在源地址处改变，改变成功
-for (int[] ints : arr) &#123;
-    ints[1] &#x3D; 2;
-&#125;
-for (int[] ints : arr) &#123;
-    System.out.println(Arrays.toString(ints));
-&#125;</code></pre>
-<p>此处遍历得到的结果如下：<br>
-<img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C3.jpg" alt></p>
-<p>可以看到第二层循环内的改变成功。如此推断，如果数组中的元素是没有被final修饰的引用数据类型，应该就是可以通过foreach改变。可以自建一个JavaBean格式的Num类测试一下。</p>
-<h5 id="引用数据类型（普通类）">引用数据类型（普通类）</h5>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">List&lt;Num&gt; list3 &#x3D; new ArrayList&lt;&gt;();
-for (int i &#x3D; 0; i &lt; 10; i++) &#123;
-    list3.add(new Num(&quot;s&quot;));
-&#125;
-&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量s记录
-&#x2F;&#x2F; 引用数据类型，记录为地址，改变原有地址值中的数据
-&#x2F;&#x2F; 改变成功
-for (Num num : list3) &#123;
-    num.setNum(&quot;l&quot;);
-&#125;
-System.out.println(list3);</code></pre>
-<p>此处遍历得到的结果如下：<br>
-<img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C4.jpg" alt></p>
-<p>可以看到，改变成功。当然如果只是final修饰类，没有修饰属性，属性也是可以进行修改的。</p>
-<p><strong>总结</strong>:数组中元素是引用数据类型，并且该数据类型不是jdk提供的被final修饰的数据类型（例如String, Integer…），那么就可以通过foreach修改原数组中存储的数据。<em>此处也有点像方法中的传参</em>。</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-        <category>Bugs</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Bugs</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JAVA 8 四大函数型接口</title>
     <url>/2022/07/09/java/java_8/4functional_interface/</url>
-    <content><![CDATA[<h4 id="前言-7">前言</h4>
+    <content><![CDATA[<h4 id="前言-4">前言</h4>
 <p>学lambda表达式，针对这一部分进行了拓展。工作中会经常用到这四大函数型接口。</p>
 <span id="more"></span>
 <h4 id="函数式接口">函数式接口</h4>
@@ -593,7 +364,7 @@ public interface Predicate&lt;T&gt; &#123;
   <entry>
     <title>JAVA 8 日期时间API</title>
     <url>/2022/07/15/java/java_8/java_time/</url>
-    <content><![CDATA[<h4 id="前言-8">前言</h4>
+    <content><![CDATA[<h4 id="前言-5">前言</h4>
 <p>对于<code>JAVA 8</code>中新引入的日期时间API只是简单的提了一嘴，但是又说很好用，建议大家去了解一下（是不是不发火就。。。）<br>
 于是就自己查阅资料并试了几个例子。目前学习的<code>java.util.Date</code>，是在<code>JDK 1.0</code>的时候引入的，目前已知这个API存在诸多问题；在<code>JDK 1.1</code>的时候引入了功能更强大的<code>java.util.Calendar</code>，但是Date存在的部分问题还是没有解决。在<code>JDK 1.8</code>的时候，Java引入了新的API，这才真正修改了过去的缺陷，且更为好用。本篇就详细介绍一下<code>JDK 1.8</code>的日期和时间API。</p>
 <span id="more"></span>
@@ -936,6 +707,235 @@ timestamp -&gt; LocalDateTime</p>
       <tags>
         <tag>Java</tag>
         <tag>Java 8 新特性</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>找不到或无法加载主类 java.lang.ClassNotFoundException</title>
+    <url>/2022/06/10/java/bugs/java_lang_ClassNotFoundException/</url>
+    <content><![CDATA[<h4 id="前言-6">前言</h4>
+<p>很尴尬，找不到工作来报了个班，结果一开始用nodepad++写代码编译就出问题，为什么之前没有我也不知道。。。</p>
+<span id="more"></span>
+<p>可以编译成功，PATH环境变量配置正确，代码无问题时出现以下错误。<br>
+<img src="/img/%E6%89%BE%E4%B8%8D%E5%88%B0%E6%88%96%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%BB%E7%B1%BB-java-lang-ClassNotFoundException/ClassNotFoundException.png" alt></p>
+<h4 id="引起原因">引起原因</h4>
+<p>1、CLASSPATH环境变量配置问题<br>
+java指令默认在寻找class文件时是根据CLASSPATH环境变量指定的目录寻找的。环境变量配置应该如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">.;%JAVE_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</code></pre>
+<p>其中“.”表示当前文件夹，原先配置时，“.”后忘记添加“;”导致出现错误java.lang.ClassNotFoundException</p>
+<h4 id="拓展">拓展</h4>
+<p><strong>注意：</strong> 在定义CLASSPATH环境变量时，如果没有定义环境变量CLASSPATH，java启动jvm后，会在当前目录下查找要运行的类文件；如果指定了CLASSPATH，那么会在指定的目录下查找要运行的类文件。</p>
+<p><strong>CLASSPATH是什么？它的作用是什么？</strong><br>
+它是javac编译器的一个环境变量。它的作用与import、package关键字有关。当你写下improt java.util.*时，编译器面对import关键字时，就知道你要引入java.util这个package中的类；但是编译器如何知道你把这个package放在哪里了呢？所以你首先得告诉编译器这个package的所在位置。如果java.util这个package在c:/jdk/目录下，把c:/jdk/这个路径设置到CLASSPATH中，当编译器面对import java.util.*这个语句时，它先会查找CLASSPATH所指定的目录，并检视子目录java/util是否存在，然后找出名称吻合的已编译文件（.class文件）。<br>
+JDK 5.0开始，默认在当前工作目录即上述设置中寻找Java程序。因此，在安装之后，即使完全没有设定CLASSPATH，你仍然能够编译基本的JAVA程序，并且加以执行。总之，设置CLASSPATH的目的，在于告诉Java执行环境，在哪些目录下可以找到所要执行的Java程序（.class文件）</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Bugs</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Bugs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java数组遍历--foreach</title>
+    <url>/2022/06/13/java/bugs/javaenhancedforloop/</url>
+    <content><![CDATA[<h4 id="前言-7">前言</h4>
+<p>在练习数组的使用时，想用foreach循环给数组赋值，但得到了一个空数组。</p>
+<span id="more"></span>
+<h4 id="bug出处">bug出处</h4>
+<p>原示例代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Random;
+public class Test &#123;
+    public static void main(String[] args) &#123;
+        Random random &#x3D; new Random();
+        int arr[] &#x3D; new int[10];
+        String s &#x3D; &quot;[&quot;;
+
+        for (int i &#x3D; 0 ; i &lt; arr.length; i++) &#123;
+            arr[i] &#x3D; random.nextInt(889-22) + 22;&#x2F;&#x2F;[0, 889-22) + 22
+        &#125;
+
+        System.out.println(&quot;打印数组元素：&quot;);
+        for (int i : arr) &#123;
+            s +&#x3D; i + &quot;, &quot;;
+        &#125;
+        s &#x3D; s.substring(0, s.length()-2) + &quot;]&quot;;
+        System.out.println(s);
+
+        System.out.println(&quot;打印数组中是3的整倍数的元素：&quot;);
+        s &#x3D; &quot;[&quot;;
+        for (int i : arr) &#123;
+            if (i % 3 &#x3D;&#x3D; 0) &#123;
+                s +&#x3D; i + &quot;, &quot;;
+            &#125;
+        &#125;
+        s &#x3D; s.substring(0, s.length()-2) + &quot;]&quot;;
+        System.out.println(s);
+    &#125;
+&#125;</code></pre>
+<p>此段代码给数组元素赋值时，使用foreach循环，赋值失败。通过后续查资料想进一步完善其用法，发现foreach循环<strong>不是完全的不能改变原有数组的值</strong>。</p>
+<h4 id="四种情况">四种情况</h4>
+<p>首先foreach的格式如下：</p>
+<blockquote>
+<p>For (类型 变量名:集合) { 语句块; }</p>
+</blockquote>
+<p>此处的 <em><strong>类型 变量名</strong></em> 指的是使用第三方变量<strong>复制了</strong>迭代指向的数据。这里我简单的理解为一个temp。</p>
+<h5 id="基本数据类型数组（int）">基本数据类型数组（int）</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">int[] list1 &#x3D; new int[10];
+&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量i记录
+&#x2F;&#x2F; 没有对原有数据作出改变
+for (int i : list1) &#123;
+    i &#x3D; 10;
+&#125;
+System.out.println(Arrays.toString(list1));</code></pre>
+<p>与原有的例子一样，此处遍历得到的结果如下：<br>
+<img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C1.jpg" alt></p>
+<p>既然foreach只是用第三方变量记录，记录基本数据类型不存在赋值过程，自然不会对原数组作出改变。如此，记录引用数据类型，记录的是地址，照理说应该能对原数组作出改变了。</p>
+<h5 id="引用数据类型数组（String）">引用数据类型数组（String）</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">List&lt;String&gt; list2 &#x3D; new ArrayList&lt;&gt;();
+for (int i &#x3D; 0; i &lt; 10; i++) &#123;
+    list2.add(&quot;s&quot;);
+&#125;
+&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量s记录
+&#x2F;&#x2F; 引用数据类型，改变原有地址值中的数据
+&#x2F;&#x2F; 
+for (String s : list2) &#123;
+    s &#x3D; &quot;l&quot;;
+&#125;
+System.out.println(list2.toString());</code></pre>
+<p>此处遍历得到的结果如下：<br>
+<img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C2.jpg" alt></p>
+<p>对原数组依然没有作出改变，理由是String被final修饰，s = &quot;l&quot;只是在内存中new了一个对象，使String指向新的对象，但是此处s为第三变量，第三变量的引用改变，对于原list中记录的值不会有任何改变。既然如此，记录了地址的二维数组，没有被final修饰，应该就可以改变第二层循环内的的数据了。</p>
+<h5 id="引用数据类型-（二维数组（int-））">引用数据类型 （二维数组（int[][]））</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">int[] a1 &#x3D; &#123;1, 2, 3&#125;;
+int[] a2 &#x3D; &#123;4, 5, 6&#125;;
+int[] a3 &#x3D; &#123;7, 8, 9&#125;;
+int[][] arr &#x3D; &#123;a1, a2, a3&#125;;
+
+&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量s记录
+&#x2F;&#x2F; 引用数据类型，改变原有地址值中的数据
+&#x2F;&#x2F; arr没有被final修饰，此处就是在源地址处改变，改变成功
+for (int[] ints : arr) &#123;
+    ints[1] &#x3D; 2;
+&#125;
+for (int[] ints : arr) &#123;
+    System.out.println(Arrays.toString(ints));
+&#125;</code></pre>
+<p>此处遍历得到的结果如下：<br>
+<img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C3.jpg" alt></p>
+<p>可以看到第二层循环内的改变成功。如此推断，如果数组中的元素是没有被final修饰的引用数据类型，应该就是可以通过foreach改变。可以自建一个JavaBean格式的Num类测试一下。</p>
+<h5 id="引用数据类型（普通类）">引用数据类型（普通类）</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">List&lt;Num&gt; list3 &#x3D; new ArrayList&lt;&gt;();
+for (int i &#x3D; 0; i &lt; 10; i++) &#123;
+    list3.add(new Num(&quot;s&quot;));
+&#125;
+&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量s记录
+&#x2F;&#x2F; 引用数据类型，记录为地址，改变原有地址值中的数据
+&#x2F;&#x2F; 改变成功
+for (Num num : list3) &#123;
+    num.setNum(&quot;l&quot;);
+&#125;
+System.out.println(list3);</code></pre>
+<p>此处遍历得到的结果如下：<br>
+<img src="/img%5Cjava%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86-foreach%5C4.jpg" alt></p>
+<p>可以看到，改变成功。当然如果只是final修饰类，没有修饰属性，属性也是可以进行修改的。</p>
+<p><strong>总结</strong>:数组中元素是引用数据类型，并且该数据类型不是jdk提供的被final修饰的数据类型（例如String, Integer…），那么就可以通过foreach修改原数组中存储的数据。<em>此处也有点像方法中的传参</em>。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Bugs</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Bugs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>面试记录20220601</title>
+    <url>/2022/06/01/java_interview/diary/20220601/</url>
+    <content><![CDATA[<h4 id="前言-8">前言</h4>
+<p>通勤时间太长真的会让人感觉想亖，大概4个多小时的往返，瘫在沙发上一动都不想动。面试了华信咨询设计研究院的开发岗，结果就是不自量力。不知道为什么所有人都在催催催，投简历，得到一个面试，然后就去了，真的很烦，其实知道自己不太行，代码写的太少很多东西都不是很会。但是没办法，所有人都在催，好像这个月找不到工作，就会亖一样，中国人有个屁的gap，每天都活得像头驴一样，被吊着往前走。大学毕业找不到工作，确实很可笑吧，又怎么样呢，确实在校期间没有好好练习，仅仅卡着及格线过线就行。确实也不知道自己在干什么。</p>
+<span id="more"></span>
+<p>在boss上看到的这个职位。</p>
+<blockquote>
+<p>初级Java开发工程师<br>
+7-9K，13薪</p>
+<blockquote>
+<p>22年计算机相关专业应届毕业生，有实习经验后端，熟练使用SSM框架<br>
+SQL语句能力要好点，优先考虑有Oracle使用经验</p>
+</blockquote>
+</blockquote>
+<p>其实看了要求就知道自己不太行了，但确实应聘软件上甚至23届应届生也是这个要求，还是回到原点，太垃圾了某人。</p>
+<p>面试过程其实还行，到的稍微早了一点，就在楼下等了一会儿，还没到约定的3：30，就被hr带上楼了。一开始也不用自我介绍，就是看着简历问。问了实习经历，就实习经历开始讲实习做的项目，介绍了主要功能，然后问了项目面向的使用对象（完全不知道。。。）<strong>技术面试不是校招，志愿者经历完全没用，不如写在校写的项目！！！</strong><br>
+然后就是问了一些技术问题。</p>
+<h5 id="面试题1：基于以下数据表，输出每个用户在每个月的登陆次数的sql语句">面试题1：基于以下数据表，输出每个用户在每个月的登陆次数的sql语句</h5>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td>2022-6-1 19:54:58</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>2022-7-1 19:54:58</td>
+</tr>
+<tr>
+<td>张三</td>
+<td>2022-6-5 19:54:58</td>
+</tr>
+</tbody>
+</table>
+<p>额额，没写出来，完全不知道数据库里还有DATE_FORMAT。。。</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">SELECT name,
+    DATE_FORMAT(time,&#39;%Y.%m&#39;) as month,
+    COUNT(*) as time
+FROM
+    time
+GROUP BY NAME, DATE_FORMAT(time,&#39;%Y.%m&#39;)</code></pre>
+<h5 id="面试题2：在Spring-MVC中常用的注解">面试题2：在Spring MVC中常用的注解</h5>
+<p>答了一个@RequestMapping<br>
+然后问前端传进来一个url怎么获取端口，当然还是不会</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">request.getServerName() &#x2F;&#x2F;获取域名
+request.getServerPort(); &#x2F;&#x2F;获取端口号</code></pre>
+<h5 id="面试题3：Java中的数据结构">面试题3：Java中的数据结构</h5>
+<p>好不容易答出ArrayList，HashMap</p>
+<h5 id="面试题4：ArrayList有几种遍历方式">面试题4：ArrayList有几种遍历方式</h5>
+<p>三种。（知道答案，没敢回答）<br>
+1、迭代器遍历（继续问迭代器遍历怎么实现的。不会了，没怎么用过，脑子里一片空白）</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">Iterator&lt;Integer&gt; it &#x3D; arrayList.iterator();
+while(it.hasNext())&#123;
+    System.out.print(it.next() + &quot; &quot;);
+&#125;</code></pre>
+<p>2、索引值遍历</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">for(int i &#x3D; 0; i &lt; arrayList.size(); i++)&#123;
+   System.out.print(arrayList.get(i) + &quot; &quot;);
+&#125;</code></pre>
+<p>3、for循环遍历</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">for(int i &#x3D; 0; i &lt; arrayList.size(); i++)&#123;
+   System.out.print(arrayList.get(i) + &quot; &quot;);
+&#125;</code></pre>
+<h5 id="面试题5：HashMap的实现原理">面试题5：HashMap的实现原理</h5>
+<p>完全不会。。。贴一个链接<br>
+<a href="https://zhuanlan.zhihu.com/p/127147909">https://zhuanlan.zhihu.com/p/127147909</a></p>
+<h5 id="面试题6：熟不熟悉前端，js，html，css">面试题6：熟不熟悉前端，js，html，css</h5>
+<p>完全没复习到前端。。。举了例子form的标签是什么。。。</p>
+<p>最后问有没有兴趣发展测试。。。尬住了说没想过</p>
+<p>总结：少吹逼。。。要求不匹配就不要去面试。。。</p>
+]]></content>
+      <categories>
+        <category>Java面试</category>
+        <category>面试记录</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>面试</tag>
       </tags>
   </entry>
 </search>
