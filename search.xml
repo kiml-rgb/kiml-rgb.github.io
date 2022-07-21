@@ -938,4 +938,352 @@ while(it.hasNext())&#123;
         <tag>面试</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JAVA 8 日期时间API</title>
+    <url>/2022/07/15/java_time/</url>
+    <content><![CDATA[<h4 id="前言">前言</h4>
+<p>对于<code>JAVA 8</code>中新引入的日期时间API只是简单的提了一嘴，但是又说很好用，建议大家去了解一下（是不是不发火就。。。）<br>
+于是就自己查阅资料并试了几个例子。目前学习的<code>java.util.Date</code>，是在<code>JDK 1.0</code>的时候引入的，目前已知这个API存在诸多问题；在<code>JDK 1.1</code>的时候引入了功能更强大的<code>java.util.Calendar</code>，但是Date存在的部分问题还是没有解决。在<code>JDK 1.8</code>的时候，Java引入了新的API，这才真正修改了过去的缺陷，且更为好用。本篇就详细介绍一下<code>JDK 1.8</code>的日期和时间API。</p>
+<span id="more"></span>
+<h4 id="java-time包结构">java.time包结构</h4>
+<img src="/2022/07/15/java_time/1.JPG" class title="This is an image">
+<p>新版<code>java.time</code>下面分为5个部分，大部分情况下用到基础包和format包就行</p>
+<blockquote>
+<p>java.time – 包含值对象的基础包<br>
+java.time.chrono – 提供对不同的日历系统的访问<br>
+java.time.format – 格式化和解析时间和日期<br>
+java.time.temporal – 包括底层框架和扩展特性<br>
+java.time.zone – 包含时区支持的类</p>
+</blockquote>
+<h4 id="基础包的使用">基础包的使用</h4>
+<h5 id="java-time-LocalDateTime">java.time.LocalDateTime</h5>
+<p><code>java.time.LocalDateTime</code>包括年月日时分秒，<code>java.time.LocalDate</code>包括年月日，<code>java.time.LocalTime</code>包括时分秒，在源码中可以看到<code>java.time.LocalDateTime</code>就是在类中创建了两个LocalDate和LocalTime的final对象，并对其中的方法进行调用，因此这里只介绍<code>java.time.LocalDateTime</code>中的方法。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>从日期和时间中获取单独部分</p>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.time.LocalDateTime;
+public class LocalDateTimeTest &#123;
+    public static void main(String[] args) &#123;
+        LocalDateTime now &#x3D; LocalDateTime.now();
+        &#x2F;&#x2F; 获取当前时间 格式为：2022-07-16T21:20:50.325202900
+        System.out.println(now.toString());
+        &#x2F;&#x2F; 获取当前年份 返回int值
+        System.out.println(now.getYear());
+        &#x2F;&#x2F; 获取当前月份 返回enum值
+        System.out.println(now.getMonth());
+        &#x2F;&#x2F; 获取当前月份 返回int值
+        System.out.println(now.getMonthValue());
+        &#x2F;&#x2F; 获取当前日期是所在年份的第几天 返回int值
+        System.out.println(now.getDayOfYear());
+        &#x2F;&#x2F; 获取当前日期是所在月份的第几天 返回int值
+        System.out.println(now.getDayOfMonth());
+        &#x2F;&#x2F; 获取星期 返回enum值
+        System.out.println(now.getDayOfWeek());
+        &#x2F;&#x2F; 获取小时 返回int值 24小时制
+        System.out.println(now.getHour());
+        &#x2F;&#x2F; 获取分钟 返回int值
+        System.out.println(now.getMinute());
+        &#x2F;&#x2F; 获取秒数 返回int值
+        System.out.println(now.getSecond());
+        &#x2F;&#x2F; 获取纳秒
+        System.out.println(now.getNano());
+    &#125;
+&#125;</code></pre>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>简单增删改</p>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">&#x2F;&#x2F; 自定义时间
+LocalDateTime time &#x3D; LocalDateTime.of(2000, 2, 29, 21, 21, 21);
+System.out.println(time);
+
+&#x2F;&#x2F; 使用plus方法增加年份 同理增加年月日时分秒毫秒星期都行
+&#x2F;&#x2F; 此方法返回一个新的对象，原有对象值不能修改
+LocalDateTime plusYears &#x3D; time.plusYears(22);
+System.out.println(time);
+System.out.println(plusYears);
+
+&#x2F;&#x2F; 使用minus方法减少年份
+LocalDateTime minusYears &#x3D; time.minusYears(1);
+System.out.println(minusYears);
+
+&#x2F;&#x2F; 使用with方法设置年份
+LocalDateTime withYear &#x3D; time.withYear(2018);
+System.out.println(withYear);
+
+&#x2F;&#x2F; 判断当前年份是否为闰年
+LocalDate date &#x3D; LocalDate.now();
+System.out.println(date.isLeapYear());</code></pre>
+<p>需要注意的是isLeapYear()这个方法是LocalDate类所特有的</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>复杂的日期操作比较复杂的日期操作，比如将时间调到下一个工作日，或者是下个月的最后一天，这时候我们可以使用with()方法的另一个重载方法，它接收一个TemporalAdjuster参数，可以使我们更加灵活的调整日期。<br>
+底层。。。暂时不想研究。总之，根据jdk提供的注解只需要知道可以使用，并且推荐使用TemporalAdjusters中提供的方法就行。TemporalAdjusters类在<code>java.time.temporal</code>中。因此关于with()传入TemporalAdjuster参数的方法演示标记在了目录<a href="#java-time-temporal-TemporalAdjusters"><code>java.time.temporal.TemporalAdjusters</code></a>之下。</p>
+<blockquote>
+<p>There are two equivalent ways of using a TemporalAdjuster. The first is to invoke the method on this interface directly. The second is to use Temporal.with(TemporalAdjuster):<br>
+// these two lines are equivalent, but <strong>the second approach is recommended</strong><br>
+temporal = thisAdjuster.adjustInto(temporal);<br>
+temporal = temporal.with(thisAdjuster);<br>
+It is recommended to use the second approach, with(TemporalAdjuster), as it is a lot clearer to read in code.</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="java-time-Instant">java.time.Instant</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>常用方法</p>
+</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.time.Instant;
+public class InstantTest &#123;
+    public static void main(String[] args) &#123;
+        Instant now &#x3D; Instant.now();
+
+        &#x2F;&#x2F; 获取当前时间毫秒值 返回long值
+        System.out.println(now.toEpochMilli());
+        &#x2F;&#x2F; 获取当前时间的秒值 返回long值
+        System.out.println(now.getEpochSecond());
+
+        &#x2F;&#x2F; 判断当前时间是否在参数中的时间之后
+        System.out.println(now.isAfter(now));
+        &#x2F;&#x2F; 判断当前时间是否在参数中的时间之前
+        System.out.println(now.isBefore(now));
+        &#x2F;&#x2F; 当前时间与参数中的时间进行对比，在参数之前，相同，之后分别为（-1, 0, 1）
+        System.out.println(now.compareTo(now));
+
+        &#x2F;&#x2F; 用一个时间戳去创建一个Instance实例，用法和new Date（时间戳）创建一个Date实例是一样的
+        Instant.ofEpochMilli(System.currentTimeMillis());
+    &#125;
+&#125;</code></pre>
+<h5 id="java-time-Instant和java-time-LocalDateTime互转">java.time.Instant和java.time.LocalDateTime互转</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+public class Instant2LocalDateTime &#123;
+    public static void main(String[] args) &#123;
+        Instant instant &#x3D; Instant.ofEpochMilli(System.currentTimeMillis());
+        &#x2F;&#x2F; 时区设置为系统默认时区
+        ZoneId zoneId &#x3D; ZoneId.systemDefault();
+        LocalDateTime instant2LocalDateTime &#x3D; LocalDateTime.ofInstant(instant, zoneId);
+        
+        LocalDateTime now &#x3D; LocalDateTime.now();
+        Instant localDateTime2Instant &#x3D; now.atZone(ZoneId.systemDefault()).toInstant();
+    &#125;
+&#125;</code></pre>
+<h5 id="java-time-Duration">java.time.Duration</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.time.Duration;
+import java.time.LocalDateTime;
+public class DurationTest &#123;
+    public static void main(String[] args) &#123;
+        LocalDateTime startTime &#x3D; LocalDateTime.of(2000, 2, 29, 0, 0);
+        LocalDateTime endTime &#x3D; LocalDateTime.now();
+
+        Duration between &#x3D; Duration.between(startTime, endTime);
+        System.out.println(between);
+        &#x2F;&#x2F; 计算同类型日期的时间差，也可以to分秒...
+        &#x2F;&#x2F; 这两个方法在源码里看起来好像没区别 toDaysPart()是在jdk1.9提供的
+        System.out.println(between.toDays());
+        System.out.println(between.toDaysPart());
+    &#125;
+&#125;</code></pre>
+<h4 id="java-time-chrono包介绍">java.time.chrono包介绍</h4>
+<p>除默认ISO之外的日历系统的通用API。<br>
+主API基于ISO-8601中定义的日历系统（即日常用的公历）。但是，还有其他日历系统，此软件包为它们提供基本支持。java.time.chrono包中提供了备用日历。<br>
+支持的日历系统包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Hijrah calendar</p>
+</li>
+<li class="lvl-2">
+<p>Japanese calendar</p>
+</li>
+<li class="lvl-2">
+<p>Minguo calendar</p>
+</li>
+<li class="lvl-2">
+<p>Thai Buddhist calendar</p>
+</li>
+</ul>
+<p>现阶段应该用不到，了解一下就行</p>
+<h4 id="java-time-format包介绍">java.time.format包介绍</h4>
+<p>提供打印和解析日期和时间的类。<br>
+打印和解析基于DateTimeFormatter类。实例通常从DateTimeFormatter获得，但是如果需要更多功率则可以使用DateTimeFormatterBuilder。</p>
+<h5 id="java-time-format-DateTimeFormatter">java.time.format.DateTimeFormatter</h5>
+<h4 id="java-time-zone包介绍">java.time.zone包介绍</h4>
+<p>支持时区及其规则。<br>
+夏令时和时区是各国政府用来改变当地时间的概念。此软件包为时区，其规则以及由夏令时引起的本地时间线产生的间隙和重叠提供支持。<br>
+定义了时区转换的各种方法。</p>
+<h4 id="java-time-temporal包介绍">java.time.temporal包介绍</h4>
+<p>使用字段和单位以及日期时间调整器访问日期和时间。<br>
+该软件包扩展了基础软件包，为更强大的用例提供了额外的功能。支持包括：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>日期时间单位，例如年，月，日和小时</p>
+</li>
+<li class="lvl-2">
+<p>日期时间字段，例如月份，星期几或小时</p>
+</li>
+<li class="lvl-2">
+<p>日期时间调整功能</p>
+</li>
+<li class="lvl-2">
+<p>周的不同定义</p>
+</li>
+</ul>
+<blockquote>
+<p>Java8中的日期时间类都是实现了temporal包中的时间单位（Temporal）、时间调节器（TemporalAdjuster）和各种属性的接口，所以在后面的日期的操作方法中都是以最基本的时间单位和各种属性为参数的。</p>
+</blockquote>
+<h5 id="java-time-temporal-TemporalAdjusters">java.time.temporal.TemporalAdjusters</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>复杂的日期操作使用格式如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">LocalDateTime now &#x3D; LocalDateTime.now();
+
+&#x2F;&#x2F; 返回当前月份的第一天
+LocalDateTime firstDayOfMonth &#x3D; now.with(TemporalAdjusters.firstDayOfMonth());
+System.out.println(firstDayOfMonth);</code></pre>
+<p>下面列出时间调节器TemporalAdjuster提供的一些方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dayOfWeekInMonth</td>
+<td>返回同一个月中每周的第几天</td>
+</tr>
+<tr>
+<td>firstDayOfMonth</td>
+<td>返回当月的第一天</td>
+</tr>
+<tr>
+<td>firstDayOfNextMonth</td>
+<td>返回下月的第一天</td>
+</tr>
+<tr>
+<td>firstDayOfNextYear</td>
+<td>返回下一年的第一天</td>
+</tr>
+<tr>
+<td>firstDayOfYear</td>
+<td>返回本年的第一天</td>
+</tr>
+<tr>
+<td>firstInMonth</td>
+<td>返回同一个月中第一个星期几</td>
+</tr>
+<tr>
+<td>lastDayOfMonth</td>
+<td>返回当月的最后一天</td>
+</tr>
+<tr>
+<td>lastDayOfNextMonth</td>
+<td>返回下月的最后一天</td>
+</tr>
+<tr>
+<td>lastDayOfNextYear</td>
+<td>返回下一年的最后一天</td>
+</tr>
+<tr>
+<td>lastDayOfYear</td>
+<td>返回本年的最后一天</td>
+</tr>
+<tr>
+<td>lastInMonth</td>
+<td>返回同一个月中最后一个星期几</td>
+</tr>
+<tr>
+<td>next / previous</td>
+<td>返回后一个/前一个给定的星期几</td>
+</tr>
+<tr>
+<td>nextOrSame / previousOrSame</td>
+<td>返回后一个/前一个给定的星期几，如果这个值满足条件，直接返回</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h5 id="TemporalAdjusters提供的修改方法">TemporalAdjusters提供的修改方法</h5>
+<h4 id="新旧API比较">新旧API比较</h4>
+<h5 id="旧版API存在的问题">旧版API存在的问题</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>非线程安全</strong>：<code>java.util.Date</code>是非线程安全的，所有的日期类都是可变的，这是Java日期类最大的问题之一。</p>
+</li>
+<li class="lvl-2">
+<p><strong>设计很差</strong>：Java的日期/时间类的定义并不一致，在<code>java.util</code>和<code>java.sql</code>的包中都有日期类，此外用于格式化和解析的类在<code>java.text</code>包中定义。<code>java.util.Date</code>同时包含日期和时间，而<code>java.sql.Date</code>仅包含日期，将其纳入<code>java.sql</code>包并不合理。另外这两个类都有相同的名字，这本身就是一个非常糟糕的设计。</p>
+</li>
+<li class="lvl-2">
+<p><strong>时区处理很麻烦</strong>：日期类并不提供国际化，没有时区支持，因此Java引入了<code>java.util.Calendar</code>和<code>java.util.TimeZone</code>类，但他们同样存在上述所有的问题。</p>
+</li>
+<li class="lvl-2">
+<p><strong>编码问题</strong>：<code>java.util.Calendar</code>中的月份从0开始，从中获取月份需要加一才能表示当前月份；星期的计算从星期日开始，这些都使得它的使用变得不便。</p>
+</li>
+</ul>
+<h5 id="新版API优势">新版API优势</h5>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>它涵盖了所有处理日期，时间，日期/时间，时区，时刻（instants），过程（during）与时钟（clock）的操作。</p>
+</li>
+<li class="lvl-2">
+<p><strong>所有的类都是不可变的、线程安全的。</strong></p>
+</li>
+<li class="lvl-2">
+<p>新时间API类都实现了一系列方法用以完成通用的任务，如：加、减、格式化、解析、从日期/时间中提取单独部分，等等</p>
+</li>
+<li class="lvl-2">
+<p>time包里面的类实例如果用了上面的方法而被修改了,那么会返回一个新的实例过来,而不像Calendar那样可以在同一个实例进行不同的修改,体现了不可变</p>
+</li>
+</ul>
+<blockquote>
+<p>在jdk8中可以使用Instant代替Date，LocalDateTime代替Calendar，DateTimeFormatter代替SimpleDateFormat。</p>
+</blockquote>
+<h5 id="java-util-Date或java-util-Calendar到新库类的转换">java.util.Date或java.util.Calendar到新库类的转换</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
+public class Test &#123;
+    public static void main(String[] args) &#123;
+        &#x2F;&#x2F; 旧版Date转新版Instant
+        Date date &#x3D; new Date();
+        Instant date2Instant &#x3D; date.toInstant();
+
+        &#x2F;&#x2F; 新版Instant转旧版Date
+        Instant instant &#x3D; Instant.now();
+        Date instant2Date &#x3D; Date.from(instant);
+
+        &#x2F;&#x2F; 旧版Calendar转成新版Instant
+        Calendar calendar &#x3D; Calendar.getInstance();
+        Instant calendar2Instant &#x3D; calendar.toInstant();
+    &#125;
+&#125;</code></pre>
+<h4 id="JDBC">JDBC</h4>
+<p>最新JDBC映射将把数据库的日期类型和Java 8的新类型关联起来：</p>
+<blockquote>
+<p>date -&gt; LocalDate<br>
+time -&gt; LocalTime<br>
+timestamp -&gt; LocalDateTime</p>
+</blockquote>
+<p><strong>本篇参考如下:</strong><br>
+<a href="https://zhuanlan.zhihu.com/p/374623222">https://zhuanlan.zhihu.com/p/374623222</a><br>
+<a href="https://www.jianshu.com/p/19bd58b30660">https://www.jianshu.com/p/19bd58b30660</a><br>
+<a href="https://cloud.tencent.com/developer/article/1588693">https://cloud.tencent.com/developer/article/1588693</a><br>
+<a href="https://www.runoob.com/java/java8-datetime-api.html">https://www.runoob.com/java/java8-datetime-api.html</a></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Java 8 新特性</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Java 8 新特性</tag>
+      </tags>
+  </entry>
 </search>
