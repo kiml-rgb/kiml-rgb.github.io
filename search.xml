@@ -144,7 +144,7 @@ JDK 5.0开始，默认在当前工作目录即上述设置中寻找Java程序。
   <entry>
     <title>JAVA 8 四大函数型接口</title>
     <url>/2022/07/09/java/java_8/4functional_interface/</url>
-    <content><![CDATA[<h4 id="前言-3">前言</h4>
+    <content><![CDATA[<h4 id="前言">前言</h4>
 <p>学lambda表达式，针对这一部分进行了拓展。工作中会经常用到这四大函数型接口。</p>
 <span id="more"></span>
 <h4 id="函数式接口">函数式接口</h4>
@@ -154,8 +154,8 @@ JDK 5.0开始，默认在当前工作目录即上述设置中寻找Java程序。
 <h5 id="常用注解">常用注解</h5>
 <p>lambda表达式的使用前提是接口为函数式接口，对于函数式接口，java提供了一个注释@FunctionalInterface，用于检测当前接口是否只含有一个抽象方法。<br>
 <strong>补充</strong><br>
-今天在查看Comparator接口源码的时候，发现这个接口使用@FunctionalInterface注释修饰，但是类中有两个抽象方法。<img src="/img/JAVA-8-%E5%9B%9B%E5%A4%A7%E5%87%BD%E6%95%B0%E5%9E%8B%E6%8E%A5%E5%8F%A3/Comparator.JPG" alt><br>
-查到的解释如下：</p>
+今天在查看Comparator接口源码的时候，发现这个接口使用@FunctionalInterface注释修饰，但是类中有两个抽象方法。</p>
+<p>查到的解释如下：</p>
 <blockquote>
 <p>接口默认继承java.lang.Object，所以如果接口显示声明覆盖了Object中方法，那么也不算抽象方法</p>
 </blockquote>
