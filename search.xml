@@ -364,13 +364,13 @@ public interface Predicate&lt;T&gt; &#123;
   <entry>
     <title>JAVA 8 日期时间API</title>
     <url>/2022/07/15/java/java_8/java_time/</url>
-    <content><![CDATA[<h4 id="前言-5">前言</h4>
+    <content><![CDATA[<h4 id="前言">前言</h4>
 <p>对于<code>JAVA 8</code>中新引入的日期时间API只是简单的提了一嘴，但是又说很好用，建议大家去了解一下（是不是不发火就。。。）<br>
 于是就自己查阅资料并试了几个例子。目前学习的<code>java.util.Date</code>，是在<code>JDK 1.0</code>的时候引入的，目前已知这个API存在诸多问题；在<code>JDK 1.1</code>的时候引入了功能更强大的<code>java.util.Calendar</code>，但是Date存在的部分问题还是没有解决。在<code>JDK 1.8</code>的时候，Java引入了新的API，这才真正修改了过去的缺陷，且更为好用。本篇就详细介绍一下<code>JDK 1.8</code>的日期和时间API。</p>
 <span id="more"></span>
 <h4 id="java-time包结构">java.time包结构</h4>
-<p><img src="/img%5CJAVA-8-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4API%5C1.JPG" alt><br>
-新版<code>java.time</code>下面分为5个部分，大部分情况下用到基础包和format包就行</p>
+<img src="/2022/07/15/java/java_8/java_time/1.JPG" class title="This is an image">
+<p>新版<code>java.time</code>下面分为5个部分，大部分情况下用到基础包和format包就行</p>
 <blockquote>
 <p>java.time – 包含值对象的基础包<br>
 java.time.chrono – 提供对不同的日历系统的访问<br>
