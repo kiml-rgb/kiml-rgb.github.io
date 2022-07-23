@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>next配置中遇到的问题</title>
-    <url>/blog/2022/07/20/hexo/next/</url>
+    <url>/hexo/next/</url>
     <content><![CDATA[<h4 id="前言">前言</h4>
 <p>受不了了，感觉自从写这个博客开始，大部分的时间就是在配置hexo和next主题，各种莫名奇妙的错误操作，所以打算自己写一篇配置记录。</p>
 <span id="more"></span>
@@ -78,7 +78,7 @@ tags:
   </entry>
   <entry>
     <title>个人游戏整理</title>
-    <url>/blog/2022/05/28/personal/games/</url>
+    <url>/personal/games/</url>
     <content><![CDATA[<h4 id="前言-2">前言</h4>
 <p>毕业季找工作看到很多游戏相关，游戏本身给我带来的乐趣确实让我对游戏行业很心动，也是觉得好游戏能被算上第九艺术的一个群体。这几年也玩了不少游戏，在这里做个汇总和评测，也为后续可能进入游戏行业做个准备。</p>
 <span id="more"></span>
@@ -95,7 +95,7 @@ tags:
   </entry>
   <entry>
     <title>个人学习参考</title>
-    <url>/blog/2022/06/02/personal/references/</url>
+    <url>/personal/references/</url>
     <content><![CDATA[<h4 id="前言-3">前言</h4>
 <p>很多时候环境部署，网站搭建，学习练习等使用到的各种参考资源记录在此。</p>
 <span id="more"></span>
@@ -118,7 +118,7 @@ tags:
   </entry>
   <entry>
     <title>面试记录20220601</title>
-    <url>/blog/2022/06/01/java_interview/diary/20220601/</url>
+    <url>/java_interview/diary/20220601/</url>
     <content><![CDATA[<h4 id="前言-4">前言</h4>
 <p>通勤时间太长真的会让人感觉想亖，大概4个多小时的往返，瘫在沙发上一动都不想动。面试了华信咨询设计研究院的开发岗，结果就是不自量力。不知道为什么所有人都在催催催，投简历，得到一个面试，然后就去了，真的很烦，其实知道自己不太行，代码写的太少很多东西都不是很会。但是没办法，所有人都在催，好像这个月找不到工作，就会亖一样，中国人有个屁的gap，每天都活得像头驴一样，被吊着往前走。大学毕业找不到工作，确实很可笑吧，又怎么样呢，确实在校期间没有好好练习，仅仅卡着及格线过线就行。确实也不知道自己在干什么。</p>
 <span id="more"></span>
@@ -205,7 +205,7 @@ while(it.hasNext())&#123;
   </entry>
   <entry>
     <title>java数组遍历--foreach</title>
-    <url>/blog/2022/06/13/java/bugs/java_enhanced_for_loop/</url>
+    <url>/java/bugs/java_enhanced_for_loop/</url>
     <content><![CDATA[<h4 id="前言-5">前言</h4>
 <p>在练习数组的使用时，想用foreach循环给数组赋值，但得到了一个空数组。</p>
 <span id="more"></span>
@@ -319,7 +319,7 @@ System.out.println(list3);</code></pre>
   </entry>
   <entry>
     <title>JAVA 8 四大函数型接口</title>
-    <url>/blog/2022/07/09/java/java_8/4functional_interface/</url>
+    <url>/java/java_8/4functional_interface/</url>
     <content><![CDATA[<h4 id="前言-6">前言</h4>
 <p>学lambda表达式，针对这一部分进行了拓展。工作中会经常用到这四大函数型接口。</p>
 <span id="more"></span>
@@ -567,7 +567,7 @@ public interface Predicate&lt;T&gt; &#123;
   </entry>
   <entry>
     <title>找不到或无法加载主类 java.lang.ClassNotFoundException</title>
-    <url>/blog/2022/06/10/java/bugs/java_lang_ClassNotFoundException/</url>
+    <url>/java/bugs/java_lang_ClassNotFoundException/</url>
     <content><![CDATA[<h4 id="前言-7">前言</h4>
 <p>很尴尬，找不到工作来报了个班，结果一开始用nodepad++写代码编译就出问题，为什么之前没有我也不知道。。。</p>
 <span id="more"></span>
@@ -595,7 +595,7 @@ JDK 5.0开始，默认在当前工作目录即上述设置中寻找Java程序。
   </entry>
   <entry>
     <title>JAVA 8 日期时间API</title>
-    <url>/blog/2022/07/15/java/java_8/java_time/</url>
+    <url>/java/java_8/java_time/</url>
     <content><![CDATA[<h4 id="前言-8">前言</h4>
 <p>对于<code>JAVA 8</code>中新引入的日期时间API只是简单的提了一嘴，但是又说很好用，建议大家去了解一下（是不是不发火就。。。）<br>
 于是就自己查阅资料并试了几个例子。目前学习的<code>java.util.Date</code>，是在<code>JDK 1.0</code>的时候引入的，目前已知这个API存在诸多问题；在<code>JDK 1.1</code>的时候引入了功能更强大的<code>java.util.Calendar</code>，但是Date存在的部分问题还是没有解决。在<code>JDK 1.8</code>的时候，Java引入了新的API，这才真正修改了过去的缺陷，且更为好用。本篇就详细介绍一下<code>JDK 1.8</code>的日期和时间API。</p>
@@ -943,7 +943,7 @@ timestamp -&gt; LocalDateTime</p>
   </entry>
   <entry>
     <title>text</title>
-    <url>/blog/2022/07/23/text/</url>
+    <url>/text/</url>
     <content><![CDATA[<p><img src="/blog/blog/2022/07/23/text/test.jpg" alt="测试"></p>
 ]]></content>
   </entry>

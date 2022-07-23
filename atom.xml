@@ -3,11 +3,11 @@
   <title>kiml-rgb&#39;s blog</title>
   
   <subtitle>个人学习记录</subtitle>
-  <link href="http://kiml-rgb.github.io/blog/atom.xml" rel="self"/>
+  <link href="http://kiml-rgb.github.io/atom.xml" rel="self"/>
   
-  <link href="http://kiml-rgb.github.io/blog/"/>
+  <link href="http://kiml-rgb.github.io/"/>
   <updated>2022-07-23T02:32:20.744Z</updated>
-  <id>http://kiml-rgb.github.io/blog/</id>
+  <id>http://kiml-rgb.github.io/</id>
   
   <author>
     <name>kiml-rgb</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>text</title>
-    <link href="http://kiml-rgb.github.io/blog/2022/07/23/text/"/>
-    <id>http://kiml-rgb.github.io/blog/2022/07/23/text/</id>
+    <link href="http://kiml-rgb.github.io/text/"/>
+    <id>http://kiml-rgb.github.io/text/</id>
     <published>2022-07-23T02:28:29.000Z</published>
     <updated>2022-07-23T02:32:20.744Z</updated>
     
@@ -39,8 +39,8 @@
   
   <entry>
     <title>next配置中遇到的问题</title>
-    <link href="http://kiml-rgb.github.io/blog/2022/07/20/hexo/next/"/>
-    <id>http://kiml-rgb.github.io/blog/2022/07/20/hexo/next/</id>
+    <link href="http://kiml-rgb.github.io/hexo/next/"/>
+    <id>http://kiml-rgb.github.io/hexo/next/</id>
     <published>2022-07-20T05:07:49.000Z</published>
     <updated>2022-07-21T09:51:41.990Z</updated>
     
@@ -52,15 +52,15 @@
     
     
     
-    <category term="hexo" scheme="http://kiml-rgb.github.io/blog/categories/hexo/"/>
+    <category term="hexo" scheme="http://kiml-rgb.github.io/categories/hexo/"/>
     
     
   </entry>
   
   <entry>
     <title>JAVA 8 日期时间API</title>
-    <link href="http://kiml-rgb.github.io/blog/2022/07/15/java/java_8/java_time/"/>
-    <id>http://kiml-rgb.github.io/blog/2022/07/15/java/java_8/java_time/</id>
+    <link href="http://kiml-rgb.github.io/java/java_8/java_time/"/>
+    <id>http://kiml-rgb.github.io/java/java_8/java_time/</id>
     <published>2022-07-15T01:01:30.000Z</published>
     <updated>2022-07-21T08:39:53.899Z</updated>
     
@@ -73,21 +73,21 @@
     
     
     
-    <category term="Java" scheme="http://kiml-rgb.github.io/blog/categories/Java/"/>
+    <category term="Java" scheme="http://kiml-rgb.github.io/categories/Java/"/>
     
-    <category term="Java 8 新特性" scheme="http://kiml-rgb.github.io/blog/categories/Java/Java-8-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <category term="Java 8 新特性" scheme="http://kiml-rgb.github.io/categories/Java/Java-8-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
     
-    <category term="Java" scheme="http://kiml-rgb.github.io/blog/tags/Java/"/>
+    <category term="Java" scheme="http://kiml-rgb.github.io/tags/Java/"/>
     
-    <category term="Java 8 新特性" scheme="http://kiml-rgb.github.io/blog/tags/Java-8-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <category term="Java 8 新特性" scheme="http://kiml-rgb.github.io/tags/Java-8-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>JAVA 8 四大函数型接口</title>
-    <link href="http://kiml-rgb.github.io/blog/2022/07/09/java/java_8/4functional_interface/"/>
-    <id>http://kiml-rgb.github.io/blog/2022/07/09/java/java_8/4functional_interface/</id>
+    <link href="http://kiml-rgb.github.io/java/java_8/4functional_interface/"/>
+    <id>http://kiml-rgb.github.io/java/java_8/4functional_interface/</id>
     <published>2022-07-09T12:09:17.000Z</published>
     <updated>2022-07-21T06:06:57.155Z</updated>
     
@@ -99,21 +99,21 @@
     
     
     
-    <category term="Java" scheme="http://kiml-rgb.github.io/blog/categories/Java/"/>
+    <category term="Java" scheme="http://kiml-rgb.github.io/categories/Java/"/>
     
-    <category term="Java 8 新特性" scheme="http://kiml-rgb.github.io/blog/categories/Java/Java-8-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <category term="Java 8 新特性" scheme="http://kiml-rgb.github.io/categories/Java/Java-8-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
     
-    <category term="Java" scheme="http://kiml-rgb.github.io/blog/tags/Java/"/>
+    <category term="Java" scheme="http://kiml-rgb.github.io/tags/Java/"/>
     
-    <category term="Java 8 新特性" scheme="http://kiml-rgb.github.io/blog/tags/Java-8-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <category term="Java 8 新特性" scheme="http://kiml-rgb.github.io/tags/Java-8-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>java数组遍历--foreach</title>
-    <link href="http://kiml-rgb.github.io/blog/2022/06/13/java/bugs/java_enhanced_for_loop/"/>
-    <id>http://kiml-rgb.github.io/blog/2022/06/13/java/bugs/java_enhanced_for_loop/</id>
+    <link href="http://kiml-rgb.github.io/java/bugs/java_enhanced_for_loop/"/>
+    <id>http://kiml-rgb.github.io/java/bugs/java_enhanced_for_loop/</id>
     <published>2022-06-13T03:08:06.000Z</published>
     <updated>2022-07-22T13:24:31.175Z</updated>
     
@@ -125,21 +125,21 @@
     
     
     
-    <category term="Java" scheme="http://kiml-rgb.github.io/blog/categories/Java/"/>
+    <category term="Java" scheme="http://kiml-rgb.github.io/categories/Java/"/>
     
-    <category term="Bugs" scheme="http://kiml-rgb.github.io/blog/categories/Java/Bugs/"/>
+    <category term="Bugs" scheme="http://kiml-rgb.github.io/categories/Java/Bugs/"/>
     
     
-    <category term="Java" scheme="http://kiml-rgb.github.io/blog/tags/Java/"/>
+    <category term="Java" scheme="http://kiml-rgb.github.io/tags/Java/"/>
     
-    <category term="Bugs" scheme="http://kiml-rgb.github.io/blog/tags/Bugs/"/>
+    <category term="Bugs" scheme="http://kiml-rgb.github.io/tags/Bugs/"/>
     
   </entry>
   
   <entry>
     <title>找不到或无法加载主类 java.lang.ClassNotFoundException</title>
-    <link href="http://kiml-rgb.github.io/blog/2022/06/10/java/bugs/java_lang_ClassNotFoundException/"/>
-    <id>http://kiml-rgb.github.io/blog/2022/06/10/java/bugs/java_lang_ClassNotFoundException/</id>
+    <link href="http://kiml-rgb.github.io/java/bugs/java_lang_ClassNotFoundException/"/>
+    <id>http://kiml-rgb.github.io/java/bugs/java_lang_ClassNotFoundException/</id>
     <published>2022-06-10T04:33:35.000Z</published>
     <updated>2022-07-22T13:25:50.902Z</updated>
     
@@ -151,21 +151,21 @@
     
     
     
-    <category term="Java" scheme="http://kiml-rgb.github.io/blog/categories/Java/"/>
+    <category term="Java" scheme="http://kiml-rgb.github.io/categories/Java/"/>
     
-    <category term="Bugs" scheme="http://kiml-rgb.github.io/blog/categories/Java/Bugs/"/>
+    <category term="Bugs" scheme="http://kiml-rgb.github.io/categories/Java/Bugs/"/>
     
     
-    <category term="Java" scheme="http://kiml-rgb.github.io/blog/tags/Java/"/>
+    <category term="Java" scheme="http://kiml-rgb.github.io/tags/Java/"/>
     
-    <category term="Bugs" scheme="http://kiml-rgb.github.io/blog/tags/Bugs/"/>
+    <category term="Bugs" scheme="http://kiml-rgb.github.io/tags/Bugs/"/>
     
   </entry>
   
   <entry>
     <title>个人学习参考</title>
-    <link href="http://kiml-rgb.github.io/blog/2022/06/02/personal/references/"/>
-    <id>http://kiml-rgb.github.io/blog/2022/06/02/personal/references/</id>
+    <link href="http://kiml-rgb.github.io/personal/references/"/>
+    <id>http://kiml-rgb.github.io/personal/references/</id>
     <published>2022-06-02T10:50:45.000Z</published>
     <updated>2022-07-16T00:55:10.832Z</updated>
     
@@ -177,17 +177,17 @@
     
     
     
-    <category term="个人" scheme="http://kiml-rgb.github.io/blog/categories/%E4%B8%AA%E4%BA%BA/"/>
+    <category term="个人" scheme="http://kiml-rgb.github.io/categories/%E4%B8%AA%E4%BA%BA/"/>
     
     
-    <category term="环境部署" scheme="http://kiml-rgb.github.io/blog/tags/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/"/>
+    <category term="环境部署" scheme="http://kiml-rgb.github.io/tags/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/"/>
     
   </entry>
   
   <entry>
     <title>面试记录20220601</title>
-    <link href="http://kiml-rgb.github.io/blog/2022/06/01/java_interview/diary/20220601/"/>
-    <id>http://kiml-rgb.github.io/blog/2022/06/01/java_interview/diary/20220601/</id>
+    <link href="http://kiml-rgb.github.io/java_interview/diary/20220601/"/>
+    <id>http://kiml-rgb.github.io/java_interview/diary/20220601/</id>
     <published>2022-06-01T11:25:46.000Z</published>
     <updated>2022-07-20T08:06:32.251Z</updated>
     
@@ -199,21 +199,21 @@
     
     
     
-    <category term="Java面试" scheme="http://kiml-rgb.github.io/blog/categories/Java%E9%9D%A2%E8%AF%95/"/>
+    <category term="Java面试" scheme="http://kiml-rgb.github.io/categories/Java%E9%9D%A2%E8%AF%95/"/>
     
-    <category term="面试记录" scheme="http://kiml-rgb.github.io/blog/categories/Java%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/"/>
+    <category term="面试记录" scheme="http://kiml-rgb.github.io/categories/Java%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/"/>
     
     
-    <category term="Java" scheme="http://kiml-rgb.github.io/blog/tags/Java/"/>
+    <category term="Java" scheme="http://kiml-rgb.github.io/tags/Java/"/>
     
-    <category term="面试" scheme="http://kiml-rgb.github.io/blog/tags/%E9%9D%A2%E8%AF%95/"/>
+    <category term="面试" scheme="http://kiml-rgb.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>个人游戏整理</title>
-    <link href="http://kiml-rgb.github.io/blog/2022/05/28/personal/games/"/>
-    <id>http://kiml-rgb.github.io/blog/2022/05/28/personal/games/</id>
+    <link href="http://kiml-rgb.github.io/personal/games/"/>
+    <id>http://kiml-rgb.github.io/personal/games/</id>
     <published>2022-05-28T07:12:10.000Z</published>
     <updated>2022-07-13T13:01:43.252Z</updated>
     
@@ -225,10 +225,10 @@
     
     
     
-    <category term="个人" scheme="http://kiml-rgb.github.io/blog/categories/%E4%B8%AA%E4%BA%BA/"/>
+    <category term="个人" scheme="http://kiml-rgb.github.io/categories/%E4%B8%AA%E4%BA%BA/"/>
     
     
-    <category term="游戏" scheme="http://kiml-rgb.github.io/blog/tags/%E6%B8%B8%E6%88%8F/"/>
+    <category term="游戏" scheme="http://kiml-rgb.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
     
   </entry>
   
