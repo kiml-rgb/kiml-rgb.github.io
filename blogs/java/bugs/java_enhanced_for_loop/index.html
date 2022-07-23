@@ -20,28 +20,34 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"kiml-rgb.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":true,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="前言 很多时候环境部署，网站搭建，学习练习等使用到的各种参考资源记录在此。">
+    <meta name="description" content="前言 在练习数组的使用时，想用foreach循环给数组赋值，但得到了一个空数组。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="个人学习参考">
-<meta property="og:url" content="http://kiml-rgb.github.io/personal/references/index.html">
+<meta property="og:title" content="java数组遍历--foreach">
+<meta property="og:url" content="http://kiml-rgb.github.io/blogs/java/bugs/java_enhanced_for_loop/index.html">
 <meta property="og:site_name" content="kiml-rgb&#39;s blog">
-<meta property="og:description" content="前言 很多时候环境部署，网站搭建，学习练习等使用到的各种参考资源记录在此。">
+<meta property="og:description" content="前言 在练习数组的使用时，想用foreach循环给数组赋值，但得到了一个空数组。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-02T10:50:45.000Z">
-<meta property="article:modified_time" content="2022-07-16T00:55:10.832Z">
+<meta property="og:image" content="http://kiml-rgb.github.io/blogs/java/bugs/java_enhanced_for_loop/1.jpg">
+<meta property="og:image" content="http://kiml-rgb.github.io/blogs/java/bugs/java_enhanced_for_loop/2.jpg">
+<meta property="og:image" content="http://kiml-rgb.github.io/blogs/java/bugs/java_enhanced_for_loop/3.jpg">
+<meta property="og:image" content="http://kiml-rgb.github.io/blogs/java/bugs/java_enhanced_for_loop/4.jpg">
+<meta property="article:published_time" content="2022-06-13T03:08:06.000Z">
+<meta property="article:modified_time" content="2022-07-22T13:24:31.175Z">
 <meta property="article:author" content="kiml-rgb">
-<meta property="article:tag" content="环境部署">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Bugs">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://kiml-rgb.github.io/blogs/java/bugs/java_enhanced_for_loop/1.jpg">
 
 
-<link rel="canonical" href="http://kiml-rgb.github.io/personal/references/">
+<link rel="canonical" href="http://kiml-rgb.github.io/blogs/java/bugs/java_enhanced_for_loop/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://kiml-rgb.github.io/personal/references/","path":"personal/references/","title":"个人学习参考"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://kiml-rgb.github.io/blogs/java/bugs/java_enhanced_for_loop/","path":"blogs/java/bugs/java_enhanced_for_loop/","title":"java数组遍历--foreach"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>个人学习参考 | kiml-rgb's blog</title>
+<title>java数组遍历--foreach | kiml-rgb's blog</title>
   
 
 
@@ -145,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-3"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.1.</span> <span class="nav-text">hexo搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%A9%E7%94%A8Github-hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.1.1.</span> <span class="nav-text">利用Github+hexo搭建个人博客</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#hexo%E4%B8%BB%E9%A2%98next-theme-hexo-theme-next%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">hexo主题next-theme&#x2F;hexo-theme-next的配置</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%93%E5%AD%97%E7%BB%83%E4%B9%A0"><span class="nav-number">1.2.</span> <span class="nav-text">打字练习</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%BB%83%E4%B9%A0"><span class="nav-number">1.2.1.</span> <span class="nav-text">快捷键练习</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-4"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bug%E5%87%BA%E5%A4%84"><span class="nav-number">2.</span> <span class="nav-text">bug出处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E6%83%85%E5%86%B5"><span class="nav-number">3.</span> <span class="nav-text">四种情况</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84%EF%BC%88int%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">基本数据类型数组（int）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%95%B0%E7%BB%84%EF%BC%88String%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">引用数据类型数组（String）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%EF%BC%88%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%EF%BC%88int-%EF%BC%89%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">引用数据类型 （二维数组（int[][]））</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E6%99%AE%E9%80%9A%E7%B1%BB%EF%BC%89"><span class="nav-number">3.4.</span> <span class="nav-text">引用数据类型（普通类）</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -223,7 +229,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://kiml-rgb.github.io/personal/references/">
+    <link itemprop="mainEntityOfPage" href="http://kiml-rgb.github.io/blogs/java/bugs/java_enhanced_for_loop/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -236,12 +242,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="个人学习参考 | kiml-rgb's blog">
+      <meta itemprop="name" content="java数组遍历--foreach | kiml-rgb's blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          个人学习参考
+          java数组遍历--foreach
         </h1>
 
         <div class="post-meta-container">
@@ -252,14 +258,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-06-02 18:50:45" itemprop="dateCreated datePublished" datetime="2022-06-02T18:50:45+08:00">2022-06-02</time>
+      <time title="创建时间：2022-06-13 11:08:06" itemprop="dateCreated datePublished" datetime="2022-06-13T11:08:06+08:00">2022-06-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-07-16 08:55:10" itemprop="dateModified" datetime="2022-07-16T08:55:10+08:00">2022-07-16</time>
+      <time title="修改时间：2022-07-22 21:24:31" itemprop="dateModified" datetime="2022-07-22T21:24:31+08:00">2022-07-22</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -267,7 +273,11 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%B8%AA%E4%BA%BA/" itemprop="url" rel="index"><span itemprop="name">个人</span></a>
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/Bugs/" itemprop="url" rel="index"><span itemprop="name">Bugs</span></a>
         </span>
     </span>
 
@@ -281,18 +291,107 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h4 id="前言-3">前言</h4>
-<p>很多时候环境部署，网站搭建，学习练习等使用到的各种参考资源记录在此。</p>
+        <h4 id="前言-4">前言</h4>
+<p>在练习数组的使用时，想用foreach循环给数组赋值，但得到了一个空数组。</p>
 <span id="more"></span>
-<h5 id="hexo搭建博客">hexo搭建博客</h5>
-<h6 id="利用Github-hexo搭建个人博客">利用Github+hexo搭建个人博客</h6>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenlove/p/15058170.html">https://www.cnblogs.com/chenlove/p/15058170.html</a></p>
-<h6 id="hexo主题next-theme-hexo-theme-next的配置">hexo主题next-theme/hexo-theme-next的配置</h6>
-<p><a target="_blank" rel="noopener" href="https://theme-next.js.org/">https://theme-next.js.org/</a><br>
-<a target="_blank" rel="noopener" href="https://hexo-next.readthedocs.io/zh_CN/latest/">https://hexo-next.readthedocs.io/zh_CN/latest/</a></p>
-<h5 id="打字练习">打字练习</h5>
-<h6 id="快捷键练习">快捷键练习</h6>
-<p><a target="_blank" rel="noopener" href="https://www.shortcutfoo.com/">https://www.shortcutfoo.com/</a></p>
+<h4 id="bug出处">bug出处</h4>
+<p>原示例代码：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">import java.util.Random;
+public class Test &#123;
+    public static void main(String[] args) &#123;
+        Random random &#x3D; new Random();
+        int arr[] &#x3D; new int[10];
+        String s &#x3D; &quot;[&quot;;
+
+        for (int i &#x3D; 0 ; i &lt; arr.length; i++) &#123;
+            arr[i] &#x3D; random.nextInt(889-22) + 22;&#x2F;&#x2F;[0, 889-22) + 22
+        &#125;
+
+        System.out.println(&quot;打印数组元素：&quot;);
+        for (int i : arr) &#123;
+            s +&#x3D; i + &quot;, &quot;;
+        &#125;
+        s &#x3D; s.substring(0, s.length()-2) + &quot;]&quot;;
+        System.out.println(s);
+
+        System.out.println(&quot;打印数组中是3的整倍数的元素：&quot;);
+        s &#x3D; &quot;[&quot;;
+        for (int i : arr) &#123;
+            if (i % 3 &#x3D;&#x3D; 0) &#123;
+                s +&#x3D; i + &quot;, &quot;;
+            &#125;
+        &#125;
+        s &#x3D; s.substring(0, s.length()-2) + &quot;]&quot;;
+        System.out.println(s);
+    &#125;
+&#125;</code></pre>
+<p>此段代码给数组元素赋值时，使用foreach循环，赋值失败。通过后续查资料想进一步完善其用法，发现foreach循环<strong>不是完全的不能改变原有数组的值</strong>。</p>
+<h4 id="四种情况">四种情况</h4>
+<p>首先foreach的格式如下：</p>
+<blockquote>
+<p>For (类型 变量名:集合) { 语句块; }</p>
+</blockquote>
+<p>此处的 <em><strong>类型 变量名</strong></em> 指的是使用第三方变量<strong>复制了</strong>迭代指向的数据。这里我简单的理解为一个temp。</p>
+<h5 id="基本数据类型数组（int）">基本数据类型数组（int）</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">int[] list1 &#x3D; new int[10];
+&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量i记录
+&#x2F;&#x2F; 没有对原有数据作出改变
+for (int i : list1) &#123;
+    i &#x3D; 10;
+&#125;
+System.out.println(Arrays.toString(list1));</code></pre>
+<p>与原有的例子一样，此处遍历得到的结果如下：<br>
+<img src="/blogs/java/bugs/java_enhanced_for_loop/1.jpg" alt></p>
+<p>既然foreach只是用第三方变量记录，记录基本数据类型不存在赋值过程，自然不会对原数组作出改变。如此，记录引用数据类型，记录的是地址，照理说应该能对原数组作出改变了。</p>
+<h5 id="引用数据类型数组（String）">引用数据类型数组（String）</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">List&lt;String&gt; list2 &#x3D; new ArrayList&lt;&gt;();
+for (int i &#x3D; 0; i &lt; 10; i++) &#123;
+    list2.add(&quot;s&quot;);
+&#125;
+&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量s记录
+&#x2F;&#x2F; 引用数据类型，改变原有地址值中的数据
+&#x2F;&#x2F; 
+for (String s : list2) &#123;
+    s &#x3D; &quot;l&quot;;
+&#125;
+System.out.println(list2.toString());</code></pre>
+<p>此处遍历得到的结果如下：<br>
+<img src="/blogs/java/bugs/java_enhanced_for_loop/2.jpg" alt></p>
+<p>对原数组依然没有作出改变，理由是String被final修饰，s = &quot;l&quot;只是在内存中new了一个对象，使String指向新的对象，但是此处s为第三变量，第三变量的引用改变，对于原list中记录的值不会有任何改变。既然如此，记录了地址的二维数组，没有被final修饰，应该就可以改变第二层循环内的的数据了。</p>
+<h5 id="引用数据类型-（二维数组（int-））">引用数据类型 （二维数组（int[][]））</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">int[] a1 &#x3D; &#123;1, 2, 3&#125;;
+int[] a2 &#x3D; &#123;4, 5, 6&#125;;
+int[] a3 &#x3D; &#123;7, 8, 9&#125;;
+int[][] arr &#x3D; &#123;a1, a2, a3&#125;;
+
+&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量s记录
+&#x2F;&#x2F; 引用数据类型，改变原有地址值中的数据
+&#x2F;&#x2F; arr没有被final修饰，此处就是在源地址处改变，改变成功
+for (int[] ints : arr) &#123;
+    ints[1] &#x3D; 2;
+&#125;
+for (int[] ints : arr) &#123;
+    System.out.println(Arrays.toString(ints));
+&#125;</code></pre>
+<p>此处遍历得到的结果如下：<br>
+<img src="/blogs/java/bugs/java_enhanced_for_loop/3.jpg" alt></p>
+<p>可以看到第二层循环内的改变成功。如此推断，如果数组中的元素是没有被final修饰的引用数据类型，应该就是可以通过foreach改变。可以自建一个JavaBean格式的Num类测试一下。</p>
+<h5 id="引用数据类型（普通类）">引用数据类型（普通类）</h5>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">List&lt;Num&gt; list3 &#x3D; new ArrayList&lt;&gt;();
+for (int i &#x3D; 0; i &lt; 10; i++) &#123;
+    list3.add(new Num(&quot;s&quot;));
+&#125;
+&#x2F;&#x2F; 迭代，循环依次指向数组中元素，用第三方变量s记录
+&#x2F;&#x2F; 引用数据类型，记录为地址，改变原有地址值中的数据
+&#x2F;&#x2F; 改变成功
+for (Num num : list3) &#123;
+    num.setNum(&quot;l&quot;);
+&#125;
+System.out.println(list3);</code></pre>
+<p>此处遍历得到的结果如下：<br>
+<img src="/blogs/java/bugs/java_enhanced_for_loop/4.jpg" alt></p>
+<p>可以看到，改变成功。当然如果只是final修饰类，没有修饰属性，属性也是可以进行修改的。</p>
+<p><strong>总结</strong>:数组中元素是引用数据类型，并且该数据类型不是jdk提供的被final修饰的数据类型（例如String, Integer…），那么就可以通过foreach修改原数组中存储的数据。<em>此处也有点像方法中的传参</em>。</p>
 
     </div>
 
@@ -302,20 +401,21 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" rel="tag"># 环境部署</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Bugs/" rel="tag"># Bugs</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/java_interview/diary/20220601/" rel="prev" title="面试记录20220601">
-                  <i class="fa fa-chevron-left"></i> 面试记录20220601
+                <a href="/blogs/java/bugs/java_lang_ClassNotFoundException/" rel="prev" title="找不到或无法加载主类 java.lang.ClassNotFoundException">
+                  <i class="fa fa-chevron-left"></i> 找不到或无法加载主类 java.lang.ClassNotFoundException
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/java/bugs/java_lang_ClassNotFoundException/" rel="next" title="找不到或无法加载主类 java.lang.ClassNotFoundException">
-                  找不到或无法加载主类 java.lang.ClassNotFoundException <i class="fa fa-chevron-right"></i>
+                <a href="/blogs/java/java_8/4functional_interface/" rel="next" title="JAVA 8 四大函数型接口">
+                  JAVA 8 四大函数型接口 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
