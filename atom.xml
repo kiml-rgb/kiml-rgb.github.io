@@ -6,7 +6,7 @@
   <link href="http://kiml-rgb.github.io/atom.xml" rel="self"/>
   
   <link href="http://kiml-rgb.github.io/"/>
-  <updated>2022-07-21T09:51:41.990Z</updated>
+  <updated>2022-07-23T02:29:03.012Z</updated>
   <id>http://kiml-rgb.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>text</title>
+    <link href="http://kiml-rgb.github.io/2022/07/23/text/"/>
+    <id>http://kiml-rgb.github.io/2022/07/23/text/</id>
+    <published>2022-07-23T02:28:29.000Z</published>
+    <updated>2022-07-23T02:29:03.012Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2022/07/23/text/test.jpg" alt></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2022/07/23/text/test.jpg&quot; alt&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>next配置中遇到的问题</title>
