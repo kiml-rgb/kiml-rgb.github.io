@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-11-03T01:42:44.236Z</updated>
+  <updated>2023-11-03T01:38:25.390Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,35 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2023/11/90c50fce27da.html"/>
-    <id>http://example.com/2023/11/90c50fce27da.html</id>
-    <published>2023-11-02T06:36:16.139Z</published>
-    <updated>2023-11-03T01:42:44.236Z</updated>
-    
-    <content type="html"><![CDATA[<hr><p>title Obsidian基本用法<br>date 2023-07-02 175902<br>tags [Obsidian]<br>categories</p><ul class="lvl-0"><li class="lvl-4">准备工作</li></ul><hr><ul class="lvl-0"><li class="lvl-2">前言<br>没有用习惯之前，真的很容易忘记</li><li class="lvl-2">更新</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">23.07.02 初始记录</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;hr&gt;
-&lt;p&gt;title Obsidian基本用法&lt;br&gt;
-date 2023-07-02 175902&lt;br&gt;
-tags [Obsidian]&lt;br&gt;
-categories&lt;/p&gt;
-&lt;ul class=&quot;lvl-0&quot;&gt;
-&lt;li class=&quot;lvl-4&quot;&gt;准备工作&lt;/li&gt;
-</summary>
-      
-    
-    
-    
-    <category term="博客" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>装机-软件安装</title>
