@@ -3,11 +3,11 @@
   <title>Keep Theme</title>
   
   <subtitle>Keep theme quick starter</subtitle>
-  <link href="https://kiml.github.io/blog/atom.xml" rel="self"/>
+  <link href="https://kiml.github.io/atom.xml" rel="self"/>
   
-  <link href="https://kiml.github.io/blog/"/>
+  <link href="https://kiml.github.io/"/>
   <updated>2023-11-03T01:38:25.390Z</updated>
-  <id>https://kiml.github.io/blog/</id>
+  <id>https://kiml.github.io/</id>
   
   <author>
     <name>Keep Team</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>装机-软件安装</title>
-    <link href="https://kiml.github.io/blog/2023/11/4640726c232e.html"/>
-    <id>https://kiml.github.io/blog/2023/11/4640726c232e.html</id>
+    <link href="https://kiml.github.io/2023/11/4640726c232e.html"/>
+    <id>https://kiml.github.io/2023/11/4640726c232e.html</id>
     <published>2023-11-02T06:22:08.984Z</published>
     <updated>2023-11-03T01:38:25.390Z</updated>
     
@@ -39,17 +39,17 @@
     
     
     
-    <category term="环境搭建" scheme="https://kiml.github.io/blog/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <category term="环境搭建" scheme="https://kiml.github.io/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     
     
-    <category term="工具" scheme="https://kiml.github.io/blog/tags/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="https://kiml.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>Spring Data Redis</title>
-    <link href="https://kiml.github.io/blog/2023/08/a52deee36df0.html"/>
-    <id>https://kiml.github.io/blog/2023/08/a52deee36df0.html</id>
+    <link href="https://kiml.github.io/2023/08/a52deee36df0.html"/>
+    <id>https://kiml.github.io/2023/08/a52deee36df0.html</id>
     <published>2023-08-29T15:25:03.000Z</published>
     <updated>2023-11-03T01:38:25.390Z</updated>
     
@@ -73,19 +73,19 @@ Spring Data Redis 是Spring 框架提供的用于操作Redis的方式。涵盖Re
     
     
     
-    <category term="后端项目" scheme="https://kiml.github.io/blog/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/"/>
+    <category term="后端项目" scheme="https://kiml.github.io/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/"/>
     
-    <category term="准备工作" scheme="https://kiml.github.io/blog/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/"/>
+    <category term="准备工作" scheme="https://kiml.github.io/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/"/>
     
     
-    <category term="Redis" scheme="https://kiml.github.io/blog/tags/Redis/"/>
+    <category term="Redis" scheme="https://kiml.github.io/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>Git及常用命令</title>
-    <link href="https://kiml.github.io/blog/2023/07/4a9f7c37553f.html"/>
-    <id>https://kiml.github.io/blog/2023/07/4a9f7c37553f.html</id>
+    <link href="https://kiml.github.io/2023/07/4a9f7c37553f.html"/>
+    <id>https://kiml.github.io/2023/07/4a9f7c37553f.html</id>
     <published>2023-07-11T15:29:25.000Z</published>
     <updated>2023-12-19T09:57:56.187Z</updated>
     
@@ -105,17 +105,17 @@ Git部分知识以及常用命令&lt;/p&gt;
     
     
     
-    <category term="环境搭建" scheme="https://kiml.github.io/blog/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <category term="环境搭建" scheme="https://kiml.github.io/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     
     
-    <category term="Git" scheme="https://kiml.github.io/blog/tags/Git/"/>
+    <category term="Git" scheme="https://kiml.github.io/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>IntelliJ IDEA常用设置</title>
-    <link href="https://kiml.github.io/blog/2023/07/82fdef6c011a.html"/>
-    <id>https://kiml.github.io/blog/2023/07/82fdef6c011a.html</id>
+    <link href="https://kiml.github.io/2023/07/82fdef6c011a.html"/>
+    <id>https://kiml.github.io/2023/07/82fdef6c011a.html</id>
     <published>2023-07-02T09:39:31.000Z</published>
     <updated>2023-11-03T01:38:25.390Z</updated>
     
@@ -135,17 +135,17 @@ IntelliJ IDEA常用设置&lt;/p&gt;
     
     
     
-    <category term="环境搭建" scheme="https://kiml.github.io/blog/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <category term="环境搭建" scheme="https://kiml.github.io/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     
     
-    <category term="IDEA" scheme="https://kiml.github.io/blog/tags/IDEA/"/>
+    <category term="IDEA" scheme="https://kiml.github.io/tags/IDEA/"/>
     
   </entry>
   
   <entry>
     <title>Obsidian + Git + Hexo + 图床 = Blog + 个人笔记体系</title>
-    <link href="https://kiml.github.io/blog/2023/02/6870bf8bd223.html"/>
-    <id>https://kiml.github.io/blog/2023/02/6870bf8bd223.html</id>
+    <link href="https://kiml.github.io/2023/02/6870bf8bd223.html"/>
+    <id>https://kiml.github.io/2023/02/6870bf8bd223.html</id>
     <published>2023-02-27T08:59:50.000Z</published>
     <updated>2024-02-02T09:16:58.371Z</updated>
     
@@ -172,7 +172,7 @@ IntelliJ IDEA常用设置&lt;/p&gt;
     
     
     
-    <category term="博客" scheme="https://kiml.github.io/blog/categories/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="https://kiml.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
   </entry>
