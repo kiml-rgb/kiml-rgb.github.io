@@ -66,11 +66,11 @@
   </entry>
   
   <entry>
-    <title>02 聚合支付-环境搭建</title>
+    <title>聚合支付-环境搭建</title>
     <link href="https://kiml.github.io/2024/05/100000004/"/>
     <id>https://kiml.github.io/2024/05/100000004/</id>
     <published>2024-05-16T09:09:54.000Z</published>
-    <updated>2024-05-22T08:34:27.924Z</updated>
+    <updated>2024-05-22T08:39:37.825Z</updated>
     
     <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>前言<br>环境搭建先是在windows本机上，后面听说在windows上可以下载docker，所以会补充windows上的docker内的环境安装。</p></li><li class="lvl-2"><p>更新</p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.16 初始记录（windows系统的环境安装）</span><br></pre></td></tr></table></figure><span id="more"></span><h1>服务端搭建</h1><h2 id="开发环境">开发环境</h2><p>Java 1.8 这个网上教程很多，就不赘述了。<br>Maven 使用本地仓库，可配置下载镜像路径。</p><h2 id="Nacos服务发现与配置中心">Nacos服务发现与配置中心</h2><p>微服务开发需要构建服务发现中心、配置中心，本项目采用Nacos来实现。可以直接导入项目nacos文件夹下面的配置文件。注意需要新建命名空间，并修改配置文件中的命名空间变量。</p><h2 id="Mybatis-Plus">Mybatis Plus</h2><p>本项目数据库使用 mysql-community-5.7，请自行安装MySQL数据库。本项目持久层采用Mybatis Plus作为技术构架，Mybatis Plus是在Mybatis基础上作了很好的封装，方便系统开 发。</p><h2 id="导入项目SQL">导入项目SQL</h2><p>使用客户端连接MySQL，执行项目sql文件夹下面的<code>shanjupay-init.sql</code>文件。数据库清单如下：</p><table><thead><tr><th>数据库名称</th><th>数据内容</th></tr></thead><tbody><tr><td>shanjupay_merchant_service</td><td>用户中心数据</td></tr><tr><td>shanjupay_transaction</td><td>交易服务数据库</td></tr><tr><td></td><td></td></tr></tbody></table><h2 id="搭建项目服务">搭建项目服务</h2><table><thead><tr><th>服务名</th><th>职责</th><th></th></tr></thead><tbody><tr><td>商户平台应用(shanjupay-merchant-application)</td><td>为前端提供商户管理功能</td><td></td></tr><tr><td>商户服务API(shanjupay-merchant-api)</td><td>实现商户服务提供的接口</td><td></td></tr><tr><td>商户服务(shanjupay-merchant-service)</td><td>实现商户服务的所有接口</td><td></td></tr><tr><td>工程在架构中的位置如下：</td><td></td><td></td></tr><tr><td><img                       lazyload                     alt="image"                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240521/Snipaste_2024-05-21_14-35-21.png"                      alt=""                ></td><td></td><td></td></tr></tbody></table>]]></content>
     
