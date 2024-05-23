@@ -6,7 +6,7 @@
   <link href="https://kiml.github.io/atom.xml" rel="self"/>
   
   <link href="https://kiml.github.io/"/>
-  <updated>2024-05-23T03:41:42.142Z</updated>
+  <updated>2024-05-23T06:46:43.190Z</updated>
   <id>https://kiml.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>RestTemplate使用GET请求，返回中文乱码</title>
-    <link href="https://kiml.github.io/2024/05/100000009/"/>
-    <id>https://kiml.github.io/2024/05/100000009/</id>
+    <link href="https://kiml.github.io/2024/05/23/100000004/"/>
+    <id>https://kiml.github.io/2024/05/23/100000004/</id>
     <published>2024-05-23T03:35:55.000Z</published>
-    <updated>2024-05-23T03:41:42.142Z</updated>
+    <updated>2024-05-23T06:46:43.190Z</updated>
     
     <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>更新</p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.23 初始记录</span><br></pre></td></tr></table></figure><span id="more"></span><h1>问题</h1><p>测试 RestTemplate 的 Get 请求，返回中文乱码。</p><h1>原因</h1><p>当 RestTemplate 默认使用 String 存储 body 内容时默认使用 ISO_8859_1 字符集。</p><h1>解决</h1><p>配置 StringHttpMessageConverter 消息转换器，使用 utf-8 字符集。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>  </span><br><span class="line"><span class="keyword">public</span> RestTemplate <span class="title function_">restTemplate</span><span class="params">()</span> &#123;  </span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>(<span class="keyword">new</span> <span class="title class_">OkHttp3ClientHttpRequestFactory</span>());  </span><br><span class="line">    <span class="comment">//消息转换器列表  </span></span><br><span class="line">    List&lt;HttpMessageConverter&lt;?&gt;&gt; messageConverters = restTemplate.getMessageConverters();  </span><br><span class="line">    <span class="comment">//配置消息转换器StringHttpMessageConverter，并设置utf‐8  </span></span><br><span class="line">    messageConverters.set(<span class="number">1</span>, <span class="keyword">new</span> <span class="title class_">StringHttpMessageConverter</span>(StandardCharsets.UTF_8));  </span><br><span class="line">    <span class="keyword">return</span> restTemplate;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -35,6 +35,10 @@
     
     
     
+    <category term="bug记录" scheme="https://kiml.github.io/categories/bug%E8%AE%B0%E5%BD%95/"/>
+    
+    <category term="2024" scheme="https://kiml.github.io/categories/bug%E8%AE%B0%E5%BD%95/2024/"/>
+    
     
     <category term="Java" scheme="https://kiml.github.io/tags/Java/"/>
     
@@ -46,8 +50,8 @@
   
   <entry>
     <title>聚合支付-商户注册&amp;资质申请</title>
-    <link href="https://kiml.github.io/2024/05/100000008/"/>
-    <id>https://kiml.github.io/2024/05/100000008/</id>
+    <link href="https://kiml.github.io/2024/05/23/100000004/"/>
+    <id>https://kiml.github.io/2024/05/23/100000004/</id>
     <published>2024-05-23T01:59:53.000Z</published>
     <updated>2024-05-23T03:42:13.976Z</updated>
     
@@ -78,12 +82,12 @@
   
   <entry>
     <title>优化 Hexo 网站的永久链接格式</title>
-    <link href="https://kiml.github.io/2024/05/100000002/"/>
-    <id>https://kiml.github.io/2024/05/100000002/</id>
+    <link href="https://kiml.github.io/2024/05/22/100000002/"/>
+    <id>https://kiml.github.io/2024/05/22/100000002/</id>
     <published>2024-05-22T02:34:33.000Z</published>
-    <updated>2024-05-22T08:28:45.655Z</updated>
+    <updated>2024-05-23T06:54:42.294Z</updated>
     
-    <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>前言<br>浏览之前引用的文章地址，突然发现，地址全部变成了404。后来发现每次发布，地址链接都会改变。所以记录一下，怎么处理这个问题。</p></li><li class="lvl-2"><p>参考文章</p></li></ul><blockquote><p><a class="link"   href="https://blog.dejavu.moe/posts/hexo-permalinks/" >优化 Hexo 网站的永久链接格式<i class="fas fa-external-link-alt"></i></a></p></blockquote><ul class="lvl-0"><li class="lvl-2">更新</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.22 初始记录</span><br></pre></td></tr></table></figure><span id="more"></span><p>打开Hexo配置文件可以看到原先的配置处为：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">https://kiml.github.io</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:hash.html</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;.html&#x27; from permalinks</span></span><br></pre></td></tr></table></figure><p>照理说这样配置也是没有问题的，由于hash值的计算与文章标题有关，可能是因为这样，重新发布后，有部分页面会直接变成404的状态。</p><h2 id="优化">优化</h2><h3 id="安装插件">安装插件</h3><p>在 Hexo 根目录打开终端安装插件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用npm安装插件</span></span><br><span class="line">npm install hexo-abbrlink2 --save</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用yarn安装插件</span></span><br><span class="line">yarn add hexo-abbrlink2</span><br></pre></td></tr></table></figure><h3 id="修改配置">修改配置</h3><p>修改 Hexo 的配置文件的 <code>permalink</code> 字段</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">permalink: :year/:month/:abbrlink/</span><br></pre></td></tr></table></figure><p>插件配置默认为0，这里设置成100000000，添加到配置文件处</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">start:</span> <span class="number">100</span> <span class="comment"># 启起始文章id，默认为0 ，可以自定义，比如100</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>前言<br>浏览之前引用的文章地址，突然发现，地址全部变成了404。后来发现每次发布，地址链接都会改变。所以记录一下，怎么处理这个问题。</p></li><li class="lvl-2"><p>参考文章</p></li></ul><blockquote><p><a class="link"   href="https://blog.dejavu.moe/posts/hexo-permalinks/" >优化 Hexo 网站的永久链接格式<i class="fas fa-external-link-alt"></i></a></p></blockquote><ul class="lvl-0"><li class="lvl-2">更新</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.22 初始记录</span><br></pre></td></tr></table></figure><span id="more"></span><p>打开Hexo配置文件可以看到原先的配置处为：</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">https://kiml.github.io</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:hash.html</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;.html&#x27; from permalinks</span></span><br></pre></td></tr></table></figure><p>照理说这样配置也是没有问题的，由于hash值的计算与文章标题有关，可能是因为这样，重新发布后，有部分页面会直接变成404的状态。</p><h2 id="优化">优化</h2><h3 id="安装插件">安装插件</h3><p>在 Hexo 根目录打开终端安装插件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用npm安装插件</span></span><br><span class="line">npm install hexo-abbrlink2 --save</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用yarn安装插件</span></span><br><span class="line">yarn add hexo-abbrlink2</span><br></pre></td></tr></table></figure><h3 id="修改配置">修改配置</h3><p>修改 Hexo 的配置文件的 <code>permalink</code> 字段。<strong>好像abbrlink的值单个月份内是不重复的？不加day有部分文章生成的链接是相同的不知道怎么回事</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">permalink: :year/:month/:day/:abbrlink/</span><br></pre></td></tr></table></figure><p>插件配置默认为0，这里设置成100000000，添加到配置文件处</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">start:</span> <span class="number">100</span> <span class="comment"># 启起始文章id，默认为0 ，可以自定义，比如100</span></span><br></pre></td></tr></table></figure>]]></content>
     
     
     <summary type="html">&lt;ul class=&quot;lvl-0&quot;&gt;
@@ -112,8 +116,8 @@
   
   <entry>
     <title>聚合支付-环境搭建</title>
-    <link href="https://kiml.github.io/2024/05/100000004/"/>
-    <id>https://kiml.github.io/2024/05/100000004/</id>
+    <link href="https://kiml.github.io/2024/05/16/100000004/"/>
+    <id>https://kiml.github.io/2024/05/16/100000004/</id>
     <published>2024-05-16T09:09:54.000Z</published>
     <updated>2024-05-22T08:39:37.825Z</updated>
     
@@ -144,8 +148,8 @@
   
   <entry>
     <title>代码随想录算法训练营第四天-24两两交换链表中的节点、19删除链表的倒数第N个节点、面试题02.07.链表相交、142环形链表II</title>
-    <link href="https://kiml.github.io/2024/05/100000006/"/>
-    <id>https://kiml.github.io/2024/05/100000006/</id>
+    <link href="https://kiml.github.io/2024/05/16/100000005/"/>
+    <id>https://kiml.github.io/2024/05/16/100000005/</id>
     <published>2024-05-16T07:41:07.000Z</published>
     <updated>2024-05-22T08:34:48.013Z</updated>
     
@@ -176,8 +180,8 @@
   
   <entry>
     <title>聚合支付-项目介绍</title>
-    <link href="https://kiml.github.io/2024/05/100000004/"/>
-    <id>https://kiml.github.io/2024/05/100000004/</id>
+    <link href="https://kiml.github.io/2024/05/15/100000004/"/>
+    <id>https://kiml.github.io/2024/05/15/100000004/</id>
     <published>2024-05-15T08:16:29.000Z</published>
     <updated>2024-05-23T02:20:34.349Z</updated>
     
@@ -210,8 +214,8 @@
   
   <entry>
     <title>代码随想录算法训练营第三天-203移除链表元素、707设计链表、206反转链表</title>
-    <link href="https://kiml.github.io/2024/04/100000005/"/>
-    <id>https://kiml.github.io/2024/04/100000005/</id>
+    <link href="https://kiml.github.io/2024/04/24/100000005/"/>
+    <id>https://kiml.github.io/2024/04/24/100000005/</id>
     <published>2024-04-24T13:37:00.000Z</published>
     <updated>2024-05-16T07:43:52.483Z</updated>
     
@@ -242,8 +246,8 @@
   
   <entry>
     <title>面试-数据结构和算法</title>
-    <link href="https://kiml.github.io/2024/04/100000004/"/>
-    <id>https://kiml.github.io/2024/04/100000004/</id>
+    <link href="https://kiml.github.io/2024/04/22/100000004/"/>
+    <id>https://kiml.github.io/2024/04/22/100000004/</id>
     <published>2024-04-22T13:36:05.000Z</published>
     <updated>2024-05-23T06:45:29.571Z</updated>
     
@@ -274,8 +278,8 @@
   
   <entry>
     <title>MybatisPlus多表联查分页，Total计数异常</title>
-    <link href="https://kiml.github.io/2024/04/100000004/"/>
-    <id>https://kiml.github.io/2024/04/100000004/</id>
+    <link href="https://kiml.github.io/2024/04/19/100000004/"/>
+    <id>https://kiml.github.io/2024/04/19/100000004/</id>
     <published>2024-04-19T07:34:09.000Z</published>
     <updated>2024-04-22T13:31:51.390Z</updated>
     
@@ -306,8 +310,8 @@
   
   <entry>
     <title>代码随想录算法训练营第二天-977有序数组的平方、209长度最小的子数组、59螺旋矩阵II</title>
-    <link href="https://kiml.github.io/2024/04/100000004/"/>
-    <id>https://kiml.github.io/2024/04/100000004/</id>
+    <link href="https://kiml.github.io/2024/04/18/100000005/"/>
+    <id>https://kiml.github.io/2024/04/18/100000005/</id>
     <published>2024-04-18T14:19:42.000Z</published>
     <updated>2024-04-24T13:37:37.711Z</updated>
     
@@ -344,8 +348,8 @@
   
   <entry>
     <title>代码随想录算法训练营第一天-704二分查找、27移除元素</title>
-    <link href="https://kiml.github.io/2024/04/100000004/"/>
-    <id>https://kiml.github.io/2024/04/100000004/</id>
+    <link href="https://kiml.github.io/2024/04/17/100000004/"/>
+    <id>https://kiml.github.io/2024/04/17/100000004/</id>
     <published>2024-04-17T14:10:57.000Z</published>
     <updated>2024-04-24T13:37:34.107Z</updated>
     
@@ -380,8 +384,8 @@
   
   <entry>
     <title>华为OD</title>
-    <link href="https://kiml.github.io/2024/03/100000003/"/>
-    <id>https://kiml.github.io/2024/03/100000003/</id>
+    <link href="https://kiml.github.io/2024/03/28/100000003/"/>
+    <id>https://kiml.github.io/2024/03/28/100000003/</id>
     <published>2024-03-28T11:55:09.000Z</published>
     <updated>2024-04-17T16:36:31.791Z</updated>
     
@@ -412,8 +416,8 @@
   
   <entry>
     <title>装机-软件安装</title>
-    <link href="https://kiml.github.io/2023/11/100000003/"/>
-    <id>https://kiml.github.io/2023/11/100000003/</id>
+    <link href="https://kiml.github.io/2023/11/02/100000003/"/>
+    <id>https://kiml.github.io/2023/11/02/100000003/</id>
     <published>2023-11-02T06:22:08.984Z</published>
     <updated>2024-05-22T09:24:52.812Z</updated>
     
@@ -442,8 +446,8 @@
   
   <entry>
     <title>Spring Data Redis</title>
-    <link href="https://kiml.github.io/2023/08/100000004/"/>
-    <id>https://kiml.github.io/2023/08/100000004/</id>
+    <link href="https://kiml.github.io/2023/08/29/100000004/"/>
+    <id>https://kiml.github.io/2023/08/29/100000004/</id>
     <published>2023-08-29T15:25:03.000Z</published>
     <updated>2024-05-16T07:47:20.887Z</updated>
     
@@ -480,8 +484,8 @@ Spring Data Redis 是Spring 框架提供的用于操作Redis的方式。涵盖Re
   
   <entry>
     <title>Git及常用命令</title>
-    <link href="https://kiml.github.io/2023/07/100000003/"/>
-    <id>https://kiml.github.io/2023/07/100000003/</id>
+    <link href="https://kiml.github.io/2023/07/11/100000003/"/>
+    <id>https://kiml.github.io/2023/07/11/100000003/</id>
     <published>2023-07-11T15:29:25.000Z</published>
     <updated>2024-05-22T08:33:30.223Z</updated>
     
@@ -510,8 +514,8 @@ Git部分知识以及常用命令&lt;/p&gt;
   
   <entry>
     <title>IntelliJ IDEA常用设置</title>
-    <link href="https://kiml.github.io/2023/07/100000003/"/>
-    <id>https://kiml.github.io/2023/07/100000003/</id>
+    <link href="https://kiml.github.io/2023/07/02/100000003/"/>
+    <id>https://kiml.github.io/2023/07/02/100000003/</id>
     <published>2023-07-02T09:39:31.000Z</published>
     <updated>2024-05-21T08:38:43.125Z</updated>
     
@@ -540,8 +544,8 @@ IntelliJ IDEA常用设置&lt;/p&gt;
   
   <entry>
     <title>Obsidian + Git + Hexo + 图床 = Blog + 个人笔记体系</title>
-    <link href="https://kiml.github.io/2023/02/100000002/"/>
-    <id>https://kiml.github.io/2023/02/100000002/</id>
+    <link href="https://kiml.github.io/2023/02/27/100000002/"/>
+    <id>https://kiml.github.io/2023/02/27/100000002/</id>
     <published>2023-02-27T08:59:50.000Z</published>
     <updated>2024-05-22T08:37:42.251Z</updated>
     
