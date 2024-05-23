@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-05-22 16:34:48</span>
+        <span class="pc">2024-05-23 18:48:38</span>
     </span>
     
     
@@ -236,6 +236,18 @@
                 
                     <li>
                         <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%99%9A%E6%8B%9F%E5%A4%B4%E8%8A%82%E7%82%B9/">虚拟头节点</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">环形链表</a>&nbsp;
                     </li>
                 
             </ul>
@@ -281,7 +293,7 @@
 <span id="more"></span>
 <h1>初步题解</h1>
 <h2 id="24两两交换链表中的节点">24两两交换链表中的节点</h2>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/swap-nodes-in-pairs/description/" >https://leetcode.cn/problems/swap-nodes-in-pairs/description/<i class="fas fa-external-link-alt"></i></a>)[<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/swap-nodes-in-pairs/description/" >https://leetcode.cn/problems/swap-nodes-in-pairs/description/<i class="fas fa-external-link-alt"></i></a>]</p>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/swap-nodes-in-pairs/description/" >https://leetcode.cn/problems/swap-nodes-in-pairs/description/<i class="fas fa-external-link-alt"></i></a>)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一遍完全没有看题解的写法，不能通过</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LE707.ListNode <span class="title function_">swapPairs</span><span class="params">(LE707.ListNode head)</span> &#123;  </span><br><span class="line">    <span class="keyword">while</span> (head.next != <span class="literal">null</span>) &#123;  </span><br><span class="line">        LE707.<span class="type">ListNode</span> <span class="variable">temp</span> <span class="operator">=</span> head.next.next;  </span><br><span class="line">        head.next.next = head;  </span><br><span class="line">        head.next = temp;  </span><br><span class="line">        head = head.next.next;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> head;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 第二遍看了部分文字题解</span></span><br><span class="line"><span class="comment">// 发现少了头节点，即前一个节点的后节点的指向那一步</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LE707.ListNode <span class="title function_">swapPairs</span><span class="params">(LE707.ListNode head)</span> &#123;  </span><br><span class="line">    LE707.<span class="type">ListNode</span> <span class="variable">dumyHead</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LE707</span>.ListNode(-<span class="number">1</span>);  </span><br><span class="line">    dumyHead.next = head;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 记录当前节点的位置，便于循环  </span></span><br><span class="line">    LE707.<span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> dumyHead;  </span><br><span class="line">    <span class="keyword">while</span> (cur.next != <span class="literal">null</span> &amp;&amp; cur.next.next != <span class="literal">null</span>) &#123;  </span><br><span class="line">        <span class="comment">// 记录原来，后一个节点需要指向的节点  </span></span><br><span class="line">        LE707.<span class="type">ListNode</span> <span class="variable">temp</span> <span class="operator">=</span> cur.next.next.next;  </span><br><span class="line">        LE707.<span class="type">ListNode</span> <span class="variable">node2</span> <span class="operator">=</span> cur.next.next;  </span><br><span class="line">        LE707.<span class="type">ListNode</span> <span class="variable">node1</span> <span class="operator">=</span> cur.next;  </span><br><span class="line"></span><br><span class="line">        cur.next = node2;  </span><br><span class="line">        cur.next.next = node1;  </span><br><span class="line">        cur.next.next.next = temp;  </span><br><span class="line">        cur = node1;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> dumyHead.next;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="19删除链表的倒数第N个节点">19删除链表的倒数第N个节点</h2>
 <p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/description/" >https://leetcode.cn/problems/remove-nth-node-from-end-of-list/description/<i class="fas fa-external-link-alt"></i></a><br>
@@ -379,6 +391,18 @@
                     
                         <li class="tag-item">
                             <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E8%99%9A%E6%8B%9F%E5%A4%B4%E8%8A%82%E7%82%B9/">#虚拟头节点</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">##双指针</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/">#环形链表</a>&nbsp;
                         </li>
                     
                 </ul>

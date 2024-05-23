@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-05-23 14:54:42</span>
+        <span class="pc">2024-05-23 14:57:04</span>
     </span>
     
     
@@ -278,7 +278,7 @@
 <p>在 Hexo 根目录打开终端安装插件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用npm安装插件</span></span><br><span class="line">npm install hexo-abbrlink2 --save</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用yarn安装插件</span></span><br><span class="line">yarn add hexo-abbrlink2</span><br></pre></td></tr></table></figure>
 <h3 id="修改配置">修改配置</h3>
-<p>修改 Hexo 的配置文件的 <code>permalink</code> 字段。<strong>好像abbrlink的值单个月份内是不重复的？不加day有部分文章生成的链接是相同的不知道怎么回事</strong></p>
+<p>修改 Hexo 的配置文件的 <code>permalink</code> 字段。<strong>好像abbrlink的值月份内是有可能重复的？不加day有部分文章生成的链接是相同的不知道怎么回事</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">permalink: :year/:month/:day/:abbrlink/</span><br></pre></td></tr></table></figure>
 <p>插件配置默认为0，这里设置成100000000，添加到配置文件处</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">start:</span> <span class="number">100</span> <span class="comment"># 启起始文章id，默认为0 ，可以自定义，比如100</span></span><br></pre></td></tr></table></figure>

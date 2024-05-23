@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-05-23 14:45:29</span>
+        <span class="pc">2024-05-23 15:52:35</span>
     </span>
     
     
@@ -245,12 +245,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>454 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
         </span>
     
     
@@ -277,7 +277,7 @@
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.04.22 初始记录 数组的总结</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">24.04.22 初始记录 数组的总结</span><br><span class="line">24.05.23 链表的总结</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1>数据结构</h1>
 <h2 id="数组">数组</h2>
@@ -295,18 +295,121 @@
 3、<strong>数组的元素是不能删的，只能覆盖。</strong><br>
 4、<strong>二维数组在内存的空间地址不连续</strong></p>
 <h3 id="经典题目">经典题目</h3>
-<h4 id="二分法"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/100000004/#704%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE" >二分法<i class="fas fa-external-link-alt"></i></a></h4>
+<h4 id="二分法"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/17/100000004/#704%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE" >二分法<i class="fas fa-external-link-alt"></i></a></h4>
 <p>需要遵循<strong>循环不变量原则</strong>。这里的循环不变量原则在二分法中的表现就是，循环过程中左闭右开，这个规则是不变的。</p>
-<h4 id="双指针法"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/100000004/#27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-2" >双指针法<i class="fas fa-external-link-alt"></i></a></h4>
+<h4 id="双指针法"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/17/100000004/#27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0" >双指针法<i class="fas fa-external-link-alt"></i></a></h4>
 <p>快慢指针法：<strong>通过一个快指针和慢指针在一个for循环下完成两个for循环的工作。</strong><br>
 双向指针法：<strong>一个指针从左向右一个指针从右向左。从左向右的找等于目标值的位置，从右向左找不等于目标的位置，每次找到一个用不等于覆盖等于。</strong>（就是自己第一次题解时的做法）</p>
-<h4 id="滑动窗口"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/cda0e9bee1e5.html#209%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84" >滑动窗口<i class="fas fa-external-link-alt"></i></a></h4>
+<h4 id="滑动窗口"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/18/100000005/#209%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84" >滑动窗口<i class="fas fa-external-link-alt"></i></a></h4>
 <p>动态更新窗口的大小，找到最优解。<br>
 <strong>滑动窗口的精妙之处在于根据当前子序列和大小的情况，不断调节子序列的起始位置。从而将O(n^2)的暴力解法降为O(n)。</strong></p>
-<h4 id="模拟行为"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/cda0e9bee1e5.html#59%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II" >模拟行为<i class="fas fa-external-link-alt"></i></a></h4>
+<h4 id="模拟行为"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/18/100000005/#59%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II" >模拟行为<i class="fas fa-external-link-alt"></i></a></h4>
 <p>目前遇到的题型是螺旋矩阵。这类题目只要模拟数组需要执行的操作就行，需要注意边界值，遵循<strong>循环不变量原则</strong>。</p>
 <h2 id="链表">链表</h2>
 <h3 id="基础理论-2">基础理论</h3>
+<h4 id="分类">分类</h4>
+<ol>
+<li class="lvl-3">
+<p><strong>单链表</strong><br>
+指针域只能指向节点的下一个节点。</p>
+</li>
+<li class="lvl-3">
+<p><strong>双链表</strong><br>
+每一个节点有两个指针域，一个指向下一个节点，一个指向上一个节点。</p>
+</li>
+<li class="lvl-3">
+<p><strong>循环链表</strong><br>
+链表首尾相连。</p>
+</li>
+</ol>
+<h4 id="存储方式">存储方式</h4>
+<p>数组是在内存中是连续分布的，但是链表在内存中可不是连续分布的。链表是通过指针域的指针链接在内存中各个节点。<br>
+<strong>所以链表中的节点在内存中不是连续分布的 ，而是散乱分布在内存中的某地址上，分配机制取决于操作系统的内存管理。</strong></p>
+<h4 id="链表的定义">链表的定义</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> val;  </span><br><span class="line">    <span class="keyword">public</span> ListNode next;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">()</span> &#123;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ListNode</span><span class="params">(<span class="type">int</span> val)</span> &#123;  </span><br><span class="line">        <span class="built_in">this</span>.val = val;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="链表操作">链表操作</h4>
+<h5 id="删除节点">删除节点</h5>
+<p>将该节点跳过，前一节点指向后一节点。</p>
+<h5 id="添加节点">添加节点</h5>
+<p>前一节点指向该节点，该节点指向后一节点。</p>
+<h4 id="性能分析">性能分析</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>插入/删除（时间复杂度）</th>
+<th>查询（时间复杂度）</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数组</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>数据量固定，频繁查询，较少增删</td>
+</tr>
+<tr>
+<td>链表</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>数据量不固定，频繁增删，较少查询</td>
+</tr>
+</tbody>
+</table>
+<h3 id="经典题目-2">经典题目</h3>
+<h4 id="虚拟头节点"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/24/100000005/#203%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0-2" >虚拟头节点<i class="fas fa-external-link-alt"></i></a></h4>
+<p>链表中的增删操作，都是需要操作前一个节点进行指向。但是对于头节点的操作，由于没有前一个节点，每次都需要单独处理。<strong>因此使用虚拟头结点的技巧</strong>。（基本上做题都是加上虚拟节点比较方便）</p>
+<h4 id="链表的基本操作"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/24/100000005/#707%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8" >链表的基本操作<i class="fas fa-external-link-alt"></i></a></h4>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>获取链表第index个节点的数值</p>
+</li>
+<li class="lvl-2">
+<p>在链表的最前面插入一个节点</p>
+</li>
+<li class="lvl-2">
+<p>在链表的最后面插入一个节点</p>
+</li>
+<li class="lvl-2">
+<p>在链表第index个节点前面插入一个节点</p>
+</li>
+<li class="lvl-2">
+<p>删除链表的第index个节点的数值</p>
+</li>
+</ul>
+<h4 id="反转链表"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/24/100000005/#206%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8" >反转链表<i class="fas fa-external-link-alt"></i></a></h4>
+<ol>
+<li class="lvl-3">
+<p>迭代法用双指针，改变两个节点之间的指针方向</p>
+</li>
+<li class="lvl-3">
+<p>递归法和迭代法的思路基本一样，把移动下一步的操作放到递归里进行。</p>
+</li>
+</ol>
+<h4 id="两两交换链表中的节点"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/16/100000005/#24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9-2" >两两交换链表中的节点<i class="fas fa-external-link-alt"></i></a></h4>
+<p>这题也用到了虚拟头节点的方法。</p>
+<ol>
+<li class="lvl-3">
+<p>需要交换的两个节点的前一个节点，指向需要交换的第二个节点</p>
+</li>
+<li class="lvl-3">
+<p>节点交换</p>
+</li>
+</ol>
+<h4 id="删除倒数第N个节点"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/16/100000005/#19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9-2" >删除倒数第N个节点<i class="fas fa-external-link-alt"></i></a></h4>
+<p>运用虚拟头节点+双指针。思路是，一个指针先走N步，然后两个指针一起向后。当快指针指向末尾时，慢指针的位置正好是倒数第N个节点。然后完成删除操作。</p>
+<h4 id="链表相交"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/16/100000005/#%E9%9D%A2%E8%AF%95%E9%A2%9802-07%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4" >链表相交<i class="fas fa-external-link-alt"></i></a></h4>
+<p>这里的相交指的是<strong>引用完全相同，即：内存地址完全相同的交点</strong></p>
+<h4 id="环形链表"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/16/100000005/#142%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II-2" >环形链表<i class="fas fa-external-link-alt"></i></a></h4>
+<ol>
+<li class="lvl-3">
+<p>判断是否有环</p>
+</li>
+<li class="lvl-3">
+<p>判断交点位置这是一道数学题，具体解析在对应的文章中给出。</p>
+</li>
+</ol>
 
             </div>
 
@@ -397,7 +500,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA"><span class="nav-number">1.1.1.</span> <span class="nav-text">基础理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">二分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">双指针法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E8%A1%8C%E4%B8%BA"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">模拟行为</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-2"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础理论</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA"><span class="nav-number">1.1.1.</span> <span class="nav-text">基础理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">二分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">双指针法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E8%A1%8C%E4%B8%BA"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">模拟行为</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-2"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">存储方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">链表的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">链表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.1.4.1.</span> <span class="nav-text">删除节点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.1.4.2.</span> <span class="nav-text">添加节点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">性能分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%A4%B4%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">虚拟头节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">链表的基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">反转链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">两两交换链表中的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">删除倒数第N个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">链表相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.2.7.</span> <span class="nav-text">环形链表</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
 
