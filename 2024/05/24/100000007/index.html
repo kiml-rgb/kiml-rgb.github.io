@@ -9,7 +9,7 @@
     
     <title>
         
-            RestTemplate使用GET请求，返回中文乱码 |
+            阿里云接口实现短信发送 |
         
         Kiml&#39;s Blog
     </title>
@@ -182,7 +182,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">RestTemplate使用GET请求，返回中文乱码</span>
+                <span class="title-hover-animation">阿里云接口实现短信发送</span>
             </div>
 
             
@@ -204,30 +204,15 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2024-05-23 11:35:55</span>
-        <span class="mobile">2024-05-23 11:35</span>
+        <span class="pc">2024-05-24 11:26:12</span>
+        <span class="mobile">2024-05-24 11:26</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-05-23 14:46:43</span>
+        <span class="pc">2024-05-24 14:59:22</span>
     </span>
     
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/bug%E8%AE%B0%E5%BD%95/">bug记录</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/bug%E8%AE%B0%E5%BD%95/2024/">2024</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -235,15 +220,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Java/">Java</a>&nbsp;
+                        <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/">代码模板</a>&nbsp;
                     </li>
                 
                     <li>
-                        | <a href="/tags/BUG/">BUG</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        | <a href="/tags/RestTemplate/">RestTemplate</a>&nbsp;
+                        | <a href="/tags/Java/">#Java</a>&nbsp;
                     </li>
                 
             </ul>
@@ -253,12 +234,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>115 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>429 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
         </span>
     
     
@@ -278,18 +259,41 @@
 
                 <ul class="lvl-0">
 <li class="lvl-2">
+<p>前言阿里云接口实现短信发送。</p>
+</li>
+<li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.23 初始记录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.24 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1>问题</h1>
-<p>测试 RestTemplate 的 Get 请求，返回中文乱码。</p>
-<h1>原因</h1>
-<p>当 RestTemplate 默认使用 String 存储 body 内容时默认使用 ISO_8859_1 字符集。</p>
-<h1>解决</h1>
-<p>配置 StringHttpMessageConverter 消息转换器，使用 utf-8 字符集。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>  </span><br><span class="line"><span class="keyword">public</span> RestTemplate <span class="title function_">restTemplate</span><span class="params">()</span> &#123;  </span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>(<span class="keyword">new</span> <span class="title class_">OkHttp3ClientHttpRequestFactory</span>());  </span><br><span class="line">    <span class="comment">//消息转换器列表  </span></span><br><span class="line">    List&lt;HttpMessageConverter&lt;?&gt;&gt; messageConverters = restTemplate.getMessageConverters();  </span><br><span class="line">    <span class="comment">//配置消息转换器StringHttpMessageConverter，并设置utf‐8  </span></span><br><span class="line">    messageConverters.set(<span class="number">1</span>, <span class="keyword">new</span> <span class="title class_">StringHttpMessageConverter</span>(StandardCharsets.UTF_8));  </span><br><span class="line">    <span class="keyword">return</span> restTemplate;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>依赖</h1>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--sms验证服务--&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-alicloud-sms<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1>代码</h1>
+<ol>
+<li class="lvl-3">
+<p><code>Service</code>中要添加的代码</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span>  </span><br><span class="line"><span class="keyword">public</span> Boolean <span class="title function_">sendCode</span><span class="params">(String phone)</span> &#123;  </span><br><span class="line">    <span class="comment">//非空校验  </span></span><br><span class="line">    <span class="keyword">if</span> (Strings.isNullOrEmpty(phone)) &#123;  </span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">LogicException</span>(<span class="string">&quot;手机号为空&quot;</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">sbCode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();  </span><br><span class="line">    <span class="comment">// 6位随机密码</span></span><br><span class="line">    Stream.generate(() -&gt; <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(<span class="number">10</span>))  </span><br><span class="line">            .limit(<span class="number">6</span>)  </span><br><span class="line">            .forEach(sbCode::append);  </span><br><span class="line">    <span class="comment">//将验证码放入redis, 5分钟过期  </span></span><br><span class="line">    redisTemplate.opsForValue().set(phone, sbCode.toString(), Duration.ofMinutes(<span class="number">5</span>));  </span><br><span class="line">    log.info(<span class="string">&quot;短信验证码：&quot;</span> + sbCode.toString());  </span><br><span class="line">    <span class="keyword">return</span> smsSender.sendMsg(phone, sbCode.toString());  </span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-3">
+<p><code>SmsConfig.java</code></p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="meta">@RefreshScope</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SmsConfig</span> &#123;  </span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;sms.operator.signName&#125;&quot;)</span>  </span><br><span class="line">    <span class="keyword">private</span> String signName;  </span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;sms.operator.templateCode&#125;&quot;)</span>  </span><br><span class="line">    <span class="keyword">private</span> String templateCode;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSignName</span><span class="params">()</span> &#123;  </span><br><span class="line">        <span class="keyword">return</span> signName;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getTemplateCode</span><span class="params">()</span> &#123;  </span><br><span class="line">        <span class="keyword">return</span> templateCode;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li class="lvl-3">
+<p>配置文件中添加</p>
+</li>
+</ol>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sms:</span></span><br><span class="line">  <span class="attr">operator:</span></span><br><span class="line">    <span class="attr">signName:</span> <span class="string">你的signName</span></span><br><span class="line">    <span class="attr">templateCode:</span> <span class="string">你的templateCode</span>  </span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li class="lvl-3">
+<p><code>SmsSender.java</code></p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span>  </span><br><span class="line"><span class="meta">@Slf4j</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SmsSender</span> &#123;  </span><br><span class="line">    <span class="meta">@Autowired</span>  </span><br><span class="line">    <span class="keyword">private</span> SmsConfig smsConfig;  </span><br><span class="line">    <span class="meta">@Autowired</span>  </span><br><span class="line">    <span class="keyword">private</span> ISmsService smsService;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * 发送验证码短信  </span></span><br><span class="line"><span class="comment">     *  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> telephone 手机号  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> code     手机验证码  </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">sendMsg</span><span class="params">(String telephone, String code)</span> &#123;  </span><br><span class="line">        <span class="type">SendSmsRequest</span> <span class="variable">request</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SendSmsRequest</span>();  </span><br><span class="line">  </span><br><span class="line">        request.setPhoneNumbers(telephone);  </span><br><span class="line">        request.setSignName(smsConfig.getSignName());  </span><br><span class="line">        request.setTemplateCode(smsConfig.getTemplateCode());  </span><br><span class="line">        <span class="type">ObjectMapper</span> <span class="variable">mapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();  </span><br><span class="line">        <span class="type">JsonNode</span> <span class="variable">rootNode</span> <span class="operator">=</span> mapper.createObjectNode();  </span><br><span class="line">        <span class="comment">// 存入验证码  </span></span><br><span class="line">        ((ObjectNode) rootNode).put(<span class="string">&quot;code&quot;</span>, code);  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            request.setTemplateParam(mapper.writeValueAsString(rootNode));  </span><br><span class="line">            <span class="type">val</span> <span class="variable">sendSmsResponse</span> <span class="operator">=</span> smsService.sendSmsRequest(request);  </span><br><span class="line">            log.info(<span class="string">&quot;短信发送接收：&quot;</span> + JSONUtil.toJsonPrettyStr(sendSmsResponse));  </span><br><span class="line">            <span class="keyword">if</span> (sendSmsResponse.getCode() != <span class="literal">null</span> &amp;&amp; <span class="string">&quot;OK&quot;</span>.equals(sendSmsResponse.getCode())) &#123;  </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">LogicException</span>(<span class="string">&quot;验证码发送失败：&quot;</span> + sendSmsResponse.getMessage());  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            log.error(<span class="string">&quot;send sms error.&quot;</span> + e.getMessage());  </span><br><span class="line">            <span class="type">val</span> <span class="variable">operLog</span> <span class="operator">=</span> OperLog.builder().title(<span class="string">&quot;发送验证码&quot;</span>)  </span><br><span class="line">                    .businessType(BusinessType.OTHER.ordinal())  </span><br><span class="line">                    .operParam(JSONUtil.toJsonPrettyStr(request))  </span><br><span class="line">                    .status(BusinessStatus.FAIL.ordinal())  </span><br><span class="line">                    .errorMsg(e.getMessage())  </span><br><span class="line">                    .build();  </span><br><span class="line">            AsyncManager.me().execute(AsyncFactory.recordOper(operLog));  </span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">LogicException</span>(<span class="string">&quot;验证码发送失败&quot;</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             </div>
 
             
@@ -298,16 +302,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">RestTemplate使用GET请求，返回中文乱码</span>
+            <span class="type">本文标题</span>：<span class="content">阿里云接口实现短信发送</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Kiml</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2024-05-23 11:35:55</span>
+            <span class="type">创建时间</span>：<span class="content">2024-05-24 11:26:12</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2024/05/23/100000004/</span>
+            <span class="type">本文链接</span>：<span class="content">2024/05/24/100000007/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -325,15 +329,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/Java/">#Java</a>&nbsp;
+                            <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/">#代码模板</a>&nbsp;
                         </li>
                     
                         <li class="tag-item">
-                            <a href="/tags/BUG/">#BUG</a>&nbsp;
-                        </li>
-                    
-                        <li class="tag-item">
-                            <a href="/tags/RestTemplate/">#RestTemplate</a>&nbsp;
+                            <a href="/tags/Java/">##Java</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -342,29 +342,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2024/05/23/100000006/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">代码随想录算法训练营第五天-242有效的字母异位词、349两个数组的交集、202快乐数、1两数之和</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2024/05/23/100000008/"
+                               href="/2024/05/23/100000006/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">聚合支付-功能实现</span>
+                                <span class="post-nav-title-item">代码随想录算法训练营第五天-242有效的字母异位词、349两个数组的交集、202快乐数、1两数之和</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -383,7 +368,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol>
     </div>
 </div>
 
