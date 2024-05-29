@@ -210,9 +210,24 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-05-29 14:01:44</span>
+        <span class="pc">2024-05-29 21:25:07</span>
     </span>
     
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">代码随想录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -220,7 +235,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>&nbsp;
+                        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">#字符串</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/KMP/">KMP</a>&nbsp;
                     </li>
                 
             </ul>
@@ -230,12 +253,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>910 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
         </span>
     
     
@@ -279,7 +302,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 思路：使用KMP算法。  </span></span><br><span class="line"><span class="comment"> * 之前双指针移动，不相等haystack的指针返回到初始匹配位置的下一位（暴力求解）  </span></span><br><span class="line"><span class="comment"> * 现在使用KMP算法，不相等移动到next表中标记的位置。  </span></span><br><span class="line"><span class="comment"> * 所以现在的关键就在于next表的计算：  </span></span><br><span class="line"><span class="comment"> * 1.初始化  </span></span><br><span class="line"><span class="comment"> * 2.当前后缀不相等时的思路（回退）  </span></span><br><span class="line"><span class="comment"> * 3.当前后缀相等时的思路（继续后移）  </span></span><br><span class="line"><span class="comment"> * 内部相当于也进行了KMP</span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">strStr1</span><span class="params">(String haystack, String needle)</span> &#123;  </span><br><span class="line">    <span class="comment">// 获取Next表  </span></span><br><span class="line">    <span class="type">int</span>[] ints = <span class="keyword">new</span> <span class="title class_">int</span>[needle.length()];  </span><br><span class="line">    <span class="type">int</span>[] next = getNext(ints, needle);  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">if</span> (needle.length() == <span class="number">0</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; haystack.length(); i++) &#123;  </span><br><span class="line">        <span class="comment">// 不相等, j回退  </span></span><br><span class="line">        <span class="keyword">while</span> (j != <span class="number">0</span> &amp;&amp; haystack.charAt(i) != needle.charAt(j)) &#123;  </span><br><span class="line">            j = next[j - <span class="number">1</span>];  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">// 相等  </span></span><br><span class="line">        <span class="keyword">if</span> (haystack.charAt(i) == needle.charAt(j)) &#123;  </span><br><span class="line">            <span class="comment">// 完全匹配，返回下标  </span></span><br><span class="line">            <span class="keyword">if</span> (j == needle.length() - <span class="number">1</span>) &#123;  </span><br><span class="line">                <span class="keyword">return</span> i - j;  </span><br><span class="line">            &#125;  </span><br><span class="line">            j++;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span>  -<span class="number">1</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 获取next表，例：  </span></span><br><span class="line"><span class="comment"> * a a b a a f  </span></span><br><span class="line"><span class="comment"> * 0 1 0 1 2 0 * * 1.初始化  </span></span><br><span class="line"><span class="comment"> * 2.当前后缀不相等时的思路（回退）  </span></span><br><span class="line"><span class="comment"> * 3.当前后缀相等时的思路（继续后移）  </span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> next 返回的next数组  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> s 要求的字符串  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> next数组  </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span>[] getNext(<span class="type">int</span>[] next, String s) &#123;  </span><br><span class="line">    <span class="comment">// 初始化 两个指针i和j，j指向前缀末尾位置(同时也是之前最长相等的前后缀长度)，i指向后缀末尾位置(随着字符串长度递增，递增)。  </span></span><br><span class="line">    <span class="comment">// 刚刚初始化时，字符串为a，所以j = 0  </span></span><br><span class="line">    <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    next[<span class="number">0</span>] = j;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 这里i从1开始，没有搞懂(因为初始位置一定为0吗)  </span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; s.length(); i++) &#123;  </span><br><span class="line">        <span class="keyword">while</span> (j != <span class="number">0</span> &amp;&amp; s.charAt(i) != s.charAt(j)) &#123;  </span><br><span class="line">            j = next[j - <span class="number">1</span>];  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">if</span> (s.charAt(i) == s.charAt(j)) &#123;  </span><br><span class="line">            j++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        next[i] = j;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> next;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="459重复的子字符串-2">459重复的子字符串</h2>
 <p>题目链接/文章讲解/视频讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0459.%E9%87%8D%E5%A4%8D%E7%9A%84%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2.html" >https://programmercarl.com/0459.重复的子字符串.html<i class="fas fa-external-link-alt"></i></a>)</p>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * KMP思路  </span></span><br><span class="line"><span class="comment"> * 如果这个字符串是由重复子串组成的，那么字符串长度-最长相等前后缀就为重复子串的长度  </span></span><br><span class="line"><span class="comment"> * 反过来说，如果一个字符串的最长相等前后缀与长度的差值（即可能是重复子串长度的这个值）能被字符串长度整除，那么就说明这个字符串是由重复子串组成的  </span></span><br><span class="line"><span class="comment"> * 但是这个反过来说。需要证明。（虽然画了几种情况都是这样）  </span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> * KMP复习：  </span></span><br><span class="line"><span class="comment"> * 1.初始化  </span></span><br><span class="line"><span class="comment"> * 2.不相等的情况  </span></span><br><span class="line"><span class="comment"> * 3.相等的情况  </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">repeatedSubstringPattern1</span><span class="params">(String s)</span> &#123;  </span><br><span class="line">    <span class="type">int</span>[] next = getNext(s);  </span><br><span class="line">    <span class="comment">// 这里除了上面说的条件之外，还需要加上next[len - 1] != -1, 这说明字符串有最长相同的前后缀（就是字符串里的前缀子串和后缀子串相同的最长长度）  </span></span><br><span class="line">    <span class="keyword">return</span> next[s.length() - <span class="number">1</span>] != <span class="number">0</span> &amp;&amp; s.length() % (s.length() - next[s.length() - <span class="number">1</span>]) == <span class="number">0</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span>[] getNext(String s) &#123;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="type">int</span>[] next = <span class="keyword">new</span> <span class="title class_">int</span>[s.length()];  </span><br><span class="line">    next[j] = <span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; s.length(); i++) &#123;  </span><br><span class="line">        <span class="keyword">while</span> (j != <span class="number">0</span> &amp;&amp; s.charAt(i) != s.charAt(j)) &#123;  </span><br><span class="line">            j = next[j - <span class="number">1</span>];  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">if</span> (s.charAt(i) == s.charAt(j)) &#123;  </span><br><span class="line">            j++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        next[i] = j;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> next;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             </div>
 
             
@@ -315,7 +338,15 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
+                            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
                             <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">##字符串</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/KMP/">#KMP</a>&nbsp;
                         </li>
                     
                 </ul>
