@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-05-30 17:53:34</span>
+        <span class="pc">2024-05-30 18:05:06</span>
     </span>
     
     
@@ -327,7 +327,8 @@ Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(�
 </table>
 <h2 id="ServiceLoader"><a class="link"   target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/spi.html#serviceloader" >ServiceLoader<i class="fas fa-external-link-alt"></i></a></h2>
 <h2 id="面试大白话">面试大白话</h2>
-<p>Java中的SPI就是你提供一个接口，然后让别人提供实现类。然后将这个实现放在<code>resources/META-INF/services/</code>中。这样Java启动的时候就会去扫描这个下面的jar包，并把他加载进来。一般来说用在开源框架中的插件扩展，然后比较常见的思想提现就是Java的JDBC实现，可以根据自己使用的数据库，将对应的jar包引用进来。（Dubbo中可能问到的问题）Dubbo中也使用了这个思想，；比如说有一行代码是：</p>
+<p>Java中的SPI就是你提供一个接口，然后让别人提供实现类。然后将这个实现放在<code>resources/META-INF/services/</code>中。这样Java启动的时候就会去扫描这个下面的jar包，并把他加载进来。一般来说用在开源框架中的插件扩展，然后比较常见的思想提现就是Java的JDBC实现，可以根据自己使用的数据库，将对应的jar包引用进来。</p>
+<p>（Dubbo中可能问到的问题）Dubbo中也使用了这个思想: 比如说有一行代码是：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Protocol</span> <span class="variable">protocol</span> <span class="operator">=</span> ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();</span><br></pre></td></tr></table></figure>
 <p>然后在使用Protocol接口时，dubbo他会去找一个你配置的Protocol，他就会将你配置的Protocol实现类，加载到jvm中来，然后实例化对象，就用你的那个Protocol实现类就可以了。这个Protocol就是用来配置他的网络协议的，然后在源码中可以看到，默认使用的是dubbo协议，就是DubboProtocol。dubbo里面提供了大量的类似上面的扩展点，就是说，你如果要扩展一个东西，只要自己写个jar，让你的consumer或者是provider工程，依赖你的那个jar，在你的jar里指定目录下配置好接口名称对应的文件，里面通过key=实现类（这些都可以在官网的文档里找到）。</p>
 
