@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-05-29 17:05:53</span>
+        <span class="pc">2024-05-30 16:27:22</span>
     </span>
     
     
@@ -245,12 +245,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>812 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>928 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>3 分钟</span>
         </span>
     
     
@@ -301,9 +301,11 @@
 <h2 id="获取短信验证码">获取短信验证码</h2>
 <p>短信验证码为一个开源的服务，可单独开启使用。开源git地址：(<a class="link"   target="_blank" rel="noopener" href="https://github.com/fightingape/sailing" >https://github.com/fightingape/sailing<i class="fas fa-external-link-alt"></i></a>)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">大致看了一下这个开源项目</span><br><span class="line">是根据传入的业务名称，获取配置好的code长度和Service实现。</span><br><span class="line">后续应该还可以加入别的实现（比如阿里云的短信服务等）</span><br><span class="line"></span><br><span class="line">其中生成验证信息这个方法。</span><br><span class="line">1.根据业务名称+随机UUID生成key存入redis。这个key会返回给服务请求方。</span><br><span class="line">2.根据配置好的Map获取名称对应的len即code码长度，如果传入不存在的name，会直接报错。</span><br><span class="line">3.验证服务就是根据返回给服务请求方的key，查询Redis缓存是否存在，不存在返回false，即验证码错误。</span><br></pre></td></tr></table></figure>
-<p>本项目中没有使用，只是简单控制台打印了一下。也可以直接在这个服务里存入redis（因为要申请开通有点麻烦，又要多部署一个服务，而且这个功能比较简单不打算花时间开通了）。</p>
+<p>本项目中没有使用，只是简单控制台打印了一下。也可以直接在这个服务里存入redis（因为要申请开通阿里云短信服务有点麻烦，又要多部署一个服务，而且这个功能比较简单不打算花时间开通了）。</p>
 <p>之前有写过阿里云的短信，关联文章：内链：[[【代码模板】阿里云接口实现短信发送]]<br>
 外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/24/100000007/" >【代码模板】阿里云接口实现短信发送<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="文件上传">文件上传</h2>
+<p>资质申请的流程中涉及到了文件上传的功能。之前已经写过使用Minio作为文件服务器和用阿里云OSS作为文件存储两种方式。这里的上传直接把七牛云换成了Minio。顺便整理了一下之前写过的两种方式。文件上传：内链：<a href="../%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/%E3%80%90%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF%E3%80%91%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8.md">【代码模板】文件存储</a>外链：<a href="">【代码模板】文件存储</a></p>
 <h1>BUG记录</h1>
 <h2 id="RestTemplate使用GET请求，返回中文乱码">RestTemplate使用GET请求，返回中文乱码</h2>
 <p>内链：<a href="../../bug%E8%AE%B0%E5%BD%95/2024/RestTemplate%E4%BD%BF%E7%94%A8GET%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81.md">RestTemplate使用GET请求，返回中文乱码</a>外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000004/" >RestTemplate使用GET请求，返回中文乱码<i class="fas fa-external-link-alt"></i></a></p>
@@ -393,7 +395,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">获取短信验证码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">BUG记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RestTemplate%E4%BD%BF%E7%94%A8GET%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">RestTemplate使用GET请求，返回中文乱码</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-number">1.3.</span> <span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">BUG记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RestTemplate%E4%BD%BF%E7%94%A8GET%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">RestTemplate使用GET请求，返回中文乱码</span></a></li></ol></li></ol>
     </div>
 </div>
 
