@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-05-30 18:05:06</span>
+        <span class="pc">2024-05-30 21:07:52</span>
     </span>
     
     
@@ -253,7 +253,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>775 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>785 字</span>
         </span>
     
     
@@ -326,6 +326,7 @@ Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(�
 </tbody>
 </table>
 <h2 id="ServiceLoader"><a class="link"   target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/spi.html#serviceloader" >ServiceLoader<i class="fas fa-external-link-alt"></i></a></h2>
+<p>点击标题跳转链接到JavaGuide。</p>
 <h2 id="面试大白话">面试大白话</h2>
 <p>Java中的SPI就是你提供一个接口，然后让别人提供实现类。然后将这个实现放在<code>resources/META-INF/services/</code>中。这样Java启动的时候就会去扫描这个下面的jar包，并把他加载进来。一般来说用在开源框架中的插件扩展，然后比较常见的思想提现就是Java的JDBC实现，可以根据自己使用的数据库，将对应的jar包引用进来。</p>
 <p>（Dubbo中可能问到的问题）Dubbo中也使用了这个思想: 比如说有一行代码是：</p>
