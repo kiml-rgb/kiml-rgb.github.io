@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-02 23:01:31</span>
+        <span class="pc">2024-06-03 10:17:33</span>
     </span>
     
     
@@ -305,8 +305,10 @@ ArrayList的底层是数组，一个索引对应一个元素，所以查询速�
 ❗❗数组初始化大小是10。</p>
 <h2 id="分别讲一下Set集合和Tree这种数据结构">分别讲一下Set集合和Tree这种数据结构</h2>
 <p>Set集合的特点是必须排序，没有索引，不可重复。Set集合分为HashSet和TreeSet，HashSet底层使用的是哈希表，它的排序规则是按照底Hash函数决定的，无法人为设置；而TreeSet的底层则是使用红黑树，可以使用自然排序（自定义类中实现Comparable接口，重写CompareTo方法）或比较器排序（在创建TreeSet对象创建一个Comparator的匿名内部类，并重写Compare方法），扩容时通过结点链接。<br>
+ <br>
  ### TreeSet使用Iterator遍历的过程是怎么样的？<br>
  因为TreeSet是按大小排序的，所以会根据从左往右，从下往上的顺序打印。<br>
+ <br>
  ## List集合是线程不安全的，你是怎么使用List集合的呢？<br>
  使用Collections集合工具类，对集合进行同步处理：<br>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">  List&lt;String&gt; list = Collections.synchronizedList(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;()); </span><br></pre></td></tr></table></figure><br>
