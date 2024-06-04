@@ -9,7 +9,7 @@
     
     <title>
         
-            聚合支付-功能实现 |
+            面试-基础 |
         
         Kiml&#39;s Blog
     </title>
@@ -182,7 +182,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">聚合支付-功能实现</span>
+                <span class="title-hover-animation">面试-基础</span>
             </div>
 
             
@@ -204,30 +204,15 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2024-05-23 09:59:53</span>
-        <span class="mobile">2024-05-23 09:59</span>
+        <span class="pc">2024-06-03 21:09:05</span>
+        <span class="mobile">2024-06-03 21:09</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-03 14:16:07</span>
+        <span class="pc">2024-06-03 21:44:28</span>
     </span>
     
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">后端项目</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E8%81%9A%E5%90%88%E6%94%AF%E4%BB%98/">聚合支付</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -235,7 +220,11 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Java/">Java</a>&nbsp;
+                        <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>&nbsp;
                     </li>
                 
             </ul>
@@ -245,12 +234,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.8k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.5k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>6 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
         </span>
     
     
@@ -271,136 +260,124 @@
                 <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-第一部分-商户注册和资质申请</p>
+❗表示必掌握，❔表示基本不会问</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">24.05.23 初始记录（商户注册&amp;资质申请）</span><br><span class="line">24.05.29 获取短信验证码</span><br><span class="line">24.05.30 文件上传</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.06.03 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1>商户注册&amp;资质申请</h1>
-<h2 id="系统交互流程">系统交互流程</h2>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240523/Snipaste_2024-05-23_09-58-03.png"
-                      alt=""
-                ><br>
-商户注册的流程由商户平台应用、商户服务、SaaS平台、验证码服务四个微服务之间进行交互完成，各微服务的职责介绍如下：<br>
-1）商户平台应用：此应用主要为商户提供业务功能，包括：商户资质申请、员工管理、门店管理等功能。<br>
-2）商户服务： 提供商户管理的相关服务接口，供其它微服务调用，主要为商户平台应用提供接口服务，功能包括：商户基本信息管理、资质申请、商户应用管理、渠道参数配置、商户员工信息管理、商户门店管理等。<br>
-3）SaaS平台：闪聚支付项目是一个SaaS平台 ，所谓SaaS平台即多个用户租用平台的业务功能，这样用户即可省去软件系统开发的成本，每个商户就是一个租户，所以又称为多租户系统。 SaaS平台提供租户管理、账号管理、权限管理、资源管理、套餐管理、系统认证授权等功业务功能。在上图商户注册的流程中，商户注册的账号等信息需要写入SaaS平台，由SaaS平台统一管理账号，分配权限，商户统一通过SaaS平台登录闪聚支付。<br>
-4）验证码服务：提供获取短信验证码、校验验证码的接口。 商户使用手机号进行注册，平台通过校验手机验证码来确认是否本人在注册。<br>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240529/Snipaste_2024-05-29_17-04-38.png"
-                      alt=""
-                ></p>
-<h2 id="获取短信验证码">获取短信验证码</h2>
-<p>短信验证码为一个开源的服务，可单独开启使用。开源git地址：(<a class="link"   target="_blank" rel="noopener" href="https://github.com/fightingape/sailing" >https://github.com/fightingape/sailing<i class="fas fa-external-link-alt"></i></a>)</p>
-<blockquote>
-<p>大致看了一下这个开源项目是根据传入的业务名称，获取配置好的code长度和Service实现。后续应该还可以加入别的实现（比如阿里云的短信服务等）</p>
-<p>其中生成验证信息这个方法。<br>
-1.根据业务名称+随机UUID生成key存入redis。这个key会返回给服务请求方。<br>
-2.根据配置好的Map获取名称对应的len即code码长度，如果传入不存在的name，会直接报错。<br>
-3.验证服务就是根据返回给服务请求方的key，查询Redis缓存是否存在，不存在返回false，即验证码错误。</p>
-</blockquote>
-<p>本项目中没有使用，只是简单控制台打印了一下。也可以直接在这个服务里存入redis（因为要申请开通阿里云短信服务有点麻烦，又要多部署一个服务，而且这个功能比较简单不打算花时间开通了）。</p>
-<p>之前有写过阿里云的短信，关联文章：</p>
-<blockquote>
-<p>内链：[[【代码模板】阿里云接口实现短信发送]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/24/100000007/" >【代码模板】阿里云接口实现短信发送<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h2 id="文件上传">文件上传</h2>
-<p>资质申请的流程中涉及到了文件上传的功能。之前已经写过使用Minio作为文件服务器和用阿里云OSS作为文件存储两种方式。这里的上传直接把七牛云换成了Minio。顺便整理了一下之前写过的两种方式。文件上传：</p>
-<blockquote>
-<p>内链：[[【代码模板】文件存储]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000014/" >【代码模板】文件存储<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h1>支付参数配置</h1>
-<blockquote>
-<p>这个部分是项目的核心，之前做别的项目的时候，接触了微信支付和支付宝支付。就和这个项目中说的一样，用户只能先选择支付类型。再调用对应的接口获取支付二维码。而通过聚合支付这个平台，可以只生成一个链接，根据用户扫码，跳转不同的支付。</p>
-</blockquote>
-<p><strong>商户应该配置哪些第三方支付渠道的参数</strong><br>
-服务类型是闪聚支付平台为商户提供的聚合支付服务通道，共分为线上和线下两大类：</p>
-<p>线上支付服务通道：</p>
+<h2 id="❗Java的基本数据类型">❗Java的基本数据类型</h2>
+<p>byte，short，int，long，float，double，char，boolean</p>
+<h2 id="面向对象的三大特性">面向对象的三大特性</h2>
+<p>继承、多态、封装</p>
+<h2 id="JDK和JRE的区别">JDK和JRE的区别</h2>
+<p>JRE：Java 运⾏时环境。它是运⾏已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，Java 命令和其他的⼀些基础构件。但是，它不能⽤于创建新程序。</p>
+<p>JDK(Java Development Kit)：它是功能⻬全的 Java SDK。它拥有 JRE 所拥有的⼀切，还有编译器（javac）和⼯具（如 javadoc 和 jdb）。它能够创建和编译程序。</p>
+<p><strong>简单来说，JDK 包含 JRE，JRE 包含 JVM。</strong></p>
+<h2 id="Java支持多继承和多实现吗">Java支持多继承和多实现吗</h2>
+<p>不支持多继承，支持多实现。</p>
+<h2 id="构造函数和一般函数有什么区别">构造函数和一般函数有什么区别</h2>
 <ol>
 <li class="lvl-3">
-<p>手机APP支付</p>
+<p>定义格式不同</p>
 </li>
 <li class="lvl-3">
-<p>PC网页支付</p>
-</li>
-<li class="lvl-3">
-<p>手机网页支付</p>
-</li>
-<li class="lvl-3">
-<p>小程序支付线下支付服务通道：</p>
-</li>
-<li class="lvl-3">
-<p>收款码支付(C扫B)：即商户出示付款码，用户扫收款码完成支付。</p>
-</li>
-<li class="lvl-3">
-<p>B扫C：即顾客出示付款码，商户扫描付款码。</p>
+<p>构造函数是在对象创建时，就被调用，用于初始化，而且初始化动作只执行一次。 一般函数，是对象创建后，需要调用才执行，可以被调用多次。</p>
 </li>
 </ol>
-<h2 id="系统交互流程-2">系统交互流程</h2>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>商户应用创建流程<br>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240530/Snipaste_2024-05-30_21-35-45.png"
-                      alt=""
-                ></p>
-</li>
-<li class="lvl-2">
-<p>商户渠道参数配置交互流程<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240530/Snipaste_2024-05-30_21-53-28.png"
-                      alt=""
-                ><br>
-交易服务职责：提供支付渠道参数配置、订单、发起支付、转账、退款等功能。</p>
-</li>
-</ul>
-<h1>对接SAAS</h1>
-<h2 id="系统交互流程-3">系统交互流程</h2>
-<p>商户注册时与SAAS的交互流程已经在商户注册模块给出。</p>
-<h2 id="分布式认证需求">分布式认证需求</h2>
+<h2 id="Java怎么创建对象">Java怎么创建对象</h2>
 <ol>
 <li class="lvl-3">
-<p>统一认证授权分布式系统的每个服务（系统）都会有认证、授权的需求，如果每个服务都实现一套认证授权逻辑会非常冗余，考虑分布式系统共享性的特点，需要由独立的认证服务来处理系统认证授权的请求。如下图，闪聚支付平台包括：商户平台应用、运营平台应用、门户应用，每个应用都需要身份认证，闪聚支付平台统一由UAA认证服务完成认证。<br>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240531/Snipaste_2024-05-31_17-47-47.png"
-                      alt=""
-                ></p>
+<p>使用 new 关键字</p>
 </li>
 <li class="lvl-3">
-<p>开放认证体系考虑分布式系统开放性的特点，UAA认证服务不仅服务于平台自身，并且对第三方系统也要提供认证，平台应提供扩展和开放的认证机制，以开放API的方式供第三方应用接入，一方应用（内部系统服务）和三方应用（第三方应用）均采用统一机制接入。</p>
+<p>使用newInstance方法</p>
 </li>
 </ol>
-<p>分布式系统认证技术方案详见下图：<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240603/Snipaste_2024-06-03_14-11-54.png"
-                      alt=""
-                ><br>
-流程所涉及到统一账号服务、UAA服务、API网关这三个组件职责如下:<br>
-1） 统一账号服务：提供商户和平台运营人员的登录账号、密码、角色、权限、资源等系统级信息的管理，不包含用户业务信息。<br>
-2） 统一认证服务：它承载了OAuth2.0接入方认证、登入用户的认证、授权以及生成令牌的职责，完成实际的用户认证、授权功能。<br>
-3） API网关：作为系统的唯一入口，API网关为接入方提供定制的API集合，它可能还具有其它职责，如身份验证、监控、负载 均衡、缓存等。API网关方式的核心要点是，所有的接入方和消费端都通过统一的网关接入微服务，在网关层处理 所有的非业务功能。</p>
-<h1>BUG记录</h1>
-<h2 id="RestTemplate使用GET请求，返回中文乱码">RestTemplate使用GET请求，返回中文乱码</h2>
 <blockquote>
-<p>内链：[[RestTemplate使用GET请求，返回中文乱码]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000004/" >RestTemplate使用GET请求，返回中文乱码<i class="fas fa-external-link-alt"></i></a></p>
+<p>Java 反射中有一个 newInstance() 方法，可以创建对象，步骤如下：获取要创建的类的 Class 对象。如果只需要调用这个类的访问权限为 public 无参构造器，<strong>直接使用 Class 类的实例方法 newInstance()</strong>。获取 Class 对象的构造器对象，通过调用 Class 类的实例方法 getDeclaredConstractors() 来获取构造器对象的数组。(获取所有构造器，无视访问权限的限制，数组顺序按照代码中的顺序决定)如果调用的构造器是 private 的，需要调用 Constractor 类的父类 AccessibleObject 类的实例方法 setAccessible(true) 来打破访问限制。使用 Constractor 类的实例方法 newInstance()。获取 Class 对象的方法有3个，此处不多赘述。获取Constractor 对象的方法有4个，此处不多赘述。</p>
 </blockquote>
+<ol start="3">
+<li class="lvl-3">
+<p>使用clone()方法</p>
+</li>
+</ol>
+<blockquote>
+<p>Object 类是所有类的直接或间接父类，Object 类中提供了 实例方法 native()，在给定对象的基础上，创建一个完全相同的对象。步骤如下：想要使用 clone() 方法创建对象的类，实现 Cloneable 接口。在类的内部，重写 Object 类的 clone() 方法。备注：没有实现 Cloneable 接口，会抛出 CloneNotSupportedException 异常。Object 类提供的 clone() 方法，访问权限是 protected，所以如果不重写 clone() 方法，是没有权限调用的。Object 类的 clone() 方法，是 native 方法。</p>
+</blockquote>
+<ol start="4">
+<li class="lvl-3">
+<p>❔使用反序列化的readObject()方法</p>
+</li>
+</ol>
+<blockquote>
+<p>这个方法一共分两步：将对象序列化，存储到一个文件中。从文件中反序列化，得到类对象。</p>
+<p>序列化：想要序列化对象的类，实现Serializable接口。使用文件输出流FileOutputStream创建存储序列化之后对象的文件。使用对象输出流ObjectOutputStream的实例方法writeObject(obj)。判断类中是否存在，名为writeReplace()，返回类型为Object的方法，若有，写入这个方法的返回值；否则，写入obj对象。</p>
+<p>反序列化：使用文件输入流FileInputStream找到存储序列化对象的文件。使用对象输入流ObjectInputStream的实例方法readObject()。判断类中是否存在，名为readResolve()，返回类型为Object的方法，若有读取这个对象；否则，反序列化文件中的对象流。</p>
+<p>备注：在类中，writeReplace()和readResoleve()是两个非常特殊的方法，其特征签名需要严格限制：方法名限定，参数个数限定为0，返回类型必须是Object，不能为Object的子类，但是可以抛出不同的异常。访问修饰符没有限制，但一般推荐为private，防止误操作。其特殊的地方还在于将其设为private方法，没有其他方法调用的情况下，编译器不会发出警告。</p>
+</blockquote>
+<h2 id="Java中的异常">Java中的异常</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Throwable -&gt;Exception -&gt; ClassNotFoundException</span><br><span class="line">					  -&gt; IOException</span><br><span class="line">					  -&gt; RuntimeException      -&gt; NullPointerException</span><br><span class="line">											  -&gt; NumberFormatException</span><br><span class="line">											  -&gt; IndexOutOfBoundsException</span><br><span class="line">					  ......</span><br><span class="line">          -&gt;Error</span><br></pre></td></tr></table></figure>
+<h2 id="❗抽象类和接口的区别">❗抽象类和接口的区别</h2>
+<ol>
+<li class="lvl-3">
+<p>定义：接口定义：interface；抽象类：abstrat class;</p>
+</li>
+<li class="lvl-3">
+<p>抽象类可以定义构造方法供子类调用，接口不可以；</p>
+</li>
+<li class="lvl-3">
+<p>接口的所有方法都是抽象方法，所有属性都是常量：static final 类型；而抽象类中可以有不是抽象的方法和不是常量的属性；</p>
+</li>
+<li class="lvl-3">
+<p>抽象类只能单继承，而接口之间可以多继承，接口之间的继承用extexds,类实现接口用implements.</p>
+</li>
+</ol>
+<h2 id="和equals"><code>==</code>和<code>equals()</code></h2>
+<p><code>==</code>：</p>
+<ol>
+<li class="lvl-3">
+<p>如果比较的对象是基本数据类型，则比较的是其存储的值是否相等；</p>
+</li>
+<li class="lvl-3">
+<p>如果比较的是引用数据类型，则比较的是所指向对象的地址值是否相等（是否是同一个对象）。<code>equals</code>：</p>
+</li>
+<li class="lvl-3">
+<p>如果没有对 equals 方法进行重写，则相当于<code>==</code>，比较的是引用类型的变量所指向的对象的地址值。</p>
+</li>
+<li class="lvl-3">
+<p>一般情况下，类会重写equals方法用来比较两个对象的内容是否相等。比如String类中的equals()是被重写了，比较的是对象的值。</p>
+</li>
+</ol>
+<h2 id="为什么重写equals方法，还必须要重写hashcode方法">为什么重写equals方法，还必须要重写hashcode方法</h2>
+<ol>
+<li class="lvl-3">
+<p>保证是同一个对象，如果重写了equals方法，而没有重写hashcode方法，会出现equals相等的对象，hashcode不相等的情况，重写hashcode方法就是为了避免这种情况的出现。</p>
+</li>
+<li class="lvl-3">
+<p>使用hashcode方法提前校验，可以避免每一次比对都调用equals方法，提高效率</p>
+</li>
+</ol>
+<p>重写后：</p>
+<ol>
+<li class="lvl-3">
+<p>equals()相等的两个对象，hashcode()一定相等；</p>
+</li>
+<li class="lvl-3">
+<p>hashcode()不等，一定能推出equals()也不等；</p>
+</li>
+<li class="lvl-3">
+<p>hashcode()相等，equals()可能相等，也可能不等。</p>
+</li>
+<li class="lvl-3">
+<p>所以先进行hashcode（）判断，不等就不用equals（）方法了。</p>
+</li>
+<li class="lvl-3">
+<p>但equels是是根据对象的特征进行重写的，有时候特征相同，但hash值不同，也不是一个对象。 所以两个都重写才能保障是同一个对象。</p>
+</li>
+</ol>
 
             </div>
 
@@ -410,16 +387,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">聚合支付-功能实现</span>
+            <span class="type">本文标题</span>：<span class="content">面试-基础</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Kiml</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2024-05-23 09:59:53</span>
+            <span class="type">创建时间</span>：<span class="content">2024-06-03 21:09:05</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2024/05/23/100000008/</span>
+            <span class="type">本文链接</span>：<span class="content">2024/06/03/100000025/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -437,7 +414,11 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/Java/">#Java</a>&nbsp;
+                            <a href="/tags/%E9%9D%A2%E8%AF%95/">#面试</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">#八股文</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -449,13 +430,13 @@
                         <div class="article-prev">
                             <a class="prev"
                                rel="prev"
-                               href="/2024/05/23/100000004/"
+                               href="/2024/06/03/100000024/"
                             >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                                 <span class="title flex-center">
-                                <span class="post-nav-title-item">RestTemplate使用GET请求，返回中文乱码</span>
+                                <span class="post-nav-title-item">面试-并发</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                             </a>
@@ -465,10 +446,10 @@
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2024/05/22/100000002/"
+                               href="/2024/06/03/100000023/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">优化 Hexo 网站的永久链接格式</span>
+                                <span class="post-nav-title-item">代码随想录算法训练营第十三天-层序遍历、226翻转二叉树、101对称二叉树 2</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -487,7 +468,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-number">1.3.</span> <span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-number">2.1.</span> <span class="nav-text">系统交互流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">对接SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-number">3.1.</span> <span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-number">3.2.</span> <span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">BUG记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RestTemplate%E4%BD%BF%E7%94%A8GET%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-number">4.1.</span> <span class="nav-text">RestTemplate使用GET请求，返回中文乱码</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">❗Java的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK%E5%92%8CJRE%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">JDK和JRE的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-number">4.</span> <span class="nav-text">Java支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">6.</span> <span class="nav-text">Java怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-number">7.</span> <span class="nav-text">Java中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">8.</span> <span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8Cequals"><span class="nav-number">9.</span> <span class="nav-text">&#x3D;&#x3D;和equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99equals%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95"><span class="nav-number">10.</span> <span class="nav-text">为什么重写equals方法，还必须要重写hashcode方法</span></a></li></ol>
     </div>
 </div>
 

@@ -194,7 +194,7 @@
                         <div class="author">
                             <span class="name">Kiml</span>
                             
-                                <span class="author-label">B</span>
+                                <span class="author-label">A</span>
                             
                         </div>
                         <div class="meta-info">
@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-03 10:17:33</span>
+        <span class="pc">2024-06-03 21:14:41</span>
     </span>
     
     
@@ -253,12 +253,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>2.5k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.8k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>8 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>10 分钟</span>
         </span>
     
     
@@ -279,7 +279,7 @@
                 <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-HashMap常见问题。❗表示必掌握，❔表示基本不会问</p>
+集合常见问题，其中HashMap很重要❗表示必掌握，❔表示基本不会问</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
@@ -302,7 +302,7 @@ iterator是最强大的，他可以随时修改或者删除集合内部的元素
 <h2 id="ArrayList和LinkedList的底层原理">ArrayList和LinkedList的底层原理</h2>
 <p>首先，List集合是有序集合，即存取有序，List集合的特点是存取顺序一致，存储元素可重复，都有索引。<br>
 ArrayList的底层是数组，一个索引对应一个元素，所以查询速度快；但是在增删时，需要调整整组数据的移动，所以增删较慢。而LinkedList的底层是双向链表，每次查询时都要从两头开始查询（离头近就从头查，离尾近就从尾查），所以查询较慢；但是增删时，只需要将链表头结点和尾结点指向新插入的结点即可，所以增删速度较快。但如果是新增的数据量较大的情况下，ArrayList的新增效率反面比LinkedList的效率更高。因为ArrayListr底层数组的扩容是1.5倍，数据量越大，扩容的速度就越快，而链表仍需一个个断开链接和重续新链接。最后，<strong>jdk8版还对ArrayList做了懒加载优化，在之前是构造ArrayList时就默认开辟10个空间，jdk8之后变成了只有放入第1个元素时，才会开辟10个空间。</strong><br>
-❗❗数组初始化大小是10。</p>
+❗❗<strong>数组的起始长度是0，在向数组中添加第一个元素时，数组容量扩为10。</strong> 后续扩容因子为1.5倍。每次扩容都是复制到新的数组。</p>
 <h2 id="分别讲一下Set集合和Tree这种数据结构">分别讲一下Set集合和Tree这种数据结构</h2>
 <p>Set集合的特点是必须排序，没有索引，不可重复。Set集合分为HashSet和TreeSet，HashSet底层使用的是哈希表，它的排序规则是按照底Hash函数决定的，无法人为设置；而TreeSet的底层则是使用红黑树，可以使用自然排序（自定义类中实现Comparable接口，重写CompareTo方法）或比较器排序（在创建TreeSet对象创建一个Comparator的匿名内部类，并重写Compare方法），扩容时通过结点链接。<br>
  <br>
@@ -326,7 +326,7 @@ JDK8及之后，变成了【数组】+【链表】+【红黑树】</strong></p>
 <p>hash冲突，链表+红黑树，O(n)和O(logn)</p>
 <h3 id="❗HashMap如何进行扩容？">❗HashMap如何进行扩容？</h3>
 <p>2倍扩容。扩容之后要进行rehash。即hash值与新数组长度<code>(n - 1)</code>进行与操作。如果值与原来不一样，新的index就是<code>旧index + oldCap</code>，通过这个方式，避免了rehash的时候，进行取模（效率不高）。</p>
-<p>Hash表中数组的分手手动初始化，和自动初始化，自动初初始会在第一次插入元素时开辟空间，默认长度为16，扩容因子为0.75，每次扩容量为自身的2倍长度，扩容之后存入数组的新索引位置就会改变。手动初始化的话，可以在创建对象时自定义初始数组长度，但HashMap不一定会自主设置的数值初始化数组，而按2的n次方创建。</p>
+<p>Hash表中数组的分手手动初始化，和自动初始化，自动初初始会在第一次插入元素时开辟空间，<strong>默认长度为16</strong>，扩容因子为0.75，<strong>每次扩容量为自身的2倍长度</strong>，扩容之后存入数组的新索引位置就会改变。手动初始化的话，可以在创建对象时自定义初始数组长度，但HashMap不一定会自主设置的数值初始化数组，而按2的n次方创建。</p>
 <p>HashMap1.7版本的的扩容时机是先判断是否达到阈值，达到先扩容，再添加元素，并且采用的是头插法，也就是旧元素挂在新元素下。而HashMap1.8的扩容时机是先添加元素是否达到阈值，达到直接扩容，且使用的是尾插法，即新元素挂在旧元素下面。</p>
 <p>初始化后，当存入新的键值对时，会先判断数组长度是否大于64，再判断链表元素是否大于等于8时，如果两者都成立，链表会自动转换成红黑树，如果数组小于64，会从第9个开始先扩容，直到数组大于等于64时，链表长度再增加，就会转为红黑树。</p>
 <h4 id="❔为什么要转为红黑树呢？">❔为什么要转为红黑树呢？</h4>
@@ -339,6 +339,11 @@ JDK8及之后，变成了【数组】+【链表】+【红黑树】</strong></p>
 <p>当哈希冲突个数从第8个变到第6个时，红黑树转化为链表。</p>
 <h4 id="❔6与8之间的第7个冲突时，会是什么状态？">❔6与8之间的第7个冲突时，会是什么状态？</h4>
 <p>分情况看。8退6，是红黑树转链表，6进8，是链表转红黑树，中间的7是防止频繁变动做的一个预留位，如果是8退6，中间的7就是红黑树；如果是6进8，中间的7就是链表。</p>
+<h3 id="为什么1-7是头插法，1-8是尾插法？">为什么1.7是头插法，1.8是尾插法？</h3>
+<p>1.7版本使用头插法是因为头插法是操作速度最快的，找到数组位置就直接找到插入位置了，但这样插入方法在并发场景下会因为多个线程同时扩容出现循环列表，也就是Hashmap的死锁问题。</p>
+<p>1.8版本加入了红黑树来优化哈希桶中的遍历效率，相比头插法而言，尾插法在操作额外的遍历消耗（指遍历哈希桶）已经小很多，也可以避免之前的循环列表问题，同时如果已经变成红黑树了，也不能再用头插法了，而是按红黑树自己的规则排列了。</p>
+<h4 id="❗多线程下的HashMap线程安全吗？为什么？">❗多线程下的HashMap线程安全吗？为什么？</h4>
+<p>HashMap本身就是不安全的，多线程下，在添加元素时容易出现数据覆盖情况而丢失数据，也可能在扩容时，迁移数据出现数据覆盖情况而丢失数据。</p>
 
             </div>
 
@@ -433,7 +438,7 @@ JDK8及之后，变成了【数组】+【链表】+【红黑树】</strong></p>
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Java集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%80%92%E5%BA%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">迭代器倒序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8foreach%E3%80%81iterator%E3%80%81for%E5%9C%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E6%95%88%E7%8E%87%E4%B8%8A%E5%93%AA%E4%B8%AA%E6%9B%B4%E9%AB%98%EF%BC%9F"><span class="nav-number">1.1.3.</span> <span class="nav-text">使用foreach、iterator、for在有什么区别？效率上哪个更高？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList%E5%92%8CLinkedList%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">ArrayList和LinkedList的底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%88%AB%E8%AE%B2%E4%B8%80%E4%B8%8BSet%E9%9B%86%E5%90%88%E5%92%8CTree%E8%BF%99%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">分别讲一下Set集合和Tree这种数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap"><span class="nav-number">1.4.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97HashMap%E5%BA%95%E5%B1%82%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.1.</span> <span class="nav-text">❗HashMap底层的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JDK-1-8-%E4%B8%AD%E5%AF%B9hash%E7%AE%97%E6%B3%95%E5%92%8C%E5%AF%BB%E5%9D%80%E7%AE%97%E6%B3%95%E6%98%AF%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E7%9A%84%EF%BC%9F"><span class="nav-number">1.4.2.</span> <span class="nav-text">❗JDK 1.8 中对hash算法和寻址算法是如何优化的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97HashMap%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3hash%E7%A2%B0%E6%92%9E%EF%BC%9F"><span class="nav-number">1.4.3.</span> <span class="nav-text">❗HashMap如何解决hash碰撞？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97HashMap%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%AE%B9%EF%BC%9F"><span class="nav-number">1.4.4.</span> <span class="nav-text">❗HashMap如何进行扩容？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%94%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BD%AC%E4%B8%BA%E7%BA%A2%E9%BB%91%E6%A0%91%E5%91%A2%EF%BC%9F"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">❔为什么要转为红黑树呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%94%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E7%BA%A2%E9%BB%91%E6%A0%91%E5%91%A2%EF%BC%9F"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">❔为什么不直接使用红黑树呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%94%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BD%AC%E4%B8%BA%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%98%AF8%E8%80%8C%E4%B8%8D%E6%98%AF%E7%AC%AC9%E7%AC%AC10%E4%B8%AA%E5%91%A2%EF%BC%9F"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">❔为什么转为红黑树的条件是8而不是第9第10个呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%94%E9%82%A3%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%80%E5%87%BA%E7%BA%A2%E9%BB%91%E6%A0%91%E5%91%A2%EF%BC%9F"><span class="nav-number">1.4.4.4.</span> <span class="nav-text">❔那什么时候退出红黑树呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%946%E4%B8%8E8%E4%B9%8B%E9%97%B4%E7%9A%84%E7%AC%AC7%E4%B8%AA%E5%86%B2%E7%AA%81%E6%97%B6%EF%BC%8C%E4%BC%9A%E6%98%AF%E4%BB%80%E4%B9%88%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="nav-number">1.4.4.5.</span> <span class="nav-text">❔6与8之间的第7个冲突时，会是什么状态？</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Java集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">迭代器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%80%92%E5%BA%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">迭代器倒序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8foreach%E3%80%81iterator%E3%80%81for%E5%9C%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E6%95%88%E7%8E%87%E4%B8%8A%E5%93%AA%E4%B8%AA%E6%9B%B4%E9%AB%98%EF%BC%9F"><span class="nav-number">1.1.3.</span> <span class="nav-text">使用foreach、iterator、for在有什么区别？效率上哪个更高？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList%E5%92%8CLinkedList%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">ArrayList和LinkedList的底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%88%AB%E8%AE%B2%E4%B8%80%E4%B8%8BSet%E9%9B%86%E5%90%88%E5%92%8CTree%E8%BF%99%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">分别讲一下Set集合和Tree这种数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap"><span class="nav-number">1.4.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97HashMap%E5%BA%95%E5%B1%82%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.4.1.</span> <span class="nav-text">❗HashMap底层的数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JDK-1-8-%E4%B8%AD%E5%AF%B9hash%E7%AE%97%E6%B3%95%E5%92%8C%E5%AF%BB%E5%9D%80%E7%AE%97%E6%B3%95%E6%98%AF%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E7%9A%84%EF%BC%9F"><span class="nav-number">1.4.2.</span> <span class="nav-text">❗JDK 1.8 中对hash算法和寻址算法是如何优化的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97HashMap%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3hash%E7%A2%B0%E6%92%9E%EF%BC%9F"><span class="nav-number">1.4.3.</span> <span class="nav-text">❗HashMap如何解决hash碰撞？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97HashMap%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%AE%B9%EF%BC%9F"><span class="nav-number">1.4.4.</span> <span class="nav-text">❗HashMap如何进行扩容？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%94%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BD%AC%E4%B8%BA%E7%BA%A2%E9%BB%91%E6%A0%91%E5%91%A2%EF%BC%9F"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">❔为什么要转为红黑树呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%94%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8%E7%BA%A2%E9%BB%91%E6%A0%91%E5%91%A2%EF%BC%9F"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">❔为什么不直接使用红黑树呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%94%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BD%AC%E4%B8%BA%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%9D%A1%E4%BB%B6%E6%98%AF8%E8%80%8C%E4%B8%8D%E6%98%AF%E7%AC%AC9%E7%AC%AC10%E4%B8%AA%E5%91%A2%EF%BC%9F"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">❔为什么转为红黑树的条件是8而不是第9第10个呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%94%E9%82%A3%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%80%80%E5%87%BA%E7%BA%A2%E9%BB%91%E6%A0%91%E5%91%A2%EF%BC%9F"><span class="nav-number">1.4.4.4.</span> <span class="nav-text">❔那什么时候退出红黑树呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%946%E4%B8%8E8%E4%B9%8B%E9%97%B4%E7%9A%84%E7%AC%AC7%E4%B8%AA%E5%86%B2%E7%AA%81%E6%97%B6%EF%BC%8C%E4%BC%9A%E6%98%AF%E4%BB%80%E4%B9%88%E7%8A%B6%E6%80%81%EF%BC%9F"><span class="nav-number">1.4.4.5.</span> <span class="nav-text">❔6与8之间的第7个冲突时，会是什么状态？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%881-7%E6%98%AF%E5%A4%B4%E6%8F%92%E6%B3%95%EF%BC%8C1-8%E6%98%AF%E5%B0%BE%E6%8F%92%E6%B3%95%EF%BC%9F"><span class="nav-number">1.4.5.</span> <span class="nav-text">为什么1.7是头插法，1.8是尾插法？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84HashMap%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">❗多线程下的HashMap线程安全吗？为什么？</span></a></li></ol></li></ol></li></ol></li></ol>
     </div>
 </div>
 
