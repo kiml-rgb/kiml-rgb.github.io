@@ -6,7 +6,7 @@
   <link href="https://kiml.github.io/atom.xml" rel="self"/>
   
   <link href="https://kiml.github.io/"/>
-  <updated>2024-06-05T08:38:40.686Z</updated>
+  <updated>2024-06-05T08:39:12.205Z</updated>
   <id>https://kiml.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kiml.github.io/2024/06/05/100000027/"/>
     <id>https://kiml.github.io/2024/06/05/100000027/</id>
     <published>2024-06-05T08:31:33.000Z</published>
-    <updated>2024-06-05T08:38:40.686Z</updated>
+    <updated>2024-06-05T08:39:12.205Z</updated>
     
     <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>前言<br>参考文章：<a class="link"   href="https://blog.csdn.net/qq_41169544/article/details/127664756" >mapstruct 报错 java.lang.ClassNotFoundException: Cannot find implementation for<i class="fas fa-external-link-alt"></i></a></p></li><li class="lvl-2"><p>更新</p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.06.05 初始记录</span><br></pre></td></tr></table></figure><span id="more"></span><h1>问题</h1><p>使用mapstruct转换对象，接口可以启动，但是执行报错：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.lang.ClassNotFoundException: Cannot find implementation for com.…….convert.AuthorizationPrivilegeConvert</span><br></pre></td></tr></table></figure><h1>原因</h1><p>注解没有引用全。</p><h1>解决</h1><p>添加依赖，重启服务。</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mapstruct<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mapstruct-jdk8<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>……<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mapstruct<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mapstruct-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>……<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
     
@@ -38,6 +38,10 @@
 &lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;24.06.05 初始记录&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
+    
+    <category term="bug记录" scheme="https://kiml.github.io/categories/bug%E8%AE%B0%E5%BD%95/"/>
+    
+    <category term="2024" scheme="https://kiml.github.io/categories/bug%E8%AE%B0%E5%BD%95/2024/"/>
     
     
     <category term="Java" scheme="https://kiml.github.io/tags/Java/"/>
