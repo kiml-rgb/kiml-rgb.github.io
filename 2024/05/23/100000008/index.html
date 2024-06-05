@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-04 18:33:30</span>
+        <span class="pc">2024-06-05 16:34:57</span>
     </span>
     
     
@@ -245,7 +245,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.8k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.9k 字</span>
         </span>
     
     
@@ -271,7 +271,8 @@
                 <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-第一部分-商户注册和资质申请</p>
+第一部分-商户注册和资质申请第二部分-对接SAAS<br>
+第三部分-闪聚支付</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
@@ -291,7 +292,12 @@
 1）商户平台应用：此应用主要为商户提供业务功能，包括：商户资质申请、员工管理、门店管理等功能。<br>
 2）商户服务： 提供商户管理的相关服务接口，供其它微服务调用，主要为商户平台应用提供接口服务，功能包括：商户基本信息管理、资质申请、商户应用管理、渠道参数配置、商户员工信息管理、商户门店管理等。<br>
 3）SaaS平台：闪聚支付项目是一个SaaS平台 ，所谓SaaS平台即多个用户租用平台的业务功能，这样用户即可省去软件系统开发的成本，每个商户就是一个租户，所以又称为多租户系统。 SaaS平台提供租户管理、账号管理、权限管理、资源管理、套餐管理、系统认证授权等功业务功能。在上图商户注册的流程中，商户注册的账号等信息需要写入SaaS平台，由SaaS平台统一管理账号，分配权限，商户统一通过SaaS平台登录闪聚支付。<br>
-4）验证码服务：提供获取短信验证码、校验验证码的接口。 商户使用手机号进行注册，平台通过校验手机验证码来确认是否本人在注册。<br>
+4）验证码服务：提供获取短信验证码、校验验证码的接口。 商户使用手机号进行注册，平台通过校验手机验证码来确认是否本人在注册。<img  
+                     lazyload
+                     alt="image"
+                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240523/Snipaste_2024-05-23_09-58-03.png"
+                      alt="Snipaste_2024-05-23_09-58-03.png"
+                ><br>
 <img  
                      lazyload
                      alt="image"
@@ -403,6 +409,12 @@
 </blockquote>
 <h2 id="项目中访问Swagger地址，404（未解决）">项目中访问Swagger地址，404（未解决）</h2>
 <p>不管怎么访问swagger的页面地址，都返回404。但是直接用apifox的URL导入，是可以成功的🥴。</p>
+<h2 id="使用mapstruct转换对象，报错Cannot-find-implementation-for……">使用mapstruct转换对象，报错Cannot find implementation for……</h2>
+<p>这个项目中是因为User微服务没有依赖mapstruct。但是swagger中有这个依赖，他直接用了swagger中的依赖。网上搜索还有一种情况可能出现这个问题。</p>
+<blockquote>
+<p>内链：[[使用mapstruct转换对象，报错Cannot find implementation for……]]<br>
+外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000004/" >使用mapstruct转换对象，报错Cannot find implementation for……<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
 
             </div>
 
@@ -489,7 +501,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-number">1.3.</span> <span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-number">2.1.</span> <span class="nav-text">系统交互流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">对接SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-number">3.1.</span> <span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-number">3.2.</span> <span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">BUG记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RestTemplate%E4%BD%BF%E7%94%A8GET%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-number">4.1.</span> <span class="nav-text">RestTemplate使用GET请求，返回中文乱码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AESwagger%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">项目中访问Swagger地址，404（未解决）</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-number">1.3.</span> <span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-number">2.1.</span> <span class="nav-text">系统交互流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">对接SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-number">3.1.</span> <span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-number">3.2.</span> <span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">BUG记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RestTemplate%E4%BD%BF%E7%94%A8GET%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-number">4.1.</span> <span class="nav-text">RestTemplate使用GET请求，返回中文乱码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AESwagger%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">项目中访问Swagger地址，404（未解决）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8mapstruct%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-number">4.3.</span> <span class="nav-text">使用mapstruct转换对象，报错Cannot find implementation for……</span></a></li></ol></li></ol>
     </div>
 </div>
 
