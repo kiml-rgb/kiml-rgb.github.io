@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-05 09:05:14</span>
+        <span class="pc">2024-06-06 08:59:20</span>
     </span>
     
     
@@ -246,6 +246,10 @@
                         | <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>&nbsp;
                     </li>
                 
+                    <li>
+                        | <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>&nbsp;
+                    </li>
+                
             </ul>
         </span>
     
@@ -253,12 +257,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.3k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>8 分钟</span>
         </span>
     
     
@@ -287,6 +291,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.06.03 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
+<h1>高并发（锁）</h1>
 <h2 id="❗说说synchronized关键字的底层原理">❗说说synchronized关键字的底层原理</h2>
 <p><strong>因为synchronized可以同时保证原子性、可见性和有序性，所以在并发编程中经常会用到他，synchronized主要有三种用法</strong>：修饰实例方法、修饰静态方法、修饰代码块。</p>
 <p>synchronized 修饰代码块时，JVM 采用monitorenter 、monitorexit 两个指令来实现同步，monitorenter 指令指向同步代码块的开始位置， monitorexit 指令则指向同步代码块的结束位置。</p>
@@ -309,12 +314,123 @@ JDK1.8以后，数组里每个元素进行put操作，都是有一个不同的�
 <p>大白话：AQS底层有个state，多个线程执行CAS更新state；还有一个变量记录加锁线程。AQS中会有一个等待队列的概念。当前一个线程释放了锁，会去唤醒等待队列中的队首元素。</p>
 <p>非公平锁：在唤醒等待队列的过程中，如果有另一个线程抢占锁，是可以成功的。公平锁：在唤醒等待队列的过程中，如果需要抢占锁，需要加入到等待队列内，进行等待。</p>
 <h3 id="ReentrantLock与Synchronized的区别。">ReentrantLock与Synchronized的区别。</h3>
-<h2 id="说说线程池的底层工作原理">说说线程池的底层工作原理</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>二者的本质区别：synchronized 是关键字，ReentrantLock 是一个类 相同点：这两个都是可重入锁。</p>
+</li>
+<li class="lvl-2">
+<p>ReentrantLock 必须手动获取与释放锁，而 synchronized 不需要手动释放和开启锁</p>
+</li>
+<li class="lvl-2">
+<p>ReentrantLock 只适用于代码块锁，而 synchronized 可以修饰类、方法、变量等。</p>
+</li>
+</ul>
+<h1>多线程</h1>
+<h2 id="❗创建线程的4种方法">❗创建线程的4种方法</h2>
+<ol>
+<li class="lvl-3">
+<p>继承 Thread 类通过继承 Thread 类，并重写它的 run 方法，我们就可以创建一个线程。</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>首先定义一个类来继承 Thread 类，重写 run 方法。</p>
+</li>
+<li class="lvl-2">
+<p>然后创建这个子类对象，并调用 start 方法启动线程。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">5</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * 重写父类中的run()， 执行具体的业务逻辑  </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;  </span><br><span class="line">        count--;  </span><br><span class="line">        System.out.println(count);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        <span class="comment">//1. 创建线程对象的实例， 该对象必须继承Thread类及重写了run()  </span></span><br><span class="line">        <span class="type">MyThread</span> <span class="variable">my</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyThread</span>();  </span><br><span class="line">  </span><br><span class="line">        <span class="comment">//2. 创建多个线程的实例， 进入线程的初始化状态  </span></span><br><span class="line">        <span class="type">Thread</span> <span class="variable">t1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(my);  </span><br><span class="line">        <span class="type">Thread</span> <span class="variable">t2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(my);  </span><br><span class="line">        <span class="type">Thread</span> <span class="variable">t3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(my);  </span><br><span class="line">  </span><br><span class="line">      <span class="comment">/*3. 启动线程， 线程只有执行start()之后才算是真正的启动, 才会执行run()方法里面的具体逻辑  </span></span><br><span class="line"><span class="comment">         线程启动后会进入线程的就绪状态，等待CPU的调用*/</span>  </span><br><span class="line">        t1.start();  </span><br><span class="line">        t2.start();  </span><br><span class="line">        t3.start();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-3">
+<p>实现 Runnable 接口通过实现 Runnable ，并实现 run 方法，也可以创建一个线程。</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>首先定义一个类实现 Runnable 接口，并实现 run 方法。</p>
+</li>
+<li class="lvl-2">
+<p>然后创建 Runnable 实现类对象，并把它作为 target 传入 Thread 的构造函数中</p>
+</li>
+<li class="lvl-2">
+<p>最后调用 start 方法启动线程。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RunnableThread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;  </span><br><span class="line">        System.out.println(<span class="string">&quot;thread run ......&quot;</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">RunnableThread</span>()).run();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li class="lvl-3">
+<p>实现 Callable 接口，并结合 Future 实现</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>首先定义一个 Callable 的实现类，并实现 call 方法。call 方法是带返回值的。</p>
+</li>
+<li class="lvl-2">
+<p>然后通过 FutureTask 的构造方法，把这个 Callable 实现类传进去。</p>
+</li>
+<li class="lvl-2">
+<p>把 FutureTask 作为 Thread 类的 target ，创建 Thread 线程对象。</p>
+</li>
+<li class="lvl-2">
+<p>通过 FutureTask 的 get 方法获取线程的执行结果。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestFuture</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException &#123; </span><br><span class="line">        <span class="type">FutureTask</span> <span class="variable">futureTask</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FutureTask</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">CallableThread</span>());  </span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(futureTask).start();  </span><br><span class="line">        <span class="type">Object</span> <span class="variable">o</span> <span class="operator">=</span> futureTask.get();  </span><br><span class="line">        System.out.println(o);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CallableThread</span> <span class="keyword">implements</span> <span class="title class_">Callable</span> &#123;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;  </span><br><span class="line">        System.out.println(<span class="string">&quot;call一下&quot;</span>);  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li class="lvl-3">
+<p>通过线程池创建线程此处用 JDK 自带的 Executors 来创建线程池对象。</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>首先，定一个 Runnable 的实现类，重写 run 方法。</p>
+</li>
+<li class="lvl-2">
+<p>然后创建一个拥有固定线程数的线程池。</p>
+</li>
+<li class="lvl-2">
+<p>最后通过 ExecutorService 对象的 execute 方法传入线程对象。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExecutorThread</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span>&#123;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;  </span><br><span class="line">        System.out.println(<span class="string">&quot;run一下&quot;</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">10</span>);  </span><br><span class="line">        executorService.execute(<span class="keyword">new</span> <span class="title class_">ExecutorThread</span>());  </span><br><span class="line">        executorService.shutdown();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>线程池</h1>
+<h2 id="❗说说线程池的底层工作原理">❗说说线程池的底层工作原理</h2>
 <p>避免频繁的创建线程，销毁线程……</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ExecutorService</span> <span class="variable">threadPool</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">10</span>) <span class="comment">// corePoolSize</span></span><br></pre></td></tr></table></figure>
-<p>如果线程池内数量小于corePoolSize，就会创建一个线程执行任务。线程池一般会带一个队列，当线程执行任务完成，会等待阻塞在队列上（队首），尝试从队列继续获取任务。如果任务多于corePoolSize，会进入阻塞队列。</p>
-<p>FixedThreadPool的队列是LinkedBlockingQueue，无界阻塞队列，即队列长度无线大。</p>
-<h2 id="线程池的核心配置参数">线程池的核心配置参数</h2>
+<p>如果线程池内数量小于corePoolSize，就会创建一个线程执行任务。线程池一般会带一个队列，当线程执行任务完成，会等待阻塞在队列上（队首），尝试从队列继续获取任务。如果任务多于corePoolSize，会进入阻塞队列。如果阻塞队列满了，可以根据maximumPoolSize创建额外的线程。额外线程的空闲时间根据keepAliveTime进行自行销毁。</p>
+<p>如果额外的线程都创建完了，队列还是满的，还有新来的任务。会reject掉，有几种reject策略，可以传入RejectedExecutionHandler。</p>
+<ol>
+<li class="lvl-3">
+<p>AbortPolicy：抛异常</p>
+</li>
+<li class="lvl-3">
+<p>DiscardPolicy：扔掉</p>
+</li>
+<li class="lvl-3">
+<p>DiscardOldestPolicy：删除最旧的任务</p>
+</li>
+<li class="lvl-3">
+<p>CallerRunsPolicy</p>
+</li>
+<li class="lvl-3">
+<p>自定义</p>
+</li>
+</ol>
+<p>（常用）FixedThreadPool的队列是LinkedBlockingQueue，无界阻塞队列，即队列长度无线大。corePoolSize与maximumPoolSize一样大。</p>
+<h3 id="❗线程池的核心配置参数">❗线程池的核心配置参数</h3>
+<p>代表线程池的类是ThreadPoolExecutor。corePoolSize（核心线程数），maximumPoolSize（线程池），keepAliveTime（多余的空闲线程在终止之前等待新任务的最长时间），workQueue（阻塞队列）。</p>
+<h3 id="❗如果在线程池中使用无界阻塞队列会发生什么问题？">❗如果在线程池中使用无界阻塞队列会发生什么问题？</h3>
+<blockquote>
+<p>面试题：在远程服务异常的情况下，使用无界阻塞队列，是否会导致内存异常飙升？</p>
+<p>调用超时，队列变得越来越大，会导致内存飙升，可能还会导致OOM</p>
+</blockquote>
+<h3 id="❗线程池队列满了之后，会发生什么事情">❗线程池队列满了之后，会发生什么事情</h3>
+<p>无界队列，内存溢出。有界队列，但是如果maximumPoolSize数量很大，可以无限制创建线程，但是每个线程占用栈内存，可能会导致内存资源耗尽，或者线程太多，CPU负载太高。有界队列，maximumPoolSize数量固定，多余的任务会被拒绝。</p>
+<p>建议：自定义一个reject策略，如果线程池无法执行更多任务，可以把任务信息持久化写入磁盘。等负载降低重新执行这些任务。</p>
+<h3 id="❗如果线上机器突然宕机，线程池的阻塞队列中的请求怎么办？">❗如果线上机器突然宕机，线程池的阻塞队列中的请求怎么办？</h3>
+<p>线程池内积压的任务丢失。解决：在提交任务前，在数据库内插入任务信息，并更新他的状态：已提交、未提交、已完成……。系统重启后把任务状态重新提交。</p>
 
             </div>
 
@@ -360,6 +476,10 @@ JDK1.8以后，数组里每个元素进行put操作，都是有一个不同的�
                     
                         <li class="tag-item">
                             <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">#多线程</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">#线程池</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -409,7 +529,7 @@ JDK1.8以后，数组里每个元素进行put操作，都是有一个不同的�
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E8%AF%B4synchronized%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">❗说说synchronized关键字的底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9CAS%E7%9A%84%E7%90%86%E8%A7%A3%E5%8F%8A%E5%85%B6%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">❗对CAS的理解及其底层实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97CAS%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%BB%8F%E5%85%B8%E7%9A%84ABA%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">❗CAS会出现经典的ABA问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97ConcurrentHashMap%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">❗ConcurrentHashMap实现线程安全的底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9JDK%E4%B8%AD%E7%9A%84AQS%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%8CAQS%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">❗对JDK中的AQS的理解，AQS的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ReentrantLock%E4%B8%8ESynchronized%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82"><span class="nav-number">4.1.</span> <span class="nav-text">ReentrantLock与Synchronized的区别。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%BA%95%E5%B1%82%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">说说线程池的底层工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">线程池的核心配置参数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">高并发（锁）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E8%AF%B4synchronized%E5%85%B3%E9%94%AE%E5%AD%97%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">❗说说synchronized关键字的底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9CAS%E7%9A%84%E7%90%86%E8%A7%A3%E5%8F%8A%E5%85%B6%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">❗对CAS的理解及其底层实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97CAS%E4%BC%9A%E5%87%BA%E7%8E%B0%E7%BB%8F%E5%85%B8%E7%9A%84ABA%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.1.</span> <span class="nav-text">❗CAS会出现经典的ABA问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97ConcurrentHashMap%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">❗ConcurrentHashMap实现线程安全的底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9JDK%E4%B8%AD%E7%9A%84AQS%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%8CAQS%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">❗对JDK中的AQS的理解，AQS的实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ReentrantLock%E4%B8%8ESynchronized%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82"><span class="nav-number">1.4.1.</span> <span class="nav-text">ReentrantLock与Synchronized的区别。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">❗创建线程的4种方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E8%AF%B4%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%BA%95%E5%B1%82%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">❗说说线程池的底层工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.1.</span> <span class="nav-text">❗线程池的核心配置参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%A6%82%E6%9E%9C%E5%9C%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%97%A0%E7%95%8C%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">3.1.2.</span> <span class="nav-text">❗如果在线程池中使用无界阻塞队列会发生什么问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%BA%BF%E7%A8%8B%E6%B1%A0%E9%98%9F%E5%88%97%E6%BB%A1%E4%BA%86%E4%B9%8B%E5%90%8E%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E4%BA%8B%E6%83%85"><span class="nav-number">3.1.3.</span> <span class="nav-text">❗线程池队列满了之后，会发生什么事情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%A6%82%E6%9E%9C%E7%BA%BF%E4%B8%8A%E6%9C%BA%E5%99%A8%E7%AA%81%E7%84%B6%E5%AE%95%E6%9C%BA%EF%BC%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97%E4%B8%AD%E7%9A%84%E8%AF%B7%E6%B1%82%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">3.1.4.</span> <span class="nav-text">❗如果线上机器突然宕机，线程池的阻塞队列中的请求怎么办？</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
