@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-07 21:15:07</span>
+        <span class="pc">2024-06-08 10:20:11</span>
     </span>
     
     
@@ -235,7 +235,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>&nbsp;
+                        <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">二叉搜索树</a>&nbsp;
                     </li>
                 
             </ul>
@@ -320,7 +328,7 @@
 <p>题目链接/文章讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0098.%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.html" >https://programmercarl.com/0098.验证二叉搜索树.html<i class="fas fa-external-link-alt"></i></a>)<br>
 视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18P411n7Q4" >https://www.bilibili.com/video/BV18P411n7Q4<i class="fas fa-external-link-alt"></i></a><br>
 关键在于：<strong>中序遍历下，输出的二叉搜索树节点的数值是有序序列。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValidBST</span><span class="params">(TreeNode root)</span> &#123;  </span><br><span class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">    inorder(root, list);  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> (list.size() &lt;= <span class="number">1</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size() - <span class="number">1</span>; i++) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (list.get(i) &gt;= list.get(i + <span class="number">1</span>)) &#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; list)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    inorder(root.left, list);  </span><br><span class="line">    list.add(root.val);  </span><br><span class="line">    inorder(root.right, list);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 单次循环搞定  </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line">TreeNode max;  </span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValidBST1</span><span class="params">(TreeNode root)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">// 左  </span></span><br><span class="line">    <span class="type">boolean</span> <span class="variable">left</span> <span class="operator">=</span> isValidBST1(root.left);  </span><br><span class="line">    <span class="keyword">if</span> (!left) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">// 中  </span></span><br><span class="line">    <span class="keyword">if</span> (max != <span class="literal">null</span> &amp;&amp; root.val &lt;= max.val) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    max = root;  </span><br><span class="line">    <span class="comment">// 右  </span></span><br><span class="line">    <span class="keyword">return</span> isValidBST1(root.right);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValidBST</span><span class="params">(TreeNode root)</span> &#123;  </span><br><span class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">    inorder(root, list);  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> (list.size() &lt;= <span class="number">1</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size() - <span class="number">1</span>; i++) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (list.get(i) &gt;= list.get(i + <span class="number">1</span>)) &#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">inorder</span><span class="params">(TreeNode root, List&lt;Integer&gt; list)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    inorder(root.left, list);  </span><br><span class="line">    list.add(root.val);  </span><br><span class="line">    inorder(root.right, list);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 单次循环搞定</span></span><br><span class="line"><span class="comment"> * 双指针法</span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line">TreeNode max;  </span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValidBST1</span><span class="params">(TreeNode root)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">// 左  </span></span><br><span class="line">    <span class="type">boolean</span> <span class="variable">left</span> <span class="operator">=</span> isValidBST1(root.left);  </span><br><span class="line">    <span class="keyword">if</span> (!left) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">// 中  </span></span><br><span class="line">    <span class="keyword">if</span> (max != <span class="literal">null</span> &amp;&amp; root.val &lt;= max.val) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    max = root;  </span><br><span class="line">    <span class="comment">// 右  </span></span><br><span class="line">    <span class="keyword">return</span> isValidBST1(root.right);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             </div>
 
             
@@ -356,7 +364,15 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
+                            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
                             <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">#二叉搜索树</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -364,6 +380,21 @@
 
             
                 <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2024/06/08/100000035/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">18 代码随想录算法训练营第十八天-530二叉搜索树的最小绝对差、501二叉搜索树中的众数、236二叉树的最近公共祖先</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
                     
                     
                         <div class="article-next">
