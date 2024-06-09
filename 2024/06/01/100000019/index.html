@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-09 21:17:50</span>
+        <span class="pc">2024-06-09 21:22:37</span>
     </span>
     
     
@@ -312,7 +312,7 @@
 </ol>
 <h2 id="迭代法">迭代法</h2>
 <p><strong>递归的实现就是：每一次递归调用都会把函数的局部变量、参数值和返回地址等压入调用栈中</strong>所以所有递归的题目，理论上都可以使用栈解决。题目链接/文章讲解/视频讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%BF%AD%E4%BB%A3%E9%81%8D%E5%8E%86.html" >https://programmercarl.com/二叉树的迭代遍历.html<i class="fas fa-external-link-alt"></i></a>)</p>
-<h1>统一迭代</h1>
+<h2 id="统一迭代">统一迭代</h2>
 <p><strong>迭代法实现的先中后序，其实风格也不是那么统一，除了先序和后序，有关联，中序完全就是另一个风格了，一会用栈遍历，一会又用指针来遍历。</strong><br>
 在迭代法的中序遍历中提到说使用栈的话，<strong>无法同时解决访问节点（遍历节点）和处理节点（将元素放进结果集）不一致的情况</strong>。<strong>那我们就将访问的节点放入栈中，把要处理的节点也放入栈中但是要做标记。就是要处理的节点放入栈之后，紧接着放入一个空指针作为标记。</strong> 这种方法也可以叫做标记法。题目链接/文章讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%BB%9F%E4%B8%80%E8%BF%AD%E4%BB%A3%E6%B3%95.html" >https://programmercarl.com/二叉树的统一迭代法.html<i class="fas fa-external-link-alt"></i></a>)</p>
 
@@ -401,7 +401,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#144%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">1.</span> <span class="nav-text">144二叉树的前序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#94%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">2.</span> <span class="nav-text">94二叉树的中序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#145%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">3.</span> <span class="nav-text">145二叉树的后序遍历</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E9%80%92%E5%BD%92%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">❗递归的三要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">迭代法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">统一迭代</span></a>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#144%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">1.</span> <span class="nav-text">144二叉树的前序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#94%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">2.</span> <span class="nav-text">94二叉树的中序遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#145%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="nav-number">3.</span> <span class="nav-text">145二叉树的后序遍历</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E9%80%92%E5%BD%92%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">❗递归的三要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">迭代法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E8%BF%AD%E4%BB%A3"><span class="nav-number">3.</span> <span class="nav-text">统一迭代</span></a></li></ol>
     </div>
 </div>
 
