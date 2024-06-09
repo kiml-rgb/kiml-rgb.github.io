@@ -210,7 +210,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-09 21:22:07</span>
+        <span class="pc">2024-06-09 22:51:01</span>
     </span>
     
     
@@ -269,12 +269,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>3.7k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>4.9k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>13 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>16 分钟</span>
         </span>
     
     
@@ -536,13 +536,14 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 <p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/31/100000016/#239%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC" >滑动窗口最大值<i class="fas fa-external-link-alt"></i></a>：这题需要用到<strong>单调队列，即单调递减或单调递增的队列</strong>（需要自己定义数据结构）<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/31/100000016/#347%E5%89%8D-K-%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0" >前 K 个高频元素<i class="fas fa-external-link-alt"></i></a>：这题需要用到<strong>优先级队列</strong>，其实就是堆（<strong>堆是一棵完全二叉树，树中每个结点的值都不小于（或不大于）其左右孩子的值。</strong>）</p>
 </blockquote>
 <h2 id="二叉树">二叉树</h2>
-<h3 id="二叉树的种类">二叉树的种类</h3>
-<h4 id="满二叉树">满二叉树</h4>
+<h3 id="基础理论-6">基础理论</h3>
+<h4 id="二叉树的种类">二叉树的种类</h4>
+<h5 id="满二叉树">满二叉树</h5>
 <p>满二叉树：如果一棵二叉树只有度为0的结点和度为2的结点，并且度为0的结点在同一层上，则这棵二叉树为满二叉树。这棵二叉树为满二叉树，也可以说深度为k，有<code>2^k-1</code>个节点的二叉树。</p>
-<h4 id="完全二叉树">完全二叉树</h4>
+<h5 id="完全二叉树">完全二叉树</h5>
 <p>完全二叉树的定义如下：在完全二叉树中，除了最底层节点可能没填满外，其余每层节点数都达到最大值，并且最下面一层的节点都集中在该层最左边的若干位置。若最底层为第 h 层（h从1开始），则该层包含 <code>1~ 2^(h-1)</code> 个节点。<br>
 <strong>优先级队列其实是一个堆，堆就是一棵完全二叉树，同时保证父子节点的顺序关系。</strong></p>
-<h4 id="二叉搜索树">二叉搜索树</h4>
+<h5 id="二叉搜索树">二叉搜索树</h5>
 <p><strong>二叉搜索树是一个有序树</strong></p>
 <ul class="lvl-0">
 <li class="lvl-2">
@@ -555,13 +556,13 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 <p>它的左、右子树也分别为二叉排序树</p>
 </li>
 </ul>
-<h4 id="平衡二叉搜索树">平衡二叉搜索树</h4>
+<h5 id="平衡二叉搜索树">平衡二叉搜索树</h5>
 <p>平衡二叉搜索树：又被称为AVL（Adelson-Velsky and Landis）树，且具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。</p>
-<h3 id="二叉树的存储方式">二叉树的存储方式</h3>
+<h4 id="二叉树的存储方式">二叉树的存储方式</h4>
 <p><strong>二叉树可以链式存储，也可以顺序存储。</strong><br>
 那么链式存储方式就用指针， 顺序存储的方式就是用数组。</p>
 <p>用数组来存储二叉树如何遍历？<strong>如果父节点的数组下标是 i，那么它的左孩子就是 i * 2 + 1，右孩子就是 i * 2 + 2。</strong></p>
-<h3 id="二叉树的遍历方式">二叉树的遍历方式</h3>
+<h4 id="二叉树的遍历方式">二叉树的遍历方式</h4>
 <p>二叉树主要有两种遍历方式：</p>
 <ol>
 <li class="lvl-3">
@@ -591,9 +592,9 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ul>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >❗二叉树的递归遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的迭代遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的统一迭代法<i class="fas fa-external-link-alt"></i></a>：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >❗二叉树的递归遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的迭代遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的统一迭代法<i class="fas fa-external-link-alt"></i></a>：统一迭代法是在入栈的时候，如果该节点为要处理的节点，接上一个空指针。<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/" >二叉树的层序遍历<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
-<h4 id="❗递归算法的三要素">❗递归算法的三要素</h4>
+<h5 id="❗递归算法的三要素">❗递归算法的三要素</h5>
 <ol>
 <li class="lvl-3">
 <p><strong>确定递归函数的参数和返回值：</strong> 确定哪些参数是递归的过程中需要处理的，那么就在递归函数里加上这个参数， 并且还要明确每次递归的返回值是什么进而确定递归函数的返回类型。</p>
@@ -605,8 +606,180 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 <p><strong>确定单层递归的逻辑：</strong> 确定每一层递归需要处理的信息。在这里也就会重复调用自己来实现递归的过程。</p>
 </li>
 </ol>
-<h3 id="二叉树的定义">二叉树的定义</h3>
+<h4 id="二叉树的定义">二叉树的定义</h4>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line"></span><br><span class="line">    TreeNode() &#123;&#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val) &#123; <span class="built_in">this</span>.val = val; &#125;</span><br><span class="line">    TreeNode(<span class="type">int</span> val, TreeNode left, TreeNode right) &#123;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">        <span class="built_in">this</span>.left = left;</span><br><span class="line">        <span class="built_in">this</span>.right = right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="经典题目-3">经典题目</h3>
+<h4 id="遍历方式">遍历方式</h4>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >❗二叉树的递归遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的迭代遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的统一迭代法<i class="fas fa-external-link-alt"></i></a>：统一迭代法是在入栈的时候，如果该节点为要处理的节点，接上一个空指针。<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/" >二叉树的层序遍历<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>层序遍历相关的题目比较多，没有写到笔记里面。（一个模板可以做十道题，部分在github上提交了，部分没有做。）</p>
+<h4 id="二叉树的属性">二叉树的属性</h4>
+<ol>
+<li class="lvl-3">
+<p>是否对称、相同</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/#101%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91" >对称二叉树<i class="fas fa-external-link-alt"></i></a>递归：后序遍历。判断左右子树：左右中、右左中是否相等。迭代：使用队列/栈将两个节点顺序放入容器中进行比较。</p>
+</blockquote>
+<ol start="2">
+<li class="lvl-3">
+<p>求最大深度</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/05/100000026/" >二叉树的最大深度<i class="fas fa-external-link-alt"></i></a>递归：后序遍历，求根节点最大高度就是最大深度，通过递归函数的返回值做计算树的高度。</p>
+</blockquote>
+<ol start="3">
+<li class="lvl-3">
+<p>求最小深度</p>
+</li>
+</ol>
+<blockquote>
+<p>[二叉树的最小深度]<br>
+递归：后序遍历，右节点为空，向左递归；左节点为空，向右递归。</p>
+</blockquote>
+<ol start="4">
+<li class="lvl-3">
+<p>求节点数</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/05/100000026/#222%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9%E4%B8%AA%E6%95%B0" >完全二叉树的节点个数<i class="fas fa-external-link-alt"></i></a>普通二叉树的节点个数：层序遍历完全二叉树：分两种情况：满二叉树/最后一层节点没有满。但是这两种情况可以简化为一种，即孩子节点必定为满二叉树（按满二叉树算节点）于是就变成判断子树是否是满二叉树：<strong>向左递归的深度等于向右递归的深度</strong></p>
+</blockquote>
+<ol start="5">
+<li class="lvl-3">
+<p>是否平衡</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/06/100000028/#110%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91" >平衡二叉树<i class="fas fa-external-link-alt"></i></a>递归：后序遍历。判断子树是否平衡并把结果向上传递。</p>
+</blockquote>
+<ol start="6">
+<li class="lvl-3">
+<p>找所有路径</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/06/100000028/#257%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84-2" >二叉树的所有路径<i class="fas fa-external-link-alt"></i></a>递归：前序遍历。涉及回溯。</p>
+</blockquote>
+<ol start="7">
+<li class="lvl-3">
+<p>求左叶子之和</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/06/100000028/#404%E5%B7%A6%E5%8F%B6%E5%AD%90%E4%B9%8B%E5%92%8C" >左叶子之和<i class="fas fa-external-link-alt"></i></a>递归：后序遍历。</p>
+</blockquote>
+<ol start="8">
+<li class="lvl-3">
+<p>求左下角的值。</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000032/#513%E6%89%BE%E6%A0%91%E5%B7%A6%E4%B8%8B%E8%A7%92%E7%9A%84%E5%80%BC" >找树左下角的值<i class="fas fa-external-link-alt"></i></a>递归：顺序没有关系。找深度最大的左叶子节点（优先左遍历）。迭代：感觉层序遍历更简单一点。</p>
+</blockquote>
+<ol start="9">
+<li class="lvl-3">
+<p>求路径总和</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000032/#112%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E3%80%81113%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8Cii" >路径总和、路径总和ii<i class="fas fa-external-link-alt"></i></a><br>
+递归：需要回溯。</p>
+</blockquote>
+<h4 id="二叉树的修改与构造">二叉树的修改与构造</h4>
+<ol>
+<li class="lvl-3">
+<p>翻转二叉树</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/#226%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91" >翻转二叉树<i class="fas fa-external-link-alt"></i></a>递归：中序不行。左右两数交换指针。</p>
+</blockquote>
+<ol start="2">
+<li class="lvl-3">
+<p>构造二叉树</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000032/#106%E4%BB%8E%E4%B8%AD%E5%BA%8F%E4%B8%8E%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%81105%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91" >从中序与后序遍历序列构造二叉树、从前序与中序遍历序列构造二叉树<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#654%E6%9C%80%E5%A4%A7%E4%BA%8C%E5%8F%89%E6%A0%91" >最大二叉树<i class="fas fa-external-link-alt"></i></a>递归：思路就是根据后序/前序的遍历结果。切割中序，再递归构造。</p>
+</blockquote>
+<ol start="3">
+<li class="lvl-3">
+<p>合并二叉树</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#617%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91" >合并二叉树<i class="fas fa-external-link-alt"></i></a>递归：前序遍历。</p>
+</blockquote>
+<h4 id="最近公共祖先">最近公共祖先</h4>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/08/100000035/#236%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88-2" >二叉树的最近公共祖先<i class="fas fa-external-link-alt"></i></a>：从底层向上传递信息（只能用后序）。找到一个节点的左子树含p，右子树含q（可以先交换两个数的大小顺序）<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000036/#235%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88" >二叉搜索树的最近公共祖先<i class="fas fa-external-link-alt"></i></a>：遍历顺序随便。重点在<strong>当我们从上向下去递归遍历，第一次遇到 cur节点是数值在<code>[q, p]</code>区间中，那么cur就是 q和p的最近公共祖先。</strong></p>
+</blockquote>
+<h4 id="二叉搜索树的属性">二叉搜索树的属性</h4>
+<ol>
+<li class="lvl-3">
+<p>遍历</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#700%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%90%9C%E7%B4%A2" >二叉搜索树中的搜索<i class="fas fa-external-link-alt"></i></a>：二叉搜索树的遍历是有方向的。</p>
+</blockquote>
+<ol start="2">
+<li class="lvl-3">
+<p><strong>中序遍历下，输出的二叉搜索树节点的数值是有序序列。</strong></p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#98%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91" >验证二叉搜索树<i class="fas fa-external-link-alt"></i></a>易错点：<strong>左子树所有节点小于中间节点，右子树所有节点大于中间节点</strong></p>
+</blockquote>
+<ol start="3">
+<li class="lvl-3">
+<p>pre标记前节点的双指针用法</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#98%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91" >验证二叉搜索树<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/08/100000035/#530%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE" >二叉搜索树的最小绝对差<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/08/100000035/#501%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E4%BC%97%E6%95%B0-2" >二叉搜索树中的众数<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000037/#538%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91" >把二叉搜索树转换为累加树<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h4 id="二叉搜索树的修改与构造">二叉搜索树的修改与构造</h4>
+<ol>
+<li class="lvl-3">
+<p>插入操作</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000036/#701%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C" >二叉搜索树中的插入操作<i class="fas fa-external-link-alt"></i></a>：找到位置直接插入</p>
+</blockquote>
+<ol start="2">
+<li class="lvl-3">
+<p>删除操作</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000036/#450%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9" >删除二叉搜索树中的节点<i class="fas fa-external-link-alt"></i></a>：删除非叶子节点：用右子树顶位（比较好理解）。<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000037/#669%E4%BF%AE%E5%89%AA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-2" >修剪二叉搜索树<i class="fas fa-external-link-alt"></i></a>：需要注意修剪情况。</p>
+</blockquote>
+<ol start="3">
+<li class="lvl-3">
+<p>构造二叉树</p>
+</li>
+</ol>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000037/#108%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91" >将有序数组转换为二叉搜索树<i class="fas fa-external-link-alt"></i></a>：与构造二叉树基本一致。找到中间节点后切割。</p>
+</blockquote>
+<h3 id="总结">总结</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>涉及到二叉树的构造，无论普通二叉树还是二叉搜索树一定前序，都是先构造中节点。</p>
+</li>
+<li class="lvl-2">
+<p>求普通二叉树的属性，一般是后序，一般要通过递归函数的返回值做计算。</p>
+</li>
+<li class="lvl-2">
+<p>求二叉搜索树的属性，一定是中序了，要不白瞎了有序性了。</p>
+</li>
+</ul>
 <h1>算法</h1>
 
             </div>
@@ -722,7 +895,7 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA"><span class="nav-number">1.1.1.</span> <span class="nav-text">基础理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">二分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">双指针法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E8%A1%8C%E4%B8%BA"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">模拟行为</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-2"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">存储方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">链表的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">链表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.1.4.1.</span> <span class="nav-text">删除节点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.1.4.2.</span> <span class="nav-text">添加节点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">性能分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%A4%B4%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">虚拟头节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">链表的基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">反转链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">两两交换链表中的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">删除倒数第N个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">链表相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.2.7.</span> <span class="nav-text">环形链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.3.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-3"><span class="nav-number">1.3.1.</span> <span class="nav-text">基础理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">一般使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0-%E5%93%88%E5%B8%8C%E7%A2%B0%E6%92%9E"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">哈希函数&#x2F;哈希碰撞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%93%88%E5%B8%8C%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">常见的三种哈希结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.3.2.</span> <span class="nav-text">哈希表经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%BD%9C%E4%B8%BA%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">数组作为哈希表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set%E4%BD%9C%E4%B8%BA%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">set作为哈希表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map%E4%BD%9C%E4%B8%BA%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">map作为哈希表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-4"><span class="nav-number">1.4.1.</span> <span class="nav-text">基础理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.4.2.</span> <span class="nav-text">字符串经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">双指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E8%BD%AC%E7%B3%BB%E5%88%97"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">反转系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">KMP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E8%A1%A8"><span class="nav-number">1.4.2.3.1.</span> <span class="nav-text">前缀表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E5%90%8E%E7%BC%80"><span class="nav-number">1.4.2.3.2.</span> <span class="nav-text">最长公共前后缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E5%89%8D%E7%BC%80%E8%A1%A8%E5%8F%AF%E4%BB%A5%E5%91%8A%E8%AF%89%E6%88%91%E4%BB%AC%E5%8C%B9%E9%85%8D%E5%A4%B1%E8%B4%A5%E4%B9%8B%E5%90%8E%E8%B7%B3%E5%88%B0%E5%93%AA%E9%87%8C%E9%87%8D%E6%96%B0%E5%8C%B9%E9%85%8D%EF%BC%9F"><span class="nav-number">1.4.2.3.3.</span> <span class="nav-text">为什么使用前缀表可以告诉我们匹配失败之后跳到哪里重新匹配？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E4%B8%80%E5%BC%A0%E5%89%8D%E7%BC%80%E8%A1%A8"><span class="nav-number">1.4.2.3.4.</span> <span class="nav-text">如何找到一张前缀表</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="nav-number">1.5.</span> <span class="nav-text">栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-5"><span class="nav-number">1.5.1.</span> <span class="nav-text">基础理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.5.2.</span> <span class="nav-text">栈经典题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.5.3.</span> <span class="nav-text">队列经典题目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.6.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-number">1.6.1.</span> <span class="nav-text">二叉树的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">满二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">完全二叉树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">二叉搜索树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">1.6.1.4.</span> <span class="nav-text">平衡二叉搜索树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.6.2.</span> <span class="nav-text">二叉树的存储方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="nav-number">1.6.3.</span> <span class="nav-text">二叉树的遍历方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">❗递归算法的三要素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.6.4.</span> <span class="nav-text">二叉树的定义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">算法</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA"><span class="nav-number">1.1.1.</span> <span class="nav-text">基础理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">二分法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">双指针法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">滑动窗口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E8%A1%8C%E4%B8%BA"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">模拟行为</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-2"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">存储方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">链表的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">链表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.1.4.1.</span> <span class="nav-text">删除节点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.1.4.2.</span> <span class="nav-text">添加节点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-number">1.2.1.5.</span> <span class="nav-text">性能分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%A4%B4%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">虚拟头节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">链表的基本操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">反转链表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">两两交换链表中的节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.5.</span> <span class="nav-text">删除倒数第N个节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4"><span class="nav-number">1.2.2.6.</span> <span class="nav-text">链表相交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="nav-number">1.2.2.7.</span> <span class="nav-text">环形链表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.3.</span> <span class="nav-text">哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-3"><span class="nav-number">1.3.1.</span> <span class="nav-text">基础理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">一般使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0-%E5%93%88%E5%B8%8C%E7%A2%B0%E6%92%9E"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">哈希函数&#x2F;哈希碰撞</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E4%B8%89%E7%A7%8D%E5%93%88%E5%B8%8C%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">常见的三种哈希结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.3.2.</span> <span class="nav-text">哈希表经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E4%BD%9C%E4%B8%BA%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">数组作为哈希表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set%E4%BD%9C%E4%B8%BA%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">set作为哈希表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map%E4%BD%9C%E4%B8%BA%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">map作为哈希表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.4.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-4"><span class="nav-number">1.4.1.</span> <span class="nav-text">基础理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.4.2.</span> <span class="nav-text">字符串经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">双指针</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E8%BD%AC%E7%B3%BB%E5%88%97"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">反转系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">KMP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E8%A1%A8"><span class="nav-number">1.4.2.3.1.</span> <span class="nav-text">前缀表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E5%90%8E%E7%BC%80"><span class="nav-number">1.4.2.3.2.</span> <span class="nav-text">最长公共前后缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E5%89%8D%E7%BC%80%E8%A1%A8%E5%8F%AF%E4%BB%A5%E5%91%8A%E8%AF%89%E6%88%91%E4%BB%AC%E5%8C%B9%E9%85%8D%E5%A4%B1%E8%B4%A5%E4%B9%8B%E5%90%8E%E8%B7%B3%E5%88%B0%E5%93%AA%E9%87%8C%E9%87%8D%E6%96%B0%E5%8C%B9%E9%85%8D%EF%BC%9F"><span class="nav-number">1.4.2.3.3.</span> <span class="nav-text">为什么使用前缀表可以告诉我们匹配失败之后跳到哪里重新匹配？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E4%B8%80%E5%BC%A0%E5%89%8D%E7%BC%80%E8%A1%A8"><span class="nav-number">1.4.2.3.4.</span> <span class="nav-text">如何找到一张前缀表</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="nav-number">1.5.</span> <span class="nav-text">栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-5"><span class="nav-number">1.5.1.</span> <span class="nav-text">基础理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.5.2.</span> <span class="nav-text">栈经典题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%9F%E5%88%97%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE"><span class="nav-number">1.5.3.</span> <span class="nav-text">队列经典题目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.6.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA-6"><span class="nav-number">1.6.1.</span> <span class="nav-text">基础理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">二叉树的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.6.1.1.1.</span> <span class="nav-text">满二叉树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-number">1.6.1.1.2.</span> <span class="nav-text">完全二叉树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">1.6.1.1.3.</span> <span class="nav-text">二叉搜索树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">1.6.1.1.4.</span> <span class="nav-text">平衡二叉搜索树</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">二叉树的存储方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">二叉树的遍历方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E2%9D%97%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">1.6.1.3.1.</span> <span class="nav-text">❗递归算法的三要素</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">1.6.1.4.</span> <span class="nav-text">二叉树的定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E9%A2%98%E7%9B%AE-3"><span class="nav-number">1.6.2.</span> <span class="nav-text">经典题目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">遍历方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">二叉树的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%9E%84%E9%80%A0"><span class="nav-number">1.6.2.3.</span> <span class="nav-text">二叉树的修改与构造</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88"><span class="nav-number">1.6.2.4.</span> <span class="nav-text">最近公共祖先</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">1.6.2.5.</span> <span class="nav-text">二叉搜索树的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%9E%84%E9%80%A0"><span class="nav-number">1.6.2.6.</span> <span class="nav-text">二叉搜索树的修改与构造</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.6.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">算法</span></a></li></ol>
     </div>
 </div>
 
