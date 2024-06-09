@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kiml">
+    
+    <title>
+        
+            20 代码随想录算法训练营第二十天-669修剪二叉搜索树、108将有序数组转换为二叉搜索树、538把二叉搜索树转换为累加树 |
+        
+        Kiml&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/sword.png">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"kiml.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#00ccff","logo":null,"favicon":"/images/sword.png","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240414/%E8%83%8C%E6%99%AF.webp","description":"我生来就是高山而非溪流 || 我欲于群峰之巅俯视平庸的沟壑","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["D","C","B","A","S"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Keep Theme" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+               Kiml&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">20 代码随想录算法训练营第二十天-669修剪二叉搜索树、108将有序数组转换为二叉搜索树、538把二叉搜索树转换为累加树</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">Kiml</span>
+                            
+                                <span class="author-label">A</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2024-06-09 15:54:48</span>
+        <span class="mobile">2024-06-09 15:54</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2024-06-09 19:59:09</span>
+    </span>
+    
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">二叉搜索树</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%B4%AF%E5%8A%A0%E6%A0%91/">累加树</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>
+状态：669通过，但是有更简单的方法。108AC。538没有思路，看了解题思路写出来了。</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-09 初始记录</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1>初步题解</h1>
+<h2 id="669修剪二叉搜索树">669修剪二叉搜索树</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/trim-a-binary-search-tree" >https://leetcode.cn/problems/trim-a-binary-search-tree<i class="fas fa-external-link-alt"></i></a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 思路：查找节点，删除节点</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> root 根节点</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> low  区间左范围</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> high 区间右范围</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title function_">trimBST</span><span class="params">(TreeNode root, <span class="type">int</span> low, <span class="type">int</span> high)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 先剪枝</span></span><br><span class="line">        cut(root, low, high);</span><br><span class="line">        <span class="comment">// 再减单个</span></span><br><span class="line">        <span class="keyword">return</span> travel(root, low, high);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> TreeNode <span class="title function_">travel</span><span class="params">(TreeNode root, <span class="type">int</span> low, <span class="type">int</span> high)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (low &lt;= root.val &amp;&amp; root.val &lt;= high) &#123;</span><br><span class="line">            root.left = travel(root.left, low, high);</span><br><span class="line">            root.right = travel(root.right, low, high);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (root.left == <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> root.right;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.right == <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> root.left;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 删除这个节点</span></span><br><span class="line">                <span class="comment">// 1.右子树补位(找到右子树的最左侧节点)</span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> root.right;</span><br><span class="line">                <span class="keyword">while</span> (cur.left != <span class="literal">null</span>) &#123;</span><br><span class="line">                    cur = cur.left;</span><br><span class="line">                &#125;</span><br><span class="line">                cur.left = root.left;</span><br><span class="line">                root = root.right;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">return</span> root;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        root.left = travel(root.left, low, high);</span><br><span class="line">        root.right = travel(root.right, low, high);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">cut</span><span class="params">(TreeNode root, <span class="type">int</span> low, <span class="type">int</span> high)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 整条剪掉</span></span><br><span class="line">        <span class="keyword">if</span> (root.val &gt; high) &#123;</span><br><span class="line">            root.right = <span class="literal">null</span>;</span><br><span class="line">            root.left = trimBST(root.left, low, high);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (root.val &lt; low) &#123;</span><br><span class="line">            root.left = <span class="literal">null</span>;</span><br><span class="line">            root.right = trimBST(root.right, low, high);</span><br><span class="line">        &#125;</span><br><span class="line">        cut(root.left, low, high);</span><br><span class="line">        cut(root.right, low, high);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因为时间复杂度太高，后面又写了一个版本，但是这个版本AC不了</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title function_">trimBST</span><span class="params">(TreeNode root, <span class="type">int</span> low, <span class="type">int</span> high)</span> &#123;  </span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;  </span><br><span class="line">            <span class="keyword">return</span> root;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> (root.val &gt; high) &#123;  </span><br><span class="line">			<span class="keyword">return</span> root.left;  </span><br><span class="line">            <span class="comment">// return trimBST(root.left, low, high);  </span></span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">if</span> (root.val &lt; low) &#123;  </span><br><span class="line">            <span class="comment">// 继续向右遍历  </span></span><br><span class="line">			<span class="keyword">return</span> root.right;  </span><br><span class="line">            <span class="comment">// return trimBST(root.right, low, high);  </span></span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> (low &lt;= root.val &amp;&amp; root.val &lt;= high) &#123;  </span><br><span class="line">            root.left = trimBST(root.left, low, high);  </span><br><span class="line">            root.right = trimBST(root.right, low, high);  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">while</span> (root != <span class="literal">null</span> &amp;&amp; (root.val &lt; low || root.val &gt; high)) &#123;  </span><br><span class="line">            <span class="keyword">if</span> (root.left == <span class="literal">null</span>) &#123;  </span><br><span class="line">                root = root.right;  </span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (root.right == <span class="literal">null</span>) &#123;  </span><br><span class="line">                root = root.left;  </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                <span class="comment">// 删除这个节点  </span></span><br><span class="line">                <span class="comment">// 1.右子树补位(找到右子树的最左侧节点)  </span></span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">cur</span> <span class="operator">=</span> root.right;  </span><br><span class="line">                <span class="keyword">while</span> (cur.left != <span class="literal">null</span>) &#123;  </span><br><span class="line">                    cur = cur.left;  </span><br><span class="line">                &#125;  </span><br><span class="line">                cur.left = root.left;  </span><br><span class="line">                root = root.right;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> root;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="108将有序数组转换为二叉搜索树">108将有序数组转换为二叉搜索树</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/" >https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/<i class="fas fa-external-link-alt"></i></a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title function_">sortedArrayToBST</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> sortedBFS(nums, <span class="number">0</span>, nums.length);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> TreeNode <span class="title function_">sortedBFS</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (i &gt;= j) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (j - i) / <span class="number">2</span> + i;  </span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">treeNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(nums[mid]);  </span><br><span class="line">    treeNode.left = sortedBFS(nums, i, mid);  </span><br><span class="line">    treeNode.right = sortedBFS(nums , mid + <span class="number">1</span>, j);  </span><br><span class="line">    <span class="keyword">return</span> treeNode;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="538把二叉搜索树转换为累加树">538把二叉搜索树转换为累加树</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/convert-bst-to-greater-tree" >https://leetcode.cn/problems/convert-bst-to-greater-tree<i class="fas fa-external-link-alt"></i></a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 看了题解之后写出来的  </span></span><br><span class="line"><span class="comment"> * 思路：  </span></span><br><span class="line"><span class="comment"> * 1.二叉搜索树，中序遍历（左中右）有序  </span></span><br><span class="line"><span class="comment"> * 2.要按倒序相加，遍历方向相反  </span></span><br><span class="line"><span class="comment"> * 3.取一个指针指向前节点不断累加  </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="type">TreeNode</span> <span class="variable">pre</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(<span class="number">0</span>);  </span><br><span class="line"><span class="keyword">public</span> TreeNode <span class="title function_">convertBST</span><span class="params">(TreeNode root)</span> &#123;  </span><br><span class="line">    getTreeNodeTravel(root);  </span><br><span class="line">    <span class="keyword">return</span> root;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">getTreeNodeTravel</span><span class="params">(TreeNode root)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    getTreeNodeTravel(root.right);  </span><br><span class="line">  </span><br><span class="line">    root.val = pre.val + root.val;  </span><br><span class="line">    pre = root;  </span><br><span class="line">    getTreeNodeTravel(root.left);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>看解析</h1>
+<h2 id="669修剪二叉搜索树-2">669修剪二叉搜索树</h2>
+<p>题目链接/文章讲解： <a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0669.%E4%BF%AE%E5%89%AA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.html" >https://programmercarl.com/0669.%E4%BF%AE%E5%89%AA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.html<i class="fas fa-external-link-alt"></i></a><br>
+视频讲解： [<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17P41177ud" >https://www.bilibili.com/video/BV17P41177ud<i class="fas fa-external-link-alt"></i></a>](<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17P41177ud" >https://www.bilibili.com/video/BV17P41177ud<i class="fas fa-external-link-alt"></i></a><br>
+看了题解发现是下面两行导致不能AC。这里不能直接剪掉，忽略了情况。并且用了下面的继续递归，就不用再删除节点了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (root.val &gt; high) &#123;  </span><br><span class="line">	<span class="keyword">return</span> root.left;  </span><br><span class="line">    <span class="comment">// return trimBST(root.left, low, high);  </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">if</span> (root.val &lt; low) &#123;  </span><br><span class="line">    <span class="comment">// 继续向右遍历  </span></span><br><span class="line">	<span class="keyword">return</span> root.right;  </span><br><span class="line">    <span class="comment">// return trimBST(root.right, low, high);  </span></span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p><strong>正确方法</strong>（🥴好难）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title function_">trimBST</span><span class="params">(TreeNode root, <span class="type">int</span> low, <span class="type">int</span> high)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> root;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span> (root.val &gt; high) &#123;  </span><br><span class="line">        <span class="keyword">return</span> trimBST(root.left, low, high);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span> (root.val &lt; low) &#123;   </span><br><span class="line">        <span class="keyword">return</span> trimBST(root.right, low, high);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span> (low &lt;= root.val &amp;&amp; root.val &lt;= high) &#123;  </span><br><span class="line">        root.left = trimBST(root.left, low, high);  </span><br><span class="line">        root.right = trimBST(root.right, low, high);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> root;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="108将有序数组转换为二叉搜索树-2">108将有序数组转换为二叉搜索树</h2>
+<p>题目链接/文章讲解： <a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.html" >https://programmercarl.com/0108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91.html<i class="fas fa-external-link-alt"></i></a><br>
+视频讲解：[<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1uR4y1X7qL" >https://www.bilibili.com/video/BV1uR4y1X7qL<i class="fas fa-external-link-alt"></i></a>](<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1uR4y1X7qL" >https://www.bilibili.com/video/BV1uR4y1X7qL<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="538把二叉搜索树转换为累加树-2">538把二叉搜索树转换为累加树</h2>
+<p>题目链接/文章讲解： <a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0538.%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91.html" >https://programmercarl.com/0538.%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91.html<i class="fas fa-external-link-alt"></i></a><br>
+视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1d44y1f7wP" >https://www.bilibili.com/video/BV1d44y1f7wP<i class="fas fa-external-link-alt"></i></a></p>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    
+<div class="article-copyright-info-container">
+    <ul class="copyright-info-content">
+        <li class="post-title">
+            <span class="type">本文标题</span>：<span class="content">20 代码随想录算法训练营第二十天-669修剪二叉搜索树、108将有序数组转换为二叉搜索树、538把二叉搜索树转换为累加树</span>
+        </li>
+        <li class="post-author">
+            <span class="type">本文作者</span>：<span class="content">Kiml</span>
+        </li>
+        <li class="post-time">
+            <span class="type">创建时间</span>：<span class="content">2024-06-09 15:54:48</span>
+        </li>
+        <li class="post-link">
+            <span class="type">本文链接</span>：<span class="content">2024/06/09/100000037/</span>
+        </li>
+        <li class="post-license">
+            <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
+        </li>
+    </ul>
+    <div class="copy-copyright-info flex-center tooltip" data-content="复制版权信息" data-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">#二叉搜索树</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E7%B4%AF%E5%8A%A0%E6%A0%91/">#累加树</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <div class="article-nav">
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                               rel="next"
+                               href="/2024/06/09/100000036/"
+                            >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">19 代码随想录算法训练营第十九天-235二叉搜索树的最近公共祖先、701二叉搜索树中的插入操作、450删除二叉搜索树中的节点</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                                <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#669%E4%BF%AE%E5%89%AA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">1.1.</span> <span class="nav-text">669修剪二叉搜索树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#108%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-number">1.2.</span> <span class="nav-text">108将有序数组转换为二叉搜索树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#538%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91"><span class="nav-number">1.3.</span> <span class="nav-text">538把二叉搜索树转换为累加树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#669%E4%BF%AE%E5%89%AA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-2"><span class="nav-number">2.1.</span> <span class="nav-text">669修剪二叉搜索树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#108%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-2"><span class="nav-number">2.2.</span> <span class="nav-text">108将有序数组转换为二叉搜索树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#538%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91-2"><span class="nav-number">2.3.</span> <span class="nav-text">538把二叉搜索树转换为累加树</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2022</span> -
+            
+            2024
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">Kiml</a>
+            
+        </div>
+        
+            <script async data-pjax
+                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                
+                
+                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+
+    
+<script src="/js/code-block.js"></script>
+
+
+
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+            
+<script src="/js/libs/anime.min.js"></script>
+
+        
+        
+            
+<script src="/js/toc.js"></script>
+
+        
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
