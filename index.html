@@ -40,75 +40,17 @@
 
 
 <body>
-.progress-bar-container {
-  position fixed
-  top 0
-  left 0
-  z-index $z-index-9
-  width 100%
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-  if (hexo-config('pjax.enable') == true) {
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
 
-    .pjax-progress-bar {
-      position absolute
-      top 0
-      left 0
-      z-index $z-index-8
-      width 0
-      height 2px
-      background var(--pjax-progress-bar-color)
-      visibility hidden
-      opacity 0
-      transition-t("width, opacity", "0, 0", "0.1, 0.1", "linear")
-
-
-      &.show {
-        visibility visible
-        opacity 1
-      }
-    }
-
-
-    .pjax-progress-icon {
-      position absolute
-      top 0.4rem
-      right 0.3rem
-      z-index $z-index-8
-      color var(--text-color-3)
-      font-size 1.1rem
-      visibility hidden
-
-      +keep-tablet() {
-        top 0.3rem
-        right 0.2rem
-        font-size 1rem
-      }
-
-      &.show {
-        visibility visible
-      }
-    }
-  }
-
-  if (hexo-config('style.scroll.progress_bar') == true) {
-
-    .scroll-progress-bar {
-      position absolute
-      top 0
-      left 0
-      z-index $z-index-7
-      width 0
-      height $scroll-progress-bar-height
-      background var(--primary-color)
-      visibility hidden
-      transition-t("width", "0", "0.1", "linear")
-
-      &.hide {
-        display none !important
-      }
-    }
-  }
-}
 
 <main class="page-container">
 
@@ -296,7 +238,7 @@
 
                 <h3 class="home-article-title">
                     <a href="/2024/06/10/100000040/">
-                        22 代码随想录算法训练营第二十二天-216组合总和III、17电话号码的字母组合
+                        代码随想录算法训练营第二十二天-216组合总和III、17电话号码的字母组合
                     </a>
                 </h3>
 
@@ -305,7 +247,7 @@
                         <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-状态：216可以AC。</p>
+状态：216可以AC。17看了部分解析写出来的。</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
@@ -319,10 +261,28 @@
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Mon Jun 10 2024 15:48:08 GMT+0800">
+            <span class="home-article-date" data-updated="Mon Jun 10 2024 16:38:49 GMT+0800">
                 2024-06-10
             </span>
         </span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
+                        </li>
+                    
+                    
+                        <li>
+                            &gt; 
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">代码随想录</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
         
         
             <span class="home-article-tag">
