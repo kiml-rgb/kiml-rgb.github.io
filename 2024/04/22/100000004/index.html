@@ -42,17 +42,75 @@
 
 
 <body>
-<div class="progress-bar-container">
-    
-        <span class="scroll-progress-bar"></span>
-    
+.progress-bar-container {
+  position fixed
+  top 0
+  left 0
+  z-index $z-index-9
+  width 100%
 
-    
-        <span class="pjax-progress-bar"></span>
-        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
-    
-</div>
+  if (hexo-config('pjax.enable') == true) {
 
+    .pjax-progress-bar {
+      position absolute
+      top 0
+      left 0
+      z-index $z-index-8
+      width 0
+      height 2px
+      background var(--pjax-progress-bar-color)
+      visibility hidden
+      opacity 0
+      transition-t("width, opacity", "0, 0", "0.1, 0.1", "linear")
+
+
+      &.show {
+        visibility visible
+        opacity 1
+      }
+    }
+
+
+    .pjax-progress-icon {
+      position absolute
+      top 0.4rem
+      right 0.3rem
+      z-index $z-index-8
+      color var(--text-color-3)
+      font-size 1.1rem
+      visibility hidden
+
+      +keep-tablet() {
+        top 0.3rem
+        right 0.2rem
+        font-size 1rem
+      }
+
+      &.show {
+        visibility visible
+      }
+    }
+  }
+
+  if (hexo-config('style.scroll.progress_bar') == true) {
+
+    .scroll-progress-bar {
+      position absolute
+      top 0
+      left 0
+      z-index $z-index-7
+      width 0
+      height $scroll-progress-bar-height
+      background var(--primary-color)
+      visibility hidden
+      transition-t("width", "0", "0.1", "linear")
+
+      &.hide {
+        display none !important
+      }
+    }
+  }
+}
 
 <main class="page-container">
 
@@ -210,7 +268,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-10 09:56:12</span>
+        <span class="pc">2024-06-10 16:00:35</span>
     </span>
     
     
@@ -460,7 +518,9 @@
 <h4 id="数组作为哈希表">数组作为哈希表</h4>
 <p>一般题目中出现规定map大小（比如明说都是小写字母），就可以使用数组。这些题<strong>用map确实可以，但使用map的空间消耗要比数组大一些，因为map要维护红黑树或者符号表，而且还要做哈希函数的运算。所以数组更加简单直接有效！</strong></p>
 <blockquote>
-<p>关联题目：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000006/#242%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D" >有效的字母异位词<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/24/100000009/#383%E8%B5%8E%E9%87%91%E4%BF%A1" >赎金信<i class="fas fa-external-link-alt"></i></a></p>
+<p>关联题目：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000006/#242%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D" >有效的字母异位词<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/24/100000009/#383%E8%B5%8E%E9%87%91%E4%BF%A1" >赎金信<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <h4 id="set作为哈希表">set作为哈希表</h4>
 <p>如果题目没有限制大小，就无法使用数组。主要因为：</p>
@@ -473,7 +533,9 @@
 </li>
 </ol>
 <blockquote>
-<p>关联题目：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000006/#349%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86" >两个数组的交集<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000006/#202%E5%BF%AB%E4%B9%90%E6%95%B0" >快乐数<i class="fas fa-external-link-alt"></i></a></p>
+<p>关联题目：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000006/#349%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86" >两个数组的交集<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000006/#202%E5%BF%AB%E4%B9%90%E6%95%B0" >快乐数<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <h4 id="map作为哈希表"><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000006/#1%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C" >map作为哈希表<i class="fas fa-external-link-alt"></i></a></h4>
 <p>set是一个集合，里面放的元素只能是一个key，但是遇到key与value都要保存时，就需要使用map。</p>
@@ -485,20 +547,27 @@
 <h4 id="双指针">双指针</h4>
 <p><strong>双指针法在数组，链表和字符串中很常用。</strong></p>
 <blockquote>
-<p>关联题目：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#344%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2" >反转字符串<i class="fas fa-external-link-alt"></i></a>：只是简单使用temp作为中间变量。<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#%E5%8D%A1%E7%A0%81%E7%BD%9154%E6%9B%BF%E6%8D%A2%E6%95%B0%E5%AD%97" >替换字符<i class="fas fa-external-link-alt"></i></a>：<strong>数组填充类的问题，可以先预先给数组扩容带填充后的大小，然后再从后向前进行操作。</strong><br>
-与移除操作有关的双指针操作：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#151%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D-2" >翻转字符串内的单词<i class="fas fa-external-link-alt"></i></a>中的移除空格部分。之前数组部分中<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/17/100000004/#27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0" >移除数组元素<i class="fas fa-external-link-alt"></i></a></p>
+<p>关联题目：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#344%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2" >反转字符串<i class="fas fa-external-link-alt"></i></a>：只是简单使用temp作为中间变量。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#%E5%8D%A1%E7%A0%81%E7%BD%9154%E6%9B%BF%E6%8D%A2%E6%95%B0%E5%AD%97" >替换字符<i class="fas fa-external-link-alt"></i></a>：<strong>数组填充类的问题，可以先预先给数组扩容带填充后的大小，然后再从后向前进行操作。</strong></p>
+<p>与移除操作有关的双指针操作：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#151%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D-2" >翻转字符串内的单词<i class="fas fa-external-link-alt"></i></a>中的移除空格部分。</p>
+<p>之前数组部分中<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/04/17/100000004/#27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0" >移除数组元素<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <h4 id="反转系列">反转系列</h4>
 <p>反转就是双指针（头尾指针一起向中间移动，然后交换数组元素）</p>
 <blockquote>
-<p>关联题目：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#541%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2II" >反转字符串II<i class="fas fa-external-link-alt"></i></a><br>
-<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#151%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D-2" >翻转字符串内的单词<i class="fas fa-external-link-alt"></i></a>：这题的反转用了两次，先整体反转，再分段反转。<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#%E5%8D%A1%E7%A0%81%E7%BD%9155%E5%8F%B3%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-2" >右旋转字符串<i class="fas fa-external-link-alt"></i></a>：和上题一样需要<strong>先局部反转再整体反转</strong>。（这种题笔试遇到直接API快一点）</p>
+<p>关联题目：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#541%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2II" >反转字符串II<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#151%E7%BF%BB%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8C%E7%9A%84%E5%8D%95%E8%AF%8D-2" >翻转字符串内的单词<i class="fas fa-external-link-alt"></i></a>：这题的反转用了两次，先整体反转，再分段反转。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/27/100000010/#%E5%8D%A1%E7%A0%81%E7%BD%9155%E5%8F%B3%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-2" >右旋转字符串<i class="fas fa-external-link-alt"></i></a>：和上题一样需要<strong>先局部反转再整体反转</strong>。（这种题笔试遇到直接API快一点）</p>
 </blockquote>
 <h4 id="KMP">KMP</h4>
 <p><strong>KMP算法是字符串查找最重要的算法。</strong><br>
 KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部分之前已经匹配的文本内容，可以利用这些信息避免从头再去做匹配了。</strong></p>
 <blockquote>
-<p>关联题目：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/29/100000011/" >实现 strStr() 、重复的子字符串<i class="fas fa-external-link-alt"></i></a></p>
+<p>关联题目：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/29/100000011/" >实现 strStr() 、重复的子字符串<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <h5 id="前缀表">前缀表</h5>
 <p>作用：<strong>前缀表是用来回退的，它记录了模式串与主串(文本串)不匹配的时候，模式串应该从哪里开始重新匹配。</strong><br>
@@ -524,16 +593,19 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 <p><strong>队列是先进先出，栈是先进后出。</strong><br>
 栈与队列的基础可以通过下面两题回忆。</p>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000012/#232%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97" >用栈实现队列<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000012/#225%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88" >用队列实现栈<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000012/#232%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97" >用栈实现队列<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000012/#225%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88" >用队列实现栈<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <h3 id="栈经典题目">栈经典题目</h3>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000013/#20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7" >有效的括号<i class="fas fa-external-link-alt"></i></a>：<strong>括号匹配是使用栈解决的经典问题。</strong><br>
-<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000013/#1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9" >删除字符串中的所有相邻重复项<i class="fas fa-external-link-alt"></i></a>：思路就是可以把字符串顺序放到一个栈中，然后如果相同的话 栈就弹出，这样最后栈里剩下的元素都是相邻不相同的元素了。<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000013/#150%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC" >逆波兰表达式求值<i class="fas fa-external-link-alt"></i></a>：这题主要在于题目中给出的百度链接，其中描述了逆波兰式子的意思。计算方式就是遍历式子，遇到数字入栈，遇到运算符出栈两个数字进行计算，计算结果再入栈。直到式子循环完毕。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000013/#20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7" >有效的括号<i class="fas fa-external-link-alt"></i></a>：<strong>括号匹配是使用栈解决的经典问题。</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000013/#1047%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9" >删除字符串中的所有相邻重复项<i class="fas fa-external-link-alt"></i></a>：思路就是可以把字符串顺序放到一个栈中，然后如果相同的话 栈就弹出，这样最后栈里剩下的元素都是相邻不相同的元素了。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000013/#150%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC" >逆波兰表达式求值<i class="fas fa-external-link-alt"></i></a>：这题主要在于题目中给出的百度链接，其中描述了逆波兰式子的意思。计算方式就是遍历式子，遇到数字入栈，遇到运算符出栈两个数字进行计算，计算结果再入栈。直到式子循环完毕。</p>
 </blockquote>
 <h3 id="队列经典题目">队列经典题目</h3>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/31/100000016/#239%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC" >滑动窗口最大值<i class="fas fa-external-link-alt"></i></a>：这题需要用到<strong>单调队列，即单调递减或单调递增的队列</strong>（需要自己定义数据结构）<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/31/100000016/#347%E5%89%8D-K-%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0" >前 K 个高频元素<i class="fas fa-external-link-alt"></i></a>：这题需要用到<strong>优先级队列</strong>，其实就是堆（<strong>堆是一棵完全二叉树，树中每个结点的值都不小于（或不大于）其左右孩子的值。</strong>）</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/31/100000016/#239%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC" >滑动窗口最大值<i class="fas fa-external-link-alt"></i></a>：这题需要用到<strong>单调队列，即单调递减或单调递增的队列</strong>（需要自己定义数据结构）</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/31/100000016/#347%E5%89%8D-K-%E4%B8%AA%E9%AB%98%E9%A2%91%E5%85%83%E7%B4%A0" >前 K 个高频元素<i class="fas fa-external-link-alt"></i></a>：这题需要用到<strong>优先级队列</strong>，其实就是堆（<strong>堆是一棵完全二叉树，树中每个结点的值都不小于（或不大于）其左右孩子的值。</strong>）</p>
 </blockquote>
 <h2 id="二叉树">二叉树</h2>
 <h3 id="基础理论-6">基础理论</h3>
@@ -592,7 +664,10 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ul>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >❗二叉树的递归遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的迭代遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的统一迭代法<i class="fas fa-external-link-alt"></i></a>：统一迭代法是在入栈的时候，如果该节点为要处理的节点，接上一个空指针。<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/" >二叉树的层序遍历<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >❗二叉树的递归遍历<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的迭代遍历<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的统一迭代法<i class="fas fa-external-link-alt"></i></a>：统一迭代法是在入栈的时候，如果该节点为要处理的节点，接上一个空指针。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/" >二叉树的层序遍历<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <h5 id="❗递归算法的三要素">❗递归算法的三要素</h5>
 <ol>
@@ -611,7 +686,10 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 <h3 id="经典题目-3">经典题目</h3>
 <h4 id="遍历方式">遍历方式</h4>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >❗二叉树的递归遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的迭代遍历<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的统一迭代法<i class="fas fa-external-link-alt"></i></a>：统一迭代法是在入栈的时候，如果该节点为要处理的节点，接上一个空指针。<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/" >二叉树的层序遍历<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >❗二叉树的递归遍历<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的迭代遍历<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/01/100000019/" >二叉树的统一迭代法<i class="fas fa-external-link-alt"></i></a>：统一迭代法是在入栈的时候，如果该节点为要处理的节点，接上一个空指针。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/" >二叉树的层序遍历<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <p>层序遍历相关的题目比较多，没有写到笔记里面。（一个模板可以做十道题，部分在github上提交了，部分没有做。）</p>
 <h4 id="二叉树的属性">二叉树的属性</h4>
@@ -621,7 +699,9 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/#101%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91" >对称二叉树<i class="fas fa-external-link-alt"></i></a>递归：后序遍历。判断左右子树：左右中、右左中是否相等。迭代：使用队列/栈将两个节点顺序放入容器中进行比较。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/#101%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91" >对称二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：后序遍历。判断左右子树：左右中、右左中是否相等。</p>
+<p>迭代：使用队列/栈将两个节点顺序放入容器中进行比较。</p>
 </blockquote>
 <ol start="2">
 <li class="lvl-3">
@@ -629,7 +709,8 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/05/100000026/" >二叉树的最大深度<i class="fas fa-external-link-alt"></i></a>递归：后序遍历，求根节点最大高度就是最大深度，通过递归函数的返回值做计算树的高度。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/05/100000026/" >二叉树的最大深度<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：后序遍历，求根节点最大高度就是最大深度，通过递归函数的返回值做计算树的高度。</p>
 </blockquote>
 <ol start="3">
 <li class="lvl-3">
@@ -637,8 +718,8 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p>[二叉树的最小深度]<br>
-递归：后序遍历，右节点为空，向左递归；左节点为空，向右递归。</p>
+<p>[二叉树的最小深度]</p>
+<p>递归：后序遍历，右节点为空，向左递归；左节点为空，向右递归。</p>
 </blockquote>
 <ol start="4">
 <li class="lvl-3">
@@ -646,7 +727,11 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/05/100000026/#222%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9%E4%B8%AA%E6%95%B0" >完全二叉树的节点个数<i class="fas fa-external-link-alt"></i></a>普通二叉树的节点个数：层序遍历完全二叉树：分两种情况：满二叉树/最后一层节点没有满。但是这两种情况可以简化为一种，即孩子节点必定为满二叉树（按满二叉树算节点）于是就变成判断子树是否是满二叉树：<strong>向左递归的深度等于向右递归的深度</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/05/100000026/#222%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%8A%82%E7%82%B9%E4%B8%AA%E6%95%B0" >完全二叉树的节点个数<i class="fas fa-external-link-alt"></i></a></p>
+<p>普通二叉树的节点个数：层序遍历</p>
+<p>完全二叉树：</p>
+<p>分两种情况：满二叉树/最后一层节点没有满。但是这两种情况可以简化为一种，即孩子节点必定为满二叉树（按满二叉树算节点）</p>
+<p>于是就变成判断子树是否是满二叉树：<strong>向左递归的深度等于向右递归的深度</strong></p>
 </blockquote>
 <ol start="5">
 <li class="lvl-3">
@@ -654,7 +739,8 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/06/100000028/#110%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91" >平衡二叉树<i class="fas fa-external-link-alt"></i></a>递归：后序遍历。判断子树是否平衡并把结果向上传递。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/06/100000028/#110%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91" >平衡二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：后序遍历。判断子树是否平衡并把结果向上传递。</p>
 </blockquote>
 <ol start="6">
 <li class="lvl-3">
@@ -662,7 +748,8 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/06/100000028/#257%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84-2" >二叉树的所有路径<i class="fas fa-external-link-alt"></i></a>递归：前序遍历。涉及回溯。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/06/100000028/#257%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%89%80%E6%9C%89%E8%B7%AF%E5%BE%84-2" >二叉树的所有路径<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：前序遍历。涉及回溯。</p>
 </blockquote>
 <ol start="7">
 <li class="lvl-3">
@@ -670,7 +757,8 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/06/100000028/#404%E5%B7%A6%E5%8F%B6%E5%AD%90%E4%B9%8B%E5%92%8C" >左叶子之和<i class="fas fa-external-link-alt"></i></a>递归：后序遍历。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/06/100000028/#404%E5%B7%A6%E5%8F%B6%E5%AD%90%E4%B9%8B%E5%92%8C" >左叶子之和<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：后序遍历。</p>
 </blockquote>
 <ol start="8">
 <li class="lvl-3">
@@ -678,7 +766,9 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000032/#513%E6%89%BE%E6%A0%91%E5%B7%A6%E4%B8%8B%E8%A7%92%E7%9A%84%E5%80%BC" >找树左下角的值<i class="fas fa-external-link-alt"></i></a>递归：顺序没有关系。找深度最大的左叶子节点（优先左遍历）。迭代：感觉层序遍历更简单一点。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000032/#513%E6%89%BE%E6%A0%91%E5%B7%A6%E4%B8%8B%E8%A7%92%E7%9A%84%E5%80%BC" >找树左下角的值<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：顺序没有关系。找深度最大的左叶子节点（优先左遍历）。</p>
+<p>迭代：感觉层序遍历更简单一点。</p>
 </blockquote>
 <ol start="9">
 <li class="lvl-3">
@@ -686,8 +776,8 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000032/#112%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E3%80%81113%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8Cii" >路径总和、路径总和ii<i class="fas fa-external-link-alt"></i></a><br>
-递归：需要回溯。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000032/#112%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C%E3%80%81113%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8Cii" >路径总和、路径总和ii<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：需要回溯。</p>
 </blockquote>
 <h4 id="二叉树的修改与构造">二叉树的修改与构造</h4>
 <ol>
@@ -696,7 +786,8 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/#226%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91" >翻转二叉树<i class="fas fa-external-link-alt"></i></a>递归：中序不行。左右两数交换指针。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/03/100000023/#226%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91" >翻转二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：中序不行。左右两数交换指针。</p>
 </blockquote>
 <ol start="2">
 <li class="lvl-3">
@@ -704,7 +795,9 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000032/#106%E4%BB%8E%E4%B8%AD%E5%BA%8F%E4%B8%8E%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%81105%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91" >从中序与后序遍历序列构造二叉树、从前序与中序遍历序列构造二叉树<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#654%E6%9C%80%E5%A4%A7%E4%BA%8C%E5%8F%89%E6%A0%91" >最大二叉树<i class="fas fa-external-link-alt"></i></a>递归：思路就是根据后序/前序的遍历结果。切割中序，再递归构造。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000032/#106%E4%BB%8E%E4%B8%AD%E5%BA%8F%E4%B8%8E%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%81105%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91" >从中序与后序遍历序列构造二叉树、从前序与中序遍历序列构造二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#654%E6%9C%80%E5%A4%A7%E4%BA%8C%E5%8F%89%E6%A0%91" >最大二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：思路就是根据后序/前序的遍历结果。切割中序，再递归构造。</p>
 </blockquote>
 <ol start="3">
 <li class="lvl-3">
@@ -712,11 +805,13 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#617%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91" >合并二叉树<i class="fas fa-external-link-alt"></i></a>递归：前序遍历。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#617%E5%90%88%E5%B9%B6%E4%BA%8C%E5%8F%89%E6%A0%91" >合并二叉树<i class="fas fa-external-link-alt"></i></a></p>
+<p>递归：前序遍历。</p>
 </blockquote>
 <h4 id="最近公共祖先">最近公共祖先</h4>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/08/100000035/#236%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88-2" >二叉树的最近公共祖先<i class="fas fa-external-link-alt"></i></a>：从底层向上传递信息（只能用后序）。找到一个节点的左子树含p，右子树含q（可以先交换两个数的大小顺序）<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000036/#235%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88" >二叉搜索树的最近公共祖先<i class="fas fa-external-link-alt"></i></a>：遍历顺序随便。重点在<strong>当我们从上向下去递归遍历，第一次遇到 cur节点是数值在<code>[q, p]</code>区间中，那么cur就是 q和p的最近公共祖先。</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/08/100000035/#236%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88-2" >二叉树的最近公共祖先<i class="fas fa-external-link-alt"></i></a>：从底层向上传递信息（只能用后序）。找到一个节点的左子树含p，右子树含q（可以先交换两个数的大小顺序）</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000036/#235%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88" >二叉搜索树的最近公共祖先<i class="fas fa-external-link-alt"></i></a>：遍历顺序随便。重点在<strong>当我们从上向下去递归遍历，第一次遇到 cur节点是数值在<code>[q, p]</code>区间中，那么cur就是 q和p的最近公共祖先。</strong></p>
 </blockquote>
 <h4 id="二叉搜索树的属性">二叉搜索树的属性</h4>
 <ol>
@@ -733,7 +828,8 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#98%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91" >验证二叉搜索树<i class="fas fa-external-link-alt"></i></a>易错点：<strong>左子树所有节点小于中间节点，右子树所有节点大于中间节点</strong></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#98%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91" >验证二叉搜索树<i class="fas fa-external-link-alt"></i></a></p>
+<p>易错点：<strong>左子树所有节点小于中间节点，右子树所有节点大于中间节点</strong></p>
 </blockquote>
 <ol start="3">
 <li class="lvl-3">
@@ -741,7 +837,10 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#98%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91" >验证二叉搜索树<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/08/100000035/#530%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE" >二叉搜索树的最小绝对差<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/08/100000035/#501%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E4%BC%97%E6%95%B0-2" >二叉搜索树中的众数<i class="fas fa-external-link-alt"></i></a><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000037/#538%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91" >把二叉搜索树转换为累加树<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/07/100000033/#98%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91" >验证二叉搜索树<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/08/100000035/#530%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E7%BB%9D%E5%AF%B9%E5%B7%AE" >二叉搜索树的最小绝对差<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/08/100000035/#501%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E4%BC%97%E6%95%B0-2" >二叉搜索树中的众数<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000037/#538%E6%8A%8A%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E7%B4%AF%E5%8A%A0%E6%A0%91" >把二叉搜索树转换为累加树<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <h4 id="二叉搜索树的修改与构造">二叉搜索树的修改与构造</h4>
 <ol>
@@ -758,7 +857,8 @@ KMP的主要思想是<strong>当出现字符串不匹配时，可以知道一部
 </li>
 </ol>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000036/#450%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9" >删除二叉搜索树中的节点<i class="fas fa-external-link-alt"></i></a>：删除非叶子节点：用右子树顶位（比较好理解）。<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000037/#669%E4%BF%AE%E5%89%AA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-2" >修剪二叉搜索树<i class="fas fa-external-link-alt"></i></a>：需要注意修剪情况。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000036/#450%E5%88%A0%E9%99%A4%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9" >删除二叉搜索树中的节点<i class="fas fa-external-link-alt"></i></a>：删除非叶子节点：用右子树顶位（比较好理解）。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/09/100000037/#669%E4%BF%AE%E5%89%AA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91-2" >修剪二叉搜索树<i class="fas fa-external-link-alt"></i></a>：需要注意修剪情况。</p>
 </blockquote>
 <ol start="3">
 <li class="lvl-3">

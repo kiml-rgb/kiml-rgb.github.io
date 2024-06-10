@@ -9,7 +9,7 @@
     
     <title>
         
-            聚合支付-项目介绍 |
+            22 代码随想录算法训练营第二十二天-216组合总和III、17电话号码的字母组合 |
         
         Kiml&#39;s Blog
     </title>
@@ -240,7 +240,7 @@
         <div class="article-content-container">
 
             <div class="article-title">
-                <span class="title-hover-animation">聚合支付-项目介绍</span>
+                <span class="title-hover-animation">22 代码随想录算法训练营第二十二天-216组合总和III、17电话号码的字母组合</span>
             </div>
 
             
@@ -262,30 +262,15 @@
         
             <i class="fa-regular fa-calendar-plus"></i>&nbsp;
         
-        <span class="pc">2024-05-15 16:16:29</span>
-        <span class="mobile">2024-05-15 16:16</span>
+        <span class="pc">2024-06-10 14:53:08</span>
+        <span class="mobile">2024-06-10 14:53</span>
     </span>
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-05-23 10:20:34</span>
+        <span class="pc">2024-06-10 15:48:08</span>
     </span>
     
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">后端项目</a>&nbsp;
-                    </li>
-                
-                    <li>
-                        &gt; <a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E8%81%9A%E5%90%88%E6%94%AF%E4%BB%98/">聚合支付</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -293,7 +278,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Java/">Java</a>&nbsp;
+                        <a href="/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">回溯算法</a>&nbsp;
                     </li>
                 
             </ul>
@@ -303,12 +288,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>757 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>356 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
         </span>
     
     
@@ -329,113 +314,28 @@
                 <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-之前的项目已经接触了支付宝、微信、银联三种支付方式了。正好辞职把这个项目写一遍，看了技术栈有一些是没有接触过的，应该能学到很多。</p>
-<p>项目git地址：<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/kiml_rgb/shanjupay.git" >https://gitee.com/kiml_rgb/shanjupay.git<i class="fas fa-external-link-alt"></i></a></p>
-<p>前端项目地址：<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/kiml_rgb/shanjupay_web" >https://gitee.com/kiml_rgb/shanjupay_web<i class="fas fa-external-link-alt"></i></a></p>
+状态：216可以AC。</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.16 初始记录（抄了一些项目描述）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-10 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1>项目概述</h1>
-<p>聚合支付目前主要的做法就是线上聚合收银台(开放API)，线下C2B一码多付、线下B2C商家扫码。平台应以SaaS服务形式提供给各商户订单管理、门店管理、财务数据统计等基础服务，闪聚支付还以支付为入口，通过广告、营销、金融等服务，构建一个移动支付的全生态系统。</p>
-<h1>功能模块</h1>
-<p>平台主要包括三个模块：官网&amp;开放平台、商户平台、运营平台，详细功能如下：<br>
-<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240515/Snipaste_2024-05-15_16-28-50.png"
-                      alt=""
-                ></p>
-<table>
-<thead>
-<tr>
-<th>功能模块名称</th>
-<th>功能说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>官网&amp;开放平台</td>
-<td>产品展示、功能介绍、帮助中心和开发者中心</td>
-</tr>
-<tr>
-<td>商户平台-首页</td>
-<td>提供商户注册、登录、基本信息查看、数据看板</td>
-</tr>
-<tr>
-<td>商户平台-账户管理</td>
-<td>提供商户企业资质认证、企业信息查看和套餐购买</td>
-</tr>
-<tr>
-<td>商户平台-支付管理</td>
-<td>为商户提供应用创建、渠道参数配置、交易总览和开启支付(生成二维码)等</td>
-</tr>
-<tr>
-<td>商户平台-门店管理</td>
-<td>为商户提供新增门店、店长分配、门店导入等</td>
-</tr>
-<tr>
-<td>商户平台-员工管理</td>
-<td>为商户提供新增员工、定义角色、分配角色等</td>
-</tr>
-<tr>
-<td>商户平台-优惠管理</td>
-<td>为商户提供优惠券管理、活动统计等</td>
-</tr>
-<tr>
-<td>运营平台-商户管理</td>
-<td>对商户进行检索、审核和订单统计</td>
-</tr>
-<tr>
-<td>运营平台-优惠管理</td>
-<td>为商户设置优惠策略和优惠券发送</td>
-</tr>
-<tr>
-<td>运营平台-管理员管理</td>
-<td>运营平台-管理员管理</td>
-</tr>
-</tbody>
-</table>
-<h1>业务主体流程</h1>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240516/Snipaste_2024-05-16_08-25-34.png"
-                      alt=""
-                ></p>
-<h1>项目技术架构</h1>
-<h2 id="技术架构">技术架构</h2>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240515/Snipaste_2024-05-15_17-47-45.png"
-                      alt=""
-                ></p>
-<h2 id="技术栈">技术栈</h2>
-<p><img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240515/Snipaste_2024-05-15_18-09-38.png"
-                      alt=""
-                ><br>
-重点了解微服务技术栈：服务端基于Spring Boot构建，采用Spring Cloud Alibaba微服务架构。</p>
-<ol>
-<li class="lvl-3">
-<p>基础设施业务数据持久化采用MySQL，数据缓存采用Redis，采用RocketMQ的事务消息机制完成部分场景下的分布式事务控制，采用第三方云平台完成文件上传与分布式存储。</p>
-</li>
-<li class="lvl-3">
-<p>组件系统微服务基于SpringBoot开发，数据库连接池采用Druid，POJO构建采用Lombok，日志系统采用Log4j2， Guava工具类库，Mybatis Plus持久层接口实现，Sharding-jdbc分库分表组件，Swagger接口规范组件，XXL-job 分布式任务调度组件，Sentinel限流组件等。</p>
-</li>
-<li class="lvl-3">
-<p>接入 Zuul网关完成客户端认证、路由转发等功能，Dubbo RPC完成微服务远程调用，JWT提供前后端令牌管理方案。</p>
-</li>
-<li class="lvl-3">
-<p>视图平台支持H5、PC等各种前端。</p>
-</li>
-</ol>
+<h1>初步题解</h1>
+<h2 id="216组合总和III">216组合总和III</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/combination-sum-iii" >https://leetcode.cn/problems/combination-sum-iii<i class="fas fa-external-link-alt"></i></a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LE22</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; combinationSum3 = combinationSum3(<span class="number">9</span>, <span class="number">45</span>);  </span><br><span class="line">        <span class="keyword">for</span> (List&lt;Integer&gt; integerList : combinationSum3) &#123;  </span><br><span class="line">            System.out.println(Arrays.toString(integerList.stream().mapToInt(n -&gt; n).toArray()));  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">combinationSum3</span><span class="params">(<span class="type">int</span> k, <span class="type">int</span> n)</span> &#123;  </span><br><span class="line">        <span class="comment">// 结果集  </span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">        <span class="comment">// 单个结果  </span></span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">  </span><br><span class="line">        combinationSum(<span class="number">1</span>, k, n, <span class="number">0</span>, list, result);  </span><br><span class="line">        <span class="keyword">return</span> result;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">combinationSum</span><span class="params">(<span class="type">int</span> start, <span class="type">int</span> k, <span class="type">int</span> n, <span class="type">int</span> sum, List&lt;Integer&gt; list, List&lt;List&lt;Integer&gt;&gt; result)</span> &#123;  </span><br><span class="line">        <span class="comment">// 剪枝操作  </span></span><br><span class="line">        <span class="keyword">if</span> (sum &gt; n) &#123;  </span><br><span class="line">            <span class="keyword">return</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> (list.size() == k) &#123;  </span><br><span class="line">            <span class="keyword">if</span> (sum == n) &#123;  </span><br><span class="line">                List&lt;Integer&gt; resultOne = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(list);  </span><br><span class="line">                result.add(resultOne);  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">return</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> start; j &lt;= <span class="number">9</span> - (k - list.size()) + <span class="number">1</span>; j++) &#123;  </span><br><span class="line">            list.add(j);  </span><br><span class="line">            combinationSum(j + <span class="number">1</span>, k, n, sum + j, list, result);  </span><br><span class="line">            list.remove(list.size() - <span class="number">1</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="17电话号码的字母组合">17电话号码的字母组合</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/letter-combinations-of-a-phone-number" >https://leetcode.cn/problems/letter-combinations-of-a-phone-number<i class="fas fa-external-link-alt"></i></a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1>看解析</h1>
+<h2 id="216组合总和III-2">216组合总和III</h2>
+<p>题目链接/文章讲解：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0216.%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8CIII.html" >https://programmercarl.com/0216.%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8CIII.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wg411873x" >https://www.bilibili.com/video/BV1wg411873x<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="17电话号码的字母组合-2">17电话号码的字母组合</h2>
+<p>题目链接/文章讲解：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0017.%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88.html" >https://programmercarl.com/0017.%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yV4y1V7Ug" >https://www.bilibili.com/video/BV1yV4y1V7Ug<i class="fas fa-external-link-alt"></i></a></p>
 
             </div>
 
@@ -445,16 +345,16 @@
 <div class="article-copyright-info-container">
     <ul class="copyright-info-content">
         <li class="post-title">
-            <span class="type">本文标题</span>：<span class="content">聚合支付-项目介绍</span>
+            <span class="type">本文标题</span>：<span class="content">22 代码随想录算法训练营第二十二天-216组合总和III、17电话号码的字母组合</span>
         </li>
         <li class="post-author">
             <span class="type">本文作者</span>：<span class="content">Kiml</span>
         </li>
         <li class="post-time">
-            <span class="type">创建时间</span>：<span class="content">2024-05-15 16:16:29</span>
+            <span class="type">创建时间</span>：<span class="content">2024-06-10 14:53:08</span>
         </li>
         <li class="post-link">
-            <span class="type">本文链接</span>：<span class="content">2024/05/15/100000004/</span>
+            <span class="type">本文链接</span>：<span class="content">2024/06/10/100000040/</span>
         </li>
         <li class="post-license">
             <span class="type">版权声明</span>：<span class="content">本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！</span>
@@ -472,7 +372,7 @@
                 <ul class="post-tags-box">
                     
                         <li class="tag-item">
-                            <a href="/tags/Java/">#Java</a>&nbsp;
+                            <a href="/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">#回溯算法</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -481,29 +381,14 @@
             
                 <div class="article-nav">
                     
-                        <div class="article-prev">
-                            <a class="prev"
-                               rel="prev"
-                               href="/2024/05/16/100000005/"
-                            >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                                <span class="title flex-center">
-                                <span class="post-nav-title-item">代码随想录算法训练营第四天-24两两交换链表中的节点、19删除链表的倒数第N个节点、面试题02.07.链表相交、142环形链表II</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                            </a>
-                        </div>
-                    
                     
                         <div class="article-next">
                             <a class="next"
                                rel="next"
-                               href="/2024/04/24/100000005/"
+                               href="/2024/06/10/100000039/"
                             >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">代码随想录算法训练营第三天-203移除链表元素、707设计链表、206反转链表</span>
+                                <span class="post-nav-title-item">代码随想录算法训练营第二十一天-理论基础、77组合</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                                 <span class="right arrow-icon flex-center">
@@ -522,7 +407,7 @@
             <div class="toc-content-container">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">项目概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">功能模块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">业务主体流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">项目技术架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="nav-number">4.1.</span> <span class="nav-text">技术架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">4.2.</span> <span class="nav-text">技术栈</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#216%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8CIII"><span class="nav-number">1.1.</span> <span class="nav-text">216组合总和III</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88"><span class="nav-number">1.2.</span> <span class="nav-text">17电话号码的字母组合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#216%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8CIII-2"><span class="nav-number">2.1.</span> <span class="nav-text">216组合总和III</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88-2"><span class="nav-number">2.2.</span> <span class="nav-text">17电话号码的字母组合</span></a></li></ol></li></ol>
     </div>
 </div>
 
