@@ -14,7 +14,7 @@
     
 <link rel="stylesheet" href="/css/style.css">
 
-    <link rel="shortcut icon" href="/images/sword.png">
+    
     
 <link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
@@ -27,10 +27,11 @@
     
 <link rel="stylesheet" href="/font/css/brands.min.css">
 
-    <script id="hexo-configurations">
-    let KEEP = window.KEEP || {}
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"kiml.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#00ccff","logo":null,"favicon":"/images/sword.png","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240414/%E8%83%8C%E6%99%AF.webp","description":"我生来就是高山而非溪流 || 我欲于群峰之巅俯视平庸的沟壑","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"local_search":{"enable":true,"preload":true},"code_copy":{},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"side_tools":{},"pjax":{"enable":true},"lazyload":{"enable":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["D","C","B","A","S"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"version":"3.6.1"}
+    KEEP.theme_config = {"base_info":{"title":"Kiml's Blog","author":"Kiml"},"menu":{"Home":"/","Archives":"/archives","Tags":"/tags","Categories":"/categories","About":"/about"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kiml-rgb","email":"1162278448@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["D","C","B","A","S"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"jsdelivr"},"pjax":{"enable":true},"footer":{"since":2022,"icp":null,"site_deploy":{"enable":false,"provider":"github","url":null}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","style":{"primary_color":"#00ccff","logo":null,"favicon":"/images/sword.png","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240414/%E8%83%8C%E6%99%AF.webp","description":"我生来就是高山而非溪流 || 我欲于群峰之巅俯视平庸的沟壑","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"home_article":{"category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":5}},"source_data":{},"version":"4.1.3"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -42,8 +43,6 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
     
         <span class="pjax-progress-bar"></span>
@@ -52,71 +51,82 @@
 </div>
 
 
-<main class="page-container">
 
+<main class="page-container border-box">
+    <!-- home first screen  -->
     
 
-    <div class="page-main-content is-home">
-
+    <!-- page content -->
+    <div class="page-main-content border-box is-home">
         <div class="page-main-content-top">
             
-<header class="header-wrapper transparent-1">
+<header class="header-wrapper">
 
-    <div class="header-content">
-        <div class="left">
+    <div class="border-box header-content">
+        <div class="left border-box">
             
-            <a class="logo-title" href="/">
+            <a class="site-name border-box" href="/">
                Kiml&#39;s Blog
             </a>
         </div>
 
-        <div class="right">
+        <div class="right border-box">
             <div class="pc">
                 <ul class="menu-list">
                     
+                        
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/"
                             >
+                                
                                 首页
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/archives"
                             >
+                                
                                 归档
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/tags"
                             >
+                                
                                 标签
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/categories"
                             >
+                                
                                 分类
                             </a>
                         </li>
                     
+                        
                         <li class="menu-item">
                             <a class=""
                                href="/about"
                             >
+                                
                                 关于
                             </a>
                         </li>
                     
                     
                         <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
+                            <i class="fas search fa-search"></i>
                         </li>
                     
                 </ul>
@@ -135,29 +145,39 @@
     <div class="header-drawer">
         <ul class="drawer-menu-list">
             
-                <li class="drawer-menu-item flex-center">
-                    <a class="active"
-                       href="/">首页</a>
-                </li>
-            
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/"
+                    >首页</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/tags">标签</a>
+                       href="/archives"
+                    >归档</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/categories">分类</a>
+                       href="/tags"
+                    >标签</a>
                 </li>
             
+                
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/about">关于</a>
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
                 </li>
             
         </ul>
@@ -170,27 +190,144 @@
 
         </div>
 
-        <div class="page-main-content-middle">
+        <div class="page-main-content-middle border-box">
 
-            <div class="main-content">
-
+            <div class="main-content border-box">
                 
+
                     <div class="home-content-container fade-in-down-animation">
-    <ul class="home-article-list">
+    
+    <ul class="home-post-list border-box">
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <h3 class="home-article-title">
-                    <a href="/2024/04/18/100000005/">
-                        代码随想录算法训练营第二天-977有序数组的平方、209长度最小的子数组、59螺旋矩阵II
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-post-item-bottom border-box">
                     
-                        <ul class="lvl-0">
+                    <h3 class="home-post-title border-box">
+                        <a href="/2024/04/22/100000004/">
+                            面试-数据结构和算法
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>
+根据刷题记录，整理各个类型的特点</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">24.04.22 初始记录 数组的总结</span><br><span class="line">24.05.23 链表的总结</span><br><span class="line">24.05.24 哈希表的总结</span><br><span class="line">24.05.29 字符串的总结（KMP）</span><br><span class="line">24.06.09 二叉树总结</span><br></pre></td></tr></table></figure>
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Jun 10 2024 16:53:49 GMT+0800"
+                >2024-06-10 16:53:49</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2024/04/22/100000004/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2024/04/19/100000004/">
+                            MybatisPlus多表联查分页，Total计数异常
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.04.19 初始记录</span><br></pre></td></tr></table></figure>
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Jun 05 2024 16:35:44 GMT+0800"
+                >2024-06-05 16:35:44</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2024/04/19/100000004/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2024/04/18/100000005/">
+                            代码随想录算法训练营第二天-977有序数组的平方、209长度最小的子数组、59螺旋矩阵II
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
 状态：977、209通过。59没有思路</p>
@@ -200,84 +337,56 @@
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">24.04.18 初始记录</span><br><span class="line">24.04.21 补充螺旋矩阵的题解</span><br></pre></td></tr></table></figure>
-                    
-                </div>
+                        
+                    </div>
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Sun Jun 09 2024 21:26:19 GMT+0800">
-                2024-06-09
-            </span>
-        </span>
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">代码随想录</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Jun 09 2024 21:26:19 GMT+0800"
+                >2024-06-09 21:26:19</span>
             </span>
         
+
         
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E8%9E%BA%E6%97%8B%E6%95%B0%E7%BB%84/">螺旋数组</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
+
+        
+
+        
+
+        
+        
+        
         
     </div>
 
-    <a class="read-more" href="/2024/04/18/100000005/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    
+        <a class="home-read-more" href="/2024/04/18/100000005/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
 </div>
 
+                </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <h3 class="home-article-title">
-                    <a href="/2024/04/17/100000004/">
-                        代码随想录算法训练营第一天-704二分查找、27移除元素
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-post-item-bottom border-box">
                     
-                        <ul class="lvl-0">
+                    <h3 class="home-post-title border-box">
+                        <a href="/2024/04/17/100000004/">
+                            代码随想录算法训练营第一天-704二分查找、27移除元素
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
 状态：可以通过</p>
@@ -287,79 +396,56 @@
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.04.17 初始记录</span><br></pre></td></tr></table></figure>
-                    
-                </div>
+                        
+                    </div>
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Sun Jun 09 2024 21:26:04 GMT+0800">
-                2024-06-09
-            </span>
-        </span>
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">代码随想录</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Jun 09 2024 21:26:04 GMT+0800"
+                >2024-06-09 21:26:04</span>
             </span>
         
+
         
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分查找</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
+
+        
+
+        
+
+        
+        
+        
         
     </div>
 
-    <a class="read-more" href="/2024/04/17/100000004/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    
+        <a class="home-read-more" href="/2024/04/17/100000004/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
 </div>
 
+                </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <h3 class="home-article-title">
-                    <a href="/2024/03/28/100000003/">
-                        华为OD
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-post-item-bottom border-box">
                     
-                        <ul class="lvl-0">
+                    <h3 class="home-post-title border-box">
+                        <a href="/2024/03/28/100000003/">
+                            华为OD
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
 为块术（不是），其实一直觉得二本毕业去这边也蛮好的，但是一直没有动力刷题。今天去面试，啥也没准备，就看了一天早已忘记的八股文，果然挂了。但是Boss上收到华为OD的Hr的消息（好像是最近突然加了岗位？），总之约了两周后机考（怎么敢的，真的一点都没准备过）</p>
@@ -369,68 +455,56 @@
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.03.28 初始记录-day1刷题记录</span><br></pre></td></tr></table></figure>
-                    
-                </div>
+                        
+                    </div>
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Apr 18 2024 00:36:31 GMT+0800">
-                2024-04-18
-            </span>
-        </span>
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Thu Apr 18 2024 00:36:31 GMT+0800"
+                >2024-04-18 00:36:31</span>
             </span>
         
+
         
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Java/">Java</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
+
+        
+
+        
+
+        
+        
+        
         
     </div>
 
-    <a class="read-more" href="/2024/03/28/100000003/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    
+        <a class="home-read-more" href="/2024/03/28/100000003/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
 </div>
 
+                </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <h3 class="home-article-title">
-                    <a href="/2023/11/02/100000003/">
-                        装机-软件安装
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-post-item-bottom border-box">
                     
-                        <ul class="lvl-0">
+                    <h3 class="home-post-title border-box">
+                        <a href="/2023/11/02/100000003/">
+                            装机-软件安装
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
 找到工作之后每天就是躺平，好久没有更新技术上的内容了，之前学的好多东西也忘了……甚至md语法都忘了好多（每天CRUD，但是也很消耗精力。必须要不断学习，好痛苦，什么时候能退休😢）趁着618配了一台新电脑，顺便用半个多月的时间用新电脑打游戏。。。正好最近在装软件，整理一下装机要注意的事，以及一些必备软件，便于后面再次装机使用。</p>
@@ -440,63 +514,56 @@
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">23.06.24 初始记录</span><br><span class="line">23.07.02 IDEA常用插件 + 基本设置</span><br><span class="line">23.07.09 编程环境Java + MySQL</span><br><span class="line">23.07.11 Git</span><br><span class="line">23.08.28 Maven</span><br></pre></td></tr></table></figure>
-                    
-                </div>
+                        
+                    </div>
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 31 2024 10:28:47 GMT+0800">
-                2024-05-31
-            </span>
-        </span>
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">环境搭建</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Fri May 31 2024 10:28:47 GMT+0800"
+                >2024-05-31 10:28:47</span>
             </span>
         
+
         
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
+
+        
+
+        
+
+        
+        
+        
         
     </div>
 
-    <a class="read-more" href="/2023/11/02/100000003/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    
+        <a class="home-read-more" href="/2023/11/02/100000003/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
 </div>
 
+                </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <h3 class="home-article-title">
-                    <a href="/2023/08/29/100000004/">
-                        Spring Data Redis
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-post-item-bottom border-box">
                     
-                        <ul class="lvl-0">
+                    <h3 class="home-post-title border-box">
+                        <a href="/2023/08/29/100000004/">
+                            Spring Data Redis
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
 Spring Data Redis 是Spring 框架提供的用于操作Redis的方式。涵盖Redis的安装、Spring Cache结合Redis的使用、Redis连接池的使用和RedisTemplate的使用等内容。</p>
@@ -510,74 +577,56 @@ Spring Data Redis 是Spring 框架提供的用于操作Redis的方式。涵盖Re
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">23.08.29 初始记录</span><br></pre></td></tr></table></figure>
-                    
-                </div>
+                        
+                    </div>
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu May 16 2024 15:47:20 GMT+0800">
-                2024-05-16
-            </span>
-        </span>
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">后端项目</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">准备工作</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Thu May 16 2024 15:47:20 GMT+0800"
+                >2024-05-16 15:47:20</span>
             </span>
         
+
         
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Redis/">Redis</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Spring/">Spring</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
+
+        
+
+        
+
+        
+        
+        
         
     </div>
 
-    <a class="read-more" href="/2023/08/29/100000004/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    
+        <a class="home-read-more" href="/2023/08/29/100000004/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
 </div>
 
+                </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <h3 class="home-article-title">
-                    <a href="/2023/07/11/100000003/">
-                        Git及常用命令
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-post-item-bottom border-box">
                     
-                        <ul class="lvl-0">
+                    <h3 class="home-post-title border-box">
+                        <a href="/2023/07/11/100000003/">
+                            Git及常用命令
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
 Git部分知识以及常用命令</p>
@@ -587,63 +636,56 @@ Git部分知识以及常用命令</p>
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">23.07.11 初始记录</span><br></pre></td></tr></table></figure>
-                    
-                </div>
+                        
+                    </div>
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 31 2024 10:29:22 GMT+0800">
-                2024-05-31
-            </span>
-        </span>
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">环境搭建</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Fri May 31 2024 10:29:22 GMT+0800"
+                >2024-05-31 10:29:22</span>
             </span>
         
+
         
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Git/">Git</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
+
+        
+
+        
+
+        
+        
+        
         
     </div>
 
-    <a class="read-more" href="/2023/07/11/100000003/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    
+        <a class="home-read-more" href="/2023/07/11/100000003/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
 </div>
 
+                </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <h3 class="home-article-title">
-                    <a href="/2023/07/02/100000003/">
-                        IntelliJ IDEA常用设置
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-post-item-bottom border-box">
                     
-                        <ul class="lvl-0">
+                    <h3 class="home-post-title border-box">
+                        <a href="/2023/07/02/100000003/">
+                            IntelliJ IDEA常用设置
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
 IntelliJ IDEA常用设置</p>
@@ -653,63 +695,56 @@ IntelliJ IDEA常用设置</p>
 </li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">23.07.02 初始记录</span><br><span class="line">23.07.09 基本设置（初始）</span><br><span class="line">23.07.16 基本设置完成 推荐插件（初始）</span><br><span class="line">23.08.28 三个插件的添加</span><br><span class="line">24.06.06 LeetCode插件</span><br></pre></td></tr></table></figure>
-                    
-                </div>
+                        
+                    </div>
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Jun 06 2024 17:55:38 GMT+0800">
-                2024-06-06
-            </span>
-        </span>
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">环境搭建</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Thu Jun 06 2024 17:55:38 GMT+0800"
+                >2024-06-06 17:55:38</span>
             </span>
         
+
         
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/IDEA/">IDEA</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
+
+        
+
+        
+
+        
+        
+        
         
     </div>
 
-    <a class="read-more" href="/2023/07/02/100000003/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    
+        <a class="home-read-more" href="/2023/07/02/100000003/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
 </div>
 
+                </div>
             </li>
         
-            <li class="home-article-item">
+            <li class="home-post-item">
 
                 
 
-                <h3 class="home-article-title">
-                    <a href="/2023/02/27/100000002/">
-                        Obsidian + Git + Hexo + 图床 = Blog + 个人笔记体系
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
+                <div class="home-post-item-bottom border-box">
                     
-                        <ul class="lvl-0">
+                    <h3 class="home-post-title border-box">
+                        <a href="/2023/02/27/100000002/">
+                            Obsidian + Git + Hexo + 图床 = Blog + 个人笔记体系
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
 之前有过基于 Hexo 的博客搭建经历，但是由于时间繁忙，加上后续学习了解到的笔记软件，拥有我想要的全局搜索功能，而且比博客的格式、排版更加吸引人，就放弃了之前搭建的博客。但是出来找工作感觉拥有一个自己的技术博客会比较占优势，因此打算在笔记的基础上，加上原来的 Hexo 快速生成，转成技术博客输出。</p>
@@ -726,103 +761,127 @@ IntelliJ IDEA常用设置</p>
 <li class="lvl-2">更新</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">22.12.11 初始记录(修改预计开始日期为元旦)</span><br><span class="line">23.02.24 环境部署，个人博客绑定到 Gitee Pages</span><br><span class="line">23.02.27 Obsidian 整合 等待Gitee Pages审核ing</span><br><span class="line">24.03.28 更新域名绑定等相关问题</span><br></pre></td></tr></table></figure>
-                    
-                </div>
+                        
+                    </div>
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Fri May 31 2024 10:29:36 GMT+0800">
-                2024-05-31
-            </span>
-        </span>
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Fri May 31 2024 10:29:36 GMT+0800"
+                >2024-05-31 10:29:36</span>
             </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
         
         
     </div>
 
-    <a class="read-more" href="/2023/02/27/100000002/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    
+        <a class="home-read-more" href="/2023/02/27/100000002/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
 </div>
 
+                </div>
             </li>
         
     </ul>
-
-    <div class="home-paginator">
-        <div class="paginator">
     
-        <a class="prev btn"
-           href="/page/4/"
-        >上一页</a>
-    
+    <div class="paginator border-box flex-center">
+        <div class="btn-wrap allowed">
+            <a class="jump-btn"
+               href="/page/4/"
+            ><i class="fa-solid fa-chevron-left"></i></a>
+        </div>
 
-    
-</div>
 
+        <div class="page-number-box border-box flex-center">
+            <input class="page-number-input border-box base-color-size"
+                   type="number"
+                   value="5"
+                   min="1"
+                   max="5"
+            ><span class="delimiter base-color-size">/</span><span class="base-color-size">5</span>
+        </div>
+
+
+        <div class="btn-wrap">
+            <a class="jump-btn"
+               href="/"
+            ><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
     </div>
+
+
+
+
 </div>
 
 
                 
             </div>
-
         </div>
 
-        <div class="page-main-content-bottom">
+        <div class="page-main-content-bottom border-box">
             
-<footer class="footer">
-    <div class="info-container">
-        <div class="copyright-info info-item">
-            &copy;
-            
-                <span>2022</span> -
-            
-            2024
-            
-                &nbsp;<i class="fas fa-heart icon-animate"></i>
-                &nbsp;<a href="/">Kiml</a>
-            
-        </div>
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
         
-            <script async data-pjax
-                    src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="website-count info-item">
-                
-                    访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
-                
-                
-                    总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
-                
-            </div>
-        
-        <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
-        </div>
-        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kiml</a>
         
     </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
 </footer>
 
         </div>
     </div>
 
+    <!-- post tools -->
     
 
-    <div class="right-bottom-side-tools">
-        <div class="side-tools-container">
-    <ul class="side-tools-list">
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box side-tools-show-handle">
+    <ul class="side-tools-list side-tools-show-handle border-box">
         <li class="tools-item tool-font-adjust-plus flex-center">
             <i class="fas fa-search-plus"></i>
         </li>
@@ -831,7 +890,7 @@ IntelliJ IDEA常用设置</p>
             <i class="fas fa-search-minus"></i>
         </li>
 
-        <li class="tools-item tool-dark-light-toggle flex-center">
+        <li class="tools-item tool-toggle-theme-mode flex-center">
             <i class="fas fa-moon"></i>
         </li>
 
@@ -847,62 +906,36 @@ IntelliJ IDEA常用设置</p>
             </li>
         
 
-        
-
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
         </li>
     </ul>
 
-    <ul class="exposed-tools-list">
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
         <li class="tools-item tool-toggle-show flex-center">
             <i class="fas fa-cog fa-spin"></i>
         </li>
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
-        
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
     </ul>
 </div>
 
     </div>
 
-    .zoom-in-image-mask {
-  position fixed
-  top 0
-  right 0
-  bottom 0
-  left 0
-  z-index $z-index-8
-  display flex
-  align-items center
-  justify-content center
-  box-sizing border-box
-  background rgba(0, 0, 0, 0)
-  visibility hidden
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "linear, linear")
-
-  &.show {
-    background rgba(0, 0, 0, 0.5)
-    visibility visible
-
-    .zoom-in-image {
-      cursor zoom-out
-    }
-  }
-
-  .zoom-in-image {
-    position absolute
-    z-index $z-index-9
-    transform-origin center center
-    will-change transform
-    transition-t("transform", "0", "0.3", "linear")
-  }
-}
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
 
 
+    <!-- local search -->
     
         <div class="search-pop-overlay">
     <div class="popup search-popup">
@@ -934,47 +967,64 @@ IntelliJ IDEA常用设置</p>
 
     
 
+    <!-- tablet toc -->
+    
 </main>
 
 
 
 
+<!-- common -->
 
 <script src="/js/utils.js"></script>
-
-<script src="/js/main.js"></script>
 
 <script src="/js/header-shrink.js"></script>
 
 <script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
 
 
-
-
+<!-- local-search -->
 
     
 <script src="/js/local-search.js"></script>
 
 
 
-
-    
-<script src="/js/code-block.js"></script>
-
-
-
+<!-- lazyload -->
 
     
 <script src="/js/lazyload.js"></script>
 
 
 
-<div class="post-scripts pjax">
+<div class="pjax">
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
     
 </div>
 
+<!-- mermaid -->
+
+
+<!-- pjax -->
 
     
 <script src="/js/libs/pjax.min.js"></script>
@@ -994,20 +1044,20 @@ IntelliJ IDEA常用设置</p>
             analytics: false,
             currentUrlFullReload: false,
             scrollRestoration: false,
-            // scrollTo: true,
         });
 
         document.addEventListener('pjax:send', () => {
-            KEEP.utils.pjaxProgressBarStart();
+            KEEP.utils.pjaxProgressBarStart()
         });
 
         document.addEventListener('pjax:complete', () => {
-            KEEP.utils.pjaxProgressBarEnd();
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            KEEP.refresh();
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
         });
     });
 </script>
+
 
 
 
