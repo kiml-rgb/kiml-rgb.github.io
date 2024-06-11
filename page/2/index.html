@@ -183,6 +183,60 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2024/06/06/100000030/">
+                        WebStorm常用设置
+                    </a>
+                </h3>
+
+                <div class="home-article-content keep-markdown-body">
+                    
+                        <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>
+WebStorm常用设置</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.06.06 初始记录</span><br></pre></td></tr></table></figure>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span>
+            <i class="fas fa-history"></i>&nbsp;
+            <span class="home-article-date" data-updated="Thu Jun 06 2024 21:32:09 GMT+0800">
+                2024-06-06
+            </span>
+        </span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">环境搭建</a>&nbsp;
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+    </div>
+
+    <a class="read-more" href="/2024/06/06/100000030/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2024/06/06/100000029/">
                         Long长度大于17位时，精度丢失
                     </a>
@@ -850,78 +904,6 @@
 
             </li>
         
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2024/06/01/100000019/">
-                        代码随想录算法训练营第十二天-二叉树理论基础、递归遍历、迭代遍历、统一迭代
-                    </a>
-                </h3>
-
-                <div class="home-article-content keep-markdown-body">
-                    
-                        <ul class="lvl-0">
-<li class="lvl-2">
-<p>前言<br>
-递归、迭代、统一迭代。都是看完解析之后完成的。统一迭代有点难理解。</p>
-</li>
-<li class="lvl-2">
-<p>更新</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-03 初始记录</span><br></pre></td></tr></table></figure>
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span>
-            <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Sun Jun 09 2024 21:23:35 GMT+0800">
-                2024-06-09
-            </span>
-        </span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">代码随想录</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a class="read-more" href="/2024/06/01/100000019/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
     </ul>
 
     <div class="home-paginator">
@@ -1037,9 +1019,38 @@
 
     </div>
 
-    <div class="zoom-in-image-mask">
-    <img class="zoom-in-image">
-</div>
+    .zoom-in-image-mask {
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index $z-index-8
+  display flex
+  align-items center
+  justify-content center
+  box-sizing border-box
+  background rgba(0, 0, 0, 0)
+  visibility hidden
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "linear, linear")
+
+  &.show {
+    background rgba(0, 0, 0, 0.5)
+    visibility visible
+
+    .zoom-in-image {
+      cursor zoom-out
+    }
+  }
+
+  .zoom-in-image {
+    position absolute
+    z-index $z-index-9
+    transform-origin center center
+    will-change transform
+    transition-t("transform", "0", "0.3", "linear")
+  }
+}
 
 
     

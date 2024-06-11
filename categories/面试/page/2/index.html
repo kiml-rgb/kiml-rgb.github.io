@@ -195,6 +195,13 @@
                 
                     <li class="article-item">
                         <a class="article-title"
+                           href="/2024/06/03/100000024/"
+                        >面试-并发🤕</a>
+                        <span class="article-date">06-03</span>
+                    </li>
+                
+                    <li class="article-item">
+                        <a class="article-title"
                            href="/2024/06/03/100000025/"
                         >面试-基础</a>
                         <span class="article-date">06-03</span>
@@ -254,13 +261,6 @@
                            href="/2024/05/30/100000012/"
                         >代码随想录算法训练营第九天-232用栈实现队列、225用队列实现栈</a>
                         <span class="article-date">05-30</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2024/05/29/100000011/"
-                        >代码随想录算法训练营第八天-28实现 strStr() 、459重复的子字符串</a>
-                        <span class="article-date">05-29</span>
                     </li>
                 
             </ul>
@@ -383,9 +383,38 @@
 
     </div>
 
-    <div class="zoom-in-image-mask">
-    <img class="zoom-in-image">
-</div>
+    .zoom-in-image-mask {
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index $z-index-8
+  display flex
+  align-items center
+  justify-content center
+  box-sizing border-box
+  background rgba(0, 0, 0, 0)
+  visibility hidden
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "linear, linear")
+
+  &.show {
+    background rgba(0, 0, 0, 0.5)
+    visibility visible
+
+    .zoom-in-image {
+      cursor zoom-out
+    }
+  }
+
+  .zoom-in-image {
+    position absolute
+    z-index $z-index-9
+    transform-origin center center
+    will-change transform
+    transition-t("transform", "0", "0.3", "linear")
+  }
+}
 
 
     

@@ -210,9 +210,24 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2024-06-10 22:34:12</span>
+        <span class="pc">2024-06-10 22:34:29</span>
     </span>
     
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E9%9D%A2%E8%AF%95/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
     
         <span class="article-tags article-meta-item">
@@ -370,6 +385,21 @@
             
                 <div class="article-nav">
                     
+                        <div class="article-prev">
+                            <a class="prev"
+                               rel="prev"
+                               href="/2024/06/11/100000042/"
+                            >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                                <span class="title flex-center">
+                                <span class="post-nav-title-item">代码随想录算法训练营第二十三天-39组合总和、40组合总和II、131分割回文串</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                            </a>
+                        </div>
+                    
                     
                         <div class="article-next">
                             <a class="next"
@@ -517,9 +547,38 @@
 
     </div>
 
-    <div class="zoom-in-image-mask">
-    <img class="zoom-in-image">
-</div>
+    .zoom-in-image-mask {
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index $z-index-8
+  display flex
+  align-items center
+  justify-content center
+  box-sizing border-box
+  background rgba(0, 0, 0, 0)
+  visibility hidden
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "linear, linear")
+
+  &.show {
+    background rgba(0, 0, 0, 0.5)
+    visibility visible
+
+    .zoom-in-image {
+      cursor zoom-out
+    }
+  }
+
+  .zoom-in-image {
+    position absolute
+    z-index $z-index-9
+    transform-origin center center
+    will-change transform
+    transition-t("transform", "0", "0.3", "linear")
+  }
+}
 
 
     
