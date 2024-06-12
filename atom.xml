@@ -6,7 +6,7 @@
   <link href="https://kiml.github.io/atom.xml" rel="self"/>
   
   <link href="https://kiml.github.io/"/>
-  <updated>2024-06-12T03:26:46.596Z</updated>
+  <updated>2024-06-12T03:31:13.447Z</updated>
   <id>https://kiml.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kiml.github.io/2024/06/12/100000045/"/>
     <id>https://kiml.github.io/2024/06/12/100000045/</id>
     <published>2024-06-12T03:06:01.000Z</published>
-    <updated>2024-06-12T03:26:46.596Z</updated>
+    <updated>2024-06-12T03:31:13.447Z</updated>
     
     <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>前言<br>状态：今天的题，看标注说都很难，先去总结再做这个。</p></li><li class="lvl-2"><p>更新</p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-12 初始记录</span><br></pre></td></tr></table></figure><span id="more"></span><h1>初步题解</h1><h2 id="332重新安排行程">332重新安排行程</h2><p>题目链接：(<a class="link"   href="https://leetcode.cn/problems/reconstruct-itinerary" >https://leetcode.cn/problems/reconstruct-itinerary<i class="fas fa-external-link-alt"></i></a>)</p><h2 id="51N皇后">51N皇后</h2><p>题目链接：(<a class="link"   href="https://leetcode.cn/problems/n-queens" >https://leetcode.cn/problems/n-queens<i class="fas fa-external-link-alt"></i></a>)</p><h2 id="37解数独">37解数独</h2><p>题目链接：(<a class="link"   href="https://leetcode.cn/problems/sudoku-solver" >https://leetcode.cn/problems/sudoku-solver<i class="fas fa-external-link-alt"></i></a>)</p><h1>看解析</h1><h2 id="332重新安排行程-2">332重新安排行程</h2><p>题目链接/文章讲解：(<a class="link"   href="https://programmercarl.com/0332.%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B.html" >https://programmercarl.com/0332.重新安排行程.html<i class="fas fa-external-link-alt"></i></a>)</p><h2 id="51N皇后-2">51N皇后</h2><p>题目链接/文章讲解：(<a class="link"   href="https://programmercarl.com/0051.N%E7%9A%87%E5%90%8E.html" >https://programmercarl.com/0051.N皇后.html<i class="fas fa-external-link-alt"></i></a>)</p><h2 id="37解数独-2">37解数独</h2><p>题目链接/文章讲解：(<a class="link"   href="https://programmercarl.com/0037.%E8%A7%A3%E6%95%B0%E7%8B%AC.html" >https://programmercarl.com/0037.解数独.html<i class="fas fa-external-link-alt"></i></a>)</p>]]></content>
     
@@ -38,6 +38,10 @@
 &lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;24-06-12 初始记录&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
+    
+    <category term="面试" scheme="https://kiml.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="代码随想录" scheme="https://kiml.github.io/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/"/>
     
     
     <category term="回溯算法" scheme="https://kiml.github.io/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
