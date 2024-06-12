@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kiml">
+    
+    <title>
+        
+            面试-基础 |
+        
+        Kiml&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"kiml.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"title":"Kiml's Blog","author":"Kiml"},"menu":{"Home":"/","Archives":"/archives","Tags":"/tags","Categories":"/categories","About":"/about"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kiml-rgb","email":"1162278448@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["D","C","B","A","S"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"jsdelivr"},"pjax":{"enable":true},"footer":{"since":2022,"icp":null,"site_deploy":{"enable":false,"provider":"github","url":null}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","style":{"primary_color":"#00ccff","logo":null,"favicon":"/images/sword.png","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240414/%E8%83%8C%E6%99%AF.webp","description":"我生来就是高山而非溪流 || 我欲于群峰之巅俯视平庸的沟壑","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"home_article":{"category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":5}},"source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Keep Theme" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+            <a class="site-name border-box" href="/">
+               Kiml&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        面试-基础
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kiml</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-06-03 21:09:05</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Jun 04 2024 14:03:53 GMT+0800">2024-06-04 14:03:53</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.5k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>
+❗表示必掌握，❔表示基本不会问</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.06.03 初始记录</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="❗Java的基本数据类型">❗Java的基本数据类型</h2>
+<p>byte，short，int，long，float，double，char，boolean</p>
+<h2 id="面向对象的三大特性">面向对象的三大特性</h2>
+<p>继承、多态、封装</p>
+<h2 id="JDK和JRE的区别">JDK和JRE的区别</h2>
+<p>JRE：Java 运⾏时环境。它是运⾏已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，Java 命令和其他的⼀些基础构件。但是，它不能⽤于创建新程序。</p>
+<p>JDK(Java Development Kit)：它是功能⻬全的 Java SDK。它拥有 JRE 所拥有的⼀切，还有编译器（javac）和⼯具（如 javadoc 和 jdb）。它能够创建和编译程序。</p>
+<p><strong>简单来说，JDK 包含 JRE，JRE 包含 JVM。</strong></p>
+<h2 id="Java支持多继承和多实现吗">Java支持多继承和多实现吗</h2>
+<p>不支持多继承，支持多实现。</p>
+<h2 id="构造函数和一般函数有什么区别">构造函数和一般函数有什么区别</h2>
+<ol>
+<li class="lvl-3">
+<p>定义格式不同</p>
+</li>
+<li class="lvl-3">
+<p>构造函数是在对象创建时，就被调用，用于初始化，而且初始化动作只执行一次。 一般函数，是对象创建后，需要调用才执行，可以被调用多次。</p>
+</li>
+</ol>
+<h2 id="Java怎么创建对象">Java怎么创建对象</h2>
+<ol>
+<li class="lvl-3">
+<p>使用 new 关键字</p>
+</li>
+<li class="lvl-3">
+<p>使用newInstance方法</p>
+</li>
+</ol>
+<blockquote>
+<p>Java 反射中有一个 newInstance() 方法，可以创建对象，步骤如下：获取要创建的类的 Class 对象。如果只需要调用这个类的访问权限为 public 无参构造器，<strong>直接使用 Class 类的实例方法 newInstance()</strong>。获取 Class 对象的构造器对象，通过调用 Class 类的实例方法 getDeclaredConstractors() 来获取构造器对象的数组。(获取所有构造器，无视访问权限的限制，数组顺序按照代码中的顺序决定)如果调用的构造器是 private 的，需要调用 Constractor 类的父类 AccessibleObject 类的实例方法 setAccessible(true) 来打破访问限制。使用 Constractor 类的实例方法 newInstance()。获取 Class 对象的方法有3个，此处不多赘述。获取Constractor 对象的方法有4个，此处不多赘述。</p>
+</blockquote>
+<ol start="3">
+<li class="lvl-3">
+<p>使用clone()方法</p>
+</li>
+</ol>
+<blockquote>
+<p>Object 类是所有类的直接或间接父类，Object 类中提供了 实例方法 native()，在给定对象的基础上，创建一个完全相同的对象。步骤如下：想要使用 clone() 方法创建对象的类，实现 Cloneable 接口。在类的内部，重写 Object 类的 clone() 方法。备注：没有实现 Cloneable 接口，会抛出 CloneNotSupportedException 异常。Object 类提供的 clone() 方法，访问权限是 protected，所以如果不重写 clone() 方法，是没有权限调用的。Object 类的 clone() 方法，是 native 方法。</p>
+</blockquote>
+<ol start="4">
+<li class="lvl-3">
+<p>❔使用反序列化的readObject()方法</p>
+</li>
+</ol>
+<blockquote>
+<p>这个方法一共分两步：将对象序列化，存储到一个文件中。从文件中反序列化，得到类对象。</p>
+<p>序列化：想要序列化对象的类，实现Serializable接口。使用文件输出流FileOutputStream创建存储序列化之后对象的文件。使用对象输出流ObjectOutputStream的实例方法writeObject(obj)。判断类中是否存在，名为writeReplace()，返回类型为Object的方法，若有，写入这个方法的返回值；否则，写入obj对象。</p>
+<p>反序列化：使用文件输入流FileInputStream找到存储序列化对象的文件。使用对象输入流ObjectInputStream的实例方法readObject()。判断类中是否存在，名为readResolve()，返回类型为Object的方法，若有读取这个对象；否则，反序列化文件中的对象流。</p>
+<p>备注：在类中，writeReplace()和readResoleve()是两个非常特殊的方法，其特征签名需要严格限制：方法名限定，参数个数限定为0，返回类型必须是Object，不能为Object的子类，但是可以抛出不同的异常。访问修饰符没有限制，但一般推荐为private，防止误操作。其特殊的地方还在于将其设为private方法，没有其他方法调用的情况下，编译器不会发出警告。</p>
+</blockquote>
+<h2 id="Java中的异常">Java中的异常</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Throwable -&gt;Exception -&gt; ClassNotFoundException</span><br><span class="line">					  -&gt; IOException</span><br><span class="line">					  -&gt; RuntimeException      -&gt; NullPointerException</span><br><span class="line">											  -&gt; NumberFormatException</span><br><span class="line">											  -&gt; IndexOutOfBoundsException</span><br><span class="line">					  ......</span><br><span class="line">          -&gt;Error</span><br></pre></td></tr></table></figure>
+<h2 id="❗抽象类和接口的区别">❗抽象类和接口的区别</h2>
+<ol>
+<li class="lvl-3">
+<p>定义：接口定义：interface；抽象类：abstrat class;</p>
+</li>
+<li class="lvl-3">
+<p>抽象类可以定义构造方法供子类调用，接口不可以；</p>
+</li>
+<li class="lvl-3">
+<p>接口的所有方法都是抽象方法，所有属性都是常量：static final 类型；而抽象类中可以有不是抽象的方法和不是常量的属性；</p>
+</li>
+<li class="lvl-3">
+<p>抽象类只能单继承，而接口之间可以多继承，接口之间的继承用extexds,类实现接口用implements.</p>
+</li>
+</ol>
+<h2 id="和equals"><code>==</code>和<code>equals()</code></h2>
+<p><code>==</code>：</p>
+<ol>
+<li class="lvl-3">
+<p>如果比较的对象是基本数据类型，则比较的是其存储的值是否相等；</p>
+</li>
+<li class="lvl-3">
+<p>如果比较的是引用数据类型，则比较的是所指向对象的地址值是否相等（是否是同一个对象）。<code>equals</code>：</p>
+</li>
+<li class="lvl-3">
+<p>如果没有对 equals 方法进行重写，则相当于<code>==</code>，比较的是引用类型的变量所指向的对象的地址值。</p>
+</li>
+<li class="lvl-3">
+<p>一般情况下，类会重写equals方法用来比较两个对象的内容是否相等。比如String类中的equals()是被重写了，比较的是对象的值。</p>
+</li>
+</ol>
+<h2 id="为什么重写equals方法，还必须要重写hashcode方法">为什么重写equals方法，还必须要重写hashcode方法</h2>
+<ol>
+<li class="lvl-3">
+<p>保证是同一个对象，如果重写了equals方法，而没有重写hashcode方法，会出现equals相等的对象，hashcode不相等的情况，重写hashcode方法就是为了避免这种情况的出现。</p>
+</li>
+<li class="lvl-3">
+<p>使用hashcode方法提前校验，可以避免每一次比对都调用equals方法，提高效率</p>
+</li>
+</ol>
+<p>重写后：</p>
+<ol>
+<li class="lvl-3">
+<p>equals()相等的两个对象，hashcode()一定相等；</p>
+</li>
+<li class="lvl-3">
+<p>hashcode()不等，一定能推出equals()也不等；</p>
+</li>
+<li class="lvl-3">
+<p>hashcode()相等，equals()可能相等，也可能不等。</p>
+</li>
+<li class="lvl-3">
+<p>所以先进行hashcode（）判断，不等就不用equals（）方法了。</p>
+</li>
+<li class="lvl-3">
+<p>但equels是是根据对象的特征进行重写的，有时候特征相同，但hash值不同，也不是一个对象。 所以两个都重写才能保障是同一个对象。</p>
+</li>
+</ol>
+
+                </div>
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                面试-基础
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                posts/3a228d8a/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">Kiml</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-06-03 21:09</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/posts/40294c75/"
+                                   title="面试-并发🤕"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">面试-并发🤕</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/posts/b6d70614/"
+                                   title="代码随想录算法训练营第十三天-层序遍历、226翻转二叉树、101对称二叉树"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第十三天-层序遍历、226翻转二叉树、101对称二叉树</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK%E5%92%8CJRE%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK和JRE的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8Cequals"><span class="nav-text">&#x3D;&#x3D;和equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99equals%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写equals方法，还必须要重写hashcode方法</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kiml</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK%E5%92%8CJRE%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK和JRE的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8Cequals"><span class="nav-text">&#x3D;&#x3D;和equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99equals%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写equals方法，还必须要重写hashcode方法</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kiml">
+    
+    <title>
+        
+            代码随想录算法训练营第二天-977有序数组的平方、209长度最小的子数组、59螺旋矩阵II |
+        
+        Kiml&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"kiml.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"title":"Kiml's Blog","author":"Kiml"},"menu":{"Home":"/","Archives":"/archives","Tags":"/tags","Categories":"/categories","About":"/about"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kiml-rgb","email":"1162278448@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["D","C","B","A","S"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"jsdelivr"},"pjax":{"enable":true},"footer":{"since":2022,"icp":null,"site_deploy":{"enable":false,"provider":"github","url":null}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","style":{"primary_color":"#00ccff","logo":null,"favicon":"/images/sword.png","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240414/%E8%83%8C%E6%99%AF.webp","description":"我生来就是高山而非溪流 || 我欲于群峰之巅俯视平庸的沟壑","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"home_article":{"category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":5}},"source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Keep Theme" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+            <a class="site-name border-box" href="/">
+               Kiml&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        代码随想录算法训练营第二天-977有序数组的平方、209长度最小的子数组、59螺旋矩阵II
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kiml</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-04-18 22:19:42</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sun Jun 09 2024 21:26:19 GMT+0800">2024-06-09 21:26:19</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">代码随想录</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%95%B0%E7%BB%84/">数组</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%9E%BA%E6%97%8B%E6%95%B0%E7%BB%84/">螺旋数组</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>
+状态：977、209通过。59没有思路</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">24.04.18 初始记录</span><br><span class="line">24.04.21 补充螺旋矩阵的题解</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1>初步题解</h1>
+<h2 id="977有序数组的平方">977有序数组的平方</h2>
+<p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/squares-of-a-sorted-array/" >https://leetcode.cn/problems/squares-of-a-sorted-array/<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LE977</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);  </span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> scanner.nextLine();  </span><br><span class="line">        <span class="type">int</span>[] nums = Arrays.stream(s.substring(<span class="number">1</span>, s.length() - <span class="number">1</span>).split(<span class="string">&quot;,&quot;</span>))  </span><br><span class="line">                .mapToInt(Integer::parseInt)  </span><br><span class="line">                .toArray();  </span><br><span class="line">        System.out.println(Arrays.toString(sortedSquares(nums)));  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">	<span class="comment">// 关键在于非递增顺序，获取平方数，组成新的非递增序列</span></span><br><span class="line">	<span class="comment">// 新数组的最大数一定来自于旧数组的两端。平方的大小一定从两边向中间递减</span></span><br><span class="line">	<span class="comment">// 用双指针，依次将最大值添加到新数组，并向内移动</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] sortedSquares(<span class="type">int</span>[] nums) &#123;  </span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;  </span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;  </span><br><span class="line">        <span class="type">int</span>[] ints = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">while</span> (i &lt;= j) &#123;  </span><br><span class="line">            <span class="type">int</span> <span class="variable">i2</span> <span class="operator">=</span> nums[i] * nums[i];  </span><br><span class="line">            <span class="type">int</span> <span class="variable">j2</span> <span class="operator">=</span> nums[j] * nums[j];  </span><br><span class="line">            ints[k] = Math.max(i2, j2);  </span><br><span class="line">            k--;  </span><br><span class="line">            <span class="keyword">if</span> (i2 &gt;= j2) &#123;  </span><br><span class="line">                i++;  </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                j--;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ints;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="209长度最小的子数组">209长度最小的子数组</h2>
+<p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/" >https://leetcode.cn/problems/minimum-size-subarray-sum/<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LE209</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);  </span><br><span class="line">        <span class="type">int</span> <span class="variable">target</span> <span class="operator">=</span> Integer.parseInt(scanner.nextLine());  </span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> scanner.nextLine();  </span><br><span class="line">        <span class="type">int</span>[] nums = Arrays.stream(s.substring(<span class="number">1</span>, s.length() - <span class="number">1</span>).split(<span class="string">&quot;,&quot;</span>))  </span><br><span class="line">                .mapToInt(Integer::parseInt)  </span><br><span class="line">                .toArray();  </span><br><span class="line">        System.out.println(minSubArrayLen(target, nums));  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">	<span class="comment">// 看题就知道是滑动窗口，前几天刚好做过</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;  </span><br><span class="line">        <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = <span class="number">0</span>; i &lt; nums.length &amp;&amp; j &lt; nums.length; ) &#123;  </span><br><span class="line">            <span class="type">int</span> <span class="variable">subArraySum</span> <span class="operator">=</span> getSum(nums, i, j);  </span><br><span class="line">            <span class="keyword">if</span> (target == subArraySum) &#123;  </span><br><span class="line">                min = Math.min(min, j - i + <span class="number">1</span>);  </span><br><span class="line">                i++;  </span><br><span class="line">                j = i;  </span><br><span class="line">                <span class="keyword">if</span> (min == <span class="number">1</span>) &#123;  </span><br><span class="line">                    <span class="keyword">break</span>;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; subArraySum) &#123;  </span><br><span class="line">                i++;  </span><br><span class="line">                j = i;  </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                j++;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> min;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getSum</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;  </span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> i; k &lt;= j; k++) &#123;  </span><br><span class="line">            sum += nums[k];  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> sum;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="59螺旋矩阵II">59螺旋矩阵II</h2>
+<p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix-ii/" >https://leetcode.cn/problems/spiral-matrix-ii/<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 看了题目没有什么算法上的思路，打算直接看题解</span></span><br></pre></td></tr></table></figure>
+<h1>看讲解</h1>
+<h2 id="977有序数组的平方-2">977有序数组的平方</h2>
+<p>文章讲解：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0977.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9.html" >https://programmercarl.com/0977.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>视频讲解： <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1QB4y1D7ep" >https://www.bilibili.com/video/BV1QB4y1D7ep<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里的题解和我的想法差不多，就不多写了</span></span><br></pre></td></tr></table></figure>
+<h2 id="209长度最小的子数组-2">209长度最小的子数组</h2>
+<p>文章讲解：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84.html" >https://programmercarl.com/0209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tZ4y1q7XE" >https://www.bilibili.com/video/BV1tZ4y1q7XE<i class="fas fa-external-link-alt"></i></a><br>
+还有一个进阶的解法，打算明天再看看，不能再熬夜了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里的题解和我的想法差不多，就不多写了</span></span><br><span class="line"><span class="comment">// 进阶部分等之后有时间了补充</span></span><br></pre></td></tr></table></figure>
+<h2 id="59螺旋矩阵II-2">59螺旋矩阵II</h2>
+<p>文章讲解：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0059.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II.html" >https://programmercarl.com/0059.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SL4y1N7mV/" >https://www.bilibili.com/video/BV1SL4y1N7mV/<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 大致看了文章讲解，就是把四条边按规律读出。</span></span><br><span class="line"><span class="comment">// 没有看答案，按讲解写了一个版本，但是很奇怪，输出的xy和我想象中的不一样</span></span><br><span class="line"><span class="comment">// 打了断点才发现，二维数组的表现和坐标不一样。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LE59</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);  </span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> Integer.parseInt(scanner.nextLine());  </span><br><span class="line">        System.out.println(Arrays.deepToString(generateMatrix(n)));  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[][] generateMatrix(<span class="type">int</span> n) &#123;  </span><br><span class="line">        <span class="type">int</span>[][] ints = <span class="keyword">new</span> <span class="title class_">int</span>[n][n];  </span><br><span class="line">        <span class="type">int</span> <span class="variable">startX</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">        <span class="type">int</span> <span class="variable">startY</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>;  </span><br><span class="line">        <span class="type">int</span> <span class="variable">loop</span> <span class="operator">=</span> <span class="number">1</span>;  </span><br><span class="line">        <span class="type">int</span> i, j;  </span><br><span class="line">        <span class="comment">// 这边需要加上边界条件</span></span><br><span class="line">        <span class="keyword">while</span> (k &lt;= n * n &amp;&amp; loop &lt;= n / <span class="number">2</span>) &#123;  </span><br><span class="line">            <span class="keyword">for</span> (i = startX; i &lt; n - loop; i++) &#123;  </span><br><span class="line">                ints[i][startY] = k++;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">for</span> (j = startY; j &lt; n - loop; j++) &#123;  </span><br><span class="line">                ints[i][j] = k++;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">for</span> (; i &gt; startX; i--) &#123;  </span><br><span class="line">                ints[i][j] = k++;  </span><br><span class="line">            &#125;  </span><br><span class="line">            <span class="keyword">for</span> (; j &gt; startY ; j--) &#123;  </span><br><span class="line">                ints[i][j] = k++;  </span><br><span class="line">            &#125;  </span><br><span class="line">            startX++;  </span><br><span class="line">            startY++;  </span><br><span class="line">            loop++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">// 奇数矩阵需要特殊处理</span></span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;  </span><br><span class="line">            ints[startX][startY] = k;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> ints;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 重新按二维数组的写法写了一遍。这个需要加到总结中</span></span><br><span class="line"><span class="comment">// 二位数组中：j才是横坐标，i是纵坐标</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[][] generateMatrix(<span class="type">int</span> n) &#123;  </span><br><span class="line">    <span class="type">int</span>[][] ints = <span class="keyword">new</span> <span class="title class_">int</span>[n][n];  </span><br><span class="line">    <span class="type">int</span> <span class="variable">startX</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">startY</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">loop</span> <span class="operator">=</span> <span class="number">1</span>;  </span><br><span class="line">    <span class="type">int</span> i, j;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">while</span> (k &lt;= n * n &amp;&amp; loop &lt;= n / <span class="number">2</span>) &#123;  </span><br><span class="line">        <span class="keyword">for</span> (j = startY; j &lt; n - loop; j++) &#123;  </span><br><span class="line">            ints[startX][j] = k++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">for</span> (i = startX; i &lt; n - loop; i++) &#123;  </span><br><span class="line">            ints[i][j] = k++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">for</span> (; j &gt; startY ; j--) &#123;  </span><br><span class="line">            ints[i][j] = k++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">for</span> (; i &gt; startX; i--) &#123;  </span><br><span class="line">            ints[i][j] = k++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        startX++;  </span><br><span class="line">        startY++;  </span><br><span class="line">        loop++;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;  </span><br><span class="line">        ints[startX][startY] = k;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> ints;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                </div>
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                代码随想录算法训练营第二天-977有序数组的平方、209长度最小的子数组、59螺旋矩阵II
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                posts/d3cf0d1c/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">Kiml</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-04-18 22:19</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">滑动窗口</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E8%9E%BA%E6%97%8B%E6%95%B0%E7%BB%84/">螺旋数组</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/posts/ae58dfcb/"
+                                   title="MybatisPlus多表联查分页，Total计数异常"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">MybatisPlus多表联查分页，Total计数异常</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/posts/1d4e4fc4/"
+                                   title="代码随想录算法训练营第一天-704二分查找、27移除元素"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第一天-704二分查找、27移除元素</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#977%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9"><span class="nav-text">977有序数组的平方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#209%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84"><span class="nav-text">209长度最小的子数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#59%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II"><span class="nav-text">59螺旋矩阵II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#977%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9-2"><span class="nav-text">977有序数组的平方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#209%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84-2"><span class="nav-text">209长度最小的子数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#59%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II-2"><span class="nav-text">59螺旋矩阵II</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kiml</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#977%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9"><span class="nav-text">977有序数组的平方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#209%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84"><span class="nav-text">209长度最小的子数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#59%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II"><span class="nav-text">59螺旋矩阵II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#977%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9-2"><span class="nav-text">977有序数组的平方</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#209%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84-2"><span class="nav-text">209长度最小的子数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#59%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II-2"><span class="nav-text">59螺旋矩阵II</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

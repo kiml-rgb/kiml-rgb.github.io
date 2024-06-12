@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kiml">
+    
+    <title>
+        
+            代码随想录算法训练营第二十四天-93复原IP地址、78子集、90子集II |
+        
+        Kiml&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"kiml.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"title":"Kiml's Blog","author":"Kiml"},"menu":{"Home":"/","Archives":"/archives","Tags":"/tags","Categories":"/categories","About":"/about"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kiml-rgb","email":"1162278448@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["D","C","B","A","S"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"jsdelivr"},"pjax":{"enable":true},"footer":{"since":2022,"icp":null,"site_deploy":{"enable":false,"provider":"github","url":null}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","style":{"primary_color":"#00ccff","logo":null,"favicon":"/images/sword.png","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240414/%E8%83%8C%E6%99%AF.webp","description":"我生来就是高山而非溪流 || 我欲于群峰之巅俯视平庸的沟壑","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"home_article":{"category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":5}},"source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Keep Theme" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+            <a class="site-name border-box" href="/">
+               Kiml&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        代码随想录算法训练营第二十四天-93复原IP地址、78子集、90子集II
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kiml</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-06-11 14:02:58</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Jun 11 2024 17:26:33 GMT+0800">2024-06-11 17:26:33</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">代码随想录</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">回溯算法</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>
+状态：93可以AC。78、90AC。</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-11 初始记录</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1>初步题解</h1>
+<h2 id="93复原IP地址">93复原IP地址</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/restore-ip-addresses" >https://leetcode.cn/problems/restore-ip-addresses<i class="fas fa-external-link-alt"></i></a>)<br>
+解的时候不知道单字符串怎么操作了，加了一个数组。慢了很多。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title function_">restoreIpAddresses</span><span class="params">(String s)</span> &#123;  </span><br><span class="line">    List&lt;String&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">    List&lt;String&gt; temp = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> (s.length() &lt; <span class="number">4</span> || s.length() &gt; <span class="number">12</span>)&#123;  </span><br><span class="line">        <span class="keyword">return</span> result;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    restoreIpAddressesBFS(<span class="number">0</span>, temp, s, result);  </span><br><span class="line">    <span class="keyword">return</span> result;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * * <span class="doctag">@param</span> startIndex 开始Index  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> s 输入的s  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> result 切割的字符串集  </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">restoreIpAddressesBFS</span><span class="params">(<span class="type">int</span> startIndex, List&lt;String&gt; temp, String s, List&lt;String&gt; result)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (startIndex &gt;= s.length() &amp;&amp; temp.size() == <span class="number">4</span>) &#123;  </span><br><span class="line">        <span class="type">String</span> <span class="variable">resultOne</span> <span class="operator">=</span> String.join(<span class="string">&quot;.&quot;</span>, temp);  </span><br><span class="line">        result.add(resultOne);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> startIndex; i &lt; s.length() &amp;&amp; Integer.parseInt(s.substring(startIndex, i + <span class="number">1</span>)) &lt; <span class="number">256</span>; i++) &#123;  </span><br><span class="line">        <span class="comment">// 8 为 substring 的取值就在 1 - 3之间  </span></span><br><span class="line">        <span class="type">String</span> <span class="variable">substring</span> <span class="operator">=</span> s.substring(startIndex, i + <span class="number">1</span>);  </span><br><span class="line">        <span class="keyword">if</span> (substring.length() &lt; <span class="number">1</span> || substring.length() &gt; <span class="number">3</span>) &#123;  </span><br><span class="line">            <span class="keyword">continue</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">if</span> (substring.length() &gt; <span class="number">1</span> &amp;&amp; substring.startsWith(<span class="string">&quot;0&quot;</span>)) &#123;  </span><br><span class="line">            <span class="keyword">continue</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        temp.add(substring);  </span><br><span class="line">        restoreIpAddressesBFS(i + <span class="number">1</span>, temp, s, result);  </span><br><span class="line">        temp.remove(temp.size() - <span class="number">1</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="78子集">78子集</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets" >https://leetcode.cn/problems/subsets<i class="fas fa-external-link-alt"></i></a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">subsets</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;  </span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">    List&lt;Integer&gt; resultOne = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 排序  </span></span><br><span class="line">    Arrays.sort(nums);  </span><br><span class="line">    </span><br><span class="line">    subsetsBFS(<span class="number">0</span>, nums, resultOne, result);  </span><br><span class="line">    <span class="keyword">return</span> result;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 这个和之前的区别在于，如果转化成一颗树。之前只要求叶子节点。这个全部都要  </span></span><br><span class="line"><span class="comment"> * 而且还要不重复（😗写错了，看成90的题了。这题还要更简单一点。）</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> startIndex 起始index  </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">subsetsBFS</span><span class="params">(<span class="type">int</span> startIndex, <span class="type">int</span>[] nums, List&lt;Integer&gt; resultOne, List&lt;List&lt;Integer&gt;&gt; result)</span> &#123;    </span><br><span class="line">    result.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(resultOne));  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> startIndex; i &lt; nums.length; i++) &#123;  </span><br><span class="line">        resultOne.add(nums[i]);  </span><br><span class="line">        subsetsBFS(i + <span class="number">1</span>, nums, resultOne, result);  </span><br><span class="line">        resultOne.remove(resultOne.size() - <span class="number">1</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="90子集II">90子集II</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/subsets-ii" >https://leetcode.cn/problems/subsets-ii<i class="fas fa-external-link-alt"></i></a>)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">subsetsWithDup</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;  </span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">    List&lt;Integer&gt; resultOne = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 排序  </span></span><br><span class="line">    Arrays.sort(nums);  </span><br><span class="line">  </span><br><span class="line">    subsetsBFS(<span class="number">0</span>, nums, resultOne, result);  </span><br><span class="line">    <span class="keyword">return</span> result;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> startIndex 起始index  </span></span><br><span class="line"><span class="comment"> */</span><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">subsetsBFS</span><span class="params">(<span class="type">int</span> startIndex, <span class="type">int</span>[] nums, List&lt;Integer&gt; resultOne, List&lt;List&lt;Integer&gt;&gt; result)</span> &#123;  </span><br><span class="line">    result.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(resultOne));  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> startIndex; i &lt; nums.length; i++) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (i - <span class="number">1</span> &gt;= startIndex &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) &#123;  </span><br><span class="line">            <span class="keyword">continue</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        resultOne.add(nums[i]);  </span><br><span class="line">        subsetsBFS(i + <span class="number">1</span>, nums, resultOne, result);  </span><br><span class="line">        resultOne.remove(resultOne.size() - <span class="number">1</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1>看解析</h1>
+<h2 id="93复原IP地址-2">93复原IP地址</h2>
+<p>题目链接/文章讲解：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0093.%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80.html" >https://programmercarl.com/0093.%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XP4y1U73i/" >https://www.bilibili.com/video/BV1XP4y1U73i/<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    List&lt;String&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">	<span class="type">StringBuilder</span> <span class="variable">stringBuilder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> List&lt;String&gt; <span class="title function_">restoreIpAddresses</span><span class="params">(String s)</span> &#123;</span><br><span class="line">		restoreIpAddressesHandler(s, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// number表示stringbuilder中ip段的数量</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">restoreIpAddressesHandler</span><span class="params">(String s, <span class="type">int</span> start, <span class="type">int</span> number)</span> &#123;</span><br><span class="line">		<span class="comment">// 如果start等于s的长度并且ip段的数量是4，则加入结果集，并返回</span></span><br><span class="line">		<span class="keyword">if</span> (start == s.length() &amp;&amp; number == <span class="number">4</span>) &#123;</span><br><span class="line">			result.add(stringBuilder.toString());</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 如果start等于s的长度但是ip段的数量不为4，或者ip段的数量为4但是start小于s的长度，则直接返回</span></span><br><span class="line">		<span class="keyword">if</span> (start == s.length() || number == <span class="number">4</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 剪枝：ip段的长度最大是3，并且ip段处于[0,255]</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> start; i &lt; s.length() &amp;&amp; i - start &lt; <span class="number">3</span> &amp;&amp; Integer.parseInt(s.substring(start, i + <span class="number">1</span>)) &gt;= <span class="number">0</span></span><br><span class="line">				&amp;&amp; Integer.parseInt(s.substring(start, i + <span class="number">1</span>)) &lt;= <span class="number">255</span>; i++) &#123;</span><br><span class="line">			<span class="comment">// 如果ip段的长度大于1，并且第一位为0的话，continue</span></span><br><span class="line">			<span class="keyword">if</span> (i + <span class="number">1</span> - start &gt; <span class="number">1</span> &amp;&amp; s.charAt(start) - <span class="string">&#x27;0&#x27;</span> == <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			stringBuilder.append(s.substring(start, i + <span class="number">1</span>));</span><br><span class="line">			<span class="comment">// 当stringBuilder里的网段数量小于3时，才会加点；如果等于3，说明已经有3段了，最后一段不需要再加点</span></span><br><span class="line">			<span class="keyword">if</span> (number &lt; <span class="number">3</span>) &#123;</span><br><span class="line">				stringBuilder.append(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			number++;</span><br><span class="line">			restoreIpAddressesHandler(s, i + <span class="number">1</span>, number);</span><br><span class="line">			number--;</span><br><span class="line">			<span class="comment">// 删除当前stringBuilder最后一个网段，注意考虑点的数量的问题</span></span><br><span class="line">			<span class="comment">// 主要这里没有写出来❗</span></span><br><span class="line">			stringBuilder.delete(start + number, i + number + <span class="number">2</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="78子集-2">78子集</h2>
+<p>题目链接/文章讲解：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0078.%E5%AD%90%E9%9B%86.html" >https://programmercarl.com/0078.%E5%AD%90%E9%9B%86.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1U84y1q7Ci" >https://www.bilibili.com/video/BV1U84y1q7Ci<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="90子集II-2">90子集II</h2>
+<p>题目链接/文章讲解：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0090.%E5%AD%90%E9%9B%86II.html" >https://programmercarl.com/0090.%E5%AD%90%E9%9B%86II.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1vm4y1F71J" >https://www.bilibili.com/video/BV1vm4y1F71J<i class="fas fa-external-link-alt"></i></a></p>
+
+                </div>
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                代码随想录算法训练营第二十四天-93复原IP地址、78子集、90子集II
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                posts/c27b36b8/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">Kiml</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-06-11 14:02</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">回溯算法</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/posts/f191c36/"
+                                   title="代码随想录算法训练营第二十五天-491递增子序列 、46全排列 、47全排列 II"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第二十五天-491递增子序列 、46全排列 、47全排列 II</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/posts/2f09909f/"
+                                   title="代码随想录算法训练营第二十三天-39组合总和、40组合总和II、131分割回文串"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第二十三天-39组合总和、40组合总和II、131分割回文串</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#93%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80"><span class="nav-text">93复原IP地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#78%E5%AD%90%E9%9B%86"><span class="nav-text">78子集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#90%E5%AD%90%E9%9B%86II"><span class="nav-text">90子集II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#93%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80-2"><span class="nav-text">93复原IP地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#78%E5%AD%90%E9%9B%86-2"><span class="nav-text">78子集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#90%E5%AD%90%E9%9B%86II-2"><span class="nav-text">90子集II</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kiml</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#93%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80"><span class="nav-text">93复原IP地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#78%E5%AD%90%E9%9B%86"><span class="nav-text">78子集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#90%E5%AD%90%E9%9B%86II"><span class="nav-text">90子集II</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#93%E5%A4%8D%E5%8E%9FIP%E5%9C%B0%E5%9D%80-2"><span class="nav-text">93复原IP地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#78%E5%AD%90%E9%9B%86-2"><span class="nav-text">78子集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#90%E5%AD%90%E9%9B%86II-2"><span class="nav-text">90子集II</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kiml">
+    
+    <title>
+        
+            聚合支付-功能实现 |
+        
+        Kiml&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"kiml.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"title":"Kiml's Blog","author":"Kiml"},"menu":{"Home":"/","Archives":"/archives","Tags":"/tags","Categories":"/categories","About":"/about"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kiml-rgb","email":"1162278448@qq.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_label":{"enable":true,"auto":false,"custom_label_list":["D","C","B","A","S"]},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"jsdelivr"},"pjax":{"enable":true},"footer":{"since":2022,"icp":null,"site_deploy":{"enable":false,"provider":"github","url":null}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","style":{"primary_color":"#00ccff","logo":null,"favicon":"/images/sword.png","avatar":"/images/avatar.svg","font_size":null,"font_family":null,"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240414/%E8%83%8C%E6%99%AF.webp","description":"我生来就是高山而非溪流 || 我欲于群峰之巅俯视平庸的沟壑","font_color":null,"hitokoto":false},"scroll":{"progress_bar":true,"percent":true}},"home_article":{"category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":5}},"source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Keep Theme" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+            <a class="site-name border-box" href="/">
+               Kiml&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                
+                                标签
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                
+                                分类
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags"
+                    >标签</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories"
+                    >分类</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        聚合支付-功能实现
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kiml</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-05-23 09:59:53</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jun 06 2024 17:07:03 GMT+0800">2024-06-06 17:07:03</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">后端项目</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E8%81%9A%E5%90%88%E6%94%AF%E4%BB%98/">聚合支付</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java/">Java</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>
+第一部分-商户注册和资质申请第二部分-对接SAAS<br>
+第三部分-闪聚支付</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">24.05.23 初始记录（商户注册&amp;资质申请）</span><br><span class="line">24.05.29 获取短信验证码</span><br><span class="line">24.05.30 文件上传</span><br><span class="line">24.06.02 Saas对接</span><br><span class="line">24.06.04 bug新增，烦，遇到bug，进展很缓慢。</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1>商户注册&amp;资质申请</h1>
+<h2 id="系统交互流程">系统交互流程</h2>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240523/Snipaste_2024-05-23_09-58-03.png"
+                        alt=""
+                 ><br>
+商户注册的流程由商户平台应用、商户服务、SaaS平台、验证码服务四个微服务之间进行交互完成，各微服务的职责介绍如下：<br>
+1）商户平台应用：此应用主要为商户提供业务功能，包括：商户资质申请、员工管理、门店管理等功能。<br>
+2）商户服务： 提供商户管理的相关服务接口，供其它微服务调用，主要为商户平台应用提供接口服务，功能包括：商户基本信息管理、资质申请（这个功能蛮莫名其妙的，写了但是没有后续的审核操作，不知道干什么用的😥）、商户应用管理、渠道参数配置、商户员工信息管理、商户门店管理等。<br>
+3）SaaS平台：闪聚支付项目是一个SaaS平台 ，所谓SaaS平台即多个用户租用平台的业务功能，这样用户即可省去软件系统开发的成本，每个商户就是一个租户，所以又称为多租户系统。 SaaS平台提供租户管理、账号管理、权限管理、资源管理、套餐管理、系统认证授权等功业务功能。在上图商户注册的流程中，商户注册的账号等信息需要写入SaaS平台，由SaaS平台统一管理账号，分配权限，商户统一通过SaaS平台登录闪聚支付。<br>
+4）验证码服务：提供获取短信验证码、校验验证码的接口。 商户使用手机号进行注册，平台通过校验手机验证码来确认是否本人在注册。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240523/Snipaste_2024-05-23_09-58-03.png"
+                        alt="Snipaste_2024-05-23_09-58-03.png"
+                 ><br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240529/Snipaste_2024-05-29_17-04-38.png"
+                        alt=""
+                 ></p>
+<h2 id="获取短信验证码">获取短信验证码</h2>
+<p>短信验证码为一个开源的服务，可单独开启使用。开源git地址：(<a class="link"   target="_blank" rel="noopener" href="https://github.com/fightingape/sailing" >https://github.com/fightingape/sailing<i class="fas fa-external-link-alt"></i></a>)</p>
+<blockquote>
+<p>大致看了一下这个开源项目是根据传入的业务名称，获取配置好的code长度和Service实现。后续应该还可以加入别的实现（比如阿里云的短信服务等）</p>
+<p>其中生成验证信息这个方法。<br>
+1.根据业务名称+随机UUID生成key存入redis。这个key会返回给服务请求方。<br>
+2.根据配置好的Map获取名称对应的len即code码长度，如果传入不存在的name，会直接报错。<br>
+3.验证服务就是根据返回给服务请求方的key，查询Redis缓存是否存在，不存在返回false，即验证码错误。</p>
+</blockquote>
+<p>本项目中没有使用，只是简单控制台打印了一下。也可以直接在这个服务里存入redis（因为要申请开通阿里云短信服务有点麻烦，又要多部署一个服务，而且这个功能比较简单不打算花时间开通了）。</p>
+<p>之前有写过阿里云的短信，关联文章：</p>
+<blockquote>
+<p>内链：[[【代码模板】阿里云接口实现短信发送]]<br>
+外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/24/100000007/" >【代码模板】阿里云接口实现短信发送<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h2 id="文件上传">文件上传</h2>
+<p>资质申请的流程中涉及到了文件上传的功能。之前已经写过使用Minio作为文件服务器和用阿里云OSS作为文件存储两种方式。这里的上传直接把七牛云换成了Minio。顺便整理了一下之前写过的两种方式。文件上传：</p>
+<blockquote>
+<p>内链：[[【代码模板】文件存储]]<br>
+外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/30/100000014/" >【代码模板】文件存储<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h1>支付参数配置</h1>
+<blockquote>
+<p>这个部分是项目的核心，之前做别的项目的时候，接触了微信支付和支付宝支付。就和这个项目中说的一样，用户只能先选择支付类型。再调用对应的接口获取支付二维码。而通过聚合支付这个平台，可以只生成一个链接，根据用户扫码，跳转不同的支付。</p>
+</blockquote>
+<p><strong>商户应该配置哪些第三方支付渠道的参数</strong><br>
+服务类型是闪聚支付平台为商户提供的聚合支付服务通道，共分为线上和线下两大类：</p>
+<p>线上支付服务通道：</p>
+<ol>
+<li class="lvl-3">
+<p>手机APP支付</p>
+</li>
+<li class="lvl-3">
+<p>PC网页支付</p>
+</li>
+<li class="lvl-3">
+<p>手机网页支付</p>
+</li>
+<li class="lvl-3">
+<p>小程序支付线下支付服务通道：</p>
+</li>
+<li class="lvl-3">
+<p>收款码支付(C扫B)：即商户出示付款码，用户扫收款码完成支付。</p>
+</li>
+<li class="lvl-3">
+<p>B扫C：即顾客出示付款码，商户扫描付款码。</p>
+</li>
+</ol>
+<h2 id="系统交互流程-2">系统交互流程</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>商户应用创建流程<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240530/Snipaste_2024-05-30_21-35-45.png"
+                        alt=""
+                 ></p>
+</li>
+<li class="lvl-2">
+<p>商户渠道参数配置交互流程<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240530/Snipaste_2024-05-30_21-53-28.png"
+                        alt=""
+                 ><br>
+交易服务职责：提供支付渠道参数配置、订单、发起支付、转账、退款等功能。</p>
+</li>
+</ul>
+<h1>对接SAAS</h1>
+<h2 id="系统交互流程-3">系统交互流程</h2>
+<p>商户注册时与SAAS的交互流程已经在商户注册模块给出。</p>
+<h2 id="分布式认证需求">分布式认证需求</h2>
+<ol>
+<li class="lvl-3">
+<p>统一认证授权分布式系统的每个服务（系统）都会有认证、授权的需求，如果每个服务都实现一套认证授权逻辑会非常冗余，考虑分布式系统共享性的特点，需要由独立的认证服务来处理系统认证授权的请求。如下图，闪聚支付平台包括：商户平台应用、运营平台应用、门户应用，每个应用都需要身份认证，闪聚支付平台统一由UAA认证服务完成认证。<br>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240531/Snipaste_2024-05-31_17-47-47.png"
+                        alt=""
+                 ></p>
+</li>
+<li class="lvl-3">
+<p>开放认证体系考虑分布式系统开放性的特点，UAA认证服务不仅服务于平台自身，并且对第三方系统也要提供认证，平台应提供扩展和开放的认证机制，以开放API的方式供第三方应用接入，一方应用（内部系统服务）和三方应用（第三方应用）均采用统一机制接入。</p>
+</li>
+</ol>
+<p>分布式系统认证技术方案详见下图：<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240603/Snipaste_2024-06-03_14-11-54.png"
+                        alt=""
+                 ><br>
+流程所涉及到统一账号服务、UAA服务、API网关这三个组件职责如下:<br>
+1） 统一账号服务：提供商户和平台运营人员的登录账号、密码、角色、权限、资源等系统级信息的管理，不包含用户业务信息。<br>
+2） 统一认证服务：它承载了OAuth2.0接入方认证、登入用户的认证、授权以及生成令牌的职责，完成实际的用户认证、授权功能。<br>
+3） API网关：作为系统的唯一入口，API网关为接入方提供定制的API集合，它可能还具有其它职责，如身份验证、监控、负载 均衡、缓存等。API网关方式的核心要点是，所有的接入方和消费端都通过统一的网关接入微服务，在网关层处理 所有的非业务功能。</p>
+<h1>BUG记录</h1>
+<h2 id="RestTemplate使用GET请求，返回中文乱码">RestTemplate使用GET请求，返回中文乱码</h2>
+<blockquote>
+<p>内链：[[RestTemplate使用GET请求，返回中文乱码]]<br>
+外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000004/" >RestTemplate使用GET请求，返回中文乱码<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h2 id="项目中访问Swagger地址，404（未解决）">项目中访问Swagger地址，404（未解决）</h2>
+<p>不管怎么访问swagger的页面地址，都返回404。但是直接用apifox的URL导入，是可以成功的🥴。</p>
+<h2 id="使用mapstruct转换对象，报错Cannot-find-implementation-for……">使用mapstruct转换对象，报错Cannot find implementation for……</h2>
+<p>这个项目中是因为User微服务没有依赖mapstruct。但是swagger中有这个依赖，他直接用了swagger中的依赖。网上搜索还有一种情况可能出现这个问题。</p>
+<blockquote>
+<p>内链：[[使用mapstruct转换对象，报错Cannot find implementation for……]]<br>
+外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/05/23/100000004/" >使用mapstruct转换对象，报错Cannot find implementation for……<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h2 id="前端JS在Long长度大于17位时，出现精度丢失的问题">前端JS在Long长度大于17位时，出现精度丢失的问题</h2>
+<blockquote>
+<p>内链：[[Long长度大于17位时，精度丢失]]<br>
+外链：[<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/2024/06/05/100000027/" >Long长度大于17位时，精度丢失<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+
+                </div>
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                聚合支付-功能实现
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                posts/8582b8be/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">Kiml</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-05-23 09:59</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java/">Java</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/posts/419abf20/"
+                                   title="RestTemplate使用GET请求，返回中文乱码"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">RestTemplate使用GET请求，返回中文乱码</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/posts/ff783527/"
+                                   title="优化 Hexo 网站的永久链接格式"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">优化 Hexo 网站的永久链接格式</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">对接SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">BUG记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RestTemplate%E4%BD%BF%E7%94%A8GET%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate使用GET请求，返回中文乱码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AESwagger%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问Swagger地址，404（未解决）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8mapstruct%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用mapstruct转换对象，报错Cannot find implementation for……</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AFJS%E5%9C%A8Long%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E17%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端JS在Long长度大于17位时，出现精度丢失的问题</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kiml</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">对接SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">BUG记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RestTemplate%E4%BD%BF%E7%94%A8GET%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate使用GET请求，返回中文乱码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AESwagger%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问Swagger地址，404（未解决）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8mapstruct%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用mapstruct转换对象，报错Cannot find implementation for……</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AFJS%E5%9C%A8Long%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E17%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端JS在Long长度大于17位时，出现精度丢失的问题</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+            
+<script src="/js/post/copyright-info.js"></script>
+
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
