@@ -329,11 +329,11 @@
 <h2 id="24两两交换链表中的节点-2">24两两交换链表中的节点</h2>
 <p>题目链接/文章讲解/视频讲解：：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.html" >https://programmercarl.com/0203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.html<i class="fas fa-external-link-alt"></i></a></p>
 <p>这题看题解图会比较容易：<img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240521/Snipaste_2024-05-21_10-58-53.png"
-                      alt=""
-                ><br>
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240521/Snipaste_2024-05-21_10-58-53.png"
+                        alt=""
+                 ><br>
 看完根据这个图，总算是写出来了。也还有别的方法（递归）：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ListNode <span class="title function_">swapPairs</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="comment">// base case 退出提交</span></span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        <span class="comment">// 获取当前节点的下一个节点</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">next</span> <span class="operator">=</span> head.next;</span><br><span class="line">        <span class="comment">// 进行递归</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">newNode</span> <span class="operator">=</span> swapPairs(next.next);</span><br><span class="line">        <span class="comment">// 这里进行交换</span></span><br><span class="line">        next.next = head;</span><br><span class="line">        head.next = newNode;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>注：将步骤二三互换，可以不定义temp节点。</p>
@@ -349,11 +349,11 @@
 <h2 id="142环形链表II-2">142环形链表II</h2>
 <p>题目链接/文章讲解/视频讲解：<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II.html" >https://programmercarl.com/0142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II.html<i class="fas fa-external-link-alt"></i></a></p>
 <p><img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240522/Snipaste_2024-05-22_15-08-45.png"
-                      alt=""
-                ><br>
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240522/Snipaste_2024-05-22_15-08-45.png"
+                        alt=""
+                 ><br>
 <strong>题解思路</strong>：</p>
 <ol>
 <li class="lvl-3">

@@ -321,11 +321,11 @@
 <p>题目链接：<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/description/" >https://leetcode.cn/problems/reverse-linked-list/description/<i class="fas fa-external-link-alt"></i></a></p>
 <p>偷偷看了下视频图解，按这个思路写的代码：还是比较简单的<br>
 <img  
-                     lazyload
-                     alt="image"
-                     data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240515/206.%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8.gif"
-                      alt=""
-                ></p>
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240515/206.%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8.gif"
+                        alt=""
+                 ></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> LE707.ListNode <span class="title function_">reverseList</span><span class="params">(LE707.ListNode head)</span> &#123;  </span><br><span class="line">    LE707.<span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> <span class="literal">null</span>;  </span><br><span class="line">    LE707.<span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> head;  </span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="literal">null</span>) &#123;  </span><br><span class="line">        LE707.<span class="type">ListNode</span> <span class="variable">temp</span> <span class="operator">=</span> cur.next;  </span><br><span class="line">        cur.next = pre;  </span><br><span class="line">        pre = cur;  </span><br><span class="line">        cur = temp;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> pre;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1>看讲解</h1>
 <h2 id="203移除链表元素-2">203移除链表元素</h2>
@@ -460,7 +460,7 @@ LeetCode进阶处写了还可以使用递归解决。解法在解析中给出。
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/04/22/100000004/"
+                                   href="/2024/04/22/100000010/"
                                    title="面试-数据结构和算法"
                                 >
                                     <span class="title flex-center">
