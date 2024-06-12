@@ -233,7 +233,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jun 12 2024 14:35:27 GMT+0800">2024-06-12 14:35:27</span>
+                <span class="datetime" data-updated="Wed Jun 12 2024 18:02:09 GMT+0800">2024-06-12 18:02:09</span>
             </span>
         
 
@@ -265,12 +265,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>148 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>482 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
             </span>
         
         
@@ -294,7 +294,7 @@
                     <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-状态：今天的题，看标注说都很难，先去总结再做这个。</p>
+状态：今天的题，看标注说都很难，先去总结再做这个。时间不太够了，都是直接看的解析然后做题。</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
@@ -311,12 +311,12 @@
 <p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/sudoku-solver" >https://leetcode.cn/problems/sudoku-solver<i class="fas fa-external-link-alt"></i></a>)</p>
 <h1>看解析</h1>
 <h2 id="332重新安排行程-2">332重新安排行程</h2>
-<p>题目链接/文章讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0332.%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B.html" >https://programmercarl.com/0332.重新安排行程.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<p>题目链接/文章讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0332.%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B.html" >https://programmercarl.com/0332.重新安排行程.html<i class="fas fa-external-link-alt"></i></a>)<br>
+解法超时（第80个用例）：加上剪枝不会超时。别的思路都和清晰，但是剪枝那一步有点难想到。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title function_">findItinerary</span><span class="params">(List&lt;List&lt;String&gt;&gt; tickets)</span> &#123;  </span><br><span class="line">    List&lt;String&gt; resultOne = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 按字典排序排序（目的地排序）</span></span><br><span class="line">    tickets.sort(Comparator.comparing(o -&gt; o.get(<span class="number">1</span>)));  </span><br><span class="line">    <span class="comment">// 用于记录当前节点是否使用  </span></span><br><span class="line">    <span class="type">boolean</span>[] flagList = <span class="keyword">new</span> <span class="title class_">boolean</span>[tickets.size()];  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 行程必须从JFK开始  </span></span><br><span class="line">    resultOne.add(<span class="string">&quot;JFK&quot;</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 这里如果找到一条就直接返回  </span></span><br><span class="line">    findItineraryDFS(flagList, tickets, resultOne);  </span><br><span class="line">    <span class="keyword">return</span> resultOne;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">findItineraryDFS</span><span class="params">(<span class="type">boolean</span>[] flagList, List&lt;List&lt;String&gt;&gt; tickets, List&lt;String&gt; resultOne)</span> &#123;  </span><br><span class="line">    <span class="comment">// tickets为线路数，节点数要加1  </span></span><br><span class="line">    <span class="keyword">if</span> (resultOne.size() == tickets.size() + <span class="number">1</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; tickets.size(); i++) &#123;  </span><br><span class="line">	    <span class="comment">// 为了防止超时加上这句的剪枝</span></span><br><span class="line">	    <span class="comment">// 如果这张票和上张票相同 且上张票没用过 说明是从上张票回溯过来的，已经遍历过这种情况，跳过</span></span><br><span class="line">	    <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; tickets.get(i).equals(tickets.get(i - <span class="number">1</span>)) &amp;&amp; !flagList[i - <span class="number">1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">	    </span><br><span class="line">        <span class="keyword">if</span> (!flagList[i] &amp;&amp; tickets.get(i).get(<span class="number">0</span>).equals(resultOne.get(resultOne.size() - <span class="number">1</span>))) &#123;  </span><br><span class="line">            resultOne.add(tickets.get(i).get(<span class="number">1</span>));  </span><br><span class="line">            flagList[i] = <span class="literal">true</span>;  </span><br><span class="line">  </span><br><span class="line">            <span class="keyword">if</span> (findItineraryDFS(flagList, tickets, resultOne)) &#123;  </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">  </span><br><span class="line">            resultOne.remove(resultOne.size() - <span class="number">1</span>);  </span><br><span class="line">            flagList[i] = <span class="literal">false</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="51N皇后-2">51N皇后</h2>
 <p>题目链接/文章讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0051.N%E7%9A%87%E5%90%8E.html" >https://programmercarl.com/0051.N皇后.html<i class="fas fa-external-link-alt"></i></a>)</p>
-<h2 id="37解数独-2">37解数独</h2>
-<p>题目链接/文章讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0037.%E8%A7%A3%E6%95%B0%E7%8B%AC.html" >https://programmercarl.com/0037.解数独.html<i class="fas fa-external-link-alt"></i></a>)</p>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">## <span class="number">37</span>解数独</span><br><span class="line">题目链接/文章讲解：(https:<span class="comment">//programmercarl.com/0037.%E8%A7%A3%E6%95%B0%E7%8B%AC.html)</span></span><br><span class="line">```java</span><br></pre></td></tr></table></figure>
                 </div>
                 
                         
@@ -433,7 +433,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E"><span class="nav-text">51N皇后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37%E8%A7%A3%E6%95%B0%E7%8B%AC"><span class="nav-text">37解数独</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B-2"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E-2"><span class="nav-text">51N皇后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37%E8%A7%A3%E6%95%B0%E7%8B%AC-2"><span class="nav-text">37解数独</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E"><span class="nav-text">51N皇后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37%E8%A7%A3%E6%95%B0%E7%8B%AC"><span class="nav-text">37解数独</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B-2"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E-2"><span class="nav-text">51N皇后</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -614,7 +614,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E"><span class="nav-text">51N皇后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37%E8%A7%A3%E6%95%B0%E7%8B%AC"><span class="nav-text">37解数独</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B-2"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E-2"><span class="nav-text">51N皇后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37%E8%A7%A3%E6%95%B0%E7%8B%AC-2"><span class="nav-text">37解数独</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E"><span class="nav-text">51N皇后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37%E8%A7%A3%E6%95%B0%E7%8B%AC"><span class="nav-text">37解数独</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B-2"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E-2"><span class="nav-text">51N皇后</span></a></li></ol></li></ol>
     </div>
 </div>
 
