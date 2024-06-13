@@ -9,7 +9,7 @@
     
     <title>
         
-            代码随想录算法训练营第二十六天-332重新安排行程、51N皇后、 37解数独 |
+            代码随想录算法训练营第二十七天-455分发饼干、376摆动序列、53最大子序和 |
         
         Kiml&#39;s Blog
     </title>
@@ -206,7 +206,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        代码随想录算法训练营第二十六天-332重新安排行程、51N皇后、 37解数独
+                        代码随想录算法训练营第二十七天-455分发饼干、376摆动序列、53最大子序和
                     </div>
                 
 
@@ -228,12 +228,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-06-12 11:06:01</span>
+                <span class="datetime">2024-06-13 09:17:44</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jun 13 2024 09:05:10 GMT+0800">2024-06-13 09:05:10</span>
+                <span class="datetime" data-updated="Thu Jun 13 2024 11:00:20 GMT+0800">2024-06-13 11:00:20</span>
             </span>
         
 
@@ -255,7 +255,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">回溯算法</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a></li>
                         
                     
                 </ul>
@@ -265,12 +265,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>482 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>701 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 分钟</span>
             </span>
         
         
@@ -294,29 +294,50 @@
                     <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-状态：今天的题，看标注说都很难，先去总结再做这个。时间不太够了，都是直接看的解析然后做题。</p>
+状态：455AC、376、53都需要看解析，感觉贪心上来都是一点思路都没有，可能题做的不够多。</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-12 初始记录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.06.13 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1>初步题解</h1>
-<h2 id="332重新安排行程">332重新安排行程</h2>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/reconstruct-itinerary" >https://leetcode.cn/problems/reconstruct-itinerary<i class="fas fa-external-link-alt"></i></a>)</p>
-<h2 id="51N皇后">51N皇后</h2>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/n-queens" >https://leetcode.cn/problems/n-queens<i class="fas fa-external-link-alt"></i></a>)</p>
-<h2 id="37解数独">37解数独</h2>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/sudoku-solver" >https://leetcode.cn/problems/sudoku-solver<i class="fas fa-external-link-alt"></i></a>)</p>
+<h2 id="455分发饼干">455分发饼干</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/assign-cookies" >https://leetcode.cn/problems/assign-cookies<i class="fas fa-external-link-alt"></i></a>)</p>
+<p>属于小饼干优先。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;  </span><br><span class="line">    <span class="type">int</span>[] g = &#123;<span class="number">10</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>&#125;;  </span><br><span class="line">    <span class="type">int</span>[] s = &#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;;  </span><br><span class="line">    System.out.println(findContentChildren(g, s));  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * 感觉上s从小排序，g从小排序。按序分配就行。  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> g 孩子胃口  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> s 饼干数  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 结果  </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">findContentChildren</span><span class="params">(<span class="type">int</span>[] g, <span class="type">int</span>[] s)</span> &#123;  </span><br><span class="line">    Arrays.sort(s);  </span><br><span class="line">    Arrays.sort(g);  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = <span class="number">0</span>; i &lt; g.length &amp;&amp; j &lt; s.length; j++) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (g[i] &lt;= s[j]) &#123;  </span><br><span class="line">            count++;  </span><br><span class="line">            i++;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> count;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="376摆动序列">376摆动序列</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/wiggle-subsequence" >https://leetcode.cn/problems/wiggle-subsequence<i class="fas fa-external-link-alt"></i></a>)</p>
+<p>没有思路。看了一点点解析，画图。把坡删了。（但是又忽略了单调坡的情况，具体题解在看解析部分）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">wiggleMaxLength</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> nums.length;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">if</span> (nums[<span class="number">0</span>] != nums[<span class="number">1</span>]) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">2</span>) &#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        count = <span class="number">2</span>;  </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">        count = <span class="number">1</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; nums.length; i++) &#123;  </span><br><span class="line">        <span class="type">int</span> <span class="variable">slopePre</span> <span class="operator">=</span> nums[i - <span class="number">1</span>] - nums[i - <span class="number">2</span>];  </span><br><span class="line">        <span class="type">int</span> <span class="variable">slope</span> <span class="operator">=</span> nums[i] - nums[i - <span class="number">1</span>];  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> ((slopePre &gt;= <span class="number">0</span>  &amp;&amp; slope &lt; <span class="number">0</span>) || (slopePre &lt;= <span class="number">0</span> &amp;&amp; slope &gt; <span class="number">0</span>)) &#123;  </span><br><span class="line">            count++;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> count;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="53最大子序和">53最大子序和</h2>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-subarray" >https://leetcode.cn/problems/maximum-subarray<i class="fas fa-external-link-alt"></i></a>)</p>
+<p>没有思路。看了部分解析，说是连续和如果出现负数，直接抛弃，从下一个数开始。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 思路是连续和为负，就直接抛弃连续和  </span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxSubArray</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> Integer.MIN_VALUE;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;  </span><br><span class="line">        sum += num;  </span><br><span class="line">        max = Math.max(sum, max);  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> (sum &lt; <span class="number">0</span>) &#123;  </span><br><span class="line">            sum = <span class="number">0</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> max;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1>看解析</h1>
-<h2 id="332重新安排行程-2">332重新安排行程</h2>
-<p>题目链接/文章讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0332.%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B.html" >https://programmercarl.com/0332.重新安排行程.html<i class="fas fa-external-link-alt"></i></a>)<br>
-解法超时（第80个用例）：加上剪枝不会超时。别的思路都和清晰，但是剪枝那一步有点难想到。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title function_">findItinerary</span><span class="params">(List&lt;List&lt;String&gt;&gt; tickets)</span> &#123;  </span><br><span class="line">    List&lt;String&gt; resultOne = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 按字典排序排序（目的地排序）</span></span><br><span class="line">    tickets.sort(Comparator.comparing(o -&gt; o.get(<span class="number">1</span>)));  </span><br><span class="line">    <span class="comment">// 用于记录当前节点是否使用  </span></span><br><span class="line">    <span class="type">boolean</span>[] flagList = <span class="keyword">new</span> <span class="title class_">boolean</span>[tickets.size()];  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 行程必须从JFK开始  </span></span><br><span class="line">    resultOne.add(<span class="string">&quot;JFK&quot;</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 这里如果找到一条就直接返回  </span></span><br><span class="line">    findItineraryDFS(flagList, tickets, resultOne);  </span><br><span class="line">    <span class="keyword">return</span> resultOne;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">findItineraryDFS</span><span class="params">(<span class="type">boolean</span>[] flagList, List&lt;List&lt;String&gt;&gt; tickets, List&lt;String&gt; resultOne)</span> &#123;  </span><br><span class="line">    <span class="comment">// tickets为线路数，节点数要加1  </span></span><br><span class="line">    <span class="keyword">if</span> (resultOne.size() == tickets.size() + <span class="number">1</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; tickets.size(); i++) &#123;  </span><br><span class="line">	    <span class="comment">// 为了防止超时加上这句的剪枝</span></span><br><span class="line">	    <span class="comment">// 如果这张票和上张票相同 且上张票没用过 说明是从上张票回溯过来的，已经遍历过这种情况，跳过</span></span><br><span class="line">	    <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; tickets.get(i).equals(tickets.get(i - <span class="number">1</span>)) &amp;&amp; !flagList[i - <span class="number">1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">	    </span><br><span class="line">        <span class="keyword">if</span> (!flagList[i] &amp;&amp; tickets.get(i).get(<span class="number">0</span>).equals(resultOne.get(resultOne.size() - <span class="number">1</span>))) &#123;  </span><br><span class="line">            resultOne.add(tickets.get(i).get(<span class="number">1</span>));  </span><br><span class="line">            flagList[i] = <span class="literal">true</span>;  </span><br><span class="line">  </span><br><span class="line">            <span class="keyword">if</span> (findItineraryDFS(flagList, tickets, resultOne)) &#123;  </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">  </span><br><span class="line">            resultOne.remove(resultOne.size() - <span class="number">1</span>);  </span><br><span class="line">            flagList[i] = <span class="literal">false</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="51N皇后-2">51N皇后</h2>
-<p>题目链接/文章讲解：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0051.N%E7%9A%87%E5%90%8E.html" >https://programmercarl.com/0051.N皇后.html<i class="fas fa-external-link-alt"></i></a>)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">## <span class="number">37</span>解数独</span><br><span class="line">题目链接/文章讲解：(https:<span class="comment">//programmercarl.com/0037.%E8%A7%A3%E6%95%B0%E7%8B%AC.html)</span></span><br><span class="line">```java</span><br></pre></td></tr></table></figure>
+<h2 id="455分发饼干-2">455分发饼干</h2>
+<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0455.%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2.html" >https://programmercarl.com/0455.分发饼干.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<p>有两种思路，大饼干优先满足胃口大的；小饼干优先满足胃口小的。</p>
+<h2 id="376摆动序列-2">376摆动序列</h2>
+<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0376.%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97.html" >https://programmercarl.com/0376.摆动序列.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<p>思路：</p>
+<ol>
+<li class="lvl-3">
+<p>怎样算有峰值<code>(preDiff &gt;= 0  &amp;&amp; curDiff &lt; 0) || (preDiff &lt;= 0 &amp;&amp; curDiff &gt; 0)</code></p>
+</li>
+<li class="lvl-3">
+<p>数组首怎么计数：默认加上一个平节点，即preDiff为0</p>
+</li>
+<li class="lvl-3">
+<p>单调坡度有平坡：只在坡度进行更新的时候，才把前一个坡值进行记录</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">wiggleMaxLength</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (nums.length &lt;= <span class="number">1</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> nums.length;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 当前的差值  </span></span><br><span class="line">    <span class="type">int</span> <span class="variable">curDiff</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="comment">// 前一个坡的差值  </span></span><br><span class="line">    <span class="type">int</span> <span class="variable">preDiff</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums.length; i++) &#123;  </span><br><span class="line">        curDiff = nums[i] - nums[i - <span class="number">1</span>];  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> ((preDiff &gt;= <span class="number">0</span>  &amp;&amp; curDiff &lt; <span class="number">0</span>) || (preDiff &lt;= <span class="number">0</span> &amp;&amp; curDiff &gt; <span class="number">0</span>)) &#123;  </span><br><span class="line">            count++;  </span><br><span class="line">            <span class="comment">// 只有坡度更新才记录坡值  </span></span><br><span class="line">            preDiff = curDiff;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> count;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有一个偷懒版本是先去重，再找坡。但是要循环两次，时间复杂度变高。</p>
+<h2 id="53最大子序和-2">53最大子序和</h2>
+<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0053.%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C.html" >https://programmercarl.com/0053.最大子序和.html<i class="fas fa-external-link-alt"></i></a>)</p>
+
                 </div>
                 
                         
@@ -324,11 +345,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                代码随想录算法训练营第二十六天-332重新安排行程、51N皇后、 37解数独
+                代码随想录算法训练营第二十七天-455分发饼干、376摆动序列、53最大子序和
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/cf86d462/
+                posts/dc3e282a/
             </div>
         </div>
 
@@ -344,7 +365,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-06-12 11:06</div>
+                <div class="content">2024-06-13 09:17</div>
             </div>
 
 
@@ -380,7 +401,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">回溯算法</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a>
                                     </li>
                                 
                             </ul>
@@ -396,31 +417,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/posts/dc3e282a/"
-                                   title="代码随想录算法训练营第二十七天-455分发饼干、376摆动序列、53最大子序和"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第二十七天-455分发饼干、376摆动序列、53最大子序和</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/f191c36/"
-                                   title="代码随想录算法训练营第二十五天-491递增子序列 、46全排列 、47全排列 II"
+                                   href="/posts/cf86d462/"
+                                   title="代码随想录算法训练营第二十六天-332重新安排行程、51N皇后、 37解数独"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第二十五天-491递增子序列 、46全排列 、47全排列 II</span>
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第二十六天-332重新安排行程、51N皇后、 37解数独</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -449,7 +454,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E"><span class="nav-text">51N皇后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37%E8%A7%A3%E6%95%B0%E7%8B%AC"><span class="nav-text">37解数独</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B-2"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E-2"><span class="nav-text">51N皇后</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#455%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2"><span class="nav-text">455分发饼干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#376%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97"><span class="nav-text">376摆动序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#53%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C"><span class="nav-text">53最大子序和</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#455%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2-2"><span class="nav-text">455分发饼干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#376%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97-2"><span class="nav-text">376摆动序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#53%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C-2"><span class="nav-text">53最大子序和</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -630,7 +635,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E"><span class="nav-text">51N皇后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37%E8%A7%A3%E6%95%B0%E7%8B%AC"><span class="nav-text">37解数独</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#332%E9%87%8D%E6%96%B0%E5%AE%89%E6%8E%92%E8%A1%8C%E7%A8%8B-2"><span class="nav-text">332重新安排行程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51N%E7%9A%87%E5%90%8E-2"><span class="nav-text">51N皇后</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#455%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2"><span class="nav-text">455分发饼干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#376%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97"><span class="nav-text">376摆动序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#53%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C"><span class="nav-text">53最大子序和</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#455%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2-2"><span class="nav-text">455分发饼干</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#376%E6%91%86%E5%8A%A8%E5%BA%8F%E5%88%97-2"><span class="nav-text">376摆动序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#53%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C-2"><span class="nav-text">53最大子序和</span></a></li></ol></li></ol>
     </div>
 </div>
 
