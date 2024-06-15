@@ -233,7 +233,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jun 13 2024 22:33:09 GMT+0800">2024-06-13 22:33:09</span>
+                <span class="datetime" data-updated="Fri Jun 14 2024 21:41:20 GMT+0800">2024-06-14 21:41:20</span>
             </span>
         
 
@@ -261,6 +261,9 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></li>
                         
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Spring/">Spring</a></li>
+                        
+                    
                 </ul>
             </span>
         
@@ -268,12 +271,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>3k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>5.8k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>10 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>20 分钟</span>
             </span>
         
         
@@ -303,7 +306,7 @@
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">24-06-10 初始记录</span><br><span class="line">24-06-12 继续</span><br><span class="line">24-06-13 继续</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">24-06-10 初始记录</span><br><span class="line">24-06-12 继续</span><br><span class="line">24-06-13 继续</span><br><span class="line">24-06-14 补充剩下的知识点。Spring这块的知识后续需要看书、看源码。</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1>Spring</h1>
 <h2 id="说说Spring常用的几个注解？">说说Spring常用的几个注解？</h2>
@@ -351,7 +354,7 @@
 </table>
 <h2 id="谈谈你对Spring的理解？">谈谈你对Spring的理解？</h2>
 <p>Spring是一个完整的生态，不单单是一个技术框架。</p>
-<h2 id="Spring-框架中都用到了哪些设计模式？">Spring 框架中都用到了哪些设计模式？</h2>
+<h2 id="❗Spring-框架中都用到了哪些设计模式？">❗Spring 框架中都用到了哪些设计模式？</h2>
 <p>工厂模式：BeanFactory就是简单工厂模式的体现，用来创建对象的实例；</p>
 <p>单例模式：Bean默认为单例模式。</p>
 <p>代理模式：Spring的AOP功能用到了JDK的动态代理和CGLIB字节码生成技术；</p>
@@ -375,11 +378,43 @@
 <p>（5）引入（Introduction）：引入允许我们向现有类添加新方法或属性。</p>
 <p>（6）目标对象（Target Object）： 被一个或者多个切面（aspect）所通知（advise）的对象。它通常是一个代理对象。也有人把它叫做 被通知（adviced） 对象。 既然Spring AOP是通过运行时代理实现的，这个对象永远是一个 被代理（proxied） 对象。</p>
 <p>（7）织入（Weaving）：织入是把切面应用到目标对象并创建新的代理对象的过程。在目标对象的生命周期里有多少个点可以进行织入</p>
+<h4 id="Spring通知有哪些类型？">Spring通知有哪些类型？</h4>
+<p>在AOP术语中，切面的工作被称为通知，实际上是程序执行时要通过SpringAOP框架触发的代码段。<br>
+Spring切面可以应用5种类型的通知：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>前置通知（Before）：在目标方法被调用之前调用通知功能；</p>
+</li>
+<li class="lvl-2">
+<p>后置通知（After）：在目标方法完成之后调用通知，此时不会关心方法的输出是什么；</p>
+</li>
+<li class="lvl-2">
+<p>返回通知（After-returning ）：在目标方法成功执行之后调用通知；</p>
+</li>
+<li class="lvl-2">
+<p>异常通知（After-throwing）：在目标方法抛出异常后调用通知；</p>
+</li>
+<li class="lvl-2">
+<p>环绕通知（Around）：通知包裹了被通知的方法，在被通知的方法调用之前和调用之后执行自定义的行为。</p>
+</li>
+</ul>
 <h4 id="❗cglib动态代理和jdk动态代理的区别">❗cglib动态代理和jdk动态代理的区别</h4>
 <p>// todo<br>
 动态代理，其实就是动态的创建一个类出来，创建这个类的实例对象，在这个里面引用你真正自己写的类，所有方法的调用，都先走代理类对象，做一些代码上的增强。</p>
 <p>如果类实现了某个接口，spring aop会使用jdk动态代理。如果某个类没有实现接口，spring aop会使用cglib动态代理。cglib是生成类的一个子类，可以动态生成字节码，覆盖一些方法，进行方法增强。</p>
-<h2 id="❗Spring中的Bean是不是线程安全的？">❗Spring中的Bean是不是线程安全的？</h2>
+<h2 id="Bean对象的创建方式有哪几种？">Bean对象的创建方式有哪几种？</h2>
+<ol>
+<li class="lvl-3">
+<p>通过IoC直接创建bean对象</p>
+</li>
+<li class="lvl-3">
+<p>通过IoC创建bean工厂，再通过bean工厂的方法创建bean对象</p>
+</li>
+<li class="lvl-3">
+<p>通过IoC创建bean工厂，再通过bean工厂的静态方法创建bean对象</p>
+</li>
+</ol>
+<h3 id="❗Spring中的Bean是不是线程安全的？">❗Spring中的Bean是不是线程安全的？</h3>
 <p>❔bean的作用域可以分为5个范围：</p>
 <ol>
 <li class="lvl-3">
@@ -403,35 +438,7 @@
 <p>实际上大部分时候 spring bean 无状态的（比如 dao 类），所以某种程度上来说 bean 也是安全的，但如果 bean 有状态的话（比如 view model 对象），那就要开发者自己去保证线程安全了，最简单的就是改变 bean 的作用域，把“singleton”（单例）变更为“prototype”（多例），这样请求 bean 相当于 new Bean()了，所以就可以保证线程安全了。</p>
 <p>有状态：就是有数据存储功能。</p>
 <p>无状态：就是不会保存数据。</p>
-<h2 id="Spring的事务实现原理，对于事物传播机制的理解。">Spring的事务实现原理，对于事物传播机制的理解。</h2>
-<p>原理：<code>@Transactional</code> + AOP</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>【常用】【默认】PROPAGATION_REQUIRED：如果当前没有事务，那就创建一个新事务，如果当前存在事务，那就加入该事务。</p>
-</li>
-<li class="lvl-2">
-<p>【常用】PROPAGATION_SUPPORTS：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，那就以非事务执行。</p>
-</li>
-<li class="lvl-2">
-<p>PROPAGATION_MANDATORY：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就抛异常。</p>
-</li>
-<li class="lvl-2">
-<p>【场景】PROPAGATION_REQUIRES_NEW：创建新事务，无论当前存不存在事务，都创建新事务。</p>
-</li>
-<li class="lvl-2">
-<p>PROPAGATION_NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</p>
-</li>
-<li class="lvl-2">
-<p>PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，就抛异常。</p>
-</li>
-<li class="lvl-2">
-<p>【场景】PROPAGATION_NESTED：如果当前存在事务，就嵌套事务内执行，如果没有事务，就按REQUIRED属性执行。外层代码回滚，内层代码一起回滚；内层代码回滚，外层代码不一起回滚。</p>
-</li>
-</ul>
-<h2 id="画一张图说Spring的核心架构。">画一张图说Spring的核心架构。</h2>
-<p>// todo<br>
-没有从源码层面讲解，这块需要后面补充。</p>
-<h3 id="Spring-Bean的生命周期">Spring Bean的生命周期</h3>
+<h3 id="❗Spring-Bean的生命周期">❗Spring Bean的生命周期</h3>
 <ol>
 <li class="lvl-3">
 <p>首先，我们知道bean对象的创建不是由我们自己创建的，而是由Spring来给我们创建的，而我们需要做的是告诉Spring我们需要创建哪些Bean对象。我们可以通过xml、注解等方式来提供创建Bean对象所以需要的信息，而Spring要创建bean对象，就首先得有一个BeanFactory工厂来创建Bean对象，如果这个Bean对象已经存在，则销毁清空Bean工厂的内容，如果不存在，就会通过DefaultListableBeanFactory方法先创建一个Bean对象工厂（即BeanFactory）。</p>
@@ -460,7 +467,138 @@
 </li>
 </ol>
 <p>下面可以不看，感觉这块视频讲的乱七八糟的。大白话：再注解里定义bean，Spring容器根据配置创建、管理bean之间的依赖关系等。生命周期：创建-&gt;使用-&gt;销毁。从(1)实例化bean，(2)设置依赖属性（依赖注入），过程中可能会进行动态代理的处理。(3)处理Aware接口，如果Bean实现了ApplicationContextAware接口，Spring容器会调用setApplicationContext(ApplicationContext)方法，传入Spring上下文。把容器注入给Bean。(4)如果要对Bean进行一些自定义的处理，可以让Bean实现BeanPostProcessors接口。(5)如果Bean配置了init-method，会根据配置进行初始化。(6)清理阶段，如果Bean实现了DisposableBean这个接口，会调用其实现的destroy()方法。(7)如果Bean的Spring配置中配置了destory-method属性，会在销毁时，进行调用。</p>
+<h4 id="Spring为什么启动时要实例化几乎所有的Bean，这样启动不是很消耗资源吗">Spring为什么启动时要实例化几乎所有的Bean，这样启动不是很消耗资源吗?</h4>
+<p>主要的好处有两个：性能、提前暴露问题。</p>
+<p>启动时花费几十秒初始化好所有的bean，处理好所有的依赖注入，在运行时就可以免去初始化这步了，首次访问响应速度自然更好。</p>
+<p>提前暴露问题就是在启动时初始化bean，可以检查循环依赖、bean重复、bean不存在等等一系列的问题，有问题直接报错启动失败, 那你在部署的时候就能直接发现问题，而不是等线上运行一段时间后突然反馈有问题又得跑到服务器上看日志。</p>
+<h4 id="spring里面的-bean为什么要注册，作用是什么？">spring里面的 bean为什么要注册，作用是什么？</h4>
+<p>注册就是把信息存起来，内部是基于集合实现的，注册方便之后对于信息的调取。</p>
+<h4 id="BeanFactory和FactoryBean的区别是什么？">BeanFactory和FactoryBean的区别是什么？</h4>
+<p>BeanFactory：由Bean工厂统一生成对象，相当于一个模子克隆出来。</p>
+<p>FactoryBean：单独构造复杂对象，在Spring中BeanFactory进行实例化时，判断该对象不是单例或者不是懒加载形式，就改由FactoryBean来单独创建对象。</p>
+<h2 id="Spring有哪些依赖注入法？">Spring有哪些依赖注入法？</h2>
+<ol>
+<li class="lvl-3">
+<p>Set方法注入：注入最简单，最常用的注入方式，支持注解+xml。</p>
+</li>
+<li class="lvl-3">
+<p>构造器注入：是指带有参数的构造函数注入，支持注解+xml</p>
+</li>
+<li class="lvl-3">
+<p>静态工厂的方式注入：通过调用静态工厂的方法来获取自己需要的对象，只支持xml。</p>
+</li>
+<li class="lvl-3">
+<p>实例工厂的方式注入：获取对象实例的方法不是静态的，所以需要new一个工厂类，再调用普通的实例方法，只支持xml。有两种实现方式：(1) 注解（@Autowired,@Resource,@Required）(2) 配置文件（xml）</p>
+</li>
+</ol>
+<h3 id="❗Spring的循环依赖是什么？">❗Spring的循环依赖是什么？</h3>
+<ol>
+<li class="lvl-3">
+<p>使用context.getBean(A.class)，旨在获取容器内的单例A(若A不存在，就会走A这个Bean的创建流程)，显然初次获取A是不存在的，因此走A的创建之路~</p>
+</li>
+<li class="lvl-3">
+<p>实例化A（注意此处仅仅是实例化），并将它放进缓存（此时A已经实例化完成，已经可以被引用了）</p>
+</li>
+<li class="lvl-3">
+<p>初始化A：@Autowired依赖注入B（此时需要去容器内获取B）</p>
+</li>
+<li class="lvl-3">
+<p>为了完成依赖注入B，会通过getBean(B)去容器内找B。但此时B在容器内不存在，就走向B的创建之路~</p>
+</li>
+<li class="lvl-3">
+<p>实例化B，并将其放入缓存。（此时B也能够被引用了）</p>
+</li>
+<li class="lvl-3">
+<p>初始化B，@Autowired依赖注入A（此时需要去容器内获取A）</p>
+</li>
+<li class="lvl-3">
+<p>此处重要：初始化B时会调用getBean(A)去容器内找到A，上面我们已经说过了此时候因为A已经实例化完成了并且放进了缓存里，所以这个时候去看缓存里是已经存在A的引用了的，所以getBean(A)能够正常返回</p>
+</li>
+<li class="lvl-3">
+<p>B初始化成功（此时已经注入A成功了，已成功持有A的引用了），return（注意此处return相当于是返回最上面的getBean(B)这句代码，回到了初始化A的流程中~）。</p>
+</li>
+<li class="lvl-3">
+<p>因为B实例已经成功返回了，因此最终A也初始化成功</p>
+</li>
+<li class="lvl-4">
+<p>到此，B持有的已经是初始化完成的A，A持有的也是初始化完成的B，完美~</p>
+</li>
+</ol>
+<h3 id="使用-Autowired注解自动装配的过程是怎样的？">使用@Autowired注解自动装配的过程是怎样的？</h3>
+<p>使用@Autowired注解来自动装配指定的bean。在使用@Autowired注解之前需要在Spring配置文件进行配置，<code>&lt;context:annotation-config /&gt;。</code></p>
+<p>在启动spring IoC时，容器自动装载了一个AutowiredAnnotationBeanPostProcessor后置处理器，当容器扫描到@Autowied、@Resource或@Inject时，就会在IoC容器自动查找需要的bean，并装配给该对象的属性。在使用@Autowired时，首先在容器中查询对应类型的bean：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果查询结果刚好为一个，就将该bean装配给@Autowired指定的数据；</p>
+</li>
+<li class="lvl-2">
+<p>如果查询的结果不止一个，那么@Autowired会根据名称来查找；</p>
+</li>
+<li class="lvl-2">
+<p>如果上述查找的结果为空，那么会抛出异常。解决方法时，使用required=false。</p>
+</li>
+</ul>
+<h2 id="❗Spring的事务实现原理，对于事物传播机制的理解。">❗Spring的事务实现原理，对于事物传播机制的理解。</h2>
+<p>原理：<code>@Transactional</code> + AOP</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>【常用】【默认】PROPAGATION_REQUIRED：如果当前没有事务，那就创建一个新事务，如果当前存在事务，那就加入该事务。</p>
+</li>
+<li class="lvl-2">
+<p>【常用】PROPAGATION_SUPPORTS：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，那就以非事务执行。</p>
+</li>
+<li class="lvl-2">
+<p>PROPAGATION_MANDATORY：支持当前事务，如果当前存在事务，就加入该事务，如果当前不存在事务，就抛异常。</p>
+</li>
+<li class="lvl-2">
+<p>【场景】PROPAGATION_REQUIRES_NEW：创建新事务，无论当前存不存在事务，都创建新事务。</p>
+</li>
+<li class="lvl-2">
+<p>PROPAGATION_NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</p>
+</li>
+<li class="lvl-2">
+<p>PROPAGATION_NEVER：以非事务方式执行，如果当前存在事务，就抛异常。</p>
+</li>
+<li class="lvl-2">
+<p>【场景】PROPAGATION_NESTED：如果当前存在事务，就嵌套事务内执行，如果没有事务，就按REQUIRED属性执行。<strong>外层代码回滚，内层代码一起回滚；内层代码回滚，外层代码不一起回滚。</strong></p>
+</li>
+</ul>
+<h3 id="说一下-spring-的事务隔离？">说一下 spring 的事务隔离？</h3>
+<p>spring 有五大隔离级别，默认值为 ISOLATION_DEFAULT（使用数据库的设置），其他四个隔离级别和数据库的隔离级别一致：</p>
+<ol>
+<li class="lvl-3">
+<p>ISOLATION_DEFAULT：用底层数据库的设置隔离级别，数据库设置的是什么我就用什么；</p>
+</li>
+<li class="lvl-3">
+<p>ISOLATION_READ_UNCOMMITTED：未提交读，最低隔离级别、事务未提交前，就可被其他事务读取（会出现幻读、脏读、不可重复读）；</p>
+</li>
+<li class="lvl-3">
+<p>ISOLATION_READ_COMMITTED：提交读，一个事务提交后才能被其他事务读取到（会造成幻读、不可重复读），SQL server 的默认级别；</p>
+</li>
+<li class="lvl-3">
+<p>ISOLATION_REPEATABLE_READ：可重复读，保证多次读取同一个数据时，其值都和事务开始时候的内容是一致，禁止读取到别的事务未提交的数据（会造成幻读），MySQL 的默认级别；</p>
+</li>
+<li class="lvl-3">
+<p>ISOLATION_SERIALIZABLE：序列化，代价最高最可靠的隔离级别，该隔离级别能防止脏读、不可重复读、幻读。</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>脏读 ：表示一个事务能够读取另一个事务中还未提交的数据。比如，某个事务尝试插入记录 A，此时该事务还未提交，然后另一个事务尝试读取到了记录 A。</p>
+</li>
+<li class="lvl-2">
+<p>不可重复读 ：是指在一个事务内，多次读同一数据。</p>
+</li>
+<li class="lvl-2">
+<p>幻读 ：指同一个事务内多次查询返回的结果集不一样。比如同一个事务 A 第一次查询时候有 n 条记录，但是第二次同等条件下查询却有 n+1 条记录，这就好像产生了幻觉。发生幻读的原因也是另外一个事务新增或者删除或者修改了第一个事务结果集里面的数据，同一个记录的数据内容被修改了，所有数据行的记录就变多或者变少了。</p>
+</li>
+</ul>
+<h2 id="画一张图说Spring的核心架构。">画一张图说Spring的核心架构。</h2>
+<p>// todo<br>
+没有从源码层面讲解，这块需要后面补充。</p>
 <h1>Spring MVC</h1>
+<p><em>看了一下别的问题都是比较古老的问题。应该不会问到，暂时不记录。</em></p>
+<h2 id="❗请描述Spring-MVC的工作流程？描述一下-DispatcherServlet-的工作流程？">❗请描述Spring MVC的工作流程？描述一下 DispatcherServlet 的工作流程？</h2>
 <ol>
 <li class="lvl-3">
 <p>用户发送请求至前端控制器DispatcherServlet；</p>
@@ -497,7 +635,48 @@
 </li>
 </ol>
 <h1>Spring Boot</h1>
-<h2 id="画一张图说Spring-Boot的核心架构。">画一张图说Spring Boot的核心架构。</h2>
+<h2 id="❗SringBoot的核心注解是哪个？它主要由哪几个注解组成？">❗SringBoot的核心注解是哪个？它主要由哪几个注解组成？</h2>
+<p>启动类上面的注解是@SpringBootApplication，它也是 Spring Boot 的核心注解，主要组合包含了以下 3 个注解：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>@SpringBootConfiguration：组合了 @Configuration 注解，实现配置文件的功能。</p>
+</li>
+<li class="lvl-2">
+<p>@EnableAutoConfiguration：打开自动配置的功能，也可以关闭某个自动配置的选项，如关闭数据源自动配置功能： @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })。</p>
+</li>
+<li class="lvl-2">
+<p>@ComponentScan：Spring组件扫描。</p>
+</li>
+</ul>
+<h2 id="❗SpringBoot的工作原理-自动配置-SPI机制是怎么样子的？">❗SpringBoot的工作原理/自动配置/SPI机制是怎么样子的？</h2>
+<p>SpringBoot使用的@SpringApplication注解，然后使用@EnableAutoConfiguration以及@ComponentScan自动装配，注解@EnableAutoConfiguration使用了@Import加载，使用@Import导入的类会被Spring加载到IOC容器中，最后使用了SpringFactoriesLoader反射出maven中META-INF下spring.factories，将反射的bean对象加载到Spring容器中（也就是SpringBoot的SPI机制）。</p>
+<h2 id="Spring-Boot-是否可以使用-XML-配置">Spring Boot 是否可以使用 XML 配置 ?</h2>
+<p>Spring Boot 推荐使用 Java 配置而非 XML 配置，但是 Spring Boot 中也可以使用 XML 配置，通过 @ImportResource 注解可以引入一个 XML 配置。</p>
+<h2 id="Spring-boot-核心配置文件是什么？bootstrap-properties-和-application-properties-有何区别">Spring boot 核心配置文件是什么？bootstrap.properties 和 application.properties 有何区别 ?</h2>
+<p>单纯做 Spring Boot 开发，可能不太容易遇到 bootstrap.properties 配置文件，但是在结合 Spring Cloud 时，这个配置就会经常遇到了，特别是在需要加载一些远程配置文件的时侯。<br>
+Spring boot 核心的两个配置文件：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>bootstrap (. yml 或者 . properties)：boostrap 由父 ApplicationContext 加载的，比 applicaton 优先加载，配置在应用程序上下文的引导阶段生效。一般来说我们在 Spring Cloud Config 或者 Nacos 中会用到它。且 bootstrap 里面的属性不能被覆盖；</p>
+</li>
+<li class="lvl-2">
+<p>application (. yml 或者 . properties)： 由ApplicatonContext 加载，用于 spring boot 项目的自动化配置。</p>
+</li>
+</ul>
+<h2 id="Spring-Boot的配置文件分类有哪几种？它们的优先级如何？">Spring Boot的配置文件分类有哪几种？它们的优先级如何？</h2>
+<p>SpringBoot是基于约定的，所以很多配置都有默认值，但如果想使用自己的配置替换默认配置的话，就可以使用application.properties或者application.yml（application.yaml）进行配置。</p>
+<p>默认配置文件名称：application</p>
+<p><strong>在同一级目录下优先级为：properties&gt;yml &gt; yaml</strong></p>
+<h2 id="Spring-Boot-打成的-jar-和普通的-jar-有什么区别">Spring Boot 打成的 jar 和普通的 jar 有什么区别 ?</h2>
+<p>Spring Boot 项目最终打包成的 jar 是可执行 jar ，这种 jar 可以直接通过 java -jar xxx.jar 命令来运行，这种 jar 不可以作为普通的 jar 被其他项目依赖，即使依赖了也无法使用其中的类。</p>
+<p>Spring Boot 的 jar 无法被其他项目依赖，主要还是他和普通 jar 的结构不同。普通的 jar 包，解压后直接就是包名，包里就是我们的代码，而 Spring Boot 打包成的可执行 jar 解压后，在<code>\BOOT-INF\classes</code>目录下才是我们的代码，因此无法被直接引用。如果非要引用，可以在 pom.xml 文件中增加配置，将 Spring Boot 项目打包成两个 jar ，一个可执行，一个可引用。</p>
+<h2 id="Spring-Boot-中如何实现定时任务">Spring Boot 中如何实现定时任务 ?</h2>
+<p>定时任务也是一个常见的需求，Spring Boot 中对于定时任务的支持主要还是来自 Spring 框架。</p>
+<p>在 Spring Boot 中使用定时任务主要有两种不同的方式，一个就是使用 Spring 中的 @Scheduled 注解，另一个则是使用第三方框架 Quartz（/kwɔːts/）。</p>
+<p>使用 Spring 中的 @Scheduled  （/'ʃedjuːld/）的方式主要通过 @Scheduled 注解来实现。</p>
+<p>使用 Quartz ，则按照 Quartz 的方式，定义 Job 和 Trigger 即可。</p>
+<p>如果是分布式定时任务，可以采用XXL-Job。</p>
+<h2 id="❗画一张图说Spring-Boot的核心架构。">❗画一张图说Spring Boot的核心架构。</h2>
 <p>Spring Boot本身是Spring项目发展到一定阶段后的产物。一开始是Spring框架，MyBatis，Spring MVC（SSM）做一些开发，打包部署到线上的tomcat。tomcat启动，接收http请求，转发给Spring MVC框架。</p>
 <p>开发的时候还会去整合其他的一些框架（redis、elasticsearch、rabbitmq…）等东西。使用Spring Boot可以简化之前的开发流程，之前框架的整合流程比较繁琐。</p>
 <p>Spring Boot内嵌的web服务器（比如tomcat）可以直接把写好的代码运行（减少部署tomcat）。</p>
@@ -579,6 +758,10 @@
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
                                     </li>
                                 
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Spring/">Spring</a>
+                                    </li>
+                                
                             </ul>
                         
                     </div>
@@ -645,7 +828,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4Spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%B3%A8%E8%A7%A3%EF%BC%9F"><span class="nav-text">说说Spring常用的几个注解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9Spring%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">谈谈你对Spring的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E6%A1%86%E6%9E%B6%E4%B8%AD%E9%83%BD%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-text">Spring 框架中都用到了哪些设计模式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E4%B8%A4%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Spring两大核心思想是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E5%AF%B9IOC%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">❗说一说你对IOC的理解？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E5%AF%B9AOP%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">❗说一说你对AOP的理解？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-AOP%E9%87%8C%E9%9D%A2%E7%9A%84%E5%87%A0%E4%B8%AA%E5%90%8D%E8%AF%8D"><span class="nav-text">Spring AOP里面的几个名词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97cglib%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%92%8Cjdk%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗cglib动态代理和jdk动态代理的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Spring%E4%B8%AD%E7%9A%84Bean%E6%98%AF%E4%B8%8D%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%EF%BC%9F"><span class="nav-text">❗Spring中的Bean是不是线程安全的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E7%9A%84%E4%BA%8B%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%8C%E5%AF%B9%E4%BA%8E%E4%BA%8B%E7%89%A9%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">Spring的事务实现原理，对于事物传播机制的理解。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AF%B4Spring%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E3%80%82"><span class="nav-text">画一张图说Spring的核心架构。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-text">Spring Bean的生命周期</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring MVC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AF%B4Spring-Boot%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E3%80%82"><span class="nav-text">画一张图说Spring Boot的核心架构。</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4Spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%B3%A8%E8%A7%A3%EF%BC%9F"><span class="nav-text">说说Spring常用的几个注解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9Spring%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">谈谈你对Spring的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Spring-%E6%A1%86%E6%9E%B6%E4%B8%AD%E9%83%BD%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-text">❗Spring 框架中都用到了哪些设计模式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E4%B8%A4%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Spring两大核心思想是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E5%AF%B9IOC%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">❗说一说你对IOC的理解？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E5%AF%B9AOP%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">❗说一说你对AOP的理解？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-AOP%E9%87%8C%E9%9D%A2%E7%9A%84%E5%87%A0%E4%B8%AA%E5%90%8D%E8%AF%8D"><span class="nav-text">Spring AOP里面的几个名词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring%E9%80%9A%E7%9F%A5%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Spring通知有哪些类型？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97cglib%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%92%8Cjdk%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗cglib动态代理和jdk动态代理的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9F"><span class="nav-text">Bean对象的创建方式有哪几种？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97Spring%E4%B8%AD%E7%9A%84Bean%E6%98%AF%E4%B8%8D%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%EF%BC%9F"><span class="nav-text">❗Spring中的Bean是不是线程安全的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97Spring-Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-text">❗Spring Bean的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring%E4%B8%BA%E4%BB%80%E4%B9%88%E5%90%AF%E5%8A%A8%E6%97%B6%E8%A6%81%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%87%A0%E4%B9%8E%E6%89%80%E6%9C%89%E7%9A%84Bean%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%90%AF%E5%8A%A8%E4%B8%8D%E6%98%AF%E5%BE%88%E6%B6%88%E8%80%97%E8%B5%84%E6%BA%90%E5%90%97"><span class="nav-text">Spring为什么启动时要实例化几乎所有的Bean，这样启动不是很消耗资源吗?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring%E9%87%8C%E9%9D%A2%E7%9A%84-bean%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%B3%A8%E5%86%8C%EF%BC%8C%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">spring里面的 bean为什么要注册，作用是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BeanFactory%E5%92%8CFactoryBean%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">BeanFactory和FactoryBean的区别是什么？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%B3%95%EF%BC%9F"><span class="nav-text">Spring有哪些依赖注入法？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97Spring%E7%9A%84%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">❗Spring的循环依赖是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Autowired%E6%B3%A8%E8%A7%A3%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-text">使用@Autowired注解自动装配的过程是怎样的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Spring%E7%9A%84%E4%BA%8B%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%8C%E5%AF%B9%E4%BA%8E%E4%BA%8B%E7%89%A9%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">❗Spring的事务实现原理，对于事物传播机制的理解。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B-spring-%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%EF%BC%9F"><span class="nav-text">说一下 spring 的事务隔离？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AF%B4Spring%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E3%80%82"><span class="nav-text">画一张图说Spring的核心架构。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E8%AF%B7%E6%8F%8F%E8%BF%B0Spring-MVC%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9F%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-DispatcherServlet-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="nav-text">❗请描述Spring MVC的工作流程？描述一下 DispatcherServlet 的工作流程？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97SringBoot%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3%E6%98%AF%E5%93%AA%E4%B8%AA%EF%BC%9F%E5%AE%83%E4%B8%BB%E8%A6%81%E7%94%B1%E5%93%AA%E5%87%A0%E4%B8%AA%E6%B3%A8%E8%A7%A3%E7%BB%84%E6%88%90%EF%BC%9F"><span class="nav-text">❗SringBoot的核心注解是哪个？它主要由哪几个注解组成？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97SpringBoot%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE-SPI%E6%9C%BA%E5%88%B6%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E5%AD%90%E7%9A%84%EF%BC%9F"><span class="nav-text">❗SpringBoot的工作原理&#x2F;自动配置&#x2F;SPI机制是怎么样子的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8-XML-%E9%85%8D%E7%BD%AE"><span class="nav-text">Spring Boot 是否可以使用 XML 配置 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot-%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9Fbootstrap-properties-%E5%92%8C-application-properties-%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB"><span class="nav-text">Spring boot 核心配置文件是什么？bootstrap.properties 和 application.properties 有何区别 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%88%86%E7%B1%BB%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9F%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7%E5%A6%82%E4%BD%95%EF%BC%9F"><span class="nav-text">Spring Boot的配置文件分类有哪几种？它们的优先级如何？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-%E6%89%93%E6%88%90%E7%9A%84-jar-%E5%92%8C%E6%99%AE%E9%80%9A%E7%9A%84-jar-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">Spring Boot 打成的 jar 和普通的 jar 有什么区别 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-text">Spring Boot 中如何实现定时任务 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AF%B4Spring-Boot%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E3%80%82"><span class="nav-text">❗画一张图说Spring Boot的核心架构。</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -826,7 +1009,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4Spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%B3%A8%E8%A7%A3%EF%BC%9F"><span class="nav-text">说说Spring常用的几个注解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9Spring%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">谈谈你对Spring的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-%E6%A1%86%E6%9E%B6%E4%B8%AD%E9%83%BD%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-text">Spring 框架中都用到了哪些设计模式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E4%B8%A4%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Spring两大核心思想是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E5%AF%B9IOC%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">❗说一说你对IOC的理解？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E5%AF%B9AOP%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">❗说一说你对AOP的理解？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-AOP%E9%87%8C%E9%9D%A2%E7%9A%84%E5%87%A0%E4%B8%AA%E5%90%8D%E8%AF%8D"><span class="nav-text">Spring AOP里面的几个名词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97cglib%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%92%8Cjdk%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗cglib动态代理和jdk动态代理的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Spring%E4%B8%AD%E7%9A%84Bean%E6%98%AF%E4%B8%8D%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%EF%BC%9F"><span class="nav-text">❗Spring中的Bean是不是线程安全的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E7%9A%84%E4%BA%8B%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%8C%E5%AF%B9%E4%BA%8E%E4%BA%8B%E7%89%A9%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">Spring的事务实现原理，对于事物传播机制的理解。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AF%B4Spring%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E3%80%82"><span class="nav-text">画一张图说Spring的核心架构。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-text">Spring Bean的生命周期</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring MVC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AF%B4Spring-Boot%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E3%80%82"><span class="nav-text">画一张图说Spring Boot的核心架构。</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4Spring%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E6%B3%A8%E8%A7%A3%EF%BC%9F"><span class="nav-text">说说Spring常用的几个注解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9Spring%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">谈谈你对Spring的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Spring-%E6%A1%86%E6%9E%B6%E4%B8%AD%E9%83%BD%E7%94%A8%E5%88%B0%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-text">❗Spring 框架中都用到了哪些设计模式？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E4%B8%A4%E5%A4%A7%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Spring两大核心思想是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E5%AF%B9IOC%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">❗说一说你对IOC的理解？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E5%AF%B9AOP%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-text">❗说一说你对AOP的理解？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-AOP%E9%87%8C%E9%9D%A2%E7%9A%84%E5%87%A0%E4%B8%AA%E5%90%8D%E8%AF%8D"><span class="nav-text">Spring AOP里面的几个名词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring%E9%80%9A%E7%9F%A5%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Spring通知有哪些类型？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97cglib%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%92%8Cjdk%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗cglib动态代理和jdk动态代理的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9F"><span class="nav-text">Bean对象的创建方式有哪几种？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97Spring%E4%B8%AD%E7%9A%84Bean%E6%98%AF%E4%B8%8D%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%EF%BC%9F"><span class="nav-text">❗Spring中的Bean是不是线程安全的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97Spring-Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-text">❗Spring Bean的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring%E4%B8%BA%E4%BB%80%E4%B9%88%E5%90%AF%E5%8A%A8%E6%97%B6%E8%A6%81%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%87%A0%E4%B9%8E%E6%89%80%E6%9C%89%E7%9A%84Bean%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%90%AF%E5%8A%A8%E4%B8%8D%E6%98%AF%E5%BE%88%E6%B6%88%E8%80%97%E8%B5%84%E6%BA%90%E5%90%97"><span class="nav-text">Spring为什么启动时要实例化几乎所有的Bean，这样启动不是很消耗资源吗?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring%E9%87%8C%E9%9D%A2%E7%9A%84-bean%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%B3%A8%E5%86%8C%EF%BC%8C%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">spring里面的 bean为什么要注册，作用是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BeanFactory%E5%92%8CFactoryBean%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">BeanFactory和FactoryBean的区别是什么？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%B3%95%EF%BC%9F"><span class="nav-text">Spring有哪些依赖注入法？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97Spring%E7%9A%84%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">❗Spring的循环依赖是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Autowired%E6%B3%A8%E8%A7%A3%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-text">使用@Autowired注解自动装配的过程是怎样的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Spring%E7%9A%84%E4%BA%8B%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%8C%E5%AF%B9%E4%BA%8E%E4%BA%8B%E7%89%A9%E4%BC%A0%E6%92%AD%E6%9C%BA%E5%88%B6%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">❗Spring的事务实现原理，对于事物传播机制的理解。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B-spring-%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%EF%BC%9F"><span class="nav-text">说一下 spring 的事务隔离？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AF%B4Spring%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E3%80%82"><span class="nav-text">画一张图说Spring的核心架构。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E8%AF%B7%E6%8F%8F%E8%BF%B0Spring-MVC%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9F%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-DispatcherServlet-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="nav-text">❗请描述Spring MVC的工作流程？描述一下 DispatcherServlet 的工作流程？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">Spring Boot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97SringBoot%E7%9A%84%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3%E6%98%AF%E5%93%AA%E4%B8%AA%EF%BC%9F%E5%AE%83%E4%B8%BB%E8%A6%81%E7%94%B1%E5%93%AA%E5%87%A0%E4%B8%AA%E6%B3%A8%E8%A7%A3%E7%BB%84%E6%88%90%EF%BC%9F"><span class="nav-text">❗SringBoot的核心注解是哪个？它主要由哪几个注解组成？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97SpringBoot%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE-SPI%E6%9C%BA%E5%88%B6%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E5%AD%90%E7%9A%84%EF%BC%9F"><span class="nav-text">❗SpringBoot的工作原理&#x2F;自动配置&#x2F;SPI机制是怎么样子的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8-XML-%E9%85%8D%E7%BD%AE"><span class="nav-text">Spring Boot 是否可以使用 XML 配置 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-boot-%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9Fbootstrap-properties-%E5%92%8C-application-properties-%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB"><span class="nav-text">Spring boot 核心配置文件是什么？bootstrap.properties 和 application.properties 有何区别 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%88%86%E7%B1%BB%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9F%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7%E5%A6%82%E4%BD%95%EF%BC%9F"><span class="nav-text">Spring Boot的配置文件分类有哪几种？它们的优先级如何？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-%E6%89%93%E6%88%90%E7%9A%84-jar-%E5%92%8C%E6%99%AE%E9%80%9A%E7%9A%84-jar-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">Spring Boot 打成的 jar 和普通的 jar 有什么区别 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-text">Spring Boot 中如何实现定时任务 ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AF%B4Spring-Boot%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9E%B6%E6%9E%84%E3%80%82"><span class="nav-text">❗画一张图说Spring Boot的核心架构。</span></a></li></ol></li></ol>
     </div>
 </div>
 
