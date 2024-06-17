@@ -6,7 +6,7 @@
   <link href="https://kiml.github.io/atom.xml" rel="self"/>
   
   <link href="https://kiml.github.io/"/>
-  <updated>2024-06-17T10:45:38.791Z</updated>
+  <updated>2024-06-17T10:45:43.417Z</updated>
   <id>https://kiml.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kiml.github.io/posts/9344475e/"/>
     <id>https://kiml.github.io/posts/9344475e/</id>
     <published>2024-06-17T10:35:00.000Z</published>
-    <updated>2024-06-17T10:45:38.791Z</updated>
+    <updated>2024-06-17T10:45:43.417Z</updated>
     
     <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>前言<br>不是专业前端，此问题通过Chat GLM解决</p></li><li class="lvl-2"><p>更新</p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-17 初始记录</span><br></pre></td></tr></table></figure><span id="more"></span><h1>问题</h1><p>Keep主题更新tools功能，但是访问tools模板页面报错：btoa is not defined。</p><h1>原因</h1><p>根据Chat GLM的描述。</p><blockquote><p>如果你遇到了 <code>btoa is not defined</code> 的错误，这意味着 <code>btoa</code> 函数在你的环境中不可用。<code>btoa</code> 是浏览器环境中用于将字符串编码为 Base64 的函数，而在 Node.js 环境中没有这个全局函数。</p><p>在 Node.js 中，你可以使用 <code>Buffer</code> 类来实现相似的功能。下面是一个不使用 <code>btoa</code> 的替代方案，它可以在 Node.js 和浏览器环境中都工作。</p></blockquote><h1>解决</h1><p>找到<code>node_module</code>中 keep 主题的安装位置：一般在这个地方（<code>.../blog/node_modules/hexo-theme-keep/layout/_template</code>）。在这个文件夹中的<code>tools-nav.ejs</code>为更新后的tools页面模板文件。</p><p>修改开始部分代码，注释第一行，改成使用 Buffer 转换的方式（这部分也是Chat GLM给出的建议）：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%  </span><br><span class="line"><span class="comment">// const btoaStr = (str) =&gt; btoa(encodeURIComponent(str)).trim().replaceAll(&#x27;=&#x27;, &#x27;&#x27;)  </span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">btoaStr</span> = (<span class="params">str</span>) =&gt; &#123;  </span><br><span class="line">    <span class="comment">// 使用 Buffer 将字符串转换为 Base64 编码  </span></span><br><span class="line">    <span class="keyword">const</span> base64 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(str).<span class="title function_">toString</span>(<span class="string">&#x27;base64&#x27;</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 去除 Base64 编码字符串中的等号  </span></span><br><span class="line">    <span class="keyword">const</span> base64Url = base64.<span class="title function_">replace</span>(<span class="regexp">/\+/g</span>, <span class="string">&#x27;-&#x27;</span>).<span class="title function_">replace</span>(<span class="regexp">/\//g</span>, <span class="string">&#x27;_&#x27;</span>).<span class="title function_">replace</span>(<span class="regexp">/=/g</span>, <span class="string">&#x27;&#x27;</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> base64Url;  </span><br><span class="line">&#125;;  </span><br><span class="line"><span class="keyword">const</span> tools_data = theme.<span class="property">source_data</span>.<span class="property">tools</span>  </span><br><span class="line"><span class="keyword">const</span> tools_nav_data = theme.<span class="property">source_data</span>.<span class="property">tools</span>.<span class="title function_">filter</span>(<span class="function">(<span class="params">t</span>) =&gt;</span> t?.<span class="property">category</span>)  </span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -38,6 +38,10 @@
 &lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;24-06-17 初始记录&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
+    
+    <category term="bug记录" scheme="https://kiml.github.io/categories/bug%E8%AE%B0%E5%BD%95/"/>
+    
+    <category term="2024" scheme="https://kiml.github.io/categories/bug%E8%AE%B0%E5%BD%95/2024/"/>
     
     
   </entry>
