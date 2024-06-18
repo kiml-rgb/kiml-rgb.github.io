@@ -6,7 +6,7 @@
   <link href="https://kiml.github.io/atom.xml" rel="self"/>
   
   <link href="https://kiml.github.io/"/>
-  <updated>2024-06-17T14:33:28.584Z</updated>
+  <updated>2024-06-17T14:36:45.311Z</updated>
   <id>https://kiml.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kiml.github.io/posts/503970b4/"/>
     <id>https://kiml.github.io/posts/503970b4/</id>
     <published>2024-06-17T14:33:24.000Z</published>
-    <updated>2024-06-17T14:33:28.584Z</updated>
+    <updated>2024-06-17T14:36:45.311Z</updated>
     
     <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>前言</p></li><li class="lvl-2"><p>更新</p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yy-MM-dd 初始记录</span><br></pre></td></tr></table></figure><span id="more"></span><p>test</p>]]></content>
     
@@ -37,6 +37,8 @@
 &lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yy-MM-dd 初始记录&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
+    
+    <category term="AI" scheme="https://kiml.github.io/categories/AI/"/>
     
     
   </entry>
