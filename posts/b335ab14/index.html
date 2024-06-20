@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jun 12 2024 14:35:27 GMT+0800">2024-06-12 14:35:27</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 16:39:20 GMT+0800">2024-06-20 16:39:20</span>
             </span>
         
 
@@ -286,7 +286,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>785 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>798 字</span>
             </span>
         
         
@@ -315,7 +315,7 @@
                     <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-SPI相关的面试问题及用法</p>
+SPI 相关的面试问题及用法</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
@@ -323,10 +323,10 @@ SPI相关的面试问题及用法</p>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.30 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h2 id="SPI介绍">SPI介绍</h2>
-<p>​SPI全称Service Provider Interface，是Java提供的一套用来被第三方实现或者扩展的API，它可以用来启用框架扩展和替换组件。<br>
-Java的SPI机制就是将一些==<strong>类信息写在约定的文件中</strong>==，然后由特定的类加载器ServiceLoader加载解析文件获取资源。<br>
-Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(约定)”组合实现的动态加载机制。它提供了一种服务发现机制，允许在程序外部动态指定具体实现。一般情况下是调用方调用实现好的接口，但是当接口存在于调用方这边时，就是 SPI ，由接口调用方确定接口规则，然后由不同的厂商去根据这个规则对这个接口进行实现，从而提供服务。​以下是SPI的一些运用场景:</p>
+<h2 id="SPI-介绍">SPI 介绍</h2>
+<p>​SPI 全称 Service Provider Interface，是 Java 提供的一套用来被第三方实现或者扩展的 API，它可以用来启用框架扩展和替换组件。<br>
+Java 的 SPI 机制就是将一些==<strong>类信息写在约定的文件中</strong>==，然后由特定的类加载器 ServiceLoader 加载解析文件获取资源。<br>
+Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(约定)”组合实现的动态加载机制。它提供了一种服务发现机制，允许在程序外部动态指定具体实现。一般情况下是调用方调用实现好的接口，但是当接口存在于调用方这边时，就是 SPI ，由接口调用方确定接口规则，然后由不同的厂商去根据这个规则对这个接口进行实现，从而提供服务。​以下是 SPI 的一些运用场景:</p>
 <table>
 <thead>
 <tr>
@@ -337,23 +337,23 @@ Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(�
 <tbody>
 <tr>
 <td>数据库驱动</td>
-<td>数据库驱动加载接口实现类的加载 JDBC加载不同类型数据库的驱动</td>
+<td>数据库驱动加载接口实现类的加载 JDBC 加载不同类型数据库的驱动</td>
 </tr>
 <tr>
-<td>日志门面SLF4J接口实现类加载</td>
-<td>SLF4J加载不同提供商的日志实现类</td>
+<td>日志门面 SLF4J 接口实现类加载</td>
+<td>SLF4J 加载不同提供商的日志实现类</td>
 </tr>
 <tr>
 <td>Spring</td>
-<td>Spring中大量使用了SPI,比如：对servlet3.0规范对ServletContainerInitializer的实现、自动类型转换Type Conversion SPI(Converter SPI、Formatter SPI)等</td>
+<td>Spring 中大量使用了 SPI,比如：对 servlet3.0 规范对 ServletContainerInitializer 的实现、自动类型转换 Type Conversion SPI(Converter SPI、Formatter SPI) 等</td>
 </tr>
 <tr>
 <td>Dubbo</td>
-<td>Dubbo中也大量使用SPI的方式实现框架的扩展, 不过它对Java提供的原生SPI做了封装，允许用户扩展实现Filter接口</td>
+<td>Dubbo 中也大量使用 SPI 的方式实现框架的扩展, 不过它对 Java 提供的原生 SPI 做了封装，允许用户扩展实现 Filter 接口</td>
 </tr>
 <tr>
 <td>SpringBoot</td>
-<td>SpringBoot基于SPI思想实现自动装配</td>
+<td>SpringBoot 基于 SPI 思想实现自动装配</td>
 </tr>
 <tr>
 <td>插件扩展</td>
@@ -362,12 +362,12 @@ Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(�
 </tbody>
 </table>
 <h2 id="ServiceLoader"><a class="link"   target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/spi.html#serviceloader" >ServiceLoader<i class="fas fa-external-link-alt"></i></a></h2>
-<p>点击标题跳转链接到JavaGuide。</p>
+<p>点击标题跳转链接到 JavaGuide。</p>
 <h2 id="面试大白话">面试大白话</h2>
-<p>Java中的SPI就是你提供一个接口，然后让别人提供实现类。然后将这个实现放在<code>resources/META-INF/services/</code>中。这样Java启动的时候就会去扫描这个下面的jar包，并把他加载进来。一般来说用在开源框架中的插件扩展，然后比较常见的思想提现就是Java的JDBC实现，可以根据自己使用的数据库，将对应的jar包引用进来。</p>
-<p>（Dubbo中可能问到的问题）Dubbo中也使用了这个思想: 比如说有一行代码是：</p>
+<p>Java 中的 SPI 就是你提供一个接口，然后让别人提供实现类。然后将这个实现放在 <code>resources/META-INF/services/</code> 中。这样 Java 启动的时候就会去扫描这个下面的 jar 包，并把他加载进来。一般来说用在开源框架中的插件扩展，然后比较常见的思想提现就是 Java 的 JDBC 实现，可以根据自己使用的数据库，将对应的 jar 包引用进来。</p>
+<p>（Dubbo 中可能问到的问题）Dubbo 中也使用了这个思想: 比如说有一行代码是：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Protocol</span> <span class="variable">protocol</span> <span class="operator">=</span> ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();</span><br></pre></td></tr></table></figure>
-<p>然后在使用Protocol接口时，dubbo他会去找一个你配置的Protocol，他就会将你配置的Protocol实现类，加载到jvm中来，然后实例化对象，就用你的那个Protocol实现类就可以了。这个Protocol就是用来配置他的网络协议的，然后在源码中可以看到，默认使用的是dubbo协议，就是DubboProtocol。dubbo里面提供了大量的类似上面的扩展点，就是说，你如果要扩展一个东西，只要自己写个jar，让你的consumer或者是provider工程，依赖你的那个jar，在你的jar里指定目录下配置好接口名称对应的文件，里面通过key=实现类（这些都可以在官网的文档里找到）。</p>
+<p>然后在使用 Protocol 接口时，dubbo 他会去找一个你配置的 Protocol，他就会将你配置的 Protocol 实现类，加载到 jvm 中来，然后实例化对象，就用你的那个 Protocol 实现类就可以了。这个 Protocol 就是用来配置他的网络协议的，然后在源码中可以看到，默认使用的是 dubbo 协议，就是 DubboProtocol。dubbo 里面提供了大量的类似上面的扩展点，就是说，你如果要扩展一个东西，只要自己写个 jar，让你的 consumer 或者是 provider 工程，依赖你的那个 jar，在你的 jar 里指定目录下配置好接口名称对应的文件，里面通过 key=实现类（这些都可以在官网的文档里找到）。</p>
 
                 </div>
                 
@@ -550,7 +550,7 @@ Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(�
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI%E4%BB%8B%E7%BB%8D"><span class="nav-text">SPI介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ServiceLoader"><span class="nav-text">ServiceLoader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="nav-text">面试大白话</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI-%E4%BB%8B%E7%BB%8D"><span class="nav-text">SPI 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ServiceLoader"><span class="nav-text">ServiceLoader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="nav-text">面试大白话</span></a></li></ol>
     </div>
 </div>
 
@@ -740,7 +740,7 @@ Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(�
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI%E4%BB%8B%E7%BB%8D"><span class="nav-text">SPI介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ServiceLoader"><span class="nav-text">ServiceLoader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="nav-text">面试大白话</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI-%E4%BB%8B%E7%BB%8D"><span class="nav-text">SPI 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ServiceLoader"><span class="nav-text">ServiceLoader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="nav-text">面试大白话</span></a></li></ol>
     </div>
 </div>
 

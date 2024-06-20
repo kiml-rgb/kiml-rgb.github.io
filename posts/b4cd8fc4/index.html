@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jun 12 2024 14:35:27 GMT+0800">2024-06-12 14:35:27</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 16:40:36 GMT+0800">2024-06-20 16:40:36</span>
             </span>
         
 
@@ -283,7 +283,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>123 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>126 字</span>
             </span>
         
         
@@ -317,12 +317,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.06.06 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1>问题</h1>
-<p>前端JS在Long长度大于17位时，出现精度丢失的问题</p>
+<p>前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</p>
 <h1>解决</h1>
-<p>在此处添加注 解将返回给前端的门店ID自动转为string类型。</p>
+<p>在此处添加注 解将返回给前端的门店 ID 自动转为 string 类型。</p>
 <ol>
 <li class="lvl-3">
-<p>使用jackson来完成自动转换，添加依赖</p>
+<p>使用 jackson 来完成自动转换，添加依赖</p>
 </li>
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>

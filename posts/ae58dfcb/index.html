@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jun 12 2024 14:35:27 GMT+0800">2024-06-12 14:35:27</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 16:40:39 GMT+0800">2024-06-20 16:40:39</span>
             </span>
         
 
@@ -286,7 +286,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>208 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>209 字</span>
             </span>
         
         
@@ -320,11 +320,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.04.19 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h1>问题</h1>
-<p>使用MP的分表联查，出现了查询出10条数据，但是Total数量显示4的问题。一开始以为是SQL书写错误，但是看了同样一张表的另一个SQL，只是加上了GROUP BY，就可以显示正确的Total数。</p>
+<p>使用 MP 的分表联查，出现了查询出 10 条数据，但是 Total 数量显示 4 的问题。一开始以为是 SQL 书写错误，但是看了同样一张表的另一个 SQL，只是加上了 GROUP BY，就可以显示正确的 Total 数。</p>
 <h1>DEBUG</h1>
-<p>控制台输出SQL语句，发现<code>count()</code>语句的记录只到了<code>left join</code>前，所以计数异常。</p>
+<p>控制台输出 SQL 语句，发现 <code>count()</code> 语句的记录只到了 <code>left join</code> 前，所以计数异常。</p>
 <h1>解决</h1>
-<p>使用page方法时：加上以下语句</p>
+<p>使用 page 方法时：加上以下语句</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 需要手动把sql的优化关闭。不然计数的时候只会查主表的记录数</span></span><br><span class="line">page.setOptimizeCountSql(<span class="literal">false</span>);  </span><br></pre></td></tr></table></figure>
 <p>这里在源码中默认是开启的<img  
                        lazyload
@@ -332,7 +332,7 @@
                        data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240419/Snipaste_2024-04-19_17-02-10.png"
                         alt=""
                  ><br>
-如果不关闭将会导致计算总记录数据的时候，sql语句会丢弃后面的子查询，造成记录数结果不正确。</p>
+如果不关闭将会导致计算总记录数据的时候，sql 语句会丢弃后面的子查询，造成记录数结果不正确。</p>
 
                 </div>
                 

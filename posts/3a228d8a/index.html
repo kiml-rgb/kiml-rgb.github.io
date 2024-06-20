@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Jun 18 2024 15:03:21 GMT+0800">2024-06-18 15:03:21</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 16:38:04 GMT+0800">2024-06-20 16:38:04</span>
             </span>
         
 
@@ -320,15 +320,15 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.06.03 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h2 id="❗Java的基本数据类型">❗Java的基本数据类型</h2>
+<h2 id="❗Java-的基本数据类型">❗Java 的基本数据类型</h2>
 <p>byte，short，int，long，float，double，char，boolean</p>
 <h2 id="面向对象的三大特性">面向对象的三大特性</h2>
 <p>继承、多态、封装</p>
-<h2 id="JDK和JRE的区别">JDK和JRE的区别</h2>
+<h2 id="JDK-和-JRE-的区别">JDK 和 JRE 的区别</h2>
 <p>JRE：Java 运⾏时环境。它是运⾏已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，Java 命令和其他的⼀些基础构件。但是，它不能⽤于创建新程序。</p>
 <p>JDK(Java Development Kit)：它是功能⻬全的 Java SDK。它拥有 JRE 所拥有的⼀切，还有编译器（javac）和⼯具（如 javadoc 和 jdb）。它能够创建和编译程序。</p>
 <p><strong>简单来说，JDK 包含 JRE，JRE 包含 JVM。</strong></p>
-<h2 id="Java支持多继承和多实现吗">Java支持多继承和多实现吗</h2>
+<h2 id="Java-支持多继承和多实现吗">Java 支持多继承和多实现吗</h2>
 <p>不支持多继承，支持多实现。</p>
 <h2 id="构造函数和一般函数有什么区别">构造函数和一般函数有什么区别</h2>
 <ol>
@@ -339,21 +339,21 @@
 <p>构造函数是在对象创建时，就被调用，用于初始化，而且初始化动作只执行一次。 一般函数，是对象创建后，需要调用才执行，可以被调用多次。</p>
 </li>
 </ol>
-<h2 id="Java怎么创建对象">Java怎么创建对象</h2>
+<h2 id="Java-怎么创建对象">Java 怎么创建对象</h2>
 <ol>
 <li class="lvl-3">
 <p>使用 new 关键字</p>
 </li>
 <li class="lvl-3">
-<p>使用newInstance方法</p>
+<p>使用 newInstance 方法</p>
 </li>
 </ol>
 <blockquote>
-<p>Java 反射中有一个 newInstance() 方法，可以创建对象，步骤如下：获取要创建的类的 Class 对象。如果只需要调用这个类的访问权限为 public 无参构造器，<strong>直接使用 Class 类的实例方法 newInstance()</strong>。获取 Class 对象的构造器对象，通过调用 Class 类的实例方法 getDeclaredConstractors() 来获取构造器对象的数组。(获取所有构造器，无视访问权限的限制，数组顺序按照代码中的顺序决定)如果调用的构造器是 private 的，需要调用 Constractor 类的父类 AccessibleObject 类的实例方法 setAccessible(true) 来打破访问限制。使用 Constractor 类的实例方法 newInstance()。获取 Class 对象的方法有3个，此处不多赘述。获取Constractor 对象的方法有4个，此处不多赘述。</p>
+<p>Java 反射中有一个 newInstance() 方法，可以创建对象，步骤如下：获取要创建的类的 Class 对象。如果只需要调用这个类的访问权限为 public 无参构造器，<strong>直接使用 Class 类的实例方法 newInstance()</strong>。获取 Class 对象的构造器对象，通过调用 Class 类的实例方法 getDeclaredConstractors() 来获取构造器对象的数组。(获取所有构造器，无视访问权限的限制，数组顺序按照代码中的顺序决定) 如果调用的构造器是 private 的，需要调用 Constractor 类的父类 AccessibleObject 类的实例方法 setAccessible(true) 来打破访问限制。使用 Constractor 类的实例方法 newInstance()。获取 Class 对象的方法有 3 个，此处不多赘述。获取 Constractor 对象的方法有 4 个，此处不多赘述。</p>
 </blockquote>
 <ol start="3">
 <li class="lvl-3">
-<p>使用clone()方法</p>
+<p>使用 clone() 方法</p>
 </li>
 </ol>
 <blockquote>
@@ -361,16 +361,16 @@
 </blockquote>
 <ol start="4">
 <li class="lvl-3">
-<p>❔使用反序列化的readObject()方法</p>
+<p>❔使用反序列化的 readObject() 方法</p>
 </li>
 </ol>
 <blockquote>
 <p>这个方法一共分两步：将对象序列化，存储到一个文件中。从文件中反序列化，得到类对象。</p>
-<p>序列化：想要序列化对象的类，实现Serializable接口。使用文件输出流FileOutputStream创建存储序列化之后对象的文件。使用对象输出流ObjectOutputStream的实例方法writeObject(obj)。判断类中是否存在，名为writeReplace()，返回类型为Object的方法，若有，写入这个方法的返回值；否则，写入obj对象。</p>
-<p>反序列化：使用文件输入流FileInputStream找到存储序列化对象的文件。使用对象输入流ObjectInputStream的实例方法readObject()。判断类中是否存在，名为readResolve()，返回类型为Object的方法，若有读取这个对象；否则，反序列化文件中的对象流。</p>
-<p>备注：在类中，writeReplace()和readResoleve()是两个非常特殊的方法，其特征签名需要严格限制：方法名限定，参数个数限定为0，返回类型必须是Object，不能为Object的子类，但是可以抛出不同的异常。访问修饰符没有限制，但一般推荐为private，防止误操作。其特殊的地方还在于将其设为private方法，没有其他方法调用的情况下，编译器不会发出警告。</p>
+<p>序列化：想要序列化对象的类，实现 Serializable 接口。使用文件输出流 FileOutputStream 创建存储序列化之后对象的文件。使用对象输出流 ObjectOutputStream 的实例方法 writeObject(obj)。判断类中是否存在，名为 writeReplace()，返回类型为 Object 的方法，若有，写入这个方法的返回值；否则，写入 obj 对象。</p>
+<p>反序列化：使用文件输入流 FileInputStream 找到存储序列化对象的文件。使用对象输入流 ObjectInputStream 的实例方法 readObject()。判断类中是否存在，名为 readResolve()，返回类型为 Object 的方法，若有读取这个对象；否则，反序列化文件中的对象流。</p>
+<p>备注：在类中，writeReplace() 和 readResoleve() 是两个非常特殊的方法，其特征签名需要严格限制：方法名限定，参数个数限定为 0，返回类型必须是 Object，不能为 Object 的子类，但是可以抛出不同的异常。访问修饰符没有限制，但一般推荐为 private，防止误操作。其特殊的地方还在于将其设为 private 方法，没有其他方法调用的情况下，编译器不会发出警告。</p>
 </blockquote>
-<h2 id="Java中的异常">Java中的异常</h2>
+<h2 id="Java-中的异常">Java 中的异常</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Throwable -&gt;Exception -&gt; ClassNotFoundException</span><br><span class="line">					  -&gt; IOException</span><br><span class="line">					  -&gt; RuntimeException      -&gt; NullPointerException</span><br><span class="line">											  -&gt; NumberFormatException</span><br><span class="line">											  -&gt; IndexOutOfBoundsException</span><br><span class="line">					  ......</span><br><span class="line">          -&gt;Error</span><br></pre></td></tr></table></figure>
 <h2 id="❗抽象类和接口的区别">❗抽象类和接口的区别</h2>
 <ol>
@@ -384,10 +384,10 @@
 <p>接口的所有方法都是抽象方法，所有属性都是常量：static final 类型；而抽象类中可以有不是抽象的方法和不是常量的属性；</p>
 </li>
 <li class="lvl-3">
-<p>抽象类只能单继承，而接口之间可以多继承，接口之间的继承用extexds,类实现接口用implements.</p>
+<p>抽象类只能单继承，而接口之间可以多继承，接口之间的继承用 extexds,类实现接口用 implements.</p>
 </li>
 </ol>
-<h2 id="和equals"><code>==</code>和<code>equals()</code></h2>
+<h2 id="和-equals"><code>==</code> 和 <code>equals()</code></h2>
 <p><code>==</code>：</p>
 <ol>
 <li class="lvl-3">
@@ -397,37 +397,37 @@
 <p>如果比较的是引用数据类型，则比较的是所指向对象的地址值是否相等（是否是同一个对象）。<code>equals</code>：</p>
 </li>
 <li class="lvl-3">
-<p>如果没有对 equals 方法进行重写，则相当于<code>==</code>，比较的是引用类型的变量所指向的对象的地址值。</p>
+<p>如果没有对 equals 方法进行重写，则相当于 <code>==</code>，比较的是引用类型的变量所指向的对象的地址值。</p>
 </li>
 <li class="lvl-3">
-<p>一般情况下，类会重写equals方法用来比较两个对象的内容是否相等。比如String类中的equals()是被重写了，比较的是对象的值。</p>
+<p>一般情况下，类会重写 equals 方法用来比较两个对象的内容是否相等。比如 String 类中的 equals() 是被重写了，比较的是对象的值。</p>
 </li>
 </ol>
-<h2 id="为什么重写equals方法，还必须要重写hashcode方法">为什么重写equals方法，还必须要重写hashcode方法</h2>
+<h2 id="为什么重写-equals-方法，还必须要重写-hashcode-方法">为什么重写 equals 方法，还必须要重写 hashcode 方法</h2>
 <ol>
 <li class="lvl-3">
-<p>保证是同一个对象，如果重写了equals方法，而没有重写hashcode方法，会出现equals相等的对象，hashcode不相等的情况，重写hashcode方法就是为了避免这种情况的出现。</p>
+<p>保证是同一个对象，如果重写了 equals 方法，而没有重写 hashcode 方法，会出现 equals 相等的对象，hashcode 不相等的情况，重写 hashcode 方法就是为了避免这种情况的出现。</p>
 </li>
 <li class="lvl-3">
-<p>使用hashcode方法提前校验，可以避免每一次比对都调用equals方法，提高效率</p>
+<p>使用 hashcode 方法提前校验，可以避免每一次比对都调用 equals 方法，提高效率</p>
 </li>
 </ol>
 <p>重写后：</p>
 <ol>
 <li class="lvl-3">
-<p>equals()相等的两个对象，hashcode()一定相等；</p>
+<p>equals() 相等的两个对象，hashcode() 一定相等；</p>
 </li>
 <li class="lvl-3">
-<p>hashcode()不等，一定能推出equals()也不等；</p>
+<p>hashcode() 不等，一定能推出 equals() 也不等；</p>
 </li>
 <li class="lvl-3">
-<p>hashcode()相等，equals()可能相等，也可能不等。</p>
+<p>hashcode() 相等，equals() 可能相等，也可能不等。</p>
 </li>
 <li class="lvl-3">
-<p>所以先进行hashcode（）判断，不等就不用equals（）方法了。</p>
+<p>所以先进行 hashcode（）判断，不等就不用 equals（）方法了。</p>
 </li>
 <li class="lvl-3">
-<p>但equels是是根据对象的特征进行重写的，有时候特征相同，但hash值不同，也不是一个对象。 所以两个都重写才能保障是同一个对象。</p>
+<p>但 equels 是是根据对象的特征进行重写的，有时候特征相同，但 hash 值不同，也不是一个对象。 所以两个都重写才能保障是同一个对象。</p>
 </li>
 </ol>
 <h2 id="深拷贝和浅拷贝">深拷贝和浅拷贝</h2>
@@ -438,7 +438,7 @@
 <h2 id="Java-中都有哪些引用类型？">Java 中都有哪些引用类型？</h2>
 <p>强引用：发生 gc 的时候不会被回收。</p>
 <p>软引用：有用但不是必须的对象，在发生内存溢出之前会被回收。</p>
-<p>弱引用：有用但不是必须的对象，在下一次GC时会被回收。</p>
+<p>弱引用：有用但不是必须的对象，在下一次 GC 时会被回收。</p>
 <p>虚引用（幽灵引用/幻影引用）：无法通过虚引用获得对象，用 PhantomReference 实现虚引用，虚引用的用途是在 gc 时返回一个通知。</p>
 
                 </div>
@@ -618,7 +618,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK%E5%92%8CJRE%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK和JRE的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8Cequals"><span class="nav-text">&#x3D;&#x3D;和equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99equals%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写equals方法，还必须要重写hashcode方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Java 中都有哪些引用类型？</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java 的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK-%E5%92%8C-JRE-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK 和 JRE 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java 支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java 怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java 中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C-equals"><span class="nav-text">&#x3D;&#x3D; 和 equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99-equals-%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99-hashcode-%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写 equals 方法，还必须要重写 hashcode 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Java 中都有哪些引用类型？</span></a></li></ol>
     </div>
 </div>
 
@@ -808,7 +808,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK%E5%92%8CJRE%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK和JRE的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8Cequals"><span class="nav-text">&#x3D;&#x3D;和equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99equals%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写equals方法，还必须要重写hashcode方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Java 中都有哪些引用类型？</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java 的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK-%E5%92%8C-JRE-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK 和 JRE 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java 支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java 怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java 中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C-equals"><span class="nav-text">&#x3D;&#x3D; 和 equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99-equals-%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99-hashcode-%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写 equals 方法，还必须要重写 hashcode 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Java 中都有哪些引用类型？</span></a></li></ol>
     </div>
 </div>
 
