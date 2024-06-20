@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jun 12 2024 14:35:27 GMT+0800">2024-06-12 14:35:27</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 17:52:14 GMT+0800">2024-06-20 17:52:14</span>
             </span>
         
 
@@ -280,7 +280,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>375 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>379 字</span>
             </span>
         
         
@@ -308,8 +308,7 @@
 
                     <ul class="lvl-0">
 <li class="lvl-2">
-<p>前言<br>
-环境搭建先是在windows本机上，后面听说在windows上可以下载docker，所以会补充windows上的docker内的环境安装。</p>
+<p>前言环境搭建先是在 windows 本机上，后面听说在 windows 上可以下载 docker，所以会补充 windows 上的 docker 内的环境安装。</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
@@ -317,16 +316,19 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.16 初始记录（windows系统的环境安装）</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1>服务端搭建</h1>
-<h2 id="开发环境">开发环境</h2>
-<p>Java 1.8 这个网上教程很多，就不赘述了。<br>
-Maven 使用本地仓库，可配置下载镜像路径。</p>
-<h2 id="Nacos服务发现与配置中心">Nacos服务发现与配置中心</h2>
-<p>微服务开发需要构建服务发现中心、配置中心，本项目采用Nacos来实现。可以直接导入项目nacos文件夹下面的配置文件。注意需要新建命名空间，并修改配置文件中的命名空间变量。</p>
-<h2 id="Mybatis-Plus">Mybatis Plus</h2>
-<p>本项目数据库使用 mysql-community-5.7，请自行安装MySQL数据库。本项目持久层采用Mybatis Plus作为技术构架，Mybatis Plus是在Mybatis基础上作了很好的封装，方便系统开 发。</p>
-<h2 id="导入项目SQL">导入项目SQL</h2>
-<p>使用客户端连接MySQL，执行项目sql文件夹下面的<code>shanjupay-init.sql</code>文件。数据库清单如下：</p>
+<h2 id="服务端搭建">服务端搭建</h2>
+<h3 id="开发环境">开发环境</h3>
+<p>Java 1.8 这个网上教程很多，就不赘述了。</p>
+<p>Maven 使用本地仓库，可配置下载镜像路径。</p>
+<h3 id="Nacos-服务发现与配置中心">Nacos 服务发现与配置中心</h3>
+<p>微服务开发需要构建服务发现中心、配置中心，本项目采用 Nacos 来实现。</p>
+<p>可以直接导入项目 nacos 文件夹下面的配置文件。注意需要新建命名空间，并修改配置文件中的命名空间变量。</p>
+<h3 id="Mybatis-Plus">Mybatis Plus</h3>
+<p>本项目数据库使用 mysql-community-5.7，请自行安装 MySQL 数据库。</p>
+<p>本项目持久层采用 Mybatis Plus 作为技术构架，Mybatis Plus 是在 Mybatis 基础上作了很好的封装，方便系统开 发。</p>
+<h3 id="导入项目-SQL">导入项目 SQL</h3>
+<p>使用客户端连接 MySQL，执行项目 sql 文件夹下面的 <code>shanjupay-init.sql</code> 文件。</p>
+<p>数据库清单如下：</p>
 <table>
 <thead>
 <tr>
@@ -349,7 +351,7 @@ Maven 使用本地仓库，可配置下载镜像路径。</p>
 </tr>
 </tbody>
 </table>
-<h2 id="搭建项目服务">搭建项目服务</h2>
+<h3 id="搭建项目服务">搭建项目服务</h3>
 <table>
 <thead>
 <tr>
@@ -360,37 +362,29 @@ Maven 使用本地仓库，可配置下载镜像路径。</p>
 </thead>
 <tbody>
 <tr>
-<td>商户平台应用(shanjupay-merchant-application)</td>
+<td>商户平台应用 (shanjupay-merchant-application)</td>
 <td>为前端提供商户管理功能</td>
 <td></td>
 </tr>
 <tr>
-<td>商户服务API(shanjupay-merchant-api)</td>
+<td>商户服务 API(shanjupay-merchant-api)</td>
 <td>实现商户服务提供的接口</td>
 <td></td>
 </tr>
 <tr>
-<td>商户服务(shanjupay-merchant-service)</td>
+<td>商户服务 (shanjupay-merchant-service)</td>
 <td>实现商户服务的所有接口</td>
-<td></td>
-</tr>
-<tr>
-<td>工程在架构中的位置如下：</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240521/Snipaste_2024-05-21_14-35-21.png"
-                        alt=""
-                 ></td>
-<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
+<p>工程在架构中的位置如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240521/Snipaste_2024-05-21_14-35-21.png"
+                        alt=""
+                 ></p>
 
                 </div>
                 
@@ -565,7 +559,7 @@ Maven 使用本地仓库，可配置下载镜像路径。</p>
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">服务端搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nacos%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="nav-text">Nacos服务发现与配置中心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-Plus"><span class="nav-text">Mybatis Plus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AESQL"><span class="nav-text">导入项目SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%9C%8D%E5%8A%A1"><span class="nav-text">搭建项目服务</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA"><span class="nav-text">服务端搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nacos-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="nav-text">Nacos 服务发现与配置中心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-Plus"><span class="nav-text">Mybatis Plus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE-SQL"><span class="nav-text">导入项目 SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%9C%8D%E5%8A%A1"><span class="nav-text">搭建项目服务</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -755,7 +749,7 @@ Maven 使用本地仓库，可配置下载镜像路径。</p>
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">服务端搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nacos%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="nav-text">Nacos服务发现与配置中心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis-Plus"><span class="nav-text">Mybatis Plus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AESQL"><span class="nav-text">导入项目SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%9C%8D%E5%8A%A1"><span class="nav-text">搭建项目服务</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA"><span class="nav-text">服务端搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nacos-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%E4%B8%8E%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83"><span class="nav-text">Nacos 服务发现与配置中心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis-Plus"><span class="nav-text">Mybatis Plus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE-SQL"><span class="nav-text">导入项目 SQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE%E6%9C%8D%E5%8A%A1"><span class="nav-text">搭建项目服务</span></a></li></ol></li></ol>
     </div>
 </div>
 

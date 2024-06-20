@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jun 20 2024 16:39:20 GMT+0800">2024-06-20 16:39:20</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 17:43:24 GMT+0800">2024-06-20 17:43:24</span>
             </span>
         
 
@@ -324,9 +324,11 @@ SPI 相关的面试问题及用法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.30 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h2 id="SPI-介绍">SPI 介绍</h2>
-<p>​SPI 全称 Service Provider Interface，是 Java 提供的一套用来被第三方实现或者扩展的 API，它可以用来启用框架扩展和替换组件。<br>
-Java 的 SPI 机制就是将一些==<strong>类信息写在约定的文件中</strong>==，然后由特定的类加载器 ServiceLoader 加载解析文件获取资源。<br>
-Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(约定)”组合实现的动态加载机制。它提供了一种服务发现机制，允许在程序外部动态指定具体实现。一般情况下是调用方调用实现好的接口，但是当接口存在于调用方这边时，就是 SPI ，由接口调用方确定接口规则，然后由不同的厂商去根据这个规则对这个接口进行实现，从而提供服务。​以下是 SPI 的一些运用场景:</p>
+<p>​SPI 全称 Service Provider Interface，是 Java 提供的一套用来被第三方实现或者扩展的 API，它可以用来启用框架扩展和替换组件。</p>
+<p>Java 的 SPI 机制就是将一些==<strong>类信息写在约定的文件中</strong>==，然后由特定的类加载器 ServiceLoader 加载解析文件获取资源。</p>
+<p>Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(约定)”组合实现的动态加载机制。它提供了一种服务发现机制，允许在程序外部动态指定具体实现。</p>
+<p>一般情况下是调用方调用实现好的接口，但是当接口存在于调用方这边时，就是 SPI ，由接口调用方确定接口规则，然后由不同的厂商去根据这个规则对这个接口进行实现，从而提供服务。</p>
+<p>​以下是 SPI 的一些运用场景:</p>
 <table>
 <thead>
 <tr>

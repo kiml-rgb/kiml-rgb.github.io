@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jun 20 2024 16:39:10 GMT+0800">2024-06-20 16:39:10</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 17:42:43 GMT+0800">2024-06-20 17:42:43</span>
             </span>
         
 
@@ -320,10 +320,10 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">24-06-14 初始记录 这JVM的图居然是我以前画的，一点都不记得了。</span><br><span class="line">24-06-16 补充JVM，部分问题没有深入，需要看新的视频。</span><br><span class="line">24-06-18 补充剩下的内容</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1>类加载器与反射</h1>
-<h2 id="简述-java-类加载机制？">简述 java 类加载机制？</h2>
+<h2 id="类加载器与反射">类加载器与反射</h2>
+<h3 id="简述-java-类加载机制？">简述 java 类加载机制？</h3>
 <p>虚拟机把描述类的数据从 Class 文件加载到内存，并对数据进行校验，解析和初始化，最终形成可以被虚拟机直接使用的 java 类型。</p>
-<h2 id="描述一下-JVM-加载-Class-文件的原理机制？">描述一下 JVM 加载 Class 文件的原理机制？</h2>
+<h3 id="描述一下-JVM-加载-Class-文件的原理机制？">描述一下 JVM 加载 Class 文件的原理机制？</h3>
 <p>Java 中的所有类，都需要由类加载器装载到 JVM 中才能运行。类加载器本身也是一个类，而它的工作就是把 class 文件从硬盘读取到内存中。在写程序的时候，我们几乎不需要关心类的加载，因为这些都是隐式装载的，除非我们有特殊的用法，像是反射，就需要显式的加载所需要的类。</p>
 <p>类装载方式，有两种 ：</p>
 <ol>
@@ -335,7 +335,7 @@
 </li>
 </ol>
 <p>Java 类的加载是动态的，它并不会一次性将所有类全部加载后再运行，而是保证程序运行的基础类 (像是基类) 完全加载到 jvm 中，至于其他类，则在需要的时候才加载。这当然就是为了节省内存开销。</p>
-<h2 id="说一下类装载的执行过程？">说一下类装载的执行过程？</h2>
+<h3 id="说一下类装载的执行过程？">说一下类装载的执行过程？</h3>
 <p>类装载分为以下 5 个步骤：</p>
 <ul class="lvl-0">
 <li class="lvl-2">
@@ -354,7 +354,7 @@
 <p>初始化：对静态变量和静态代码块执行初始化工作。</p>
 </li>
 </ul>
-<h2 id="什么是类加载器，类加载器有哪些">什么是类加载器，类加载器有哪些?</h2>
+<h3 id="什么是类加载器，类加载器有哪些">什么是类加载器，类加载器有哪些?</h3>
 <p>宏观来看只有两种类加载器：启动类加载器（c++ 实现）和其他所有的类加载器（java 语言）。</p>
 <p>主要有一下四种类加载器:</p>
 <ul class="lvl-0">
@@ -371,24 +371,25 @@
 <p>用户自定义类加载器，通过继承 java.lang.ClassLoader 类的方式实现。</p>
 </li>
 </ul>
-<h2 id="什么是反射机制？">什么是反射机制？</h2>
+<h3 id="什么是反射机制？">什么是反射机制？</h3>
 <p>JAVA 反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为 java 语言的反射机制。</p>
-<h2 id="什么是静态编译，什么是动态编译？">什么是静态编译，什么是动态编译？</h2>
+<h3 id="什么是静态编译，什么是动态编译？">什么是静态编译，什么是动态编译？</h3>
 <p>静态编译：在编译时确定类型，绑定对象</p>
 <p>动态编译：运行时确定类型，绑定对象</p>
-<h2 id="反射机制的优缺点有哪些？">反射机制的优缺点有哪些？</h2>
+<h3 id="反射机制的优缺点有哪些？">反射机制的优缺点有哪些？</h3>
 <p>优点： 运行期类型的判断，动态加载类，提高代码灵活度。</p>
 <p>缺点： 性能瓶颈：反射相当于一系列解释操作，通知 JVM 要做的事情，过程比直接的 java 代码要多了一步委托的过程，反射需要类加载器通过双亲委派模型实现动态编译，效率较低。</p>
-<h2 id="什么是双亲委派机制？">什么是双亲委派机制？</h2>
+<h3 id="什么是双亲委派机制？">什么是双亲委派机制？</h3>
 <p>首先，JVM 中有三大类加载器：启动类加载器（最顶层），平台类加载器（中层），系统类加载器（下层）。</p>
-<p>双亲委派模型就是指一个类加载器收到了类加载请求，它不会直接自己先加载，而把请求委托给父类的加载器去执行，如果父类加载器还存在其父类加载器，就再往上委托，赴到最顶层的类加载器，如果父类加载器可以完成类加载任务，就成功返回，若不能，就向下传递，让子加载器去加载，这就是双亲委派模式。双亲委派模型主要是用来保证同一个类只能被一个类加载器加载。</p>
-<h2 id="怎么破坏双亲委派机制？">怎么破坏双亲委派机制？</h2>
+<p>双亲委派模型就是指一个类加载器收到了类加载请求，它不会直接自己先加载，而把请求委托给父类的加载器去执行，如果父类加载器还存在其父类加载器，就再往上委托，赴到最顶层的类加载器，如果父类加载器可以完成类加载任务，就成功返回，若不能，就向下传递，让子加载器去加载，这就是双亲委派模式。</p>
+<p>双亲委派模型主要是用来保证同一个类只能被一个类加载器加载。</p>
+<h3 id="怎么破坏双亲委派机制？">怎么破坏双亲委派机制？</h3>
 <p>一般在自定义类加载器中，我们不希望通过双亲委派机制一层层向上再下来，而是希望直接通过自己定义的类加载器直接实现类加载，来提升加载性能，比如 Tomcat 中的 web 容器类加载器就是破坏了双亲委托模式的，里面的 WebApplicationClassLoader 除了核心类库外，都是优先加载自己路径下的 Class。</p>
 <p>要打破双亲委派机制，只要在重写 loadclass 的过程中，不遵从 JVM 规范就行了，也就是不盲目优先向 Parednt 的 ClassLoader 查找即可。</p>
-<h2 id="你在哪些场景下用过反射？">你在哪些场景下用过反射？</h2>
+<h3 id="你在哪些场景下用过反射？">你在哪些场景下用过反射？</h3>
 <p>反射在框架中有频繁的被使用，比如 JDK 动态代理，Spring 中的注入属性，调用方法等。</p>
 <p>反射更多是为了灵活舍弃一部分性能，自己使用一般用在工具类中，比如频繁通过参数名来调用指定的方法时，可以用通过反射去匹配指定的方法名，然后实现功能。</p>
-<h2 id="Java-中获取反射的三种方法是什么？">Java 中获取反射的三种方法是什么？</h2>
+<h3 id="Java-中获取反射的三种方法是什么？">Java 中获取反射的三种方法是什么？</h3>
 <ol>
 <li class="lvl-3">
 <p>类名.class 属性</p>
@@ -400,17 +401,17 @@
 <p>Class.forName(全类名) 方法</p>
 </li>
 </ol>
-<h2 id="反射可以获取私有方法或构造函数吗或私有成员变量吗？">反射可以获取私有方法或构造函数吗或私有成员变量吗？</h2>
+<h3 id="反射可以获取私有方法或构造函数吗或私有成员变量吗？">反射可以获取私有方法或构造函数吗或私有成员变量吗？</h3>
 <p>可以。有专门反射私有构造函数的方法 <code>clazz.getDeclaredConstructor(int.class);</code> 来读取私有的构造函数，私有成员变量和私有方法也一样，但用这个方法读取完还需要设置一下暴力反射才行：<code>c.setAccessible(true)</code>。</p>
-<h1>JVM</h1>
-<p>内链：[[JVM.excalidraw]]<br>
-外链：<img  
+<h2 id="JVM">JVM</h2>
+<p>内链：[[JVM.excalidraw]]</p>
+<p>外链：<img  
                        lazyload
                        alt="image"
                        data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/Z2406/Snipaste_2024-06-17_15-35-20.png"
                         alt=""
-                 ><br>
-JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类装载)、Execution engine(执行引擎)；两个组件为 Runtime data area(运行时数据区)、Native Interface(本地接口)。</p>
+                 ></p>
+<p>JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类装载)、Execution engine(执行引擎)；两个组件为 Runtime data area(运行时数据区)、Native Interface(本地接口)。</p>
 <p>Class loader(类装载)：根据给定的全限定名类名 (如：java.lang.Object) 来装载 class 文件到 Runtime data area 中的 method area。</p>
 <p>Execution engine(执行引擎)：执行 classes 中的指令。</p>
 <p>Native Interface(本地接口)：与 native libraries 交互，是其它编程语言交互的接口。</p>
@@ -427,7 +428,7 @@ JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类�
 <p>再交由 CPU 去执行，而这个过程中需要调用其他语言的本地库接口（Native Interface）来实现整个程序的功能。</p>
 </li>
 </ol>
-<h2 id="❗JVM-中有哪几块内存区域？Java-8-之后对内存分代做了什么改进？">❗JVM 中有哪几块内存区域？Java 8 之后对内存分代做了什么改进？</h2>
+<h3 id="❗JVM-中有哪几块内存区域？Java-8-之后对内存分代做了什么改进？">❗JVM 中有哪几块内存区域？Java 8 之后对内存分代做了什么改进？</h3>
 <blockquote>
 <p>首先：一般来说：Spring boot 会内置一个 tomcat，tomcat 自己是基于 java 来开发的。我们启动的其实是 tomcat（一个 JVM 进程），我们写的代码，会被 tomcat 加载到 JVM 中。</p>
 <p>tomcat 去负责接收请求，执行我们写好的代码（基于 Spring 框架的一堆代码）</p>
@@ -474,7 +475,7 @@ JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类�
 </ul>
 </li>
 </ul>
-<h2 id="❔你知道-JVM-是如何运行起来的吗？我们的对象是如何分配的。">❔你知道 JVM 是如何运行起来的吗？我们的对象是如何分配的。</h2>
+<h3 id="❔你知道-JVM-是如何运行起来的吗？我们的对象是如何分配的">❔你知道 JVM 是如何运行起来的吗？我们的对象是如何分配的</h3>
 <blockquote>
 <p>大白话：比如说我们有一个类里面包含了 main 方法，你去执行这个 main 方法，此时会启动一个 JVM 的进程。默认会有一个 main 线程，这个 main 线程就负责执行这个 main 方法的代码，进而创建各种对象。</p>
 <p>tomcat 也是一样的，类加载到 JVM 里面，Spring 将我们的类实例化成各种 Bean 容器。会有工作线程来执行我们 bean 实例对象里的方法和代码，进而也会创建其他的各种对象，实现业务逻辑。</p>
@@ -491,13 +492,13 @@ JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类�
 <p>tomcat 线程执行请求会在栈内存通过栈帧存放局部变量，引用堆内存中的实例变量</p>
 </li>
 </ol>
-<h2 id="❗JVM-在哪些情况下会触发垃圾回收">❗JVM 在哪些情况下会触发垃圾回收</h2>
+<h3 id="❗JVM-在哪些情况下会触发垃圾回收">❗JVM 在哪些情况下会触发垃圾回收</h3>
 <blockquote>
 <p>在 JVM 内存里必然有一个内存的分代模型。比如说一个 4 核 8G 的机器，堆内存可能也就 4G 左右（其他例如栈内存、元空间区域存放类信息也需要空间）。</p>
 <p>堆内存内部再分，比如给年轻代 2GB、给老年代 2GB，默认情况下 Eden 和 s1、s2 的比例是：8:1:1。</p>
 </blockquote>
 <p>如果 Eden 满了，必然会触发垃圾回收（young GC）。<em>回收的对象就是没有人引用的对象</em>：方法执行过程中的局部变量引用对象、类中的静态变量引用的对象这两类对象不会被回收，其他对象基本上都可以被回收。</p>
-<h3 id="什么是-Full-GC？什么情况下会触发？">什么是 Full GC？什么情况下会触发？</h3>
+<h4 id="什么是-Full-GC？什么情况下会触发？">什么是 Full GC？什么情况下会触发？</h4>
 <p>Full GC 是指清理整个堆空间——包括年轻代和老年代。</p>
 <p>什么时候触发：</p>
 <ol>
@@ -515,7 +516,7 @@ JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类�
 </ol>
 </li>
 </ol>
-<h3 id="❗JVM-年轻代的回收算法。">❗JVM 年轻代的回收算法。</h3>
+<h4 id="❗JVM-年轻代的回收算法">❗JVM 年轻代的回收算法</h4>
 <blockquote>
 <p>垃圾回收的时候有一个概念：stop the world。停止 jvm 内的工作线程的运行，然后扫描所有的对象，判断哪些可以回收，哪些不可以回收。</p>
 <p>年轻代内大部分都是垃圾对象。</p>
@@ -532,7 +533,7 @@ JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类�
 <p>Eden 又满，把年轻代内的存活对象和 s2 内存活的对象，复制到 s1。然后把 Eden 和 s2 清空</p>
 </li>
 </ol>
-<h3 id="❗对象什么时候会转移到老年代中">❗对象什么时候会转移到老年代中</h3>
+<h4 id="❗对象什么时候会转移到老年代中">❗对象什么时候会转移到老年代中</h4>
 <ol>
 <li class="lvl-3">
 <p>有的对象在年轻代里熬过了很多次垃圾回收（默认是 15 次，可以设置），就会被认为是长期存活的对象，会从年轻代转移到老年代。（例如：<em>Spring 容器内的一些 Bean 对象</em>）</p>
@@ -544,7 +545,7 @@ JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类�
 <p>很大的对象，会直接存入老年代。</p>
 </li>
 </ol>
-<h3 id="❗JVM-老年代的回收算法">❗JVM 老年代的回收算法</h3>
+<h4 id="❗JVM-老年代的回收算法">❗JVM 老年代的回收算法</h4>
 <blockquote>
 <p>老年代内的对象，很多都是长期被引用的，不能用复制算法，效率比较低。</p>
 </blockquote>
@@ -561,7 +562,7 @@ JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类�
 <p>缺点：这种方式需要中断其他线程（STW），相比复制算法，可能产生内存碎片。</p>
 <p>标记压缩：和标记清除算法基本相同，不同的就是，在清除完成之后，会把存活的对象向内存的一边进行压缩，这样就可以解决内存碎片问题。</p>
 <p>当老年代也满了装不下的时候，就会抛出 OOM（Out of Memory）异常。</p>
-<h3 id="怎么判断对象是否可以被回收？">怎么判断对象是否可以被回收？</h3>
+<h4 id="怎么判断对象是否可以被回收？">怎么判断对象是否可以被回收？</h4>
 <p>垃圾收集器在做垃圾回收的时候，首先需要判定的就是哪些内存是需要被回收的，哪些对象是「存活」的，是不可以被回收的；哪些对象已经「死掉」了，需要被回收。</p>
 <p>一般有两种方法来判断：</p>
 <ol>
@@ -572,7 +573,7 @@ JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类�
 <p>可达性分析算法：从 GC Roots 开始向下搜索，搜索所走过的路径称为引用链。当一个对象到 GC Roots 没有任何引用链相连时，则证明此对象是可以被回收的。</p>
 </li>
 </ol>
-<h3 id="❗常用的垃圾回收器">❗常用的垃圾回收器</h3>
+<h4 id="❗常用的垃圾回收器">❗常用的垃圾回收器</h4>
 <ol>
 <li class="lvl-3">
 <p>parnew+cms 的组合（jdk8 以及 8 以前）<br>
@@ -582,7 +583,7 @@ parnew 是新生代回收器，多线程。cms 是老年代垃圾回收（比较
 <p>G1(Garbage First)（从 jdk9 往后主推）回收整个堆。</p>
 </li>
 </ol>
-<h2 id="❗生产环境中的-Tomcat-如何设置-JVM-参数。如何检查-JVM-运行情况。">❗生产环境中的 Tomcat 如何设置 JVM 参数。如何检查 JVM 运行情况。</h2>
+<h3 id="❗生产环境中的-Tomcat-如何设置-JVM-参数。如何检查-JVM-运行情况">❗生产环境中的 Tomcat 如何设置 JVM 参数。如何检查 JVM 运行情况</h3>
 <blockquote>
 <p>Java Web 系统，在 tomcat 的一个配置脚本，catalina 脚本里找一下。</p>
 </blockquote>
@@ -595,20 +596,20 @@ parnew 是新生代回收器，多线程。cms 是老年代垃圾回收（比较
 <p>垃圾回收器用了什么，每种垃圾回收器是否有对应的一些特殊的参数设置，那些特殊的参数分别用来干什么的。</p>
 </li>
 </ol>
-<p>❗为什么要这么设置？当前系统运行的时候，jvm 的表现如何？<br>
-// todo 额，这部分都在打广告，打算看了另一个视频再补充。</p>
-<h3 id="❗实际项目中是否做过-JVM-GC-优化，怎么做的？">❗实际项目中是否做过 JVM GC 优化，怎么做的？</h3>
+<p>❗为什么要这么设置？当前系统运行的时候，jvm 的表现如何？</p>
+<p>// todo 额，这部分都在打广告，打算看了另一个视频再补充。</p>
+<h4 id="❗实际项目中是否做过-JVM-GC-优化，怎么做的？">❗实际项目中是否做过 JVM GC 优化，怎么做的？</h4>
 <blockquote>
 <p>没做过，直接单机压测，然后调优。</p>
 </blockquote>
 <p>// todo</p>
-<h3 id="❗发生-OOM-之后，应该如何排查和处理线上系统的-OOM-问题？">❗发生 OOM 之后，应该如何排查和处理线上系统的 OOM 问题？</h3>
-<p>解决的一个思路：在 JVM 里可以设置几个参数，如果一旦 JVM 发生了 OOM 之后，就会导出一份内存的快照。可以用类似 MAT 这样的工具去分析（<em>找出当时的内存占用最大的对象是谁，找出那些对象是在哪些地方创建出来的，一般来说是对内存去做一个调优</em>）。<br>
-// todo 这里要结合业务去思考，结合项目（模拟）</p>
-<h2 id="Java-会存在内存泄漏吗？请简单描述">Java 会存在内存泄漏吗？请简单描述</h2>
+<h4 id="❗发生-OOM-之后，应该如何排查和处理线上系统的-OOM-问题？">❗发生 OOM 之后，应该如何排查和处理线上系统的 OOM 问题？</h4>
+<p>解决的一个思路：在 JVM 里可以设置几个参数，如果一旦 JVM 发生了 OOM 之后，就会导出一份内存的快照。可以用类似 MAT 这样的工具去分析（<em>找出当时的内存占用最大的对象是谁，找出那些对象是在哪些地方创建出来的，一般来说是对内存去做一个调优</em>）。</p>
+<p>// todo 这里要结合业务去思考，结合项目（模拟）</p>
+<h3 id="Java-会存在内存泄漏吗？请简单描述">Java 会存在内存泄漏吗？请简单描述</h3>
 <p>内存泄漏是指不再被使用的对象或者变量一直被占据在内存中。理论上来说，Java 是有 GC 垃圾回收机制的，也就是说，不再被使用的对象，会被 GC 自动回收掉，自动从内存中清除。</p>
 <p>但是，即使这样，Java 也还是存在着内存泄漏的情况，java 导致内存泄露的原因很明确：长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是 java 中内存泄露的发生场景。</p>
-<h2 id="有遇到过栈溢出吗？一般是什么问题导致？">有遇到过栈溢出吗？一般是什么问题导致？</h2>
+<h3 id="有遇到过栈溢出吗？一般是什么问题导致？">有遇到过栈溢出吗？一般是什么问题导致？</h3>
 <p>栈溢出（StackOverflowError）是指栈内容全部被占用，而数据还要往里放。一般是递归错误或者出现死循环导致。</p>
 
                 </div>
@@ -788,7 +789,7 @@ parnew 是新生代回收器，多线程。cms 是老年代垃圾回收（比较
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">类加载器与反射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">简述 java 类加载机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-JVM-%E5%8A%A0%E8%BD%BD-Class-%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">描述一下 JVM 加载 Class 文件的原理机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%B1%BB%E8%A3%85%E8%BD%BD%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">说一下类装载的执行过程？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8C%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-text">什么是类加载器，类加载器有哪些?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是反射机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%9F"><span class="nav-text">什么是静态编译，什么是动态编译？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">反射机制的优缺点有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是双亲委派机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E7%A0%B4%E5%9D%8F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">怎么破坏双亲委派机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E8%BF%87%E5%8F%8D%E5%B0%84%EF%BC%9F"><span class="nav-text">你在哪些场景下用过反射？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Java 中获取反射的三种方法是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E6%88%96%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%90%97%E6%88%96%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%90%97%EF%BC%9F"><span class="nav-text">反射可以获取私有方法或构造函数吗或私有成员变量吗？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97JVM-%E4%B8%AD%E6%9C%89%E5%93%AA%E5%87%A0%E5%9D%97%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%EF%BC%9FJava-8-%E4%B9%8B%E5%90%8E%E5%AF%B9%E5%86%85%E5%AD%98%E5%88%86%E4%BB%A3%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B%EF%BC%9F"><span class="nav-text">❗JVM 中有哪几块内存区域？Java 8 之后对内存分代做了什么改进？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%94%E4%BD%A0%E7%9F%A5%E9%81%93-JVM-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84%E5%90%97%EF%BC%9F%E6%88%91%E4%BB%AC%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%86%E9%85%8D%E7%9A%84%E3%80%82"><span class="nav-text">❔你知道 JVM 是如何运行起来的吗？我们的对象是如何分配的。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97JVM-%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-text">❗JVM 在哪些情况下会触发垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Full-GC%EF%BC%9F%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%EF%BC%9F"><span class="nav-text">什么是 Full GC？什么情况下会触发？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E5%B9%B4%E8%BD%BB%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E3%80%82"><span class="nav-text">❗JVM 年轻代的回收算法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9%E8%B1%A1%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E8%BD%AC%E7%A7%BB%E5%88%B0%E8%80%81%E5%B9%B4%E4%BB%A3%E4%B8%AD"><span class="nav-text">❗对象什么时候会转移到老年代中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E8%80%81%E5%B9%B4%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 老年代的回收算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-text">怎么判断对象是否可以被回收？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-text">❗常用的垃圾回收器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84-Tomcat-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE-JVM-%E5%8F%82%E6%95%B0%E3%80%82%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5-JVM-%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5%E3%80%82"><span class="nav-text">❗生产环境中的 Tomcat 如何设置 JVM 参数。如何检查 JVM 运行情况。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%81%9A%E8%BF%87-JVM-GC-%E4%BC%98%E5%8C%96%EF%BC%8C%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84%EF%BC%9F"><span class="nav-text">❗实际项目中是否做过 JVM GC 优化，怎么做的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%8F%91%E7%94%9F-OOM-%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E5%92%8C%E5%A4%84%E7%90%86%E7%BA%BF%E4%B8%8A%E7%B3%BB%E7%BB%9F%E7%9A%84-OOM-%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">❗发生 OOM 之后，应该如何排查和处理线上系统的 OOM 问题？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%BC%9A%E5%AD%98%E5%9C%A8%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%90%97%EF%BC%9F%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0"><span class="nav-text">Java 会存在内存泄漏吗？请简单描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%81%87%E5%88%B0%E8%BF%87%E6%A0%88%E6%BA%A2%E5%87%BA%E5%90%97%EF%BC%9F%E4%B8%80%E8%88%AC%E6%98%AF%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E5%AF%BC%E8%87%B4%EF%BC%9F"><span class="nav-text">有遇到过栈溢出吗？一般是什么问题导致？</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E4%B8%8E%E5%8F%8D%E5%B0%84"><span class="nav-text">类加载器与反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">简述 java 类加载机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-JVM-%E5%8A%A0%E8%BD%BD-Class-%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">描述一下 JVM 加载 Class 文件的原理机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%B1%BB%E8%A3%85%E8%BD%BD%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">说一下类装载的执行过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8C%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-text">什么是类加载器，类加载器有哪些?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是反射机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%9F"><span class="nav-text">什么是静态编译，什么是动态编译？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">反射机制的优缺点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是双亲委派机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E7%A0%B4%E5%9D%8F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">怎么破坏双亲委派机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E8%BF%87%E5%8F%8D%E5%B0%84%EF%BC%9F"><span class="nav-text">你在哪些场景下用过反射？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Java 中获取反射的三种方法是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E6%88%96%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%90%97%E6%88%96%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%90%97%EF%BC%9F"><span class="nav-text">反射可以获取私有方法或构造函数吗或私有成员变量吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM"><span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E4%B8%AD%E6%9C%89%E5%93%AA%E5%87%A0%E5%9D%97%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%EF%BC%9FJava-8-%E4%B9%8B%E5%90%8E%E5%AF%B9%E5%86%85%E5%AD%98%E5%88%86%E4%BB%A3%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B%EF%BC%9F"><span class="nav-text">❗JVM 中有哪几块内存区域？Java 8 之后对内存分代做了什么改进？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E4%BD%A0%E7%9F%A5%E9%81%93-JVM-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84%E5%90%97%EF%BC%9F%E6%88%91%E4%BB%AC%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%86%E9%85%8D%E7%9A%84"><span class="nav-text">❔你知道 JVM 是如何运行起来的吗？我们的对象是如何分配的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-text">❗JVM 在哪些情况下会触发垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Full-GC%EF%BC%9F%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%EF%BC%9F"><span class="nav-text">什么是 Full GC？什么情况下会触发？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97JVM-%E5%B9%B4%E8%BD%BB%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 年轻代的回收算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9%E8%B1%A1%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E8%BD%AC%E7%A7%BB%E5%88%B0%E8%80%81%E5%B9%B4%E4%BB%A3%E4%B8%AD"><span class="nav-text">❗对象什么时候会转移到老年代中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97JVM-%E8%80%81%E5%B9%B4%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 老年代的回收算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-text">怎么判断对象是否可以被回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-text">❗常用的垃圾回收器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84-Tomcat-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE-JVM-%E5%8F%82%E6%95%B0%E3%80%82%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5-JVM-%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5"><span class="nav-text">❗生产环境中的 Tomcat 如何设置 JVM 参数。如何检查 JVM 运行情况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%81%9A%E8%BF%87-JVM-GC-%E4%BC%98%E5%8C%96%EF%BC%8C%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84%EF%BC%9F"><span class="nav-text">❗实际项目中是否做过 JVM GC 优化，怎么做的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%8F%91%E7%94%9F-OOM-%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E5%92%8C%E5%A4%84%E7%90%86%E7%BA%BF%E4%B8%8A%E7%B3%BB%E7%BB%9F%E7%9A%84-OOM-%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">❗发生 OOM 之后，应该如何排查和处理线上系统的 OOM 问题？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%BC%9A%E5%AD%98%E5%9C%A8%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%90%97%EF%BC%9F%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0"><span class="nav-text">Java 会存在内存泄漏吗？请简单描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E9%81%87%E5%88%B0%E8%BF%87%E6%A0%88%E6%BA%A2%E5%87%BA%E5%90%97%EF%BC%9F%E4%B8%80%E8%88%AC%E6%98%AF%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E5%AF%BC%E8%87%B4%EF%BC%9F"><span class="nav-text">有遇到过栈溢出吗？一般是什么问题导致？</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -978,7 +979,7 @@ parnew 是新生代回收器，多线程。cms 是老年代垃圾回收（比较
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">类加载器与反射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">简述 java 类加载机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-JVM-%E5%8A%A0%E8%BD%BD-Class-%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">描述一下 JVM 加载 Class 文件的原理机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%B1%BB%E8%A3%85%E8%BD%BD%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">说一下类装载的执行过程？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8C%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-text">什么是类加载器，类加载器有哪些?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是反射机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%9F"><span class="nav-text">什么是静态编译，什么是动态编译？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">反射机制的优缺点有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是双亲委派机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E7%A0%B4%E5%9D%8F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">怎么破坏双亲委派机制？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%A0%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E8%BF%87%E5%8F%8D%E5%B0%84%EF%BC%9F"><span class="nav-text">你在哪些场景下用过反射？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Java 中获取反射的三种方法是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E6%88%96%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%90%97%E6%88%96%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%90%97%EF%BC%9F"><span class="nav-text">反射可以获取私有方法或构造函数吗或私有成员变量吗？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97JVM-%E4%B8%AD%E6%9C%89%E5%93%AA%E5%87%A0%E5%9D%97%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%EF%BC%9FJava-8-%E4%B9%8B%E5%90%8E%E5%AF%B9%E5%86%85%E5%AD%98%E5%88%86%E4%BB%A3%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B%EF%BC%9F"><span class="nav-text">❗JVM 中有哪几块内存区域？Java 8 之后对内存分代做了什么改进？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%94%E4%BD%A0%E7%9F%A5%E9%81%93-JVM-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84%E5%90%97%EF%BC%9F%E6%88%91%E4%BB%AC%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%86%E9%85%8D%E7%9A%84%E3%80%82"><span class="nav-text">❔你知道 JVM 是如何运行起来的吗？我们的对象是如何分配的。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97JVM-%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-text">❗JVM 在哪些情况下会触发垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Full-GC%EF%BC%9F%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%EF%BC%9F"><span class="nav-text">什么是 Full GC？什么情况下会触发？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E5%B9%B4%E8%BD%BB%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E3%80%82"><span class="nav-text">❗JVM 年轻代的回收算法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9%E8%B1%A1%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E8%BD%AC%E7%A7%BB%E5%88%B0%E8%80%81%E5%B9%B4%E4%BB%A3%E4%B8%AD"><span class="nav-text">❗对象什么时候会转移到老年代中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E8%80%81%E5%B9%B4%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 老年代的回收算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-text">怎么判断对象是否可以被回收？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-text">❗常用的垃圾回收器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84-Tomcat-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE-JVM-%E5%8F%82%E6%95%B0%E3%80%82%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5-JVM-%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5%E3%80%82"><span class="nav-text">❗生产环境中的 Tomcat 如何设置 JVM 参数。如何检查 JVM 运行情况。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%81%9A%E8%BF%87-JVM-GC-%E4%BC%98%E5%8C%96%EF%BC%8C%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84%EF%BC%9F"><span class="nav-text">❗实际项目中是否做过 JVM GC 优化，怎么做的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%8F%91%E7%94%9F-OOM-%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E5%92%8C%E5%A4%84%E7%90%86%E7%BA%BF%E4%B8%8A%E7%B3%BB%E7%BB%9F%E7%9A%84-OOM-%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">❗发生 OOM 之后，应该如何排查和处理线上系统的 OOM 问题？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%BC%9A%E5%AD%98%E5%9C%A8%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%90%97%EF%BC%9F%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0"><span class="nav-text">Java 会存在内存泄漏吗？请简单描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E9%81%87%E5%88%B0%E8%BF%87%E6%A0%88%E6%BA%A2%E5%87%BA%E5%90%97%EF%BC%9F%E4%B8%80%E8%88%AC%E6%98%AF%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E5%AF%BC%E8%87%B4%EF%BC%9F"><span class="nav-text">有遇到过栈溢出吗？一般是什么问题导致？</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E4%B8%8E%E5%8F%8D%E5%B0%84"><span class="nav-text">类加载器与反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">简述 java 类加载机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-JVM-%E5%8A%A0%E8%BD%BD-Class-%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">描述一下 JVM 加载 Class 文件的原理机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%B1%BB%E8%A3%85%E8%BD%BD%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">说一下类装载的执行过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8C%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-text">什么是类加载器，类加载器有哪些?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是反射机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%9F"><span class="nav-text">什么是静态编译，什么是动态编译？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">反射机制的优缺点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是双亲委派机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E7%A0%B4%E5%9D%8F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">怎么破坏双亲委派机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E8%BF%87%E5%8F%8D%E5%B0%84%EF%BC%9F"><span class="nav-text">你在哪些场景下用过反射？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Java 中获取反射的三种方法是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E6%88%96%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%90%97%E6%88%96%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%90%97%EF%BC%9F"><span class="nav-text">反射可以获取私有方法或构造函数吗或私有成员变量吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM"><span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E4%B8%AD%E6%9C%89%E5%93%AA%E5%87%A0%E5%9D%97%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%EF%BC%9FJava-8-%E4%B9%8B%E5%90%8E%E5%AF%B9%E5%86%85%E5%AD%98%E5%88%86%E4%BB%A3%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B%EF%BC%9F"><span class="nav-text">❗JVM 中有哪几块内存区域？Java 8 之后对内存分代做了什么改进？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E4%BD%A0%E7%9F%A5%E9%81%93-JVM-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84%E5%90%97%EF%BC%9F%E6%88%91%E4%BB%AC%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%86%E9%85%8D%E7%9A%84"><span class="nav-text">❔你知道 JVM 是如何运行起来的吗？我们的对象是如何分配的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-text">❗JVM 在哪些情况下会触发垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Full-GC%EF%BC%9F%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%EF%BC%9F"><span class="nav-text">什么是 Full GC？什么情况下会触发？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97JVM-%E5%B9%B4%E8%BD%BB%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 年轻代的回收算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9%E8%B1%A1%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E8%BD%AC%E7%A7%BB%E5%88%B0%E8%80%81%E5%B9%B4%E4%BB%A3%E4%B8%AD"><span class="nav-text">❗对象什么时候会转移到老年代中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97JVM-%E8%80%81%E5%B9%B4%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 老年代的回收算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-text">怎么判断对象是否可以被回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-text">❗常用的垃圾回收器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84-Tomcat-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE-JVM-%E5%8F%82%E6%95%B0%E3%80%82%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5-JVM-%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5"><span class="nav-text">❗生产环境中的 Tomcat 如何设置 JVM 参数。如何检查 JVM 运行情况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%81%9A%E8%BF%87-JVM-GC-%E4%BC%98%E5%8C%96%EF%BC%8C%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84%EF%BC%9F"><span class="nav-text">❗实际项目中是否做过 JVM GC 优化，怎么做的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%8F%91%E7%94%9F-OOM-%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E5%92%8C%E5%A4%84%E7%90%86%E7%BA%BF%E4%B8%8A%E7%B3%BB%E7%BB%9F%E7%9A%84-OOM-%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">❗发生 OOM 之后，应该如何排查和处理线上系统的 OOM 问题？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%BC%9A%E5%AD%98%E5%9C%A8%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%90%97%EF%BC%9F%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0"><span class="nav-text">Java 会存在内存泄漏吗？请简单描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E9%81%87%E5%88%B0%E8%BF%87%E6%A0%88%E6%BA%A2%E5%87%BA%E5%90%97%EF%BC%9F%E4%B8%80%E8%88%AC%E6%98%AF%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E5%AF%BC%E8%87%B4%EF%BC%9F"><span class="nav-text">有遇到过栈溢出吗？一般是什么问题导致？</span></a></li></ol></li></ol>
     </div>
 </div>
 

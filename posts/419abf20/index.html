@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jun 20 2024 16:40:46 GMT+0800">2024-06-20 16:40:46</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 17:41:07 GMT+0800">2024-06-20 17:41:07</span>
             </span>
         
 
@@ -319,13 +319,14 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24.05.23 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h1>问题</h1>
+<h2 id="问题">问题</h2>
 <p>测试 RestTemplate 的 Get 请求，返回中文乱码。</p>
-<h1>原因</h1>
+<h2 id="原因">原因</h2>
 <p>当 RestTemplate 默认使用 String 存储 body 内容时默认使用 ISO_8859_1 字符集。</p>
-<h1>解决</h1>
+<h2 id="解决">解决</h2>
 <p>配置 StringHttpMessageConverter 消息转换器，使用 utf-8 字符集。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>  </span><br><span class="line"><span class="keyword">public</span> RestTemplate <span class="title function_">restTemplate</span><span class="params">()</span> &#123;  </span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>(<span class="keyword">new</span> <span class="title class_">OkHttp3ClientHttpRequestFactory</span>());  </span><br><span class="line">    <span class="comment">//消息转换器列表  </span></span><br><span class="line">    List&lt;HttpMessageConverter&lt;?&gt;&gt; messageConverters = restTemplate.getMessageConverters();  </span><br><span class="line">    <span class="comment">//配置消息转换器StringHttpMessageConverter，并设置utf‐8  </span></span><br><span class="line">    messageConverters.set(<span class="number">1</span>, <span class="keyword">new</span> <span class="title class_">StringHttpMessageConverter</span>(StandardCharsets.UTF_8));  </span><br><span class="line">    <span class="keyword">return</span> restTemplate;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
                 </div>
                 
                         
@@ -507,7 +508,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">解决</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-text">解决</span></a></li></ol>
     </div>
 </div>
 
@@ -697,7 +698,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">解决</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-text">解决</span></a></li></ol>
     </div>
 </div>
 

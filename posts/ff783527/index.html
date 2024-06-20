@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jun 12 2024 14:37:59 GMT+0800">2024-06-12 14:37:59</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 17:40:45 GMT+0800">2024-06-20 17:40:45</span>
             </span>
         
 
@@ -296,8 +296,7 @@
 
                     <ul class="lvl-0">
 <li class="lvl-2">
-<p>前言<br>
-浏览之前引用的文章地址，突然发现，地址全部变成了404。后来发现每次发布，地址链接都会改变。所以记录一下，怎么处理这个问题。</p>
+<p>前言浏览之前引用的文章地址，突然发现，地址全部变成了 404。后来发现每次发布，地址链接都会改变。所以记录一下，怎么处理这个问题。</p>
 </li>
 <li class="lvl-2">
 <p>参考文章</p>
@@ -312,25 +311,26 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">24.05.22 初始记录</span><br><span class="line">24.06.12 替换插件为abbrlink</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<p>打开Hexo配置文件可以看到原先的配置处为：</p>
+<p>打开 Hexo 配置文件可以看到原先的配置处为：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">https://kiml.github.io</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:hash.html</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing &#x27;.html&#x27; from permalinks</span></span><br></pre></td></tr></table></figure>
-<p>照理说这样配置也是没有问题的，由于hash值的计算与文章标题有关，可能是因为这样，重新发布后，有部分页面会直接变成404的状态。</p>
+<p>照理说这样配置也是没有问题的，由于 hash 值的计算与文章标题有关，可能是因为这样，重新发布后，有部分页面会直接变成 404 的状态。</p>
 <h2 id="优化">优化</h2>
 <h3 id="安装插件">安装插件</h3>
-<p>在 Hexo 根目录打开终端安装插件。之前使用abbrlink2，但是clean之后所有的链接都重排失效了。替换新的插件，这个会在文章前生成abbrlink值，只要不删除链接就不会变化。</p>
+<p>在 Hexo 根目录打开终端安装插件。之前使用 abbrlink2，但是 clean 之后所有的链接都重排失效了。替换新的插件，这个会在文章前生成 abbrlink 值，只要不删除链接就不会变化。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
 <h3 id="修改配置">修改配置</h3>
-<p>修改 Hexo 的配置文件的 <code>permalink</code> 字段。当永久链接参数为<code>permalink: posts/:abbrlink/</code>时，生成的文章链接类似于<code>/post/cd6eb56d/</code>,例如<code>https://xxx.com/post/cd6eb56d/</code>。</p>
+<p>修改 Hexo 的配置文件的 <code>permalink</code> 字段。当永久链接参数为 <code>permalink: posts/:abbrlink/</code> 时，生成的文章链接类似于 <code>/post/cd6eb56d/</code>,例如 <code>https://xxx.com/post/cd6eb56d/</code>。</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">https://kiml.github.io</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink/</span></span><br><span class="line">	<span class="attr">permalink_defaults:</span></span><br></pre></td></tr></table></figure>
-<p>设置abbrlink，在配置中添加</p>
+<p>设置 abbrlink，在配置中添加</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment">#support crc16(default) and crc32</span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">hex</span>    <span class="comment">#support dec(default) and hex</span></span><br></pre></td></tr></table></figure>
 <p><strong>abbrlink 参数说明</strong><br>
 参数：<code>alg</code> 对应随机值算法参数，可选为 crc16 和 crc32 参数<br>
-<code>rep</code> 对应生成链接的表示方法，hex：十六进制，dec:十进制</p>
+<code>rep</code> 对应生成链接的表示方法，hex：十六进制，dec: 十进制</p>
 <p>对于 crc16 算法生成的随机值，具有一个最大限度，为 65536。</p>
-<h3 id="使用abbrlink">使用abbrlink</h3>
+<h3 id="使用-abbrlink">使用 abbrlink</h3>
 <p>清除之前的链接缓存，并重新生成更新</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp; hexo g</span><br></pre></td></tr></table></figure>
+
                 </div>
                 
                         
@@ -496,7 +496,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8abbrlink"><span class="nav-text">使用abbrlink</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-abbrlink"><span class="nav-text">使用 abbrlink</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -686,7 +686,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8abbrlink"><span class="nav-text">使用abbrlink</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="nav-text">修改配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-abbrlink"><span class="nav-text">使用 abbrlink</span></a></li></ol></li></ol>
     </div>
 </div>
 
