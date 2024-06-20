@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jun 20 2024 17:42:53 GMT+0800">2024-06-20 17:42:53</span>
+                <span class="datetime" data-updated="Thu Jun 20 2024 22:16:19 GMT+0800">2024-06-20 22:16:19</span>
             </span>
         
 
@@ -283,12 +283,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.2k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.3k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>11 分钟</span>
             </span>
         
         
@@ -393,10 +393,25 @@
 <p>http1.0：tcp 短连接。三次握手、四次挥手，断开连接。</p>
 <p>http1.1：默认支持长连接，第一次打开网页，就会打开一个 tcp 连接，接着一段时间内都不关闭。所有网页资源的获取走同一个 tcp 连接，直到获取完毕，关闭连接。但是每个通道都需要一个线程守护，大大影响服务器的并发能力（目前是主流版本 BIO）。</p>
 <p>http2.0：支持多路复用，一个 tcp 连接可以并行发送多个请求以及接收响应数据。二进制分帧，将传输数据拆分成更小的包。（底层基于 NIO 的选择器技术实现，未普及）</p>
-<h4 id="BIO、NIO、AIO-有什么区别？">BIO、NIO、AIO 有什么区别？</h4>
+<h3 id="BIO、NIO、AIO-有什么区别？">BIO、NIO、AIO 有什么区别？</h3>
 <p>BIO：Block IO 同步阻塞式 IO，就是我们平常使用的传统 IO，它的特点是模式简单使用方便，并发处理能力低。</p>
-<p>NIO：Non IO 同步非阻塞 IO，是传统 IO 的升级，客户端和服务器端通过 Channel（通道）通讯，实现了多路复用。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>每个客户端与服务端通信都会建一个配对的 socket 线程。缺点：连接客户端过多，服务器会宕机。优化：建一个线程池。</p>
+</li>
+</ul>
+<p>NIO（<em>比较常用</em>）：Non IO 同步非阻塞 IO，是传统 IO 的升级，客户端和服务器端通过 Channel（通道）通讯，实现了多路复用。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>服务端有一个 selector 线程（一般 +Cached 线程池），每个客户端连接，注册创建一个 channel。如果客户端发送请求，创建线程对 channel 创建一个线程（从线程池），处理完请求线程被销毁。</p>
+</li>
+</ul>
 <p>AIO：Asynchronous IO 是 NIO 的升级，也叫 NIO2，实现了异步非堵塞 IO ，异步 IO 的操作基于事件和回调机制。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>NIO 比 BIO 多了一个 buffer（缓冲区）的概念，线程从 channel 读取数据会从缓冲区读取（这个读取是直接交给操作系统来干的，是异步的，操作系统读完数据，再告诉线程去处理），写入缓冲区（这个也是异步的）。</p>
+</li>
+</ul>
 <p>小结：</p>
 <ul class="lvl-0">
 <li class="lvl-2">
@@ -409,6 +424,11 @@
 <p>AIO 是一个有效请求一个线程。（AIO 是异步的 NIO）</p>
 </li>
 </ul>
+<h4 id="同步阻塞、同步非阻塞、异步非阻塞">同步阻塞、同步非阻塞、异步非阻塞</h4>
+<p>BIO 同步阻塞。不是完全网络通信模型，是针对磁盘文件的 IO 读写。</p>
+<p>NIO 是同步非阻塞。发起请求后可以去干别的事，但是还是需要主动轮询操作系统。</p>
+<p>AIO 是异步非阻塞。操作系统异步通知。</p>
+<p>// todo 看 demo 代码</p>
 <h3 id="❗聊聊-HTTPS-的工作原理？为什么用-HTTPS-就可以加密通信？">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</h3>
 <ol>
 <li class="lvl-3">
@@ -448,7 +468,71 @@
 </li>
 </ol>
 <p><strong>但是：</strong> 本质上来说，GET 请求和 POST 请求没什么区别，只是在浏览器端对它们的使用不同而已，它们底层都是基于 TCP（三次握手、四次挥手）的 Socket 进行数据传输的。</p>
-
+<h3 id="Socket-工作原理">Socket 工作原理</h3>
+<blockquote>
+<p>socket 是属于传输层的编程规范。<em>按照视频讲述的内容：就是浏览器发送一个请求链接的部分</em></p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p>按 tcp 协议的规定，生成 tcp 数据包，请求头包含，发送的端口和请求的端口；tcp 数据包包含 http 数据包。</p>
+</li>
+<li class="lvl-3">
+<p>按 ip 协议的规定，生成 ip 数据包，请求头包含，发送的 ip 地址和请求的 ip 地址；ip 数据包包含 tcp 数据包。</p>
+</li>
+<li class="lvl-3">
+<p>按以太网的协议，生成以太网数据包，请求头包含，发送的网卡 mac 地址和请求的网卡 mac 地址（网关的 mac 地址）；以太网数据包，包含 ip 数据包。以太网数据包限制大小 1500 字节，所以会进行切割。</p>
+</li>
+<li class="lvl-3">
+<p>打包完毕，把以太网数据包通过<strong>网络交换机</strong>发送给（路由器）<strong>网关</strong>，经过网关的多次转发，发送给请求域名的服务器。服务器按包的序号重新拼接、层层解包，获取 http 请求报文。程序获取请求，做出响应，一层层封装再响应。</p>
+</li>
+</ol>
+<h3 id="❔进程间是如何通信的">❔进程间是如何通信的</h3>
+<p>进程间的通信：管道（半双工）、命名管道（半双工）、消息队列、共享内存</p>
+<h3 id="❔线程间又如何切换">❔线程间又如何切换</h3>
+<p>上下文切换、时间片算法。</p>
+<h2 id="场景题">场景题</h2>
+<h3 id="线上服务器的-cpu-使用到达-100-，如何排查、定位、解决问题？">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</h3>
+<blockquote>
+<p>就是找哪段代码出了问题。</p>
+<p>场景：catch 时写了死循环</p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p>定位耗费 cpu 的进程</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示进程列表</span></span><br><span class="line">top -c</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">然后输入 P，按照 cpu 使用率排序</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入 M，按照内存排序</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-3">
+<p>定位耗费 cpu 的线程</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里的 pid 就是上一步查出来的 pid</span></span><br><span class="line">top -Hp pid</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这样可以获取线程的 pid</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">然后输入 P，按照 cpu 使用率排序</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li class="lvl-3">
+<p>定位哪段代码导致的 cpu 过高</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里的 pid 是上一步获取到的 线程 pid 为了获取它的16进制表示</span></span><br><span class="line">printf &quot;%x\n&quot; pid</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">jstack 进行分析</span></span><br><span class="line">jstack 进程pid | grep &#x27;线程pid&#x27; -C -color</span><br></pre></td></tr></table></figure>
+<h3 id="线上进程-kill-不掉怎么办？">线上进程 kill 不掉怎么办？</h3>
+<blockquote>
+<p>场景：发布系统搞了一个子进程，子进程是系统进程。杀不掉。</p>
+</blockquote>
+<p>kill 一个进程 kill 不掉，这个进程就是变成了一个僵尸进程（zombie）状态。因为这个进程释放了资源，但是父进程没有确认。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示所有进程和其状态，可以加 grep 过滤</span></span><br><span class="line">ps aux </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 STAT 那一栏，如果是 Z，就是僵尸进程</span></span><br><span class="line">ps -ef|grep 僵尸进程id，可以找到父进程id</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">然后先 <span class="built_in">kill</span> 父进程，再 <span class="built_in">kill</span> 子进程</span></span><br></pre></td></tr></table></figure>
+<h3 id="服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</h3>
+<ol>
+<li class="lvl-3">
+<p>一般来说，可能是日志写满了。可以去 spring boot 下的日志去看看。还可以写个 shell 脚本，crontab 定时，定期删除 7 天以前的日志。</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看磁盘使用情况</span></span><br><span class="line">df -h</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-3">
+<p>要是不行</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">找大于100M的文件</span></span><br><span class="line">find / -size +100M |xargs ls -lh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">看各个目录占用的磁盘大小。这个命令可以把占用大小导出</span></span><br><span class="line">du -h &gt;fs_du.log</span><br></pre></td></tr></table></figure>
                 </div>
                 
                         
@@ -626,7 +710,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E%E3%80%81%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E%E3%80%81%E5%BC%82%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-text">同步阻塞、同步非阻塞、异步非阻塞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">Socket 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%98%AF%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1%E7%9A%84"><span class="nav-text">❔进程间是如何通信的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%8F%88%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2"><span class="nav-text">❔线程间又如何切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%A2%98"><span class="nav-text">场景题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-cpu-%E4%BD%BF%E7%94%A8%E5%88%B0%E8%BE%BE-100-%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E3%80%81%E5%AE%9A%E4%BD%8D%E3%80%81%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E8%BF%9B%E7%A8%8B-kill-%E4%B8%8D%E6%8E%89%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-text">线上进程 kill 不掉怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E5%BF%AB%E6%BB%A1%E4%BA%86%EF%BC%8C%E5%9C%A8%E4%B8%8D%E5%BD%B1%E5%93%8D%E6%9C%8D%E5%8A%A1%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-text">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -816,7 +900,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E%E3%80%81%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E%E3%80%81%E5%BC%82%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-text">同步阻塞、同步非阻塞、异步非阻塞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">Socket 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%98%AF%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1%E7%9A%84"><span class="nav-text">❔进程间是如何通信的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%8F%88%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2"><span class="nav-text">❔线程间又如何切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%A2%98"><span class="nav-text">场景题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-cpu-%E4%BD%BF%E7%94%A8%E5%88%B0%E8%BE%BE-100-%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E3%80%81%E5%AE%9A%E4%BD%8D%E3%80%81%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E8%BF%9B%E7%A8%8B-kill-%E4%B8%8D%E6%8E%89%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-text">线上进程 kill 不掉怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E5%BF%AB%E6%BB%A1%E4%BA%86%EF%BC%8C%E5%9C%A8%E4%B8%8D%E5%BD%B1%E5%93%8D%E6%9C%8D%E5%8A%A1%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-text">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</span></a></li></ol></li></ol>
     </div>
 </div>
 
