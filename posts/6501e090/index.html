@@ -9,7 +9,7 @@
     
     <title>
         
-            代码随想录算法训练营第三十五天-1049最后一块石头的重量 II、494目标和、474一和零 |
+            实操：AI编程 |
         
         Kiml&#39;s Blog
     </title>
@@ -219,7 +219,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        代码随想录算法训练营第三十五天-1049最后一块石头的重量 II、494目标和、474一和零
+                        实操：AI编程
                     </div>
                 
 
@@ -243,34 +243,22 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-06-21 09:19:10</span>
+                <span class="datetime">2024-06-21 15:24:04</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Jun 21 2024 11:45:22 GMT+0800">2024-06-21 11:45:22</span>
+                <span class="datetime" data-updated="Fri Jun 21 2024 17:46:07 GMT+0800">2024-06-21 17:46:07</span>
             </span>
         
 
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
-                        
-                    
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">代码随想录</a></li>
-                        
-                    
-                </ul>
-            </span>
         
 
         
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/AI/">AI</a></li>
                         
                     
                 </ul>
@@ -280,12 +268,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>986 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>6 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
             </span>
         
         
@@ -306,112 +294,18 @@
                 <div class="post-content keep-markdown-body ">
                     
 
-                    <ul class="lvl-0">
-<li class="lvl-2">
-<p>前言状态：1049 和昨天那题差不多。494、474。。。☠️动规还是先了解解法。后面刷别的题组的时候再说。</p>
-</li>
-<li class="lvl-2">
-<p>更新</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-21 初始记录</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h2 id="初步题解">初步题解</h2>
-<h3 id="1049-最后一块石头的重量-II">1049 最后一块石头的重量 II</h3>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/last-stone-weight-ii" >https://leetcode.cn/problems/last-stone-weight-ii<i class="fas fa-external-link-alt"></i></a>)</p>
-<p>本题可以抽象成让石头分成尽量相同的两堆，然后进行相撞。即背包大小为总和除以 2，求能放入的最大价值。</p>
-<ol>
-<li class="lvl-3">
-<p>确定 <code>dp[i]</code> 的含义：从石头里任取，背包大小为 i，能放入的最大价值。<code>weight[i] = store[i]</code>，<code>value[i] = store[i]</code>。</p>
-</li>
-<li class="lvl-3">
-<p>递推公式：<code>dp[i] = Math.max(dp[i], dp[i - weight[j]] + value[j])</code>。</p>
-</li>
-<li class="lvl-3">
-<p>dp 数组的初始化：<code>dp[0] = 0</code>。</p>
-</li>
-<li class="lvl-3">
-<p>遍历顺序：从前向后遍历。</p>
-</li>
-<li class="lvl-3">
-<p>打印 dp 数组（<em>用于 debug</em>）</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">lastStoneWeightII</span><span class="params">(<span class="type">int</span>[] stones)</span> &#123;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> Arrays.stream(stones).sum();  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[sum / <span class="number">2</span> + <span class="number">1</span>];  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> stone : stones) &#123;  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> dp.length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;  </span><br><span class="line">            <span class="keyword">if</span> (j &gt;= stone) &#123;  </span><br><span class="line">			    dp[j] = Math.max(dp[j], dp[j - stone] + stone);  </span><br><span class="line">			&#125; </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> sum - dp[sum / <span class="number">2</span>] * <span class="number">2</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="494-目标和">494 目标和</h3>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/target-sum" >https://leetcode.cn/problems/target-sum<i class="fas fa-external-link-alt"></i></a>)</p>
-<p>完全没思路</p>
-<h3 id="474-一和零">474 一和零</h3>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/ones-and-zeroes" >https://leetcode.cn/problems/ones-and-zeroes<i class="fas fa-external-link-alt"></i></a>)</p>
-<p>看不懂，题目都看不懂☠️</p>
-<h2 id="看解析">看解析</h2>
-<h3 id="1049-最后一块石头的重量-II-2">1049 最后一块石头的重量 II</h3>
-<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/1049.%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8FII.html" >https://programmercarl.com/1049.最后一块石头的重量II.html<i class="fas fa-external-link-alt"></i></a>)</p>
-<h3 id="494-目标和-2">494 目标和</h3>
-<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0494.%E7%9B%AE%E6%A0%87%E5%92%8C.html" >https://programmercarl.com/0494.目标和.html<i class="fas fa-external-link-alt"></i></a>)</p>
-<p>假设正数集合总和是 left，负数集合总和是 right。总和 <code>sum = left + right</code>。目标值 <code>target = left - right</code>。可以得到 left 即正数之和 <code>= (sum + target)/2</code>。</p>
-<p><strong>本题是装满有几种方法。这是一个组合问题</strong>，用的解法就和之前不一样。</p>
-<ol>
-<li class="lvl-3">
-<p>确定 <code>dp[i]</code> 的含义：填满 i（包括 i）这么大容积的包，有 <code>dp[i]</code> 种方法</p>
-</li>
-<li class="lvl-3">
-<p>递推公式：<code>dp[j] += dp[j - nums[i]]</code>。</p>
-</li>
-</ol>
-<blockquote>
-<ul class="lvl-1">
-<li class="lvl-2">
-<p>已经有一个 1（nums[i]） 的话，有 dp[4] 种方法 凑成 容量为 5 的背包。</p>
-</li>
-<li class="lvl-2">
-<p>已经有一个 2（nums[i]） 的话，有 dp[3] 种方法 凑成 容量为 5 的背包。</p>
-</li>
-<li class="lvl-2">
-<p>已经有一个 3（nums[i]） 的话，有 dp[2] 种方法 凑成 容量为 5 的背包</p>
-</li>
-<li class="lvl-2">
-<p>已经有一个 4（nums[i]） 的话，有 dp[1] 种方法 凑成 容量为 5 的背包</p>
-</li>
-<li class="lvl-2">
-<p>已经有一个 5 （nums[i]）的话，有 dp[0] 种方法 凑成 容量为 5 的背包</p>
-</li>
-</ul>
-<p>那么凑整 dp[5] 有多少方法呢，也就是把 所有的 dp[j - nums[i]] 累加起来。</p>
-</blockquote>
-<ol start="3">
-<li class="lvl-3">
-<p>dp 数组的初始化：<code>dp[0] = 1</code>。假设数组个数为 0，获取 dp[0]，就是 1。</p>
-</li>
-<li class="lvl-3">
-<p>遍历顺序：从前向后遍历。</p>
-</li>
-<li class="lvl-3">
-<p>打印 dp 数组（<em>用于 debug</em>）</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findTargetSumWays</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;  </span><br><span class="line">    <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> Arrays.stream(nums).sum();  </span><br><span class="line">    <span class="keyword">if</span> ((sum + target) % <span class="number">2</span> == <span class="number">1</span>) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> (sum &lt; Math.abs(target)) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> (sum + target) / <span class="number">2</span>;  </span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[left + <span class="number">1</span>];  </span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> dp.length - <span class="number">1</span>; j &gt;= num; j--) &#123;  </span><br><span class="line">		    <span class="comment">// 这里比较难理解</span></span><br><span class="line">            dp[j] += dp[j - num];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    System.out.println(Arrays.toString(dp));  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> dp[left];  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="474-一和零-2">474 一和零</h3>
-<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0474.%E4%B8%80%E5%92%8C%E9%9B%B6.html" >https://programmercarl.com/0474.一和零.html<i class="fas fa-external-link-alt"></i></a>)</p>
-<ol>
-<li class="lvl-3">
-<p>确定 <code>dp[i][j]</code> 的含义：<strong>最多有 i 个 0 和 j 个 1 的 strs 的最大子集的大小为 <code>dp[i][j]</code></strong>。物品的重量是 0 的个数，1 的个数。价值就是 1。（难点在二维数组。。反正看了解析又感觉懂了，自己写又不会☠️）</p>
-</li>
-<li class="lvl-3">
-<p>递推公式：<code>dp[i][j] = Math.max(dp[i][j], dp[i - x][j - y]) + 1</code>。</p>
-</li>
-<li class="lvl-3">
-<p>dp 数组的初始化：<code>dp[0][0] = 0</code>。</p>
-</li>
-<li class="lvl-3">
-<p>遍历顺序：从前向后遍历。</p>
-</li>
-<li class="lvl-3">
-<p>打印 dp 数组（<em>用于 debug</em>）</p>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findMaxForm</span><span class="params">(String[] strs, <span class="type">int</span> m, <span class="type">int</span> n)</span> &#123;  </span><br><span class="line">    <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 这里x计算0的数量， y计算1的数量  </span></span><br><span class="line">    <span class="type">int</span> x, y;  </span><br><span class="line">    <span class="keyword">for</span> (String str : strs) &#123;  </span><br><span class="line">        x = <span class="number">0</span>;  </span><br><span class="line">        y = <span class="number">0</span>;  </span><br><span class="line">        <span class="type">char</span>[] chars = str.toCharArray();  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : chars) &#123;  </span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;0&#x27;</span>) &#123;  </span><br><span class="line">                x++;  </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                y++;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> m; i &gt;= <span class="number">0</span>; i--) &#123;  </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> n; j &gt;= <span class="number">0</span>; j--) &#123;  </span><br><span class="line">                <span class="keyword">if</span> (i &gt;= x &amp;&amp; j &gt;= y) &#123;  </span><br><span class="line">                    dp[i][j] = Math.max(dp[i][j], dp[i - x][j - y] + <span class="number">1</span>);  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> dp[m][n];  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+                    <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="dafdda95a0afafa3aea072f481f648eecb922da7406669698264fc21124d566b">abeb8d7735f0ac1430d5930ae71b6720b0442317ed254a69c11041c65159e9be845a26339db56165385334e2c44d7c39d657f984d7b54ce1264d731e88a779b901dc1b5c40f4ca0c12ed4e617aa243d58e1a96f7c5f15d1a4375354c89656ec1c748313f3438dedcf8764ba0c273437cf5f261dba60d2dc57185268453f029b36f4e4987a066dfc11281b383bcebf589ecd770260e3b2712a4beb72dcbb90440523174f7002b5926b6263c39dba374b682fa3fc1d78a55fc4e0a2396c3012fe81c8e0aa3482afe65ba00dcfbcfe3d5eba7b410194cea6fe01186ce0128c7061fa435721ab965a590a808b5c93e6707960988180404570dbed267ef0acee102dec4d49d7e976cdde376bb822309afd48f25b11d356e6c66a5e21cf8780a10bfc6eda28914db1f745afc16283f67b6e8ab09618eef6f8f44aef6a5a0a51a55b2c357ae4c512cdf9ddd59bfec64a545d78b83825db044b4c5568885d02b3dada7047e78f1792c3724ad97e0e7c07d365ffbce1c22ffa427f3dabbe89363774bda87bf3e75a9d10fbca9de78a67d510b757b1f3eb5437f173b9a6103e03198dd020bbc9bac90b27de035cd452512febfc2d8d33fa7a0ffa5346518e8ad34de3ef5c44addf43b13e4f2c5d6d46d038635de329ef603b7538799936a9d27ea4f21308f8b368bd1a3e76e5e0be3d8cbab0ad7e5aebcea3f7b6f8a5f391f3e92aa30c117b57ff27f8937c3a781f73eb04ae889ea72455fd43bcc22fb295f93134df254a8a5e7f16f4fd97a8c821c85f8d5521f3c14ebdfaa79151eeac2042376073e67c019fc4974253642a0f1b4e3fc8470e0dd64c147c15f60f61c864e5651d8752320271e7ab160fe1a0a3fcbd2b0208fa90c2c6a46f301ce041ad98e33090f9cb8910968150bc03ca7dd9defc4e1150897e28bb7f5fab7c52353510fb3d5ffd03e7f13956ef4fbce5fa88e8a6841607474348844f97691dba995181cd64647a174635b1192fbca6bf19d625e784c0ac02aaf69f7fd0b12ed1b372dab29ebe4c9916becadddb38a100af46d4e217d8ab62470b62b4fe2e83ede10ac005c03792dbd2354d473c6b986e0973cb9714f65097069691d2523d4a773d96641556f59456f29d58fd43f974f5545d622c81a188ebfc9dcdd219aba053e7ac860478136505c88cd30e4044a524280865b181167b124df17701bf4bcb395ddbfce3eb65d57273f9d77a19d8076e9fa59ebc04fcd3463c34bfceb82ed103bb3caf1c65c316e2849b5900d5ece9195373f9f643536040e9ee31e4ff1fa9103918f224831df8881fbe4e21600adc42cc62fce8a6768b69913207a7b28bd06396a74da0f1f05f8664e87104e9ef75c0fd3edae559f79b2e0c0a2cc3a9aeb81e845bfac775de7da9a857e5dd5778c4e5b16c065d5cb1b50e224a27a8603d12046f0fd54ae099907aee98bbcfc771b5ca8ebd62813380ebf8bc82453b2e81466e20c2d9263d4761588d6f833b1a1a4bfb0e0742797d4e520c8ba35e34693bad370c7bfbbd499d1c72bc5cf2d342bb1f4227ddb6e727c47f45854c560c591b4c8336d4cac79b7b7c8f8434f2ecfd9e8f51eed5f413054ebfbac071d65a808d22ce78cbacbf0dda09acfa7cdcb11741e5e3ee18196ec3f335b0c1efd022c41b51ebaa140ad6e398cd5eb66971c559244a0667d3f66c0b6a8ec83c6b11058b7f4fbc1c6ec81fdcd96ef0004730d157cfcf552c95fae473524832a5110b77f31cdcedb488af07f5a0e23b178eb2e411097ed6dddf7a1ff2728611d3c595c2f0b50ef5d323f73e268b703bad2e2f6e5a1e958f5e1456f6ce53ee3efd2ce03e954e00bf19d267a02ba7f21119a479961c08b7e7e7cde8a789bbcc90167adc2df602c444be32d905360415323f5b9100e21e01f25919b4d876aed7a154269a3b9ff337093e0f9915ed8af5dda68dde009369ef166a10f849f66c4648f8642925c7f06f57ebc0002ce42a4e57b32471a62ab817de061c4fd44c35fea871fb335df96cd0f958ac7fda2cba1a507ff67c6cf18e9d18b49d7f9474682ef1d11273d24691ae79924c8ad246f7c6d931630b41846ccef106bea9c1897d02781a707006f31668e890f7a00f7d98056ff7a5748aab664dde239e9bf8f058b4bf4df3c0843898097686ee6f482a67eb1b6eb1694b426089162ae1db0b0322e525c559afa8a5c240c47ee8b5ba933a44ffdc7b48b7f4dda042039bc311e474689b7ffc852874a22cb68ba0f6d559fe1586f837bcdf0eba09e0ca1ae9ae96f4242ba96c1550028c6ac5e2b37f3179feadb5179c509f56082f11fc57cd63ec580f0fc3650a9c652984f42ddda956ca833ccf190d490d9534efe073ff158f371b1c69cdb009bb90acc519b334c6fbc8d06906f281233191980048cc1f06a30aa012ca6abb4d8b8e4ad2347bdb970e2e9291b30d5e4f4ff2cbddbec39fbd2929b3267211fb10c4897a7d3b6801f524fb304c0461383a98e9df945b0807bcb8c84fdcc6a53b62eea1f3fc6575643970058fcacf88bdc486d5bdf1eea5a0b6febd00b97c7cc4a5fa0fdff10e40fe4d653210b1263e9b13a842d3e0a20805aa2415c4dc0833300c489d23d543d2681b1807ecb0b4bb5caf3dd33cf129a04812d0abec1380d54e7b141a69e7f286cc4283f8d85e1e5bd</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
                 </div>
                 
                         
@@ -419,11 +313,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                代码随想录算法训练营第三十五天-1049最后一块石头的重量 II、494目标和、474一和零
+                实操：AI编程
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/bde30672/
+                posts/6501e090/
             </div>
         </div>
 
@@ -439,7 +333,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-06-21 09:19</div>
+                <div class="content">2024-06-21 15:24</div>
             </div>
 
 
@@ -475,7 +369,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/AI/">AI</a>
                                     </li>
                                 
                             </ul>
@@ -491,31 +385,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/posts/6501e090/"
-                                   title="实操：AI编程"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">实操：AI编程</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/d62035eb/"
-                                   title="Obsidian 的插件使用"
+                                   href="/posts/bde30672/"
+                                   title="代码随想录算法训练营第三十五天-1049最后一块石头的重量 II、494目标和、474一和零"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Obsidian 的插件使用</span>
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第三十五天-1049最后一块石头的重量 II、494目标和、474一和零</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -585,7 +463,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E9%A2%98%E8%A7%A3"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1049-%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F-II"><span class="nav-text">1049 最后一块石头的重量 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#494-%E7%9B%AE%E6%A0%87%E5%92%8C"><span class="nav-text">494 目标和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#474-%E4%B8%80%E5%92%8C%E9%9B%B6"><span class="nav-text">474 一和零</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E8%A7%A3%E6%9E%90"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1049-%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F-II-2"><span class="nav-text">1049 最后一块石头的重量 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#494-%E7%9B%AE%E6%A0%87%E5%92%8C-2"><span class="nav-text">494 目标和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#474-%E4%B8%80%E5%92%8C%E9%9B%B6-2"><span class="nav-text">474 一和零</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TONGYI-Lingma"><span class="nav-text">TONGYI Lingma</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tabby"><span class="nav-text">Tabby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Copilot"><span class="nav-text">GitHub Copilot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-%E7%BC%96%E7%A8%8B%E6%BC%94%E7%A4%BA"><span class="nav-text">AI 编程演示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E"><span class="nav-text">需求说明</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -775,7 +653,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E9%A2%98%E8%A7%A3"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1049-%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F-II"><span class="nav-text">1049 最后一块石头的重量 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#494-%E7%9B%AE%E6%A0%87%E5%92%8C"><span class="nav-text">494 目标和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#474-%E4%B8%80%E5%92%8C%E9%9B%B6"><span class="nav-text">474 一和零</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E8%A7%A3%E6%9E%90"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1049-%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F-II-2"><span class="nav-text">1049 最后一块石头的重量 II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#494-%E7%9B%AE%E6%A0%87%E5%92%8C-2"><span class="nav-text">494 目标和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#474-%E4%B8%80%E5%92%8C%E9%9B%B6-2"><span class="nav-text">474 一和零</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TONGYI-Lingma"><span class="nav-text">TONGYI Lingma</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tabby"><span class="nav-text">Tabby</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Copilot"><span class="nav-text">GitHub Copilot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AI-%E7%BC%96%E7%A8%8B%E6%BC%94%E7%A4%BA"><span class="nav-text">AI 编程演示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E8%AF%B4%E6%98%8E"><span class="nav-text">需求说明</span></a></li></ol></li></ol>
     </div>
 </div>
 
