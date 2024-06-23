@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jun 20 2024 22:16:19 GMT+0800">2024-06-20 22:16:19</span>
+                <span class="datetime" data-updated="Fri Jun 21 2024 22:32:03 GMT+0800">2024-06-21 22:32:03</span>
             </span>
         
 
@@ -283,12 +283,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.3k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.6k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>11 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>12 分钟</span>
             </span>
         
         
@@ -318,7 +318,7 @@
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-18 初始记录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">24-06-18 初始记录</span><br><span class="line">24-06-21 网络安全</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h2 id="网络">网络</h2>
 <h3 id="❗TCP-IP-四层网络模型、OSI-七层网络模型">❗TCP IP 四层网络模型、OSI 七层网络模型</h3>
@@ -533,6 +533,26 @@
 </li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">找大于100M的文件</span></span><br><span class="line">find / -size +100M |xargs ls -lh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">看各个目录占用的磁盘大小。这个命令可以把占用大小导出</span></span><br><span class="line">du -h &gt;fs_du.log</span><br></pre></td></tr></table></figure>
+<h2 id="安全">安全</h2>
+<h3 id="黑客常用的-XSS-网络攻击原理">黑客常用的 XSS 网络攻击原理</h3>
+<p>XSS 攻击和 SQL 注入是大部分的黑客进行网络攻击的手段，除此之外还有 CSRF、Session 劫持之类的。</p>
+<p>XSS 攻击：</p>
+<ol>
+<li class="lvl-3">
+<p>反射型攻击（在 URL 链接里嵌入自己的恶意脚本）。这个 URL 地址指向黑客的服务器，他的服务器会返回一段 html+javascript 恶意脚本（跨站点脚本），在网页内运行（跳转、下载、病毒、流氓软件）。</p>
+<ul class="lvl-2">
+<li class="lvl-6">这个脚本，可以通过浏览器获取大量的信息，比如说一些 cookie/密码。可以利用 cookie 伪造用户登录的 session 状态，以用户的名义干一些事情。</li>
+<li class="lvl-6"><strong>处理方法</strong>：HttpOnly方式，在浏览器存放cookie时，设置一个HttpOnly属性。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>持久型攻击。把恶意脚本放到评论内容里面，这个内容会存到数据库，用户访问浏览器就会访问这个恶意脚本。</p>
+<ul class="lvl-2">
+<li class="lvl-6"><strong>处理方法</strong>：对评论内容进行消毒，就是进行一些转义，比如把<code>&gt;</code>转义为<code>&amp;gt</code>之类的。这样就可以把恶意脚本里的html、js脚本之类的失效。</li>
+</ul>
+</li>
+</ol>
+
                 </div>
                 
                         
@@ -653,53 +673,91 @@
                 
 
                 
-                    
-
-
-    <div class="comments-container border-box">
-        <div id="comments-anchor" class="comment-area-title border-box">
-            <i class="fas fa-comments"></i>&nbsp;评论
-        </div>
-        <div class="comment-plugin-fail border-box">
-    <span class="fail-tip">评论插件加载失败</span>
-    <button class="reload keep-button">点击重新加载</button>
-</div>
-<div class="comment-plugin-loading flex-center border-box">
-    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
-    <span class="load-tip">正在加载评论插件</span>
-</div>
-<script data-pjax>
-  window.KeepCommentPlugin = {}
-  window.KeepCommentPlugin.hideLoading = () => {
-    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
-    cplDom.style.display = 'none'
+                    if (hexo-config('comment') && hexo-config('comment.enable') == true && hexo-config('comment.use')) {
+  if (hexo-config('comment.use') == "valine") {
+    @import "./valine.styl"
   }
-  window.KeepCommentPlugin.loadFailHandle = () => {
-    window.KeepCommentPlugin.hideLoading()
-    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
-    cpfDom.style.display = 'flex'
-    cpfDom.querySelector('.reload').addEventListener('click', () => {
-      window.location.reload()
-    })
+  else if (hexo-config('comment.use') == "gitalk") {
+    @import "./gitalk.styl"
   }
-</script>
+  else if (hexo-config('comment.use') == "twikoo") {
+    @import "./twikoo.styl"
+  }
+  else if (hexo-config('comment.use') == "waline") {
+    @import "./waline.styl"
+  }
+}
 
-        
-            
+.comments-container {
+  display inline-block
+  width 100%
+  margin-top var(--component-gap)
 
-    <div class="configuration-items-error-tip border-box">
-    <i class="fa-solid fa-circle-exclamation"></i>
-    请完整填写 Valine 评论插件必需的配置项
-</div>
+  .comment-area-title {
+    width 100%
+    color var(--text-color-3)
+    font-size 1.38rem
+    line-height 2
+
+    i {
+      color var(--text-color-3)
+    }
+
+    +keep-tablet() {
+      font-size 1.2rem
+    }
+  }
 
 
+  .configuration-items-error-tip {
+    display flex
+    align-items center
+    margin-top 1rem
+    color var(--text-color-3)
+    font-size 1rem
 
-        
-    </div>
+    i {
+      margin-right 0.3rem
+      color var(--text-color-3)
+      font-size 1.2rem
+    }
+  }
 
+  .comment-plugin-fail {
+    display none
+    flex-direction column
+    align-items center
+    justify-content space-around
+    width 100%
+    padding 2rem
 
+    .fail-tip {
+      color var(--text-color-3)
+      font-size 1.1rem
+    }
 
+    .reload {
+      margin-top 1rem
+    }
+  }
 
+  .comment-plugin-loading {
+    flex-direction column
+    padding 1rem
+    color var(--text-color-3)
+
+    .loading-icon {
+      color var(--text-color-4)
+      font-size 2rem
+    }
+
+    .load-tip {
+      margin-top 1rem
+      color var(--text-color-4)
+      font-size 1.1rem
+    }
+  }
+}
 
                 
             </div>
@@ -710,7 +768,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E%E3%80%81%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E%E3%80%81%E5%BC%82%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-text">同步阻塞、同步非阻塞、异步非阻塞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">Socket 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%98%AF%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1%E7%9A%84"><span class="nav-text">❔进程间是如何通信的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%8F%88%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2"><span class="nav-text">❔线程间又如何切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%A2%98"><span class="nav-text">场景题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-cpu-%E4%BD%BF%E7%94%A8%E5%88%B0%E8%BE%BE-100-%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E3%80%81%E5%AE%9A%E4%BD%8D%E3%80%81%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E8%BF%9B%E7%A8%8B-kill-%E4%B8%8D%E6%8E%89%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-text">线上进程 kill 不掉怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E5%BF%AB%E6%BB%A1%E4%BA%86%EF%BC%8C%E5%9C%A8%E4%B8%8D%E5%BD%B1%E5%93%8D%E6%9C%8D%E5%8A%A1%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-text">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E%E3%80%81%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E%E3%80%81%E5%BC%82%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-text">同步阻塞、同步非阻塞、异步非阻塞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">Socket 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%98%AF%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1%E7%9A%84"><span class="nav-text">❔进程间是如何通信的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%8F%88%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2"><span class="nav-text">❔线程间又如何切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%A2%98"><span class="nav-text">场景题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-cpu-%E4%BD%BF%E7%94%A8%E5%88%B0%E8%BE%BE-100-%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E3%80%81%E5%AE%9A%E4%BD%8D%E3%80%81%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E8%BF%9B%E7%A8%8B-kill-%E4%B8%8D%E6%8E%89%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-text">线上进程 kill 不掉怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E5%BF%AB%E6%BB%A1%E4%BA%86%EF%BC%8C%E5%9C%A8%E4%B8%8D%E5%BD%B1%E5%93%8D%E6%9C%8D%E5%8A%A1%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-text">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8"><span class="nav-text">安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%91%E5%AE%A2%E5%B8%B8%E7%94%A8%E7%9A%84-XSS-%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="nav-text">黑客常用的 XSS 网络攻击原理</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -900,7 +958,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E%E3%80%81%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E%E3%80%81%E5%BC%82%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-text">同步阻塞、同步非阻塞、异步非阻塞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">Socket 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%98%AF%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1%E7%9A%84"><span class="nav-text">❔进程间是如何通信的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%8F%88%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2"><span class="nav-text">❔线程间又如何切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%A2%98"><span class="nav-text">场景题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-cpu-%E4%BD%BF%E7%94%A8%E5%88%B0%E8%BE%BE-100-%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E3%80%81%E5%AE%9A%E4%BD%8D%E3%80%81%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E8%BF%9B%E7%A8%8B-kill-%E4%B8%8D%E6%8E%89%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-text">线上进程 kill 不掉怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E5%BF%AB%E6%BB%A1%E4%BA%86%EF%BC%8C%E5%9C%A8%E4%B8%8D%E5%BD%B1%E5%93%8D%E6%9C%8D%E5%8A%A1%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-text">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E%E3%80%81%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E%E3%80%81%E5%BC%82%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-text">同步阻塞、同步非阻塞、异步非阻塞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">Socket 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%98%AF%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1%E7%9A%84"><span class="nav-text">❔进程间是如何通信的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%8F%88%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2"><span class="nav-text">❔线程间又如何切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%A2%98"><span class="nav-text">场景题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-cpu-%E4%BD%BF%E7%94%A8%E5%88%B0%E8%BE%BE-100-%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E3%80%81%E5%AE%9A%E4%BD%8D%E3%80%81%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E8%BF%9B%E7%A8%8B-kill-%E4%B8%8D%E6%8E%89%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-text">线上进程 kill 不掉怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E5%BF%AB%E6%BB%A1%E4%BA%86%EF%BC%8C%E5%9C%A8%E4%B8%8D%E5%BD%B1%E5%93%8D%E6%9C%8D%E5%8A%A1%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-text">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8"><span class="nav-text">安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%91%E5%AE%A2%E5%B8%B8%E7%94%A8%E7%9A%84-XSS-%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="nav-text">黑客常用的 XSS 网络攻击原理</span></a></li></ol></li></ol>
     </div>
 </div>
 
