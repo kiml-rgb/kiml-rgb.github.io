@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Jun 25 2024 15:44:48 GMT+0800">2024-06-25 15:44:48</span>
+                <span class="datetime" data-updated="Tue Jun 25 2024 16:40:28 GMT+0800">2024-06-25 16:40:28</span>
             </span>
         
 
@@ -310,12 +310,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>6.5k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>6.9k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>22 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>24 分钟</span>
             </span>
         
         
@@ -1073,7 +1073,12 @@ N 皇后问题分析：</p>
 <h4 id="经典题目-6">经典题目</h4>
 <h5 id="动态规划基础">动态规划基础</h5>
 <blockquote>
-<p><a href=""></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/bae90a3d/#509-%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0-2" >斐波那契数<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/bae90a3d/#70-%E7%88%AC%E6%A5%BC%E6%A2%AF-2" >爬楼梯<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/bae90a3d/#746-%E4%BD%BF%E7%94%A8%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9%E7%88%AC%E6%A5%BC%E6%A2%AF" >使用最小花费爬楼梯<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/5da9e7f4/#62-%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84" >不同路径<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/5da9e7f4/#63-%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84-II" >不同路径 II<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/5da9e7f4/#343-%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86-2" >整数拆分<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <h5 id="背包问题">背包问题</h5>
 <p><img  
@@ -1082,6 +1087,45 @@ N 皇后问题分析：</p>
                        data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/Z2406/20210117171307407.png"
                         alt=""
                  ></p>
+<blockquote>
+<p>问能否能装满背包（或者最多装多少）：<code>dp[j] = max(dp[j], dp[j - nums[i]] + nums[i])</code></p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/23390fe6/#416-%E5%88%86%E5%89%B2%E7%AD%89%E5%92%8C%E5%AD%90%E9%9B%86-2" >分割等和子集<i class="fas fa-external-link-alt"></i></a>：01 背包</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/bde30672/#1049-%E6%9C%80%E5%90%8E%E4%B8%80%E5%9D%97%E7%9F%B3%E5%A4%B4%E7%9A%84%E9%87%8D%E9%87%8F-II" >最后一块石头的重量 II<i class="fas fa-external-link-alt"></i></a>：01 背包</p>
+</blockquote>
+<p>问装满背包有几种方法：<code>dp[j] += dp[j - nums[i]]</code></p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/bde30672/#494-%E7%9B%AE%E6%A0%87%E5%92%8C-2" >目标和<i class="fas fa-external-link-alt"></i></a>：01 背包</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/b717497e/#518-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2-II" >零钱兑换 II<i class="fas fa-external-link-alt"></i></a>：完全背包、组合</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/b717497e/#377-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-%E2%85%A3" >组合总和 Ⅳ<i class="fas fa-external-link-alt"></i></a>：完全背包、排列</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/b717497e/#70-%E7%88%AC%E6%A5%BC%E6%A2%AF-%EF%BC%88%E8%BF%9B%E9%98%B6%EF%BC%89" >爬楼梯 （进阶）<i class="fas fa-external-link-alt"></i></a>：完全背包、排列</p>
+</blockquote>
+<p>问背包装满最大价值：<code>dp[j] = max(dp[j], dp[j - weight[i]] + value[i])</code></p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/bde30672/#474-%E4%B8%80%E5%92%8C%E9%9B%B6-2" >一和零<i class="fas fa-external-link-alt"></i></a>：01 背包</p>
+</blockquote>
+<p>问装满背包所有物品的最小个数：<code>dp[j] = min(dp[j - coins[i]] + 1, dp[j])</code></p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f80db845/#322-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2" >零钱兑换<i class="fas fa-external-link-alt"></i></a>：完全背包。求最小数（for循环先后顺序无所谓）</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f80db845/#279-%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0" >完全平方数<i class="fas fa-external-link-alt"></i></a>：完全背包。求最小数（for循环先后顺序无所谓）</p>
+</blockquote>
+</blockquote>
+<p><strong>遍历顺序</strong></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>01 背包</p>
+<ul class="lvl-2">
+<li class="lvl-6">二维 dp 数组：先遍历背包/先遍历物品都可以</li>
+<li class="lvl-6">一维 dp 数组：只能先遍历物品再遍历背包容量，第二层 for 循环需要从大到小遍历</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>完全背包</p>
+<ul class="lvl-2">
+<li class="lvl-6">一维 dp 数组：第二层 for 循环从小到大遍历。<strong>如果求组合数就是外层 for 循环遍历物品，内层 for 遍历背包</strong>。<strong>如果求排列数就是外层 for 遍历背包，内层 for 循环遍历物品</strong>。如果是求最小数，那么两层for循环排列的先后顺序无所谓。</li>
+</ul>
+</li>
+</ul>
 
                 </div>
                 
