@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Jun 28 2024 11:23:11 GMT+0800">2024-06-28 11:23:11</span>
+                <span class="datetime" data-updated="Fri Jun 28 2024 11:30:50 GMT+0800">2024-06-28 11:30:50</span>
             </span>
         
 
@@ -310,12 +310,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>7k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>7.2k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>24 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>25 分钟</span>
             </span>
         
         
@@ -1106,8 +1106,8 @@ N 皇后问题分析：</p>
 </blockquote>
 <p>问装满背包所有物品的最小个数：<code>dp[j] = min(dp[j - coins[i]] + 1, dp[j])</code></p>
 <blockquote>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f80db845/#322-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2" >零钱兑换<i class="fas fa-external-link-alt"></i></a>：完全背包。求最小数（for循环先后顺序无所谓）</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f80db845/#279-%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0" >完全平方数<i class="fas fa-external-link-alt"></i></a>：完全背包。求最小数（for循环先后顺序无所谓）</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f80db845/#322-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2" >零钱兑换<i class="fas fa-external-link-alt"></i></a>：完全背包。求最小数（for 循环先后顺序无所谓）</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f80db845/#279-%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0" >完全平方数<i class="fas fa-external-link-alt"></i></a>：完全背包。求最小数（for 循环先后顺序无所谓）</p>
 </blockquote>
 </blockquote>
 <p><strong>遍历顺序</strong></p>
@@ -1122,7 +1122,7 @@ N 皇后问题分析：</p>
 <li class="lvl-2">
 <p>完全背包</p>
 <ul class="lvl-2">
-<li class="lvl-6">一维 dp 数组：第二层 for 循环从小到大遍历。<strong>如果求组合数就是外层 for 循环遍历物品，内层 for 遍历背包</strong>。<strong>如果求排列数就是外层 for 遍历背包，内层 for 循环遍历物品</strong>。如果是求最小数，那么两层for循环排列的先后顺序无所谓。</li>
+<li class="lvl-6">一维 dp 数组：第二层 for 循环从小到大遍历。<strong>如果求组合数就是外层 for 循环遍历物品，内层 for 遍历背包</strong>。<strong>如果求排列数就是外层 for 遍历背包，内层 for 循环遍历物品</strong>。如果是求最小数，那么两层 for 循环排列的先后顺序无所谓。</li>
 </ul>
 </li>
 </ul>
@@ -1133,14 +1133,19 @@ N 皇后问题分析：</p>
 <p>[打家劫舍 III][<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f5901d56/#337-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D-III" >https://kiml.site/posts/f5901d56/#337-打家劫舍-III<i class="fas fa-external-link-alt"></i></a>]</p>
 </blockquote>
 <p><strong>递推公式</strong><br>
-一般都是要求相邻格子要跳过，所以公式从前前个获取（因此初始化数组需要0，1位置）：<code>dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i])</code></p>
+一般都是要求相邻格子要跳过，所以公式从前前个获取（因此初始化数组需要 0，1 位置）：<code>dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i])</code></p>
 <h5 id="股票问题">股票问题</h5>
 <blockquote>
 <p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f80b512c/#121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA" >买卖股票的最佳时机<i class="fas fa-external-link-alt"></i></a></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f80b512c/#122-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-II" >买卖股票的最佳时机 II<i class="fas fa-external-link-alt"></i></a></p>
 <p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f80b512c/#123-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-III" >买卖股票的最佳时机 III<i class="fas fa-external-link-alt"></i></a></p>
-<p>[]</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/ab0ba29f/#188-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA-IV" >买卖股票的最佳时机 IV<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/ab0ba29f/#309-%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F" >最佳买卖股票时机含冷冻期<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/ab0ba29f/#714-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E5%90%AB%E6%89%8B%E7%BB%AD%E8%B4%B9" >买卖股票的最佳时机含手续费<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
+<p><strong>递推公式</strong><br>
+dp 数组的定义为二维数组（可以塌缩，但是二维比较好理解）：不同状态计入数组。当天状态一般为持有/不持有两种；如果加入天数，状态需要增加第一天持有/不持有，第二天持有/不持有……。持有的状态递推为上一次不持有 - 当天买入股票价格；不持有的状态递推为上一次持有 + 当天卖出股票的价格。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (j % <span class="number">2</span> == <span class="number">0</span>) &#123;    </span><br><span class="line">    <span class="comment">// 偶数买入    </span></span><br><span class="line">    dp[i][j] = Math.max(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - <span class="number">1</span>] - prices[i]);    </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;    </span><br><span class="line">    <span class="comment">// 奇数卖出    </span></span><br><span class="line">    dp[i][j] = Math.max(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + prices[i]);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
                 
