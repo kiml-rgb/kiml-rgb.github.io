@@ -9,7 +9,7 @@
     
     <title>
         
-            聚合支付-功能实现 |
+            【代码模板】二维码的生成 |
         
         Kiml&#39;s Blog
     </title>
@@ -219,7 +219,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        聚合支付-功能实现
+                        【代码模板】二维码的生成
                     </div>
                 
 
@@ -243,49 +243,28 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-05-23 09:59:53</span>
+                <span class="datetime">2024-06-28 17:57:09</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Jun 28 2024 17:27:20 GMT+0800">2024-06-28 17:27:20</span>
+                <span class="datetime" data-updated="Fri Jun 28 2024 18:05:59 GMT+0800">2024-06-28 18:05:59</span>
             </span>
         
 
         
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">后端项目</a></li>
-                        
-                    
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E8%81%9A%E5%90%88%E6%94%AF%E4%BB%98/">聚合支付</a></li>
-                        
-                    
-                </ul>
-            </span>
-        
 
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java/">Java</a></li>
-                        
-                    
-                </ul>
-            </span>
         
 
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.1k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>522 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
             </span>
         
         
@@ -308,166 +287,27 @@
 
                     <ul class="lvl-0">
 <li class="lvl-2">
-<p>前言<br>第一部分 - 商户注册和资质申请</p>
-<p>第二部分 - 对接 SAAS</p>
-<p>第三部分 - 闪聚支付</p>
+<p>前言<br>
+ZXing 是一个开源的，用 Java 编写的多格式的 1D / 2D 条码图像处理库，使用 ZXing 可以生成、识别 QR Code（二维码）。常用的二维码处理库还有 zbar，近几年已经不再更新代码，下边介绍 ZXing 生成二维码的方法。</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">24.05.23 初始记录（商户注册&amp;资质申请）</span><br><span class="line">24.05.29 获取短信验证码</span><br><span class="line">24.05.30 文件上传</span><br><span class="line">24.06.02 Saas对接</span><br><span class="line">24.06.04 bug新增，烦，遇到bug，进展很缓慢。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-28 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h2 id="商户注册-资质申请">商户注册&amp;资质申请</h2>
-<h3 id="系统交互流程">系统交互流程</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240523/Snipaste_2024-05-23_09-58-03.png"
-                        alt=""
-                 ></p>
-<p>商户注册的流程由商户平台应用、商户服务、SaaS 平台、验证码服务四个微服务之间进行交互完成，各微服务的职责介绍如下：</p>
-<p>1）商户平台应用：此应用主要为商户提供业务功能，包括：商户资质申请、员工管理、门店管理等功能。</p>
-<p>2）商户服务： 提供商户管理的相关服务接口，供其它微服务调用，主要为商户平台应用提供接口服务，功能包括：商户基本信息管理、资质申请（这个功能蛮莫名其妙的，写了但是没有后续的审核操作，不知道干什么用的😥）、商户应用管理、渠道参数配置、商户员工信息管理、商户门店管理等。</p>
-<p>3）SaaS 平台：闪聚支付项目是一个 SaaS 平台 ，所谓 SaaS 平台即多个用户租用平台的业务功能，这样用户即可省去软件系统开发的成本，每个商户就是一个租户，所以又称为多租户系统。 SaaS 平台提供租户管理、账号管理、权限管理、资源管理、套餐管理、系统认证授权等功业务功能。在上图商户注册的流程中，商户注册的账号等信息需要写入 SaaS 平台，由 SaaS 平台统一管理账号，分配权限，商户统一通过 SaaS 平台登录闪聚支付。</p>
-<p>4）验证码服务：提供获取短信验证码、校验验证码的接口。 商户使用手机号进行注册，平台通过校验手机验证码来确认是否本人在注册。<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240523/Snipaste_2024-05-23_09-58-03.png"
-                        alt="Snipaste_2024-05-23_09-58-03.png"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240529/Snipaste_2024-05-29_17-04-38.png"
-                        alt=""
-                 ></p>
-<h3 id="获取短信验证码">获取短信验证码</h3>
-<p>短信验证码为一个开源的服务，可单独开启使用。</p>
-<p>开源 git 地址：(<a class="link"   target="_blank" rel="noopener" href="https://github.com/fightingape/sailing" >https://github.com/fightingape/sailing<i class="fas fa-external-link-alt"></i></a>)</p>
-<blockquote>
-<p>大致看了一下这个开源项目是根据传入的业务名称，获取配置好的 code 长度和 Service 实现。后续应该还可以加入别的实现（比如阿里云的短信服务等）</p>
-<p>其中生成验证信息这个方法。<br>
-1.根据业务名称 + 随机 UUID 生成 key 存入 redis。这个 key 会返回给服务请求方。<br>
-2.根据配置好的 Map 获取名称对应的 len 即 code 码长度，如果传入不存在的 name，会直接报错。<br>
-3.验证服务就是根据返回给服务请求方的 key，查询 Redis 缓存是否存在，不存在返回 false，即验证码错误。</p>
-</blockquote>
-<p>本项目中没有使用，只是简单控制台打印了一下。也可以直接在这个服务里存入 redis（因为要申请开通阿里云短信服务有点麻烦，又要多部署一个服务，而且这个功能比较简单不打算花时间开通了）。</p>
-<p>之前有写过阿里云的短信，关联文章：</p>
-<blockquote>
-<p>内链：[[【代码模板】阿里云接口实现短信发送]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/9b7300f0/" >【代码模板】阿里云接口实现短信发送<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h3 id="文件上传">文件上传</h3>
-<p>资质申请的流程中涉及到了文件上传的功能。之前已经写过使用 Minio 作为文件服务器和用阿里云 OSS 作为文件存储两种方式。这里的上传直接把七牛云换成了 Minio。顺便整理了一下之前写过的两种方式。</p>
-<p>文件上传：</p>
-<blockquote>
-<p>内链：[[【代码模板】文件存储]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/159a80d0/" >【代码模板】文件存储<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h2 id="支付参数配置">支付参数配置</h2>
-<blockquote>
-<p>这个部分是项目的核心，之前做别的项目的时候，接触了微信支付和支付宝支付。就和这个项目中说的一样，用户只能先选择支付类型。再调用对应的接口获取支付二维码。而通过聚合支付这个平台，可以只生成一个链接，根据用户扫码，跳转不同的支付。</p>
-</blockquote>
-<p><strong>商户应该配置哪些第三方支付渠道的参数</strong><br>
-服务类型是闪聚支付平台为商户提供的聚合支付服务通道，共分为线上和线下两大类：</p>
-<p><strong>线上支付服务通道</strong>：</p>
 <ol>
 <li class="lvl-3">
-<p>手机 APP 支付</p>
-</li>
-<li class="lvl-3">
-<p>PC 网页支付</p>
-</li>
-<li class="lvl-3">
-<p>手机网页支付</p>
-</li>
-<li class="lvl-3">
-<p>小程序支付<br>
-<strong>线下支付服务通道</strong>：</p>
-</li>
-<li class="lvl-3">
-<p>收款码支付 (C 扫 B)：即商户出示付款码，用户扫收款码完成支付。</p>
-</li>
-<li class="lvl-3">
-<p>B 扫 C：即顾客出示付款码，商户扫描付款码。</p>
+<p>引入依赖</p>
 </li>
 </ol>
-<h3 id="系统交互流程-2">系统交互流程</h3>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>商户应用创建流程<br>
-<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240530/Snipaste_2024-05-30_21-35-45.png"
-                        alt=""
-                 ></p>
-</li>
-<li class="lvl-2">
-<p>商户渠道参数配置交互流程<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240530/Snipaste_2024-05-30_21-53-28.png"
-                        alt=""
-                 ><br>
-交易服务职责：提供支付渠道参数配置、订单、发起支付、转账、退款等功能。</p>
-</li>
-</ul>
-<h3 id="C-扫-B">C 扫 B</h3>
-<blockquote>
-<p>1、为门店生成统一的支付二维码，用户扫一下二维码即可使用微信支付也可使用支付宝完成支付。</p>
-<p>2、闪聚支付平台与微信、支付宝对接，闪聚支付作为中介，最终的支付动作（银行交易）仍通过微信、支付宝进行。</p>
-<p>3、闪聚平台作为中介调用微信、支付宝的下单接口，完成支付。</p>
-</blockquote>
-<h2 id="对接-SAAS">对接 SAAS</h2>
-<h3 id="系统交互流程-3">系统交互流程</h3>
-<p>商户注册时与 SAAS 的交互流程已经在商户注册模块给出。</p>
-<h3 id="分布式认证需求">分布式认证需求</h3>
-<ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 二维码生成&amp;识别组件--&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.zxing<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.zxing<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javase<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
 <li class="lvl-3">
-<p>统一认证授权分布式系统的每个服务（系统）都会有认证、授权的需求，如果每个服务都实现一套认证授权逻辑会非常冗余，考虑分布式系统共享性的特点，需要由独立的认证服务来处理系统认证授权的请求。如下图，闪聚支付平台包括：商户平台应用、运营平台应用、门户应用，每个应用都需要身份认证，闪聚支付平台统一由 UAA 认证服务完成认证。<br>
-<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240531/Snipaste_2024-05-31_17-47-47.png"
-                        alt=""
-                 ></p>
-</li>
-<li class="lvl-3">
-<p>开放认证体系考虑分布式系统开放性的特点，UAA 认证服务不仅服务于平台自身，并且对第三方系统也要提供认证，平台应提供扩展和开放的认证机制，以开放 API 的方式供第三方应用接入，一方应用（内部系统服务）和三方应用（第三方应用）均采用统一机制接入。</p>
+<p>生成二维码方法</p>
 </li>
 </ol>
-<p>分布式系统认证技术方案详见下图：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240603/Snipaste_2024-06-03_14-11-54.png"
-                        alt=""
-                 ></p>
-<p>流程所涉及到统一账号服务、UAA 服务、API 网关这三个组件职责如下:</p>
-<p>1） 统一账号服务：提供商户和平台运营人员的登录账号、密码、角色、权限、资源等系统级信息的管理，不包含用户业务信息。</p>
-<p>2） 统一认证服务：它承载了 OAuth2.0 接入方认证、登入用户的认证、授权以及生成令牌的职责，完成实际的用户认证、授权功能。</p>
-<p>3） API 网关：作为系统的唯一入口，API 网关为接入方提供定制的 API 集合，它可能还具有其它职责，如身份验证、监控、负载 均衡、缓存等。API 网关方式的核心要点是，所有的接入方和消费端都通过统一的网关接入微服务，在网关层处理 所有的非业务功能。</p>
-<h2 id="BUG-记录">BUG 记录</h2>
-<h3 id="RestTemplate-使用-GET-请求，返回中文乱码">RestTemplate 使用 GET 请求，返回中文乱码</h3>
-<blockquote>
-<p>内链：[[RestTemplate使用GET请求，返回中文乱码]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/419abf20/" >RestTemplate使用GET请求，返回中文乱码<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h3 id="项目中访问-Swagger-地址，404（未解决）">项目中访问 Swagger 地址，404（未解决）</h3>
-<p>不管怎么访问 swagger 的页面地址，都返回 404。但是直接用 apifox 的 URL 导入，是可以成功的🥴。</p>
-<h3 id="使用-mapstruct-转换对象，报错-Cannot-find-implementation-for……">使用 mapstruct 转换对象，报错 Cannot find implementation for……</h3>
-<p>这个项目中是因为 User 微服务没有依赖 mapstruct。但是 swagger 中有这个依赖，他直接用了 swagger 中的依赖。网上搜索还有一种情况可能出现这个问题。</p>
-<blockquote>
-<p>内链：[[使用mapstruct转换对象，报错Cannot find implementation for……]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/82c00b85/" >使用mapstruct转换对象，报错Cannot find implementation for……<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h3 id="前端-JS-在-Long-长度大于-17-位时，出现精度丢失的问题">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</h3>
-<blockquote>
-<p>内链：[[Long长度大于17位时，精度丢失]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/b4cd8fc4/" >Long长度大于17位时，精度丢失<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QRCodeUtil</span> &#123;  </span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * 生成二维码  </span></span><br><span class="line"><span class="comment">     *  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> content 二维码对应的URL  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> width   二维码图片宽度  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> height  二维码图片高度  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 二维码二进制流  </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">createQRCode</span><span class="params">(String content, <span class="type">int</span> width, <span class="type">int</span> height)</span> <span class="keyword">throws</span> IOException &#123;  </span><br><span class="line">        <span class="type">String</span> <span class="variable">resultImage</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;  </span><br><span class="line">        <span class="comment">// 除了尺寸，传入内容不能为空  </span></span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isEmpty(content)) &#123;  </span><br><span class="line">            <span class="type">ServletOutputStream</span> <span class="variable">stream</span> <span class="operator">=</span> <span class="literal">null</span>;  </span><br><span class="line">            <span class="type">ByteArrayOutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();  </span><br><span class="line">            <span class="comment">// 二维码参数  </span></span><br><span class="line">            <span class="meta">@SuppressWarnings(&quot;rawtypes&quot;)</span>  </span><br><span class="line">            HashMap&lt;EncodeHintType, Comparable&gt; hints = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();  </span><br><span class="line">            <span class="comment">// 指定字符编码为“utf-8”  </span></span><br><span class="line">            hints.put(EncodeHintType.CHARACTER_SET, <span class="string">&quot;utf-8&quot;</span>);  </span><br><span class="line">            <span class="comment">// L M Q H四个纠错等级从低到高，指定二维码的纠错等级为M  </span></span><br><span class="line">            <span class="comment">// 纠错级别越高，可以修正的错误就越多，需要的纠错码的数量也变多，相应的二维吗可储存的数据就会减少  </span></span><br><span class="line">            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);  </span><br><span class="line">            <span class="comment">// 设置图片的边距  </span></span><br><span class="line">            hints.put(EncodeHintType.MARGIN, <span class="number">1</span>);  </span><br><span class="line">  </span><br><span class="line">            <span class="keyword">try</span> &#123;  </span><br><span class="line">                <span class="comment">// zxing生成二维码核心类  </span></span><br><span class="line">                <span class="type">QRCodeWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">QRCodeWriter</span>();  </span><br><span class="line">                <span class="comment">// 把输入文本按照指定规则转成二维吗  </span></span><br><span class="line">                <span class="type">BitMatrix</span> <span class="variable">bitMatrix</span> <span class="operator">=</span> writer.encode(content, BarcodeFormat.QR_CODE, width, height, hints);  </span><br><span class="line">                <span class="comment">// 生成二维码图片流  </span></span><br><span class="line">                <span class="type">BufferedImage</span> <span class="variable">bufferedImage</span> <span class="operator">=</span> MatrixToImageWriter.toBufferedImage(bitMatrix);  </span><br><span class="line">                <span class="comment">// 输出流  </span></span><br><span class="line">                ImageIO.write(bufferedImage, <span class="string">&quot;png&quot;</span>, os);  </span><br><span class="line">                <span class="comment">/**  </span></span><br><span class="line"><span class="comment">                 * 原生转码前面没有 data:image/png;base64 这些字段，返回给前端是无法被解析，所以加上前缀  </span></span><br><span class="line"><span class="comment">                 */</span>  </span><br><span class="line">                resultImage = <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;data:image/png;base64,&quot;</span> + EncryptUtil.encodeBase64(os.toByteArray()));  </span><br><span class="line">                <span class="keyword">return</span> resultImage;  </span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">                e.printStackTrace();  </span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BusinessException</span>(CommonErrorCode.E_200007);  </span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;  </span><br><span class="line">                <span class="keyword">if</span> (stream != <span class="literal">null</span>) &#123;  </span><br><span class="line">                    stream.flush();  </span><br><span class="line">                    stream.close();  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
                 
@@ -476,11 +316,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                聚合支付-功能实现
+                【代码模板】二维码的生成
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/8582b8be/
+                posts/5ee0f6a5/
             </div>
         </div>
 
@@ -496,7 +336,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-05-23 09:59</div>
+                <div class="content">2024-06-28 17:57</div>
             </div>
 
 
@@ -529,14 +369,6 @@
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
                         
-                            <ul class="post-tags-box border-box">
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java/">Java</a>
-                                    </li>
-                                
-                            </ul>
-                        
                     </div>
                     <div>
                         
@@ -548,31 +380,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/posts/419abf20/"
-                                   title="RestTemplate使用GET请求，返回中文乱码"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">RestTemplate使用GET请求，返回中文乱码</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/ff783527/"
-                                   title="优化 Hexo 网站的永久链接格式"
+                                   href="/posts/ab0ba29f/"
+                                   title="代码随想录算法训练营第四十天-188买卖股票的最佳时机IV、309最佳买卖股票时机含冷冻期、714买卖股票的最佳时机含手续费"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">优化 Hexo 网站的永久链接格式</span>
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第四十天-188买卖股票的最佳时机IV、309最佳买卖股票时机含冷冻期、714买卖股票的最佳时机含手续费</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -642,7 +458,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%88%B7%E6%B3%A8%E5%86%8C-%E8%B5%84%E8%B4%A8%E7%94%B3%E8%AF%B7"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E4%BB%98%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%89%AB-B"><span class="nav-text">C 扫 B</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8E%A5-SAAS"><span class="nav-text">对接 SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BUG-%E8%AE%B0%E5%BD%95"><span class="nav-text">BUG 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-%E4%BD%BF%E7%94%A8-GET-%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate 使用 GET 请求，返回中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AE-Swagger-%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问 Swagger 地址，404（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mapstruct-%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99-Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用 mapstruct 转换对象，报错 Cannot find implementation for……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF-JS-%E5%9C%A8-Long-%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E-17-%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</span></a></li></ol></li></ol>
+        
     </div>
 </div>
 
@@ -832,7 +648,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%88%B7%E6%B3%A8%E5%86%8C-%E8%B5%84%E8%B4%A8%E7%94%B3%E8%AF%B7"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E4%BB%98%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%89%AB-B"><span class="nav-text">C 扫 B</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8E%A5-SAAS"><span class="nav-text">对接 SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BUG-%E8%AE%B0%E5%BD%95"><span class="nav-text">BUG 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-%E4%BD%BF%E7%94%A8-GET-%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate 使用 GET 请求，返回中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AE-Swagger-%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问 Swagger 地址，404（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mapstruct-%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99-Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用 mapstruct 转换对象，报错 Cannot find implementation for……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF-JS-%E5%9C%A8-Long-%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E-17-%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</span></a></li></ol></li></ol>
+        
     </div>
 </div>
 
