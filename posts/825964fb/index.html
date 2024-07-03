@@ -9,7 +9,7 @@
     
     <title>
         
-            【代码模板】二维码的生成 |
+            代码随想录算法训练营第四十一天-300最长递增子序列、674最长连续递增序列、718最长重复子数组 |
         
         Kiml&#39;s Blog
     </title>
@@ -219,7 +219,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        【代码模板】二维码的生成
+                        代码随想录算法训练营第四十一天-300最长递增子序列、674最长连续递增序列、718最长重复子数组
                     </div>
                 
 
@@ -243,12 +243,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-06-28 17:57:09</span>
+                <span class="datetime">2024-07-01 11:04:29</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jul 03 2024 18:51:40 GMT+0800">2024-07-03 18:51:40</span>
+                <span class="datetime" data-updated="Wed Jul 03 2024 18:51:49 GMT+0800">2024-07-03 18:51:49</span>
             </span>
         
 
@@ -256,10 +256,10 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">后端项目</a></li>
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
                         
                     
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">准备工作</a></li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/">代码随想录</a></li>
                         
                     
                 </ul>
@@ -267,11 +267,20 @@
         
 
         
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>522 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>596 字</span>
             </span>
         
         
@@ -300,26 +309,81 @@
                     <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-ZXing 是一个开源的，用 Java 编写的多格式的 1D / 2D 条码图像处理库，使用 ZXing 可以生成、识别 QR Code（二维码）。常用的二维码处理库还有 zbar，近几年已经不再更新代码，下边介绍 ZXing 生成二维码的方法。</p>
+状态：300 看解析，674AC，718看解析</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-06-28 初始记录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-07-01 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
+<h2 id="初步题解">初步题解</h2>
+<h3 id="300-最长递增子序列">300 最长递增子序列</h3>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-increasing-subsequence" >https://leetcode.cn/problems/longest-increasing-subsequence<i class="fas fa-external-link-alt"></i></a>)</p>
 <ol>
 <li class="lvl-3">
-<p>引入依赖</p>
+<p>确定 <code>dp[i]</code> 的含义：<code>dp[i]</code> 表示第 i 个下标前的最长递增子序列的长度</p>
 </li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 二维码生成&amp;识别组件--&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.zxing<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.zxing<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javase<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
 <li class="lvl-3">
-<p>生成二维码方法</p>
+<p>递推公式：<code>dp[i] = Math.max(dp[i], dp[j] + 1)</code>。</p>
+</li>
+<li class="lvl-3">
+<p>dp 数组的初始化：<code>dp</code> 数组所有元素的初始化值都为 1。</p>
+</li>
+<li class="lvl-4">
+<p>遍历顺序：从前向后遍历。</p>
+</li>
+<li class="lvl-4">
+<p>打印 dp 数组（<em>用于 debug</em>）</p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QRCodeUtil</span> &#123;  </span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * 生成二维码  </span></span><br><span class="line"><span class="comment">     *  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> content 二维码对应的URL  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> width   二维码图片宽度  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> height  二维码图片高度  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 二维码二进制流  </span></span><br><span class="line"><span class="comment">     */</span>  </span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">createQRCode</span><span class="params">(String content, <span class="type">int</span> width, <span class="type">int</span> height)</span> <span class="keyword">throws</span> IOException &#123;  </span><br><span class="line">        <span class="type">String</span> <span class="variable">resultImage</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;  </span><br><span class="line">        <span class="comment">// 除了尺寸，传入内容不能为空  </span></span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isEmpty(content)) &#123;  </span><br><span class="line">            <span class="type">ServletOutputStream</span> <span class="variable">stream</span> <span class="operator">=</span> <span class="literal">null</span>;  </span><br><span class="line">            <span class="type">ByteArrayOutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();  </span><br><span class="line">            <span class="comment">// 二维码参数  </span></span><br><span class="line">            <span class="meta">@SuppressWarnings(&quot;rawtypes&quot;)</span>  </span><br><span class="line">            HashMap&lt;EncodeHintType, Comparable&gt; hints = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();  </span><br><span class="line">            <span class="comment">// 指定字符编码为“utf-8”  </span></span><br><span class="line">            hints.put(EncodeHintType.CHARACTER_SET, <span class="string">&quot;utf-8&quot;</span>);  </span><br><span class="line">            <span class="comment">// L M Q H四个纠错等级从低到高，指定二维码的纠错等级为M  </span></span><br><span class="line">            <span class="comment">// 纠错级别越高，可以修正的错误就越多，需要的纠错码的数量也变多，相应的二维吗可储存的数据就会减少  </span></span><br><span class="line">            hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);  </span><br><span class="line">            <span class="comment">// 设置图片的边距  </span></span><br><span class="line">            hints.put(EncodeHintType.MARGIN, <span class="number">1</span>);  </span><br><span class="line">  </span><br><span class="line">            <span class="keyword">try</span> &#123;  </span><br><span class="line">                <span class="comment">// zxing生成二维码核心类  </span></span><br><span class="line">                <span class="type">QRCodeWriter</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">QRCodeWriter</span>();  </span><br><span class="line">                <span class="comment">// 把输入文本按照指定规则转成二维吗  </span></span><br><span class="line">                <span class="type">BitMatrix</span> <span class="variable">bitMatrix</span> <span class="operator">=</span> writer.encode(content, BarcodeFormat.QR_CODE, width, height, hints);  </span><br><span class="line">                <span class="comment">// 生成二维码图片流  </span></span><br><span class="line">                <span class="type">BufferedImage</span> <span class="variable">bufferedImage</span> <span class="operator">=</span> MatrixToImageWriter.toBufferedImage(bitMatrix);  </span><br><span class="line">                <span class="comment">// 输出流  </span></span><br><span class="line">                ImageIO.write(bufferedImage, <span class="string">&quot;png&quot;</span>, os);  </span><br><span class="line">                <span class="comment">/**  </span></span><br><span class="line"><span class="comment">                 * 原生转码前面没有 data:image/png;base64 这些字段，返回给前端是无法被解析，所以加上前缀  </span></span><br><span class="line"><span class="comment">                 */</span>  </span><br><span class="line">                resultImage = <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;data:image/png;base64,&quot;</span> + EncryptUtil.encodeBase64(os.toByteArray()));  </span><br><span class="line">                <span class="keyword">return</span> resultImage;  </span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">                e.printStackTrace();  </span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BusinessException</span>(CommonErrorCode.E_200007);  </span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;  </span><br><span class="line">                <span class="keyword">if</span> (stream != <span class="literal">null</span>) &#123;  </span><br><span class="line">                    stream.flush();  </span><br><span class="line">                    stream.close();  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">lengthOfLIS</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;  </span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];  </span><br><span class="line">  </span><br><span class="line">    Arrays.fill(dp, <span class="number">1</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> <span class="variable">maxLength</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; dp.length; i++) &#123;  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; i; j++) &#123;  </span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; nums[j]) &#123;  </span><br><span class="line">                dp[i] = Math.max(dp[i], dp[j] + <span class="number">1</span>);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        maxLength = Math.max(maxLength, dp[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> maxLength;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="674-最长连续递增序列">674 最长连续递增序列</h3>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-continuous-increasing-subsequence" >https://leetcode.cn/problems/longest-continuous-increasing-subsequence<i class="fas fa-external-link-alt"></i></a>)</p>
+<ol>
+<li class="lvl-3">
+<p>确定 <code>dp[i]</code> 的含义：<code>dp[i]</code> 表示第 i 个下标前的最长连续递增子序列的长度</p>
+</li>
+<li class="lvl-3">
+<p>递推公式：<code>dp[i] = Math.max(dp[i], dp[i - 1] + 1)</code>。</p>
+</li>
+<li class="lvl-3">
+<p>dp 数组的初始化：<code>dp</code> 数组所有元素的初始化值都为 1。</p>
+</li>
+<li class="lvl-3">
+<p>遍历顺序：从前向后遍历。</p>
+</li>
+<li class="lvl-3">
+<p>打印 dp 数组（<em>用于 debug</em>）</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findLengthOfLCIS</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;  </span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];  </span><br><span class="line">  </span><br><span class="line">    Arrays.fill(dp, <span class="number">1</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> <span class="variable">maxLength</span> <span class="operator">=</span> <span class="number">1</span>;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; dp.length; i++) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (nums[i] &gt; nums[i - <span class="number">1</span>]) &#123;  </span><br><span class="line">            dp[i] = Math.max(dp[i], dp[i - <span class="number">1</span>] + <span class="number">1</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">        maxLength = Math.max(maxLength, dp[i]);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> maxLength;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="718-最长重复子数组">718 最长重复子数组</h3>
+<ol>
+<li class="lvl-3">
+<p>确定 <code>dp[i][j]</code> 的含义：num1 到 i - 1；num2 到 j - 1 位置的最长重复数组。</p>
+</li>
+<li class="lvl-3">
+<p>递推公式：<code>dp[i][j] = dp[i - 1][j - 1] + 1; </code>。</p>
+</li>
+<li class="lvl-3">
+<p>dp 数组的初始化：<code>dp</code> 数组所有元素的初始化值都为 0。</p>
+</li>
+<li class="lvl-3">
+<p>遍历顺序：从前向后遍历。</p>
+</li>
+<li class="lvl-3">
+<p>打印 dp 数组（<em>用于 debug</em>）题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-length-of-repeated-subarray" >https://leetcode.cn/problems/maximum-length-of-repeated-subarray<i class="fas fa-external-link-alt"></i></a>)</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findLength</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2)</span> &#123;  </span><br><span class="line">    <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[nums1.length + <span class="number">1</span>][nums2.length + <span class="number">1</span>];  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> <span class="variable">maxLength</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= nums1.length; i++) &#123;  </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= nums2.length; j++) &#123;  </span><br><span class="line">            <span class="keyword">if</span> (nums1[i - <span class="number">1</span>] == nums2[j - <span class="number">1</span>]) &#123;  </span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;  </span><br><span class="line">            &#125;  </span><br><span class="line">            maxLength = Math.max(dp[i][j], maxLength);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> maxLength;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="看解析">看解析</h2>
+<h3 id="300-最长递增子序列-2">300 最长递增子序列</h3>
+<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0300.%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97.html" >https://programmercarl.com/0300.最长上升子序列.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<h3 id="674-最长连续递增序列-2">674 最长连续递增序列</h3>
+<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0674.%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97.html" >https://programmercarl.com/0674.最长连续递增序列.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<h3 id="718-最长重复子数组-2">718 最长重复子数组</h3>
+<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0718.%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84.html" >https://programmercarl.com/0718.最长重复子数组.html<i class="fas fa-external-link-alt"></i></a>)</p>
 
                 </div>
                 
@@ -328,11 +392,11 @@ ZXing 是一个开源的，用 Java 编写的多格式的 1D / 2D 条码图像�
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                【代码模板】二维码的生成
+                代码随想录算法训练营第四十一天-300最长递增子序列、674最长连续递增序列、718最长重复子数组
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/5ee0f6a5/
+                posts/825964fb/
             </div>
         </div>
 
@@ -348,7 +412,7 @@ ZXing 是一个开源的，用 Java 编写的多格式的 1D / 2D 条码图像�
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-06-28 17:57</div>
+                <div class="content">2024-07-01 11:04</div>
             </div>
 
 
@@ -381,6 +445,14 @@ ZXing 是一个开源的，用 Java 编写的多格式的 1D / 2D 条码图像�
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
                         
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+                                    </li>
+                                
+                            </ul>
+                        
                     </div>
                     <div>
                         
@@ -392,31 +464,15 @@ ZXing 是一个开源的，用 Java 编写的多格式的 1D / 2D 条码图像�
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/posts/825964fb/"
-                                   title="代码随想录算法训练营第四十一天-300最长递增子序列、674最长连续递增序列、718最长重复子数组"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第四十一天-300最长递增子序列、674最长连续递增序列、718最长重复子数组</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/ab0ba29f/"
-                                   title="代码随想录算法训练营第四十天-188买卖股票的最佳时机IV、309最佳买卖股票时机含冷冻期、714买卖股票的最佳时机含手续费"
+                                   href="/posts/5ee0f6a5/"
+                                   title="【代码模板】二维码的生成"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第四十天-188买卖股票的最佳时机IV、309最佳买卖股票时机含冷冻期、714买卖股票的最佳时机含手续费</span>
+                                        <span class="post-nav-title-item text-ellipsis">【代码模板】二维码的生成</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -486,7 +542,7 @@ ZXing 是一个开源的，用 Java 编写的多格式的 1D / 2D 条码图像�
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E9%A2%98%E8%A7%A3"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97"><span class="nav-text">300 最长递增子序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#674-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97"><span class="nav-text">674 最长连续递增序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#718-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84"><span class="nav-text">718 最长重复子数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E8%A7%A3%E6%9E%90"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97-2"><span class="nav-text">300 最长递增子序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#674-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97-2"><span class="nav-text">674 最长连续递增序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#718-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84-2"><span class="nav-text">718 最长重复子数组</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -676,7 +732,7 @@ ZXing 是一个开源的，用 Java 编写的多格式的 1D / 2D 条码图像�
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E9%A2%98%E8%A7%A3"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97"><span class="nav-text">300 最长递增子序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#674-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97"><span class="nav-text">674 最长连续递增序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#718-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84"><span class="nav-text">718 最长重复子数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E8%A7%A3%E6%9E%90"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#300-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97-2"><span class="nav-text">300 最长递增子序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#674-%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E9%80%92%E5%A2%9E%E5%BA%8F%E5%88%97-2"><span class="nav-text">674 最长连续递增序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#718-%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%90%E6%95%B0%E7%BB%84-2"><span class="nav-text">718 最长重复子数组</span></a></li></ol></li></ol>
     </div>
 </div>
 
