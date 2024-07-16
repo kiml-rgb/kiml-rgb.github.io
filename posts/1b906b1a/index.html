@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Jul 11 2024 15:07:19 GMT+0800">2024-07-11 15:07:19</span>
+                <span class="datetime" data-updated="Tue Jul 16 2024 17:48:44 GMT+0800">2024-07-16 17:48:44</span>
             </span>
         
 
@@ -310,12 +310,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>7.6k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>7.7k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>26 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>27 分钟</span>
             </span>
         
         
@@ -1180,6 +1180,21 @@ dp 数组的定义为二维数组，可以塌缩。定义：第一个参数到 i
 <h3 id="单调栈">单调栈</h3>
 <blockquote>
 <p><strong>一维数组，要寻找任一个元素的右边或者左边第一个比自己大或者小的元素的位置，此时可以用单调栈</strong>。</p>
+</blockquote>
+<p>使用单调栈主要有三个判断条件。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>当前遍历的元素 <code>T[i]</code> 小于栈顶元素 <code>T[st.top()]</code> 的情况</p>
+</li>
+<li class="lvl-2">
+<p>当前遍历的元素 <code>T[i]</code> 等于栈顶元素 <code>T[st.top()]</code> 的情况</p>
+</li>
+<li class="lvl-2">
+<p>当前遍历的元素 <code>T[i]</code> 大于栈顶元素 <code>T[st.top()]</code> 的情况</p>
+</li>
+</ul>
+<blockquote>
+<p>[]</p>
 </blockquote>
 
                 </div>

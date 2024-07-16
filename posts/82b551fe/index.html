@@ -9,7 +9,7 @@
     
     <title>
         
-            代码随想录算法训练营第四十五天-739每日温度、496下一个更大元素 I、503下一个更大元素II |
+            代码随想录算法训练营第四十六天-42接雨水、84柱状图中最大的矩形 |
         
         Kiml&#39;s Blog
     </title>
@@ -219,7 +219,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        代码随想录算法训练营第四十五天-739每日温度、496下一个更大元素 I、503下一个更大元素II
+                        代码随想录算法训练营第四十六天-42接雨水、84柱状图中最大的矩形
                     </div>
                 
 
@@ -243,12 +243,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-07-11 10:53:32</span>
+                <span class="datetime">2024-07-13 09:06:09</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Jul 16 2024 17:44:58 GMT+0800">2024-07-16 17:44:58</span>
+                <span class="datetime" data-updated="Tue Jul 16 2024 17:49:06 GMT+0800">2024-07-16 17:49:06</span>
             </span>
         
 
@@ -280,12 +280,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>658 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>523 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>3 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
             </span>
         
         
@@ -309,42 +309,35 @@
                     <ul class="lvl-0">
 <li class="lvl-2">
 <p>前言<br>
-状态：739 看解析。496 看解析。503 根据 739 写出。</p>
+状态：42 看解析。84 看解析。</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-07-11 初始记录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">24-07-13 初始记录</span><br><span class="line">24-07-16 完成</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h2 id="初步题解">初步题解</h2>
-<h3 id="739-每日温度">739 每日温度</h3>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures" >https://leetcode.cn/problems/daily-temperatures<i class="fas fa-external-link-alt"></i></a>)</p>
-<h3 id="496-下一个更大元素-I">496 下一个更大元素 I</h3>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-greater-element-i" >https://leetcode.cn/problems/next-greater-element-i<i class="fas fa-external-link-alt"></i></a>)</p>
-<h3 id="503-下一个更大元素-II">503 下一个更大元素 II</h3>
-<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/next-greater-element-ii" >https://leetcode.cn/problems/next-greater-element-ii<i class="fas fa-external-link-alt"></i></a>)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] nextGreaterElements(<span class="type">int</span>[] nums) &#123;  </span><br><span class="line">    <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];  </span><br><span class="line">    Arrays.fill(result, -<span class="number">1</span>);  </span><br><span class="line">  </span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();  </span><br><span class="line">    stack.push(<span class="number">0</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length * <span class="number">2</span>; i++) &#123;  </span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; nums[i % nums.length] &gt; nums[stack.peek()]) &#123;  </span><br><span class="line">            result[stack.peek()] = nums[i % nums.length];  </span><br><span class="line">            stack.pop();  </span><br><span class="line">        &#125;  </span><br><span class="line">        stack.push(i % nums.length);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> result;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="42-接雨水">42 接雨水</h3>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/" >https://leetcode.cn/problems/trapping-rain-water/<i class="fas fa-external-link-alt"></i></a>)</p>
+<h3 id="84-柱状图中最大的矩形">84 柱状图中最大的矩形</h3>
+<p>题目链接：(<a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram" >https://leetcode.cn/problems/largest-rectangle-in-histogram<i class="fas fa-external-link-alt"></i></a>)</p>
 <h2 id="看解析">看解析</h2>
-<h3 id="739-每日温度-2">739 每日温度</h3>
-<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6.html" >https://programmercarl.com/0739.每日温度.html<i class="fas fa-external-link-alt"></i></a>)</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>情况一：当前遍历的元素 <code>T[i]</code> 小于栈顶元素 <code>T[st.top()]</code> 的情况</p>
+<h3 id="42-接雨水-2">42 接雨水</h3>
+<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0042.%E6%8E%A5%E9%9B%A8%E6%B0%B4.html" >https://programmercarl.com/0042.接雨水.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<ol>
+<li class="lvl-3">
+<p>当前高度小于等于栈顶高度，入栈，指针后移。</p>
 </li>
-<li class="lvl-2">
-<p>情况二：当前遍历的元素 <code>T[i]</code> 等于栈顶元素 <code>T[st.top()]</code> 的情况</p>
+<li class="lvl-3">
+<p>当前高度大于栈顶高度，出栈，计算出当前墙和栈顶的墙之间水的多少，然后计算当前的高度和新栈的高度的关系，重复第 2 步。直到当前墙的高度不大于栈顶高度或者栈空，然后把当前墙入栈，指针后移。</p>
 </li>
-<li class="lvl-2">
-<p>情况三：当前遍历的元素 <code>T[i]</code> 大于栈顶元素 <code>T[st.top()]</code> 的情况</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] dailyTemperatures(<span class="type">int</span>[] temperatures) &#123;  </span><br><span class="line">    Deque&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();  </span><br><span class="line">    <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[temperatures.length];  </span><br><span class="line">  </span><br><span class="line">    stack.push(<span class="number">0</span>);  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; temperatures.length; i++) &#123;</span><br><span class="line">	    <span class="comment">// 当前元素小于等于栈顶元素，直接继续放入  </span></span><br><span class="line">        <span class="keyword">if</span> (temperatures[i] &lt;= temperatures[stack.peek()]) &#123;  </span><br><span class="line">            stack.push(i);  </span><br><span class="line">        <span class="comment">// 当前元素大于栈顶元素，弹出元素，计算result，（直到当前元素不大于栈顶元素），将当前元素加入栈</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; temperatures[i] &gt; temperatures[stack.peek()]) &#123;  </span><br><span class="line">                result[stack.peek()] = i - stack.peek();  </span><br><span class="line">                stack.pop();  </span><br><span class="line">            &#125;  </span><br><span class="line">            stack.push(i);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> result;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 简化版本</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span>[] dailyTemperatures(<span class="type">int</span>[] temperatures) &#123;  </span><br><span class="line">    Deque&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();  </span><br><span class="line">    <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[temperatures.length];  </span><br><span class="line">  </span><br><span class="line">    stack.push(<span class="number">0</span>);  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; temperatures.length; i++) &#123;</span><br><span class="line">	    <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; temperatures[i] &gt; temperatures[stack.peek()]) &#123;  </span><br><span class="line">                result[stack.peek()] = i - stack.peek();  </span><br><span class="line">                stack.pop();  </span><br><span class="line">            &#125;  </span><br><span class="line">        stack.push(i);    </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> result;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="496-下一个更大元素-I-2">496 下一个更大元素 I</h3>
-<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0496.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0I.html" >https://programmercarl.com/0496.下一个更大元素I.html<i class="fas fa-external-link-alt"></i></a>)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span>[] nextGreaterElement(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2) &#123;  </span><br><span class="line">    <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[nums1.length];  </span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();  </span><br><span class="line">  </span><br><span class="line">    Arrays.fill(result, -<span class="number">1</span>);  </span><br><span class="line">  </span><br><span class="line">    HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums1.length; i++) &#123;  </span><br><span class="line">        map.put(nums1[i], i);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    stack.push(<span class="number">0</span>);  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; nums2.length; i++) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (nums2[i] &lt;= nums2[stack.peek()]) &#123;  </span><br><span class="line">            stack.push(i);  </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">	        <span class="comment">// 栈中保存了上个需要比较的对象</span></span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; nums2[i] &gt; nums2[stack.peek()]) &#123;  </span><br><span class="line">                <span class="comment">// num1中包含整这个元素  </span></span><br><span class="line">                <span class="keyword">if</span> (map.containsKey(nums2[stack.peek()])) &#123;  </span><br><span class="line">                    <span class="comment">// result中的对应下标为这个元素的后一位  </span></span><br><span class="line">                    result[map.get(nums2[stack.peek()])] = nums2[i];  </span><br><span class="line">                &#125;  </span><br><span class="line">                stack.pop();  </span><br><span class="line">            &#125;  </span><br><span class="line">            stack.push(i);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> result;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="503-下一个更大元素-II-2">503 下一个更大元素 II</h3>
-<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0503.%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0II.html" >https://programmercarl.com/0503.下一个更大元素II.html<i class="fas fa-external-link-alt"></i></a>)</p>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">trap</span><span class="params">(<span class="type">int</span>[] height)</span> &#123;  </span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> <span class="variable">area</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line">    stack.push(<span class="number">0</span>);  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; height.length; i++) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (height[i] &lt;= height[stack.peek()]) &#123;  </span><br><span class="line">            stack.push(i);  </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">            <span class="comment">// 当前元素小于栈顶元素  </span></span><br><span class="line">            <span class="keyword">if</span> (height[stack.peek()] &gt;= height[i]) &#123;  </span><br><span class="line">                stack.push(i);  </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; height[i] &gt; height[stack.peek()]) &#123;  </span><br><span class="line">                    <span class="comment">// 当前的栈顶  </span></span><br><span class="line">                    <span class="type">Integer</span> <span class="variable">mid</span> <span class="operator">=</span> stack.pop();  </span><br><span class="line">                    <span class="keyword">if</span> (!stack.isEmpty()) &#123;  </span><br><span class="line">                        <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> Math.min(height[stack.peek()], height[i]) - height[mid];  </span><br><span class="line">                        <span class="type">int</span> <span class="variable">w</span> <span class="operator">=</span> i - stack.peek() - <span class="number">1</span>;  </span><br><span class="line">                        area += h * w;  </span><br><span class="line">                    &#125;  </span><br><span class="line">                &#125;  </span><br><span class="line">                stack.push(i);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> area;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="84-柱状图中最大的矩形-2">84 柱状图中最大的矩形</h3>
+<p>解析：(<a class="link"   target="_blank" rel="noopener" href="https://programmercarl.com/0084.%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2.html" >https://programmercarl.com/0084.柱状图中最大的矩形.html<i class="fas fa-external-link-alt"></i></a>)</p>
+<p><em>本题是要找每个柱子左右两边第一个小于该柱子的柱子，所以从栈头（元素从栈头弹出）到栈底的顺序应该是从大到小的顺序</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">largestRectangleArea</span><span class="params">(<span class="type">int</span>[] heights)</span> &#123;  </span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();  </span><br><span class="line">    <span class="comment">// 首末尾加零防止无法进入循环  </span></span><br><span class="line">    <span class="type">int</span>[] newHeights = <span class="keyword">new</span> <span class="title class_">int</span>[heights.length + <span class="number">2</span>];  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; newHeights.length - <span class="number">1</span>; i++) &#123;  </span><br><span class="line">        newHeights[i] = heights[i - <span class="number">1</span>];  </span><br><span class="line">    &#125;  </span><br><span class="line">    newHeights[heights.length + <span class="number">1</span>] = <span class="number">0</span>;  </span><br><span class="line">    newHeights[<span class="number">0</span>] = <span class="number">0</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="type">int</span> <span class="variable">area</span> <span class="operator">=</span> <span class="number">0</span>;  </span><br><span class="line">    stack.push(<span class="number">0</span>);  </span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; newHeights.length; i++) &#123;  </span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; newHeights[i] &lt; newHeights[stack.peek()]) &#123;  </span><br><span class="line">            <span class="comment">// 当前元素的前一个元素  </span></span><br><span class="line">            <span class="type">Integer</span> <span class="variable">mid</span> <span class="operator">=</span> stack.pop();  </span><br><span class="line">            <span class="comment">// 右侧数据与左侧数据的差值  </span></span><br><span class="line">            <span class="type">int</span> <span class="variable">w</span> <span class="operator">=</span> i - stack.peek() - <span class="number">1</span>;  </span><br><span class="line">            area = Math.max(area, w * newHeights[mid]);  </span><br><span class="line">        &#125;  </span><br><span class="line">        stack.push(i);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> area;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
                 
@@ -353,11 +346,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                代码随想录算法训练营第四十五天-739每日温度、496下一个更大元素 I、503下一个更大元素II
+                代码随想录算法训练营第四十六天-42接雨水、84柱状图中最大的矩形
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/d0198d2/
+                posts/82b551fe/
             </div>
         </div>
 
@@ -373,7 +366,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-07-11 10:53</div>
+                <div class="content">2024-07-13 09:06</div>
             </div>
 
 
@@ -425,31 +418,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/posts/82b551fe/"
-                                   title="代码随想录算法训练营第四十六天-42接雨水、84柱状图中最大的矩形"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第四十六天-42接雨水、84柱状图中最大的矩形</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/aa7c5f5/"
-                                   title="代码随想录算法训练营第四十四天-647回文子串、516最长回文子序列"
+                                   href="/posts/d0198d2/"
+                                   title="代码随想录算法训练营第四十五天-739每日温度、496下一个更大元素 I、503下一个更大元素II"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第四十四天-647回文子串、516最长回文子序列</span>
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第四十五天-739每日温度、496下一个更大元素 I、503下一个更大元素II</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -519,7 +496,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E9%A2%98%E8%A7%A3"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6"><span class="nav-text">739 每日温度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#496-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0-I"><span class="nav-text">496 下一个更大元素 I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0-II"><span class="nav-text">503 下一个更大元素 II</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E8%A7%A3%E6%9E%90"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6-2"><span class="nav-text">739 每日温度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#496-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0-I-2"><span class="nav-text">496 下一个更大元素 I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0-II-2"><span class="nav-text">503 下一个更大元素 II</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E9%A2%98%E8%A7%A3"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#42-%E6%8E%A5%E9%9B%A8%E6%B0%B4"><span class="nav-text">42 接雨水</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2"><span class="nav-text">84 柱状图中最大的矩形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E8%A7%A3%E6%9E%90"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#42-%E6%8E%A5%E9%9B%A8%E6%B0%B4-2"><span class="nav-text">42 接雨水</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2-2"><span class="nav-text">84 柱状图中最大的矩形</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -709,7 +686,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E9%A2%98%E8%A7%A3"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6"><span class="nav-text">739 每日温度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#496-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0-I"><span class="nav-text">496 下一个更大元素 I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0-II"><span class="nav-text">503 下一个更大元素 II</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E8%A7%A3%E6%9E%90"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6-2"><span class="nav-text">739 每日温度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#496-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0-I-2"><span class="nav-text">496 下一个更大元素 I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#503-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%A4%A7%E5%85%83%E7%B4%A0-II-2"><span class="nav-text">503 下一个更大元素 II</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E9%A2%98%E8%A7%A3"><span class="nav-text">初步题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#42-%E6%8E%A5%E9%9B%A8%E6%B0%B4"><span class="nav-text">42 接雨水</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2"><span class="nav-text">84 柱状图中最大的矩形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%8B%E8%A7%A3%E6%9E%90"><span class="nav-text">看解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#42-%E6%8E%A5%E9%9B%A8%E6%B0%B4-2"><span class="nav-text">42 接雨水</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2-2"><span class="nav-text">84 柱状图中最大的矩形</span></a></li></ol></li></ol>
     </div>
 </div>
 
