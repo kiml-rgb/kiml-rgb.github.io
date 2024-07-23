@@ -9,7 +9,7 @@
     
     <title>
         
-            聚合支付-功能实现 |
+            消息队列的选型与优缺点 |
         
         Kiml&#39;s Blog
     </title>
@@ -219,7 +219,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        聚合支付-功能实现
+                        消息队列的选型与优缺点
                     </div>
                 
 
@@ -243,27 +243,15 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-05-23 09:59:53</span>
+                <span class="datetime">2024-07-23 16:32:04</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Jul 23 2024 16:29:59 GMT+0800">2024-07-23 16:29:59</span>
+                <span class="datetime" data-updated="Tue Jul 23 2024 21:21:26 GMT+0800">2024-07-23 21:21:26</span>
             </span>
         
 
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">后端项目</a></li>
-                        
-                    
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E8%81%9A%E5%90%88%E6%94%AF%E4%BB%98/">聚合支付</a></li>
-                        
-                    
-                </ul>
-            </span>
         
 
         
@@ -273,6 +261,15 @@
                             <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java/">Java</a></li>
                         
                     
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/RocketMQ/">RocketMQ</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/RabbitMQ/">RabbitMQ</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Kafka/">Kafka</a></li>
+                        
+                    
                 </ul>
             </span>
         
@@ -280,12 +277,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.6k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>710 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>9 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
             </span>
         
         
@@ -308,257 +305,119 @@
 
                     <ul class="lvl-0">
 <li class="lvl-2">
-<p>前言<br>第一部分 - 商户注册和资质申请</p>
-<p>第二部分 - 对接 SAAS</p>
-<p>第三部分 - 闪聚支付</p>
+<p>前言针对<mark>消息队列</mark>做出的总结。</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">24.05.23 初始记录（商户注册&amp;资质申请）</span><br><span class="line">24.05.29 获取短信验证码</span><br><span class="line">24.05.30 文件上传</span><br><span class="line">24.06.02 Saas对接</span><br><span class="line">24.06.04 bug新增，烦，遇到bug，进展很缓慢。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-07-23 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h2 id="商户注册-资质申请">商户注册&amp;资质申请</h2>
-<h3 id="系统交互流程">系统交互流程</h3>
+<h2 id="技术选型对比">技术选型对比</h2>
+<blockquote>
+<p>市面上有哪些消息队列？<br>
+ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，Redis。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>消息队列</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RabbitMQ</td>
+<td>1.支持 AMQP 协议<br>2.基于 erlang 语言开发，高并发性能较好<br>3.工作模式较为灵活 <br>4.支持延迟消息 <br>5.提供较为友好的后台管理页面<br>6.单机部署，1~2WTPS<br></td>
+<td>1.不支持水平扩容 <br>2.不支持事务 <br>3.消息吞吐量三者最差 <br>4.当产生消息堆积，性能下降明显 <br>5.消息重发机制需要手动设置 <br>6.不支持消息重复消费</td>
+</tr>
+<tr>
+<td>RocketMQ</td>
+<td>1.高可用，高吞吐量，海量消息堆积，低延迟性能上，都表现出色 <br>2.api 与架构设计更加贴切业务场景 <br>3.支持顺序消息 <br>4.支持事务消息 <br>5.支持消息过滤 <br>6.支持重复消费 <br>7.支持延迟消息 <br>8.支持消息跟踪 <br>9.天然支持集群、负载均衡 <br>10.支持指定次数和时间间隔的失败消息重发 <br>11.单机部署，5~10WTPS</td>
+<td>1.生态圈相较 Kafka 有所不如 <br>2.消息吞吐量与消息堆积能力也不如 Kafka <br>3.不支持主从自动切换 <br>4.只支持 Java</td>
+</tr>
+<tr>
+<td>Kafka</td>
+<td>1.高可用，高吞吐量，低延迟性能上，都表现出色 <br>2.使用人数多，技术生态圈完善 <br>3.支持顺序消息 <br>4.支持多种客户端 <br>5.支持重复消费</td>
+<td>1.依赖分区，消费者数量受限于分区数 <br>2.单机消息过多时，性能下降明显 <br>3.不支持事务消息 <br>4.不支持指定次数和时间间隔的失败消息重发</td>
+</tr>
+</tbody>
+</table>
+<h2 id="RabbitMQ">RabbitMQ</h2>
+<h2 id="RocketMQ">RocketMQ</h2>
+<h3 id="基础">基础</h3>
+<p>RocketMQ 组成结构图如下 ：</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240523/Snipaste_2024-05-23_09-58-03.png"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/Z2407/RocketMQ%E7%BB%84%E6%88%90%E7%BB%93%E6%9E%84.png"
                         alt=""
                  ></p>
-<p>商户注册的流程由商户平台应用、商户服务、SaaS 平台、验证码服务四个微服务之间进行交互完成，各微服务的职责介绍如下：</p>
-<p>1）商户平台应用：此应用主要为商户提供业务功能，包括：商户资质申请、员工管理、门店管理等功能。</p>
-<p>2）商户服务： 提供商户管理的相关服务接口，供其它微服务调用，主要为商户平台应用提供接口服务，功能包括：商户基本信息管理、资质申请（这个功能蛮莫名其妙的，写了但是没有后续的审核操作，不知道干什么用的😥）、商户应用管理、渠道参数配置、商户员工信息管理、商户门店管理等。</p>
-<p>3）SaaS 平台：闪聚支付项目是一个 SaaS 平台 ，所谓 SaaS 平台即多个用户租用平台的业务功能，这样用户即可省去软件系统开发的成本，每个商户就是一个租户，所以又称为多租户系统。 SaaS 平台提供租户管理、账号管理、权限管理、资源管理、套餐管理、系统认证授权等功业务功能。在上图商户注册的流程中，商户注册的账号等信息需要写入 SaaS 平台，由 SaaS 平台统一管理账号，分配权限，商户统一通过 SaaS 平台登录闪聚支付。</p>
-<p>4）验证码服务：提供获取短信验证码、校验验证码的接口。 商户使用手机号进行注册，平台通过校验手机验证码来确认是否本人在注册。<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240523/Snipaste_2024-05-23_09-58-03.png"
-                        alt="Snipaste_2024-05-23_09-58-03.png"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240529/Snipaste_2024-05-29_17-04-38.png"
-                        alt=""
-                 ></p>
-<h3 id="获取短信验证码">获取短信验证码</h3>
-<p>短信验证码为一个开源的服务，可单独开启使用。</p>
-<p>开源 git 地址：(<a class="link"   target="_blank" rel="noopener" href="https://github.com/fightingape/sailing" >https://github.com/fightingape/sailing<i class="fas fa-external-link-alt"></i></a>)</p>
-<blockquote>
-<p>大致看了一下这个开源项目是根据传入的业务名称，获取配置好的 code 长度和 Service 实现。后续应该还可以加入别的实现（比如阿里云的短信服务等）</p>
-<p>其中生成验证信息这个方法。<br>
-1.根据业务名称 + 随机 UUID 生成 key 存入 redis。这个 key 会返回给服务请求方。<br>
-2.根据配置好的 Map 获取名称对应的 len 即 code 码长度，如果传入不存在的 name，会直接报错。<br>
-3.验证服务就是根据返回给服务请求方的 key，查询 Redis 缓存是否存在，不存在返回 false，即验证码错误。</p>
-</blockquote>
-<p>本项目中没有使用，只是简单控制台打印了一下。也可以直接在这个服务里存入 redis（因为要申请开通阿里云短信服务有点麻烦，又要多部署一个服务，而且这个功能比较简单不打算花时间开通了）。</p>
-<p>之前有写过阿里云的短信，关联文章：</p>
-<blockquote>
-<p>内链：[[【代码模板】阿里云接口实现短信发送]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/9b7300f0/" >【代码模板】阿里云接口实现短信发送<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h3 id="文件上传">文件上传</h3>
-<p>资质申请的流程中涉及到了文件上传的功能。之前已经写过使用 Minio 作为文件服务器和用阿里云 OSS 作为文件存储两种方式。这里的上传直接把七牛云换成了 Minio。顺便整理了一下之前写过的两种方式。</p>
-<p>文件上传：</p>
-<blockquote>
-<p>内链：[[【代码模板】文件存储]]<br>
-外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/159a80d0/" >【代码模板】文件存储<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h2 id="支付参数配置">支付参数配置</h2>
-<blockquote>
-<p>这个部分是项目的核心，之前做别的项目的时候，接触了微信支付和支付宝支付。就和这个项目中说的一样，用户只能先选择支付类型。再调用对应的接口获取支付二维码。而通过聚合支付这个平台，可以只生成一个链接，根据用户扫码，跳转不同的支付。</p>
-</blockquote>
-<p><strong>商户应该配置哪些第三方支付渠道的参数</strong><br>
-服务类型是闪聚支付平台为商户提供的聚合支付服务通道，共分为线上和线下两大类：<br>
-<strong>线上支付服务通道</strong>：</p>
+<p>交互过程如下：</p>
 <ol>
 <li class="lvl-3">
-<p>手机 APP 支付</p>
+<p>Brokder 定时发送自身状态 到 NameServer。</p>
 </li>
 <li class="lvl-3">
-<p>PC 网页支付</p>
+<p>Producer 请求 NameServer 获取 Broker 的地址。</p>
 </li>
 <li class="lvl-3">
-<p>手机网页支付</p>
+<p>Producer 将消息发送到 Broker 中的消息队列。</p>
 </li>
 <li class="lvl-3">
-<p>小程序支付<br>
-<strong>线下支付服务通道</strong>：</p>
+<p>Consumer 订阅 Broker 中的消息队列，通过拉取消息，或由 Broker 将消息推送至 Consumer。</p>
 </li>
 <li class="lvl-3">
-<p>收款码支付 (C 扫 B)：即商户出示付款码，用户扫收款码完成支付。</p>
-</li>
-<li class="lvl-3">
-<p>B 扫 C：即顾客出示付款码，商户扫描付款码。</p>
+<p>Producer Cluster 消息生产者群</p>
 </li>
 </ol>
-<h3 id="系统交互流程-2">系统交互流程</h3>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>商户应用创建流程<br>
-<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240530/Snipaste_2024-05-30_21-35-45.png"
-                        alt=""
-                 ></p>
-</li>
-<li class="lvl-2">
-<p>商户渠道参数配置交互流程<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240530/Snipaste_2024-05-30_21-53-28.png"
-                        alt=""
-                 ><br>
-交易服务职责：提供支付渠道参数配置、订单、发起支付、转账、退款等功能。</p>
+<p>负责发送消息，一般由业务系统负责产生消息。</p>
 </li>
 </ul>
-<h3 id="C-扫-B">C 扫 B</h3>
-<blockquote>
-<p>1、为门店生成统一的支付二维码，用户扫一下二维码即可使用微信支付也可使用支付宝完成支付。</p>
-<p>2、闪聚支付平台与微信、支付宝对接，闪聚支付作为中介，最终的支付动作（银行交易）仍通过微信、支付宝进行。</p>
-<p>3、闪聚平台作为中介调用微信、支付宝的下单接口，完成支付。</p>
-</blockquote>
-<p>业务流程如下：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/Z2407/C%E6%89%ABB%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B.png"
-                        alt=""
-                 ></p>
-<p>生成二维码的系统交互流程如下：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/Z2407/%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9A%84%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B.png"
-                        alt=""
-                 ></p>
-<ol>
+<ol start="2">
 <li class="lvl-3">
-<p>商户登录商户应用平台 ，查询门店列表</p>
-</li>
-<li class="lvl-3">
-<p>商户平台请求交易服务获取门店二维码 URL</p>
-</li>
-<li class="lvl-3">
-<p>商户平台根据 URL 生成二维码</p>
+<p>Consumer Cluster 消息费群</p>
 </li>
 </ol>
-<p>交易服务支付入口：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/Z2407/%E4%BA%A4%E6%98%93%E6%9C%8D%E5%8A%A1%E6%94%AF%E4%BB%98%E5%85%A5%E5%8F%A3.png"
-                        alt=""
-                 ></p>
-<ol>
-<li class="lvl-3">
-<p>顾客扫描二维码，请求交易服务支付入口</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>负责消费消息，一般是后台系统负责异步消费。</p>
 </li>
-<li class="lvl-3">
-<p>交易服务解析请求，生成支付确认页面</p>
+<li class="lvl-2">
+<p>两种消费模式：</p>
+<ul class="lvl-2">
+<li class="lvl-6">Push Consumer，服务端向消费者端推送消息</li>
+<li class="lvl-6">Pull Consumer，消费者端向服务定时拉取消息</li>
+</ul>
 </li>
+</ul>
+<ol start="3">
 <li class="lvl-3">
-<p>交易服务向服务响应支付确认页面</p>
-</li>
-</ol>
-<p>支付宝统一下单接口对接：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/Z2407/%E6%94%AF%E4%BB%98%E5%AE%9D%E7%BB%9F%E4%B8%80%E4%B8%8B%E5%8D%95%E6%8E%A5%E5%8F%A3.png"
-                        alt=""
-                 ></p>
-<ol>
-<li class="lvl-3">
-<p>顾客输入金额，点击立即支付</p>
-</li>
-<li class="lvl-3">
-<p>请求交易服务，交易服务保存订单</p>
-</li>
-<li class="lvl-3">
-<p>交易服务调用支付渠道代理服务的支付宝下单接口</p>
-</li>
-<li class="lvl-3">
-<p>支付渠道代理服务调用支付宝的统一下单接口。</p>
-</li>
-<li class="lvl-3">
-<p>支付凭证返回</p>
+<p>NameServer 名称服务器</p>
 </li>
 </ol>
-<blockquote>
-<p>支付宝支付相关内容：</p>
-<p>内链：[[04 聚合支付-【代码模板】支付宝支付接入]]</p>
-<p>外链：<a href="">聚合支付-【代码模板】支付宝支付接入</a></p>
-</blockquote>
-<p>微信支付接口对接：</p>
-<blockquote>
-<p>微信支付相关内容：</p>
-<p>内链：[[05 聚合支付-【代码模板】微信支付接入]]</p>
-<p>外链：<a href="">聚合支付-【代码模板】微信支付接入</a></p>
-</blockquote>
-<h3 id="获取支付结果">获取支付结果</h3>
-<blockquote>
-<p>完成支付后第三方支付系统提供两种方式获取支付结果：</p>
-<ol>
-<li class="lvl-3">第三方支付系统主动通知闪聚支付平台支付结果。</li>
-<li class="lvl-3">闪聚支付平台主动从第三方支付系统查询支付结果。</li>
-</ol>
-</blockquote>
-<h2 id="对接-SAAS">对接 SAAS</h2>
-<h3 id="系统交互流程-3">系统交互流程</h3>
-<p>商户注册时与 SAAS 的交互流程已经在商户注册模块给出。</p>
-<h3 id="分布式认证需求">分布式认证需求</h3>
-<ol>
-<li class="lvl-3">
-<p>统一认证授权分布式系统的每个服务（系统）都会有认证、授权的需求，如果每个服务都实现一套认证授权逻辑会非常冗余，考虑分布式系统共享性的特点，需要由独立的认证服务来处理系统认证授权的请求。如下图，闪聚支付平台包括：商户平台应用、运营平台应用、门户应用，每个应用都需要身份认证，闪聚支付平台统一由 UAA 认证服务完成认证。<br>
-<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240531/Snipaste_2024-05-31_17-47-47.png"
-                        alt=""
-                 ></p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>集群架构中的组织协调员，相当于注册中心，收集 broker 的工作情况，不负责消息的处理</p>
 </li>
+</ul>
+<ol start="4">
 <li class="lvl-3">
-<p>开放认证体系考虑分布式系统开放性的特点，UAA 认证服务不仅服务于平台自身，并且对第三方系统也要提供认证，平台应提供扩展和开放的认证机制，以开放 API 的方式供第三方应用接入，一方应用（内部系统服务）和三方应用（第三方应用）均采用统一机制接入。</p>
+<p>Broker 消息服务器</p>
 </li>
 </ol>
-<p>分布式系统认证技术方案详见下图：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240603/Snipaste_2024-06-03_14-11-54.png"
-                        alt=""
-                 ></p>
-<p>流程所涉及到统一账号服务、UAA 服务、API 网关这三个组件职责如下:</p>
-<p>1） 统一账号服务：提供商户和平台运营人员的登录账号、密码、角色、权限、资源等系统级信息的管理，不包含用户业务信息。</p>
-<p>2） 统一认证服务：它承载了 OAuth2.0 接入方认证、登入用户的认证、授权以及生成令牌的职责，完成实际的用户认证、授权功能。</p>
-<p>3） API 网关：作为系统的唯一入口，API 网关为接入方提供定制的 API 集合，它可能还具有其它职责，如身份验证、监控、负载 均衡、缓存等。API 网关方式的核心要点是，所有的接入方和消费端都通过统一的网关接入微服务，在网关层处理 所有的非业务功能。</p>
-<h2 id="BUG-记录">BUG 记录</h2>
-<h3 id="RestTemplate-使用-GET-请求，返回中文乱码">RestTemplate 使用 GET 请求，返回中文乱码</h3>
-<blockquote>
-<p>内链：[[RestTemplate使用GET请求，返回中文乱码]]</p>
-<p>外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/419abf20/" >RestTemplate使用GET请求，返回中文乱码<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h3 id="项目中访问-Swagger-地址，404（未解决）">项目中访问 Swagger 地址，404（未解决）</h3>
-<p>不管怎么访问 swagger 的页面地址，都返回 404。但是直接用 apifox 的 URL 导入，是可以成功的🥴。</p>
-<h3 id="使用-mapstruct-转换对象，报错-Cannot-find-implementation-for……">使用 mapstruct 转换对象，报错 Cannot find implementation for……</h3>
-<p>这个项目中是因为 User 微服务没有依赖 mapstruct。但是 swagger 中有这个依赖，他直接用了 swagger 中的依赖。网上搜索还有一种情况可能出现这个问题。</p>
-<blockquote>
-<p>内链：[[使用mapstruct转换对象，报错Cannot find implementation for……]]</p>
-<p>外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/82c00b85/" >使用mapstruct转换对象，报错Cannot find implementation for……<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h3 id="前端-JS-在-Long-长度大于-17-位时，出现精度丢失的问题">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</h3>
-<blockquote>
-<p>内链：[[Long长度大于17位时，精度丢失]]</p>
-<p>外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/b4cd8fc4/" >Long长度大于17位时，精度丢失<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<h3 id="使用-git-提交报错：error-RPC-failed-HTTP-413-curl-22-The-requested-URL-returned-error-413">使用 git 提交报错：error RPC failed; HTTP 413 curl 22 The requested URL returned error 413</h3>
-<blockquote>
-<p>内链：[[使用 git 提交报错：error RPC failed; HTTP 413 curl 22 The requested URL returned error 413]]</p>
-<p>外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/b4cd8fc4/" >使用 git 提交报错：error: RPC failed; HTTP 413 curl 22 The requested URL returned error: 413<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>是 RocketMQ 的核心，负责消息的接受，存储，发送等。</p>
+</li>
+<li class="lvl-2">
+<p>需要定时发送自身状态 到 NameServer，默认 10 秒发送一次，超时 2 分钟会认为该 broker 失效。</p>
+</li>
+</ul>
+<h2 id="Kafka">Kafka</h2>
 
                 </div>
                 
@@ -567,11 +426,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                聚合支付-功能实现
+                消息队列的选型与优缺点
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/8582b8be/
+                posts/359ee88a/
             </div>
         </div>
 
@@ -587,7 +446,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-05-23 09:59</div>
+                <div class="content">2024-07-23 16:32</div>
             </div>
 
 
@@ -626,6 +485,18 @@
                                         <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java/">Java</a>
                                     </li>
                                 
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/RocketMQ/">RocketMQ</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/RabbitMQ/">RabbitMQ</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Kafka/">Kafka</a>
+                                    </li>
+                                
                             </ul>
                         
                     </div>
@@ -642,14 +513,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/posts/419abf20/"
-                                   title="RestTemplate使用GET请求，返回中文乱码"
+                                   href="/posts/e9ae925d/"
+                                   title="Freemarke 基础"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">RestTemplate使用GET请求，返回中文乱码</span>
+                                        <span class="post-nav-title-item text-ellipsis">Freemarke 基础</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -659,11 +530,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/ff783527/"
-                                   title="优化 Hexo 网站的永久链接格式"
+                                   href="/posts/0/"
+                                   title=""
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">优化 Hexo 网站的永久链接格式</span>
+                                        <span class="post-nav-title-item text-ellipsis"></span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -733,7 +604,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%88%B7%E6%B3%A8%E5%86%8C-%E8%B5%84%E8%B4%A8%E7%94%B3%E8%AF%B7"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E4%BB%98%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%89%AB-B"><span class="nav-text">C 扫 B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%94%AF%E4%BB%98%E7%BB%93%E6%9E%9C"><span class="nav-text">获取支付结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8E%A5-SAAS"><span class="nav-text">对接 SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BUG-%E8%AE%B0%E5%BD%95"><span class="nav-text">BUG 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-%E4%BD%BF%E7%94%A8-GET-%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate 使用 GET 请求，返回中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AE-Swagger-%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问 Swagger 地址，404（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mapstruct-%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99-Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用 mapstruct 转换对象，报错 Cannot find implementation for……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF-JS-%E5%9C%A8-Long-%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E-17-%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-git-%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99%EF%BC%9Aerror-RPC-failed-HTTP-413-curl-22-The-requested-URL-returned-error-413"><span class="nav-text">使用 git 提交报错：error RPC failed; HTTP 413 curl 22 The requested URL returned error 413</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94"><span class="nav-text">技术选型对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ"><span class="nav-text">RabbitMQ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RocketMQ"><span class="nav-text">RocketMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-text">基础</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka"><span class="nav-text">Kafka</span></a></li></ol>
     </div>
 </div>
 
@@ -923,7 +794,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%88%B7%E6%B3%A8%E5%86%8C-%E8%B5%84%E8%B4%A8%E7%94%B3%E8%AF%B7"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E4%BB%98%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%89%AB-B"><span class="nav-text">C 扫 B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%94%AF%E4%BB%98%E7%BB%93%E6%9E%9C"><span class="nav-text">获取支付结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8E%A5-SAAS"><span class="nav-text">对接 SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BUG-%E8%AE%B0%E5%BD%95"><span class="nav-text">BUG 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-%E4%BD%BF%E7%94%A8-GET-%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate 使用 GET 请求，返回中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AE-Swagger-%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问 Swagger 地址，404（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mapstruct-%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99-Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用 mapstruct 转换对象，报错 Cannot find implementation for……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF-JS-%E5%9C%A8-Long-%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E-17-%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-git-%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99%EF%BC%9Aerror-RPC-failed-HTTP-413-curl-22-The-requested-URL-returned-error-413"><span class="nav-text">使用 git 提交报错：error RPC failed; HTTP 413 curl 22 The requested URL returned error 413</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B%E5%AF%B9%E6%AF%94"><span class="nav-text">技术选型对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ"><span class="nav-text">RabbitMQ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RocketMQ"><span class="nav-text">RocketMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-text">基础</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka"><span class="nav-text">Kafka</span></a></li></ol>
     </div>
 </div>
 
