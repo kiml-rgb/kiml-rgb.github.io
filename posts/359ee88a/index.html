@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Aug 09 2024 18:02:03 GMT+0800">2024-08-09 18:02:03</span>
+                <span class="datetime" data-updated="Fri Aug 09 2024 18:21:05 GMT+0800">2024-08-09 18:21:05</span>
             </span>
         
 
@@ -534,10 +534,10 @@ ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，Redis。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mq bash</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li class="lvl-3">
-<p>下载插件</p>
+<p>下载插件并上传服务器（下载地址：[<a class="link"   target="_blank" rel="noopener" href="https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases" >https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases<i class="fas fa-external-link-alt"></i></a>][<a class="link"   target="_blank" rel="noopener" href="https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases" >https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases<i class="fas fa-external-link-alt"></i></a>]）</p>
 </li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins enable rabbitmq_delayed_message_exchange</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将下载好的插件拷贝到docker容器中</span></span><br><span class="line">docker cp ./rabbitmq_delayed_message_exchange-3.9.0.ez rabbit:/plugins</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入RabbitMQ容器</span></span><br><span class="line">docker exec -it rabbit /bin/bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动插件</span></span><br><span class="line">rabbitmq-plugins enable rabbitmq_delayed_message_exchange</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">可以通过以下命令查看所有安装过的插件</span></span><br><span class="line">rabbitmq-plugins list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">然后执行 <span class="built_in">exit</span> 命令退出 docker 容器</span></span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li class="lvl-3">
 <p>pom 文件引入依赖</p>
