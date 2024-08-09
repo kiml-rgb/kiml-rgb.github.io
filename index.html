@@ -319,8 +319,8 @@
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Wed Jul 24 2024 17:07:27 GMT+0800"
-                >2024-07-24 17:07:27</span>
+                                                                                data-updated="Wed Jul 31 2024 21:58:53 GMT+0800"
+                >2024-07-31 21:58:53</span>
             </span>
         
 
@@ -422,10 +422,16 @@ Java 开发的模板引擎。官网模板：<a class="link"   target="_blank" re
 <p>前言针对<mark>消息队列</mark>做出的总结。</p>
 </li>
 <li class="lvl-2">
-<p>更新</p>
+<p>参考文章</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-07-23 初始记录</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45173404/article/details/116429302" >RabbitMQ超详细安装教程（Linux）<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<ul class="lvl-0">
+<li class="lvl-2">更新</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">24-07-23 初始记录</span><br><span class="line">24-08-09 补充 RabbitMQ 的延迟消息</span><br></pre></td></tr></table></figure>
                         
                     </div>
 
@@ -436,8 +442,8 @@ Java 开发的模板引擎。官网模板：<a class="link"   target="_blank" re
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Wed Jul 24 2024 17:04:37 GMT+0800"
-                >2024-07-24 17:04:37</span>
+                                                                                data-updated="Fri Aug 09 2024 18:02:03 GMT+0800"
+                >2024-08-09 18:02:03</span>
             </span>
         
 
@@ -533,7 +539,15 @@ Java 开发的模板引擎。官网模板：<a class="link"   target="_blank" re
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            Here's something encrypted, password is required to continue reading.
+                            <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言支付宝支付接入流程</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-07-19 初始记录</span><br></pre></td></tr></table></figure>
                         
                     </div>
 
@@ -544,8 +558,8 @@ Java 开发的模板引擎。官网模板：<a class="link"   target="_blank" re
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Wed Jul 31 2024 21:58:21 GMT+0800"
-                >2024-07-31 21:58:21</span>
+                                                                                data-updated="Fri Aug 09 2024 12:02:39 GMT+0800"
+                >2024-08-09 12:02:39</span>
             </span>
         
 
@@ -865,31 +879,78 @@ Java 开发的模板引擎。官网模板：<a class="link"   target="_blank" re
             </li>
         
     </ul>
-    
-    <div class="paginator border-box flex-center">
-        <div class="btn-wrap">
-            <a class="jump-btn"
-               href="/"
-            ><i class="fa-solid fa-chevron-left"></i></a>
-        </div>
+    .paginator {
+  margin-top 2rem
+  padding-top 0.2rem
+  user-select none
+
+  .btn-wrap {
+    cursor not-allowed
+
+    &.allowed {
+      cursor pointer
+
+      a.jump-btn {
+        pointer-events auto
 
 
-        <div class="page-number-box border-box flex-center">
-            <input class="page-number-input border-box base-color-size"
-                   type="number"
-                   value="1"
-                   min="1"
-                   max="9"
-            ><span class="delimiter base-color-size">/</span><span class="base-color-size">9</span>
-        </div>
+        i {
+          color var(--text-color-3)
+        }
+      }
+    }
+
+    a.jump-btn {
+      padding 0.2rem
+      pointer-events none
+
+      i {
+        color var(--text-color-4)
+        font-size 1rem
+      }
+    }
+  }
 
 
-        <div class="btn-wrap allowed">
-            <a class="jump-btn"
-               href="/page/2/"
-            ><i class="fa-solid fa-chevron-right"></i></a>
-        </div>
-    </div>
+
+  .base-color-size {
+    color var(--text-color-3)
+    font-size 1rem
+  }
+
+  .page-number-box {
+    margin 0 1rem
+
+    .page-number-input {
+      width 2.8rem
+      height 1.8rem
+      margin 0
+      padding 0
+      font-weight 400 !important
+      text-align center
+      background none
+      border 0.1rem solid var(--border-color)
+      border-radius 0.3rem
+      outline none
+      -webkit-appearance none
+
+      &::-webkit-outer-spin-button
+      &::-webkit-inner-spin-button {
+        -webkit-appearance none !important
+      }
+
+      &:hover
+      &:focus {
+        border-color var(--primary-color)
+      }
+    }
+
+
+    .delimiter {
+      margin 0 0.6rem
+    }
+  }
+}
 
 
 
