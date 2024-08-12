@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Aug 12 2024 12:02:18 GMT+0800">2024-08-12 12:02:18</span>
+                <span class="datetime" data-updated="Mon Aug 12 2024 20:09:19 GMT+0800">2024-08-12 20:09:19</span>
             </span>
         
 
@@ -366,7 +366,7 @@
 </ol>
 <blockquote>
 <p>这个方法一共分两步：将对象序列化，存储到一个文件中。从文件中反序列化，得到类对象。</p>
-<p>序列化：想要序列化对象的类，实现 Serializable 接口。使用文件输出流 FileOutputStream 创建存储序列化之后对象的文件。使用对象输出流 ObjectOutputStream 的实例方法 writeObject(obj)。判断类中是否存在，名为 writeReplace()，返回类型为 Object 的方法，若有，写入这个方法的返回值；否则，写入 obj 对象。</p>
+<p>序列化：想要序列化对象的类，实现 Serializable 接口。使用文件输出流 FileOutputStream 创建存储序列化之后对象的文件。使用对象输出流 ObjectOutputStream 的实例方法 writeObject(obj)。判断类中是否存在，名为 writeReplace()，返回类型为 Object 的方法。若有，写入这个方法的返回值；否则，写入 obj 对象。</p>
 <p>反序列化：使用文件输入流 FileInputStream 找到存储序列化对象的文件。使用对象输入流 ObjectInputStream 的实例方法 readObject()。判断类中是否存在，名为 readResolve()，返回类型为 Object 的方法，若有读取这个对象；否则，反序列化文件中的对象流。</p>
 <p>备注：在类中，writeReplace() 和 readResoleve() 是两个非常特殊的方法，其特征签名需要严格限制：方法名限定，参数个数限定为 0，返回类型必须是 Object，不能为 Object 的子类，但是可以抛出不同的异常。访问修饰符没有限制，但一般推荐为 private，防止误操作。其特殊的地方还在于将其设为 private 方法，没有其他方法调用的情况下，编译器不会发出警告。</p>
 </blockquote>
@@ -384,18 +384,29 @@
 <p>接口的所有方法都是抽象方法，所有属性都是常量：static final 类型；而抽象类中可以有不是抽象的方法和不是常量的属性；</p>
 </li>
 <li class="lvl-3">
-<p>抽象类只能单继承，而接口之间可以多继承，接口之间的继承用 extexds,类实现接口用 implements.</p>
+<p>抽象类只能单继承，而接口之间可以多继承，接口之间的继承用 extexds，类实现接口用 implements.</p>
 </li>
 </ol>
-<h2 id="和-equals"><code>==</code> 和 <code>equals()</code></h2>
+<h2 id="和-equals">== 和 equals()</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
 <p><code>==</code>：</p>
+</li>
+</ul>
 <ol>
 <li class="lvl-3">
 <p>如果比较的对象是基本数据类型，则比较的是其存储的值是否相等；</p>
 </li>
 <li class="lvl-3">
-<p>如果比较的是引用数据类型，则比较的是所指向对象的地址值是否相等（是否是同一个对象）。<code>equals</code>：</p>
+<p>如果比较的是引用数据类型，则比较的是所指向对象的地址值是否相等（是否是同一个对象）。</p>
 </li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><code>equals</code>：</p>
+</li>
+</ul>
+<ol>
 <li class="lvl-3">
 <p>如果没有对 equals 方法进行重写，则相当于 <code>==</code>，比较的是引用类型的变量所指向的对象的地址值。</p>
 </li>
@@ -406,7 +417,7 @@
 <h2 id="为什么重写-equals-方法，还必须要重写-hashcode-方法">为什么重写 equals 方法，还必须要重写 hashcode 方法</h2>
 <ol>
 <li class="lvl-3">
-<p>保证是同一个对象，如果重写了 equals 方法，而没有重写 hashcode 方法，会出现 equals 相等的对象，hashcode 不相等的情况，重写 hashcode 方法就是为了避免这种情况的出现。</p>
+<p>保证是同一个对象，如果重写了 equals 方法，而没有重写 hashcode 方法，会出现 equals 相等的对象，但是 hashcode 不相等的情况，重写 hashcode 方法就是为了避免这种情况的出现。</p>
 </li>
 <li class="lvl-3">
 <p>使用 hashcode 方法提前校验，可以避免每一次比对都调用 equals 方法，提高效率</p>
@@ -424,7 +435,7 @@
 <p>hashcode() 相等，equals() 可能相等，也可能不等。</p>
 </li>
 <li class="lvl-3">
-<p>所以先进行 hashcode（）判断，不等就不用 equals（）方法了。</p>
+<p>所以先进行 hashcode() 判断，不等就不用 equals() 方法了。</p>
 </li>
 <li class="lvl-3">
 <p>但 equels 是是根据对象的特征进行重写的，有时候特征相同，但 hash 值不同，也不是一个对象。 所以两个都重写才能保障是同一个对象。</p>
@@ -445,7 +456,7 @@
 <p>Java 的 SPI 机制就是将一些==<strong>类信息写在约定的文件中</strong>==，然后由特定的类加载器 ServiceLoader 加载解析文件获取资源。</p>
 <p>Java SPI 基于 “<strong>接口编程＋策略模式＋配置文件</strong>(约定)”组合实现的动态加载机制。它提供了一种服务发现机制，允许在程序外部动态指定具体实现。</p>
 <p>一般情况下是调用方调用实现好的接口，但是当接口存在于调用方这边时，就是 SPI ，由接口调用方确定接口规则，然后由不同的厂商去根据这个规则对这个接口进行实现，从而提供服务。</p>
-<p>​以下是 SPI 的一些运用场景:</p>
+<p>​以下是 SPI 的一些运用场景：</p>
 <table>
 <thead>
 <tr>
@@ -464,11 +475,11 @@
 </tr>
 <tr>
 <td>Spring</td>
-<td>Spring 中大量使用了 SPI,比如：对 servlet3.0 规范对 ServletContainerInitializer 的实现、自动类型转换 Type Conversion SPI(Converter SPI、Formatter SPI) 等</td>
+<td>Spring 中大量使用了 SPI，比如：对 servlet3.0 规范对 ServletContainerInitializer 的实现、自动类型转换 Type Conversion SPI(Converter SPI、Formatter SPI) 等</td>
 </tr>
 <tr>
 <td>Dubbo</td>
-<td>Dubbo 中也大量使用 SPI 的方式实现框架的扩展, 不过它对 Java 提供的原生 SPI 做了封装，允许用户扩展实现 Filter 接口</td>
+<td>Dubbo 中也大量使用 SPI 的方式实现框架的扩展，不过它对 Java 提供的原生 SPI 做了封装，允许用户扩展实现 Filter 接口</td>
 </tr>
 <tr>
 <td>SpringBoot</td>
@@ -481,7 +492,7 @@
 </tbody>
 </table>
 <p><a class="link"   target="_blank" rel="noopener" href="https://javaguide.cn/java/basis/spi.html#serviceloader" >ServiceLoader<i class="fas fa-external-link-alt"></i></a>：点击链接跳转链接到 JavaGuide。</p>
-<h2 id="面试大白话">面试大白话</h2>
+<h3 id="面试大白话">面试大白话</h3>
 <p>Java 中的 SPI 就是你提供一个接口，然后让别人提供实现类。然后将这个实现放在 <code>resources/META-INF/services/</code> 中。这样 Java 启动的时候就会去扫描这个下面的 jar 包，并把他加载进来。一般来说用在开源框架中的插件扩展，然后比较常见的思想提现就是 Java 的 JDBC 实现，可以根据自己使用的数据库，将对应的 jar 包引用进来。</p>
 <p>（Dubbo 中可能问到的问题）Dubbo 中也使用了这个思想: 比如说有一行代码是：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Protocol</span> <span class="variable">protocol</span> <span class="operator">=</span> ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension();</span><br></pre></td></tr></table></figure>
@@ -701,7 +712,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java 的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK-%E5%92%8C-JRE-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK 和 JRE 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java 支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java 怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java 中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C-equals"><span class="nav-text">&#x3D;&#x3D; 和 equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99-equals-%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99-hashcode-%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写 equals 方法，还必须要重写 hashcode 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Java 中都有哪些引用类型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI-%E4%BB%8B%E7%BB%8D"><span class="nav-text">SPI 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="nav-text">面试大白话</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java 的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK-%E5%92%8C-JRE-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK 和 JRE 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java 支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java 怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java 中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C-equals"><span class="nav-text">&#x3D;&#x3D; 和 equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99-equals-%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99-hashcode-%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写 equals 方法，还必须要重写 hashcode 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Java 中都有哪些引用类型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI-%E4%BB%8B%E7%BB%8D"><span class="nav-text">SPI 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="nav-text">面试大白话</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -891,7 +902,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java 的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK-%E5%92%8C-JRE-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK 和 JRE 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java 支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java 怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java 中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C-equals"><span class="nav-text">&#x3D;&#x3D; 和 equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99-equals-%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99-hashcode-%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写 equals 方法，还必须要重写 hashcode 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Java 中都有哪些引用类型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI-%E4%BB%8B%E7%BB%8D"><span class="nav-text">SPI 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="nav-text">面试大白话</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97Java-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">❗Java 的基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象的三大特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK-%E5%92%8C-JRE-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">JDK 和 JRE 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%94%AF%E6%8C%81%E5%A4%9A%E7%BB%A7%E6%89%BF%E5%92%8C%E5%A4%9A%E5%AE%9E%E7%8E%B0%E5%90%97"><span class="nav-text">Java 支持多继承和多实现吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E4%B8%80%E8%88%AC%E5%87%BD%E6%95%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-text">构造函数和一般函数有什么区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-text">Java 怎么创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8"><span class="nav-text">Java 中的异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9D%97%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">❗抽象类和接口的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8C-equals"><span class="nav-text">&#x3D;&#x3D; 和 equals()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E5%86%99-equals-%E6%96%B9%E6%B3%95%EF%BC%8C%E8%BF%98%E5%BF%85%E9%A1%BB%E8%A6%81%E9%87%8D%E5%86%99-hashcode-%E6%96%B9%E6%B3%95"><span class="nav-text">为什么重写 equals 方法，还必须要重写 hashcode 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-text">深拷贝和浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E4%B8%AD%E9%83%BD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-text">Java 中都有哪些引用类型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPI-%E4%BB%8B%E7%BB%8D"><span class="nav-text">SPI 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E5%A4%A7%E7%99%BD%E8%AF%9D"><span class="nav-text">面试大白话</span></a></li></ol></li></ol>
     </div>
 </div>
 
