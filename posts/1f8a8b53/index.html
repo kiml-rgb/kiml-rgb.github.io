@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Aug 12 2024 12:01:57 GMT+0800">2024-08-12 12:01:57</span>
+                <span class="datetime" data-updated="Mon Aug 19 2024 21:38:59 GMT+0800">2024-08-19 21:38:59</span>
             </span>
         
 
@@ -288,7 +288,7 @@
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>26 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>27 分钟</span>
             </span>
         
         
@@ -343,15 +343,15 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 <p>B+Tree 除叶子节点外，都只存储 key 值，所有的数据都存储在叶子节点上，<strong>且所有的叶子节点间都连有指针，使所有数据成为有序序列，可以用来做全表顺序描扫或范围查询</strong>。</p>
 <p>B+Tree 的数据检索规则为左闭合区间，这样可以实现向右添加。</p>
 <h4 id="为什么使用-B-Tree-而不使用普通的-Tree？">为什么使用 B+Tree 而不使用普通的 Tree？</h4>
-<p>普通的 tree 最多只能有 2 路，而 B+Tree 则是多路数据结构，而且在数据量庞大的情况下，Tree 可能高度会很高，增加 IO 次数，降低了性能，而 B+Tree，一页大小为 16KB，单纯用来存索引的话，假设索引为 int 类型，即 4 个字节，不考虑子节点引用的情况下，每个节点可以 2000 个关键字，即 2000 路，能够搜索的关键字个数远远的大于普通的二叉树（有只两路）。</p>
+<p>普通的 tree 最多只能有 2 路，而 B+Tree 则是多路数据结构，而且在数据量庞大的情况下，Tree 可能高度会很高，增加 IO 次数，降低了性能，而 B+Tree，一页大小为 16KB，单纯用来存索引的话，假设索引为 int 类型，即 4 个字节，不考虑子节点引用的情况下，每个节点可以存 2000 个关键字，即 2000 路，能够搜索的关键字个数远远的大于普通的二叉树（有只两路）。</p>
 <h4 id="为什么使用-B-Tree-而不使用-B-Tree？">为什么使用 B+Tree 而不使用 B-Tree？</h4>
 <p>数据库在查询数据时，以页的方式将磁盘数据加载到数据建库内存，默认每页数据大小是 16kb，为了提升查询效率，需要减少磁盘的 IO 次数。</p>
 <p>B-Tree 数据结构，每个节点中直接保存数据，这样的话 16kb 的页包含的节点数量就会比较少，所以在查询时，需要加载更多的页。</p>
-<p>B+Tree 数据结构，只有叶子节点包含数据，其他非叶子节点只包含索引列的值，16kb 的页能包含的节点数量就大增，相对于 BTree 而言，能够更少的加载页。</p>
+<p>B+Tree 数据结构，只有叶子节点包含数据，其他非叶子节点只包含索引列的值，16kb 的页能包含的节点数量就大增，相对于 B-Tree 而言，能够更少的加载页。</p>
 <h4 id="为什么不用-Hash-或者红黑数？">为什么不用 Hash 或者红黑数？</h4>
 <p>业务查询一般可能不是查询一条，而是查询多条。</p>
 <p>hash 索引查询单条确实比较快，但是他是无序的，查询多条或者排序的话性能就比较低了，并且在内存资源紧张的情况下，树索引可以分批装入内存进行计算。</p>
-<p>红黑树因为大数据存储下，树的高度很高，每个节点都有数且，这样可能会导致多次 IO，查询效率比较低，红黑树并不适合庞大数据搜索。</p>
+<p>红黑树因为大数据存储下，树的高度很高，每个节点都有数，这样可能会导致多次 IO，查询效率比较低，红黑树并不适合庞大数据搜索。</p>
 <p>而 B+ 树可以一次性装入更多的叶子节点到内存，并且树的高度可以控制到很低，叶子节点存储数据并且形成链表可以避免跨层查询，这种“矮胖”的数据结构更适合于庞大数据搜索。</p>
 <h4 id="B-Tree-叶子节点中的数据怎么有序？">B+Tree 叶子节点中的数据怎么有序？</h4>
 <p>索引是表数据之外的一种数据结构，数据结构即是存储方式，也就是在表数据之外还会生成一张专门搜索而用的表，新加入的数据会找到对应子节点所在的范围，按照升序从小到大排列。</p>
@@ -387,7 +387,7 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 </ul>
 <h3 id="为什么-InnoDB-能支持事务特性？">为什么 InnoDB 能支持事务特性？</h3>
 <p>redo log 重做日志用来保证事务的持久性：当 commit 时，必须先将事务的所有日志写到重做日志文件进行持久化，直到 commit 结束日志才算完成。</p>
-<p>undo log 回滚日志保证事务的原子性：事务完成前，操作并没有真正执行，而记录在日志中，undoglo 会记录之前事务对应的行数据，回滚时，会根据日志进行反向操作，对中间记录的每一步操作进行逻辑删除，从而保证原子性。</p>
+<p>undo log 回滚日志保证事务的原子性：事务完成前，操作并没有真正执行，而记录在日志中，undo log 会记录之前事务对应的行数据，回滚时，会根据日志进行反向操作，对中间记录的每一步操作进行逻辑删除，从而保证原子性。</p>
 <p>undo log + redo log 保证事务的一致性：操作过程中由 redo log 保证持久化，一但过程中出错，就由 undo log 回滚。</p>
 <p>锁（共享、排他）用来保证事务的隔离性：事务的隔离性的实现原理就是锁，InnoDB 主要有 2 种锁，行级锁跟意向锁。（具体见 MySQL 锁回答）</p>
 <h4 id="什么是-InnoDB-回表？">什么是 InnoDB 回表？</h4>
@@ -397,7 +397,7 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 <p>覆盖索引的实现方法是，将需要查询的数据与主键共同设为索引，即联合索引，索引扫描遵循最左匹配原则，通过一次扫描 B+tree 即可查询到相应的结果，实现覆盖索引。</p>
 <p>所以创建索引的时候，尽可能创建“覆盖索引”，减少回表操作，提升搜索性能。</p>
 <h4 id="❗什么是最左匹配原则？">❗什么是最左匹配原则？</h4>
-<p>联合索引进扫 B+tree 扫描时，会最左边的索引条件起点优先，任何连续的索引都能匹配的上。比如有一个联合索引为（name, price, address），那么它的匹配索引有三个，按照优先级分别是：name、name+price、name+price+address（注：必须是从最左开始，且连续）</p>
+<p>联合索引进扫 B+tree 扫描时，会以最左边的索引条件起点优先，任何连续的索引都能匹配的上。比如有一个联合索引为（name, price, address），那么它的匹配索引有三个，按照优先级分别是：name、name+price、name+price+address（注：必须是从最左开始，且连续）</p>
 <ol>
 <li class="lvl-3">
 <p>全列匹配，可以使用</p>
@@ -422,7 +422,7 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 </li>
 </ol>
 <h5 id="那是不是覆盖索引越多越好？">那是不是覆盖索引越多越好？</h5>
-<p>不是。在 BTree 数据类型在保证树的平衡的过程中，每次关键字的变化，都会导致结构发生很大的变化，这个过程是特别浪费时间的，所以创建索引一定要创建合适的索引，而不是把所有的字段都创建索引，创建冗余索引只会在对数据进行新增，删除，修改时增加性能消耗。</p>
+<p>不是。在 B+Tree 数据类型在保证树的平衡的过程中，每次关键字的变化，都会导致结构发生很大的变化，这个过程是特别浪费时间的，所以创建索引一定要创建合适的索引，而不是把所有的字段都创建索引，创建冗余索引只会在对数据进行新增，删除，修改时增加性能消耗。</p>
 <h3 id="百万级别或以上的数据如何删除？">百万级别或以上的数据如何删除？</h3>
 <p>索引文件是单独存在的文件，对存储表的操作都会连带到索引文件上，为了提高删除速度，可以优先删除索引（百万级约 3 分钟），然后优先删除无用数据，最后对需要保留的数据重新创建索引。这样就算需要回滚，也比全部回滚速度更快。</p>
 <h2 id="事务">事务</h2>
@@ -459,11 +459,11 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 </ol>
 <h4 id="❗什么是脏读？幻读？不可重复读？">❗什么是脏读？幻读？不可重复读？</h4>
 <p>脏读 (Drity Read)：是指在一个事务处理过程中读取了另一个未提交的事务中的数据 , 导致两次查询结果不一致。</p>
-<p>可重复读 (Non-repeatable read): 事务开启后关闭前，多次读取同一条记录，结果却不能保证一致，所以叫不可重复读。主要问题不在同一个数据库的问题，而在不同的服务器，不同数据库时会出现的问题，因为两台电脑之间要保证数据相同，是需要时间进行复制的，从表在复制主表的过程中，很可能因为修改数据过快而导致复制到错误数据。</p>
-<p>幻读 (Phantom Read):select 某记录是否存在，不存在，准备插入此记录，但执行 insert 时发现此记录已存在，无法插入。或不存在执行 delete 删除，却发现删除成功。</p>
+<p>可重复读 (Non-repeatable read)：事务开启后关闭前，多次读取同一条记录，结果却不能保证一致，所以叫不可重复读。主要问题不在同一个数据库的问题，而在不同的服务器，不同数据库时会出现的问题，因为两台电脑之间要保证数据相同，是需要时间进行复制的，从表在复制主表的过程中，很可能因为修改数据过快而导致复制到错误数据。</p>
+<p>幻读 (Phantom Read)：select 某记录是否存在，不存在，准备插入此记录，但执行 insert 时发现此记录已存在，无法插入。或不存在执行 delete 删除，却发现删除成功。</p>
 <h4 id="❗事务的隔离级别是怎么解决以上三种问题的？">❗事务的隔离级别是怎么解决以上三种问题的？</h4>
 <p>解决脏读：修改时加排他锁（写锁），直到事务提交后才释放，读取时加共享锁（读锁），其他事务只能读取，不能再有更新操作。防止脏读。</p>
-<p>解决不可重复读：innodb 引擎采用了 MVCC（多版本并发控制）来解决不可重复读问题。mvcc 是利用在每条数据后面加了隐藏的两列（创建版本号和删除版本号）当执行查询的时，当前查询版本号&gt;= 创建版本号 并且 &gt;删除版本号，MVCC 可以在大多数情况下代替行级锁，使用 MVCC，能降低其系统开销。</p>
+<p>解决不可重复读：innodb 引擎采用了 MVCC（多版本并发控制）来解决不可重复读问题。mvcc 是利用在每条数据后面加了隐藏的两列（创建版本号和删除版本号）。当执行查询的时，当前查询版本号&gt;= 创建版本号 并且 &gt;删除版本号，MVCC 可以在大多数情况下代替行级锁，使用 MVCC，能降低其系统开销。</p>
 <p>解决幻读：采用 next-key 锁解决幻读问题，next-key 锁包含两部分：记录锁（行锁）+ 间隙锁，就是在索引和索引之间上面加锁。</p>
 <h4 id="❗InnoDB-是怎么做到并发控制的？MVCC">❗InnoDB 是怎么做到并发控制的？MVCC</h4>
 <blockquote>
@@ -490,7 +490,7 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 <p>InnoDB 支持行级锁和表级锁，默认为行级锁。（<mark>innoDB 在执行增删改时会自动给行加排他锁</mark>）</p>
 </li>
 </ul>
-<p>行级锁：行级锁是 Mysql 中锁定粒度最细的一种锁，表示只针对当前操作的行进行加锁。行级锁能大大减少数据库操作的冲突。其加锁粒度最小，但加锁的开销也最大。行级锁分为<strong>共享锁（读锁）</strong> 和 <strong>排他锁（写锁）</strong>。</p>
+<p>行级锁：行级锁是 MySQL 中锁定粒度最细的一种锁，表示只针对当前操作的行进行加锁。行级锁能大大减少数据库操作的冲突。其加锁粒度最小，但加锁的开销也最大。行级锁分为<strong>共享锁（读锁）</strong> 和 <strong>排他锁（写锁）</strong>。</p>
 <p><strong>共享锁和排他锁</strong><br>
 共享锁: 又叫做读锁。 当用户要进行数据的读取时，对数据加上共享锁。共享锁可以同时加上多个。</p>
 <p>排他锁: 又叫做写锁。 当用户要进行数据的写入时，对数据加上排他锁。排他锁只可以加一个，他和其他的排他锁，共享锁都相斥。</p>
@@ -513,7 +513,7 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 <p>在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁产生概率；</p>
 </li>
 <li class="lvl-3">
-<p>对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率；</p>
+<p>对于非常容易产生死锁的业务部分，可以尝试使用升级锁的颗粒度，通过表级锁定来减少死锁产生的概率；</p>
 </li>
 </ol>
 <p>如果业务处理不好可以用分布式事务锁或者使用乐观锁。</p>
@@ -556,7 +556,7 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 <p>需要手动开启慢日志开关：</p>
 </li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看慢日志是否开启</span></span><br><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;slow_query_log&#x27;</span>;</span><br><span class="line"><span class="comment">-- 开启MySQL慢日志查询开关</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> slow_query_log <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="comment">-- 设置慢日志的时间为2秒，SQL语句执行时间超过2秒，就会视为慢查询，记录慢查询日志</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> long_query_time <span class="operator">=</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看慢日志是否开启</span></span><br><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">&#x27;slow_query_log&#x27;</span>;</span><br><span class="line"><span class="comment">-- 开启MySQL慢日志查询开关</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> slow_query_log <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="comment">-- 设置慢日志的时间为2秒，SQL语句执行时间超过2秒，就会视为慢查询，记录慢查询日志</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> long_query_time <span class="operator">=</span> <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 <ul class="lvl-0">
 <li class="lvl-2">
 <p>查看慢日志记录的 sql</p>
@@ -634,7 +634,7 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 <p>ref 使用非唯一索引查找数据</p>
 </li>
 <li class="lvl-2">
-<p>eq_ref 在 join 查询中使用 PRIMARY KEYorUNIQUE NOT NULL 索引关联。</p>
+<p>eq_ref 在 join 查询中使用 PRIMARY KEY or UNIQUE NOT NULL 索引关联。</p>
 </li>
 </ul>
 <p>possible_keys ：可能使用的索引，注意不一定会使用。查询涉及到的字段上若存在索引，则该索引将被列出来。当该列为 NULL 时就要考虑当前的 SQL 是否需要优化了。</p>
@@ -670,7 +670,7 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 <ol>
 <li class="lvl-7">对查询进行优化，应尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引。</li>
 <li class="lvl-7">应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫描，如： select id from t where num is null 可以在 num 上设置默认值 0，确保表中 num 列没有 null 值，然后这样查询： select id from t where num=0</li>
-<li class="lvl-7">并不是所有索引对查询都有效，SQL 是根据表中数据来进行查询优化的，当索引列有大量数据重复时,查询可能不会去利用索引，如一表中有字段 sex，male、female 几乎各一半，那么即使在 sex 上建了索引也对查询效率起不了作用。</li>
+<li class="lvl-7">并不是所有索引对查询都有效，SQL 是根据表中数据来进行查询优化的，当索引列有大量数据重复时，查询可能不会去利用索引，如一表中有字段 sex，male、female 几乎各一半，那么即使在 sex 上建了索引也对查询效率起不了作用。</li>
 <li class="lvl-7">索引并不是越多越好，索引固然可以提高相应的 select 的效率，但同时也降低了 insert 及 update 的效率，因为 insert 或 update 时有可能会重建索引，所以怎样建索引需要慎重考虑，视具体情况而定。一个表的索引数最好不要超过 6 个，若太多则应考虑一些不常使用到的列上建的索引是否有必要。</li>
 <li class="lvl-7">应尽可能的避免更新索引数据列，因为索引数据列的顺序就是表记录的物理存储顺序，一旦该列值改变将导致整个表记录的顺序的调整，会耗费相当大的资源。若应用系统需要频繁更新索引数据列，那么需要考虑是否应将该索引建为索引。</li>
 <li class="lvl-7">尽量使用数字型字段，若只含数值信息的字段尽量不要设计为字符型，这会降低查询和连接的性能，并会增加存储开销。 这是因为引擎在处理查询和连接时会逐个比较字符串中每一个字符，而对于数字型而言只需要比较一次就够了。</li>
@@ -685,16 +685,16 @@ MEMORY：基于内存存储，采用的是哈希索引，速度快，但存储�
 <li class="lvl-3">
 <p>SQL 语句方面：</p>
 <ol>
-<li class="lvl-7">应尽量避免在 where 子句中使用!=或&lt;&gt;操作符，否则将引擎放弃使用索引而进行全表扫描。</li>
-<li class="lvl-7">应尽量避免在 where 子句中使用 or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描，select id from t where num=10 or num=20 可以这样查询： select id from t where num=10 union all select id from t where num=20</li>
-<li class="lvl-7">in 和 not in 也要慎用，否则会导致全表扫描，如： select id from t where num in(1,2,3) 对于连续的数值，能用 between 就不要用 in 了： select id from t where num between 1 and 3</li>
-<li class="lvl-7">下面的查询也将导致全表扫描： select id from t where name like ‘%abc%’</li>
-<li class="lvl-7">如果在 where 子句中使用参数，也会导致全表扫描。因为 SQL 只有在运行时才会解析局部变量，但优化程序不能将访问计划的选择推迟到运行时；它必须在编译时进行选择。然而，如果在编译时建立访问计划，变量的值还是未知的，因而无法作为索引选择的输入项。如下面语句将进行全表扫描： select id from t where num=@num。可以改为强制查询使用索引： select id from t with(index(索引名)) where num=@num</li>
-<li class="lvl-7">应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描。select id from t where num/2=100 应改为: <code>select id from t where num=100*2</code></li>
-<li class="lvl-7">应尽量避免在 where 子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。如： select id from t where substring(name,1,3)=’abc’–name 以 abc 开头的 id select id from t where datediff(day,createdate,’2005-11-30′)=0–‘2005-11-30’生成的 id 应改为: select id from t where name like ‘abc%’ select id from t where createdate&gt;=’2005-11-30′ and createdate&lt;’2005-12-1′</li>
-<li class="lvl-7">不要在 where 子句中的“=”左边进行函数、算术运算或其他表达式运算，否则系统将可能无法正确使用索引。</li>
-<li class="lvl-7">很多时候用 exists 代替 in 是一个好的选择： select num from a where num in(select num from b)。用下面的语句替换： select num from a where exists(select 1 from b where num=a.num)</li>
-<li class="lvl-8">任何地方都不要使用 select * from t ，用具体的字段列表代替 <code>*</code>，不要返回用不到的任何字段。</li>
+<li class="lvl-7">应尽量避免在 where 子句中使用 <code>!=</code> 或 <code>&lt;&gt;</code> 操作符，否则将引擎放弃使用索引而进行全表扫描。</li>
+<li class="lvl-7">应尽量避免在 where 子句中使用 or 来连接条件，否则将导致引擎放弃使用索引而进行全表扫描，<code>select id from t where num=10 or num=20</code> 可以这样查询： <code>select id from t where num=10 union all select id from t where num=20</code></li>
+<li class="lvl-7">in 和 not in 也要慎用，否则会导致全表扫描，如： <code>select id from t where num in(1,2,3)</code> 对于连续的数值，能用 between 就不要用 in 了： <code>select id from t where num between 1 and 3</code></li>
+<li class="lvl-7">下面的查询也将导致全表扫描： <code>select id from t where name like ‘%abc%’</code></li>
+<li class="lvl-7">如果在 where 子句中使用参数，也会导致全表扫描。因为 SQL 只有在运行时才会解析局部变量，但优化程序不能将访问计划的选择推迟到运行时；它必须在编译时进行选择。然而，如果在编译时建立访问计划，变量的值还是未知的，因而无法作为索引选择的输入项。如下面语句将进行全表扫描： <code>select id from t where num=@num</code>。可以改为强制查询使用索引：<code> select id from t with(index(索引名)) where num=@num</code></li>
+<li class="lvl-7">应尽量避免在 where 子句中对字段进行表达式操作，这将导致引擎放弃使用索引而进行全表扫描。<code>select id from t where num/2=100</code> 应改为: <code>select id from t where num=100*2</code></li>
+<li class="lvl-7">应尽量避免在 where 子句中对字段进行函数操作，这将导致引擎放弃使用索引而进行全表扫描。如： <code>select id from t where substring(name,1,3)=’abc’–name</code> 以 abc 开头的 id <code>select id from t where datediff(day,createdate,’2005-11-30′)=0–‘2005-11-30’</code> 生成的 id 应改为: <code>select id from t where name like ‘abc%’ select id from t where createdate&gt;=’2005-11-30′ and createdate&lt;’2005-12-1′</code></li>
+<li class="lvl-7">不要在 where 子句中的 <code>=</code> 左边进行函数、算术运算或其他表达式运算，否则系统将可能无法正确使用索引。</li>
+<li class="lvl-7">很多时候用 exists 代替 in 是一个好的选择： <code>select num from a where num in(select num from b)。</code> 用下面的语句替换： <code>select num from a where exists(select 1 from b where num=a.num)</code></li>
+<li class="lvl-8">任何地方都不要使用 <code>select * from t</code> ，用具体的字段列表代替 <code>*</code>，不要返回用不到的任何字段。</li>
 <li class="lvl-8">尽量避免使用游标，因为游标的效率较差，如果游标操作的数据超过 1 万行，那么就应该考虑改写。</li>
 <li class="lvl-8">尽量避免向客户端返回大数据量，若数据量过大，应该考虑相应需求是否合理。</li>
 <li class="lvl-8">尽量避免大事务操作，提高系统并发能力。</li>
