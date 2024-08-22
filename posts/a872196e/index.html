@@ -248,10 +248,22 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Aug 22 2024 14:12:17 GMT+0800">2024-08-22 14:12:17</span>
+                <span class="datetime" data-updated="Thu Aug 22 2024 15:40:37 GMT+0800">2024-08-22 15:40:37</span>
             </span>
         
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -667,7 +679,7 @@
 <p>使用 list 类型保存数据信息，rpush 生产消息，lpop 消费消息，当 lpop 没有消息时，可以 sleep 一段时间，然后再检查有没有信息，如果不想 sleep 的话，可以使用 blpop, 在没有信息的时候，会一直阻塞，直到信息的到来。redis 可以通过 pub/sub 主题订阅模式实现一个生产者，多个消费者，当然也存在一定的缺点，当消费者下线时，生产的消息会丢失。</p>
 </li>
 <li class="lvl-2">
-<p>使用 sortedset，使用时间戳做 score, 消息内容作为 key,调用 zadd 来生产消息，消费者使用 zrangbyscore 获取 n 秒之前的数据做轮询处理。</p>
+<p>使用 sortedset，使用时间戳做 score, 消息内容作为 key，调用 zadd 来生产消息，消费者使用 zrangbyscore 获取 n 秒之前的数据做轮询处理。</p>
 </li>
 </ul>
 
