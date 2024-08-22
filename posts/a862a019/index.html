@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Aug 22 2024 15:53:20 GMT+0800">2024-08-22 15:53:20</span>
+                <span class="datetime" data-updated="Thu Aug 22 2024 23:50:22 GMT+0800">2024-08-22 23:50:22</span>
             </span>
         
 
@@ -283,12 +283,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.4k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>5k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>11 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>17 分钟</span>
             </span>
         
         
@@ -499,7 +499,7 @@
 <p>1 年多的 Java 现在真的狗都嫌，打算实在没有去处，6 个月之后再考一次，反正本次刷题感觉还行，不是特别难。</p>
 <h3 id="后续">后续</h3>
 <p>打算先刷点算法 + 八股了。实在不行啃点存款，反正还没辞职。。。</p>
-<h2 id="合肥英泽信息科技（外包到中华保险）">合肥英泽信息科技（外包到中华保险）</h2>
+<h2 id="合肥英泽信息科技（外包中华保险）">合肥英泽信息科技（外包中华保险）</h2>
 <blockquote>
 <p>没意外应该一面挂了。</p>
 </blockquote>
@@ -509,7 +509,7 @@
 <ol>
 <li class="lvl-3">
 <p><strong>先问线程池运行顺序，背出来了。然后问线程池在项目中的使用。</strong><br>
-在想定这个项目中，用 AOP 切面进行了日志的记录，在日志记录的时候用到了线程池。使用的是常用的线程池中的<strong>ScheduledThreadPoolExecutor（定时/延时执行任务）</strong>。好处是可以将日志记录操作放入单独的线程中执行，从而释放主线程的资源，使其能够更快地处理其他任务。</p>
+在想定这个项目中，用 AOP 切面进行了日志的记录，在日志记录的时候用到了线程池。使用的是常用的线程池中的<strong>ScheduledThreadPoolExecutor（定时/延时执行任务）</strong>。好处是可以将日志记录操作放入单独的线程中执行，从而释放主线程的资源，使其能够更快地处理其他任务。反正就围绕这个把线程池八股文都说一遍，包括核心线程数啥的。</p>
 </li>
 <li class="lvl-3">
 <p><strong>讲一下微服务体系。</strong><br>
@@ -558,7 +558,7 @@
 </ol>
 <blockquote>
 <p>内链：[[跨域产生的原因及解决方案]]<br>
-外链：<a href=""></a></p>
+外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/f5b0876a/" >跨域产生的原因及解决方案<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <ol start="9">
 <li class="lvl-3">
@@ -584,7 +584,7 @@
 回答了异步，随便举了一个支付成功发邮件的例子。</p>
 </li>
 <li class="lvl-4">
-<p><strong>继续问发失败了怎么办（这里要问的是 ACK，但是忘记准备了❗❗❗）</strong><br>
+<p><strong>继续问发失败了怎么办（这里要问的是 ACK，但是忘记准备 MQ 相关的八股文了❗❗❗）</strong><br>
 一直在引入 ACK 的机制，但是真的想不起来了。就说了一个设置消息重发的配置。</p>
 </li>
 <li class="lvl-4">
@@ -615,7 +615,155 @@
 <h4 id="总结">总结</h4>
 <p>没有根据简历准备面试（大忌❗❗❗）</p>
 <p>总结的时候发现问的好难啊，基本上要问的就是分布式事务和多线程（线程池），多线程可以去准备一下（顺便这块的八股文也背的还行）。没有什么八股文，除了第一个，难道是因为第一个我背的太明显了吗。</p>
-<h2 id=""></h2>
+<h2 id="中吾科技">中吾科技</h2>
+<blockquote>
+<p>听说团队缩减了一半，然后重新招人，十几份里选一两个。等通知。。。两天面试都提到了分布式锁相关的内容，这个需要好好研究一下❗❗❗没有及时记录，有点混乱了。</p>
+</blockquote>
+<h3 id="一面（就一面）">一面（就一面）</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>关于项目问了很多（之前的团队，开发人数，微服务整合等等）</strong><br>
+实话实说我一个人干的。</p>
+</li>
+<li class="lvl-3">
+<p><strong>仓库部分的表设计，关于怎么锁库存的</strong><br>
+我说我分表了，简单的说了一下，但是应该不是他想要的答案，网上搜了一下分布式锁库存的问题（<mark>准备好了这个，后面面试重难点可以说这个❗❗❗</mark>）。</p>
+<p>这块如果是单体架构可以参考之前的开源项目可以设计一个出入库事务表，然后所有的出入库表关联这个出入库事务表，但是是分布式就不行 // todo 关于这块详细设置。</p>
+<ol>
+<li class="lvl-6">
+<p><strong>乐观锁</strong>： 乐观锁是一种在数据操作时不使用传统锁机制，而是在数据提交时检查数据冲突的策略。在乐观锁中，当一个操作尝试更新库存时，它假设其他操作不会修改同一数据。如果在提交时发现冲突，通常会回滚操作并通知用户。</p>
+</li>
+<li class="lvl-6">
+<p><strong>悲观锁</strong>： 悲观锁是一种在数据操作时立即获取锁的策略。当一个操作尝试更新库存时，它会立即获取一个独占锁，阻止其他操作在同一时间内修改同一数据。当操作完成后，锁会被释放，其他操作可以继续执行。</p>
+</li>
+<li class="lvl-6">
+<p><strong>分布式锁</strong>： 在分布式系统中，由于数据可能分布在多个节点上，因此需要使用分布式锁来保证对共享资源的互斥访问。常见的分布式锁实现包括 ZooKeeper、Redis 等。</p>
+</li>
+<li class="lvl-6">
+<p><strong>事务管理</strong>： 使用数据库的事务管理功能来保证库存操作的原子性。在一个事务中，所有对库存的修改要么全部成功，要么全部失败，确保库存的一致性。</p>
+</li>
+<li class="lvl-6">
+<p><strong>库存锁定机制</strong>： 某些仓库管理系统可能会实现自己的库存锁定机制，比如在提交库存更新请求时，系统会检查当前库存是否可以满足请求，如果可以，则锁定库存，执行操作，最后解锁库存。</p>
+</li>
+<li class="lvl-6">
+<p><strong>库存预留机制</strong>： 在某些情况下，可能需要提前预留库存以支持订单处理。这通常涉及到一个额外的库存状态，如“预留”或“预留中”，在实际出库前，库存状态保持为“预留中”，从而实现对库存的锁定。</p>
+</li>
+<li class="lvl-6">
+<p><strong>消息队列</strong>： 在某些情况下，可以通过消息队列来实现库存的锁机制。例如，当一个操作需要更新库存时，它首先向消息队列发送一个消息，然后等待响应。如果响应表明库存可以更新，则执行操作；如果响应表明库存不可更新，则放弃操作。</p>
+</li>
+</ol>
+</li>
+<li class="lvl-3">
+<p><strong>然后是问一点关于技术的问题，关于 Java 中的集合</strong><br>
+八股文关于集合全背。说到 HashMap 底层问了要不要继续。</p>
+</li>
+<li class="lvl-3">
+<p><strong>嗯然后说可以说下多线程的问题，比如 HashTable 和 ConcurrentHashMap。</strong><br>
+HashTable 底层就是加锁，很少用；ConcurrentHashMap 全背。然后提了一下 ArrayList 也是线程不安全的，可以用 <code>Collections.synchronizedList()</code>，但是遍历的时候还是要加锁，因为只有 add，remove 等方法加了锁。</p>
+</li>
+<li class="lvl-3">
+<p><strong>问 List 遍历能不能 remove</strong><br>
+说不行，会 Fail-fast（下次加上迭代器是可以的）</p>
+</li>
+<li class="lvl-3">
+<p><strong>问 Redis 的问题，分布式多线程问题。</strong><br>
+应该是要问这个，但是我直接整到多线程，线程池那里去了😥。（然后问不是在问 Redis，咋整到那里去了😗）。我说 Redis 我只是简单的使用，存短信验证码用到了。</p>
+</li>
+<li class="lvl-3">
+<p><strong>然后问多线程，核心线程参数</strong><br>
+（可能被我带跑偏了）说了面试前刚刚准备的那个线程池（日志记录的那个），包括这块的八股，多扯一点，加上线程池的执行顺序、拒绝策略什么的。</p>
+</li>
+<li class="lvl-3">
+<p><strong>MQ 的消息保证</strong><br>
+不会这个。和之前回答一样重试机制，但是继续问队列满了怎么办。需要加强背。MQ 的相关八股忘记准备了，这周末的重点❗❗❗</p>
+</li>
+<li class="lvl-3">
+<p><strong>服务器部署，有没有用过 jekins</strong><br>
+没有，后来他说他们是，我说我去看一下。。。</p>
+</li>
+<li class="lvl-4">
+<p><strong>离职状态，投了多久简历，有没有 offer，为什么离职，只剩我一个开发的话，应该还是蛮重要的。。。</strong><br>
+直接说发不出工资。</p>
+</li>
+<li class="lvl-4">
+<p><strong>期望薪资，反问</strong></p>
+</li>
+</ol>
+<h2 id="网新恒天（外派道富）">网新恒天（外派道富）</h2>
+<blockquote>
+<p>嗯，又在胡言乱语，一紧张就胡言乱语。后面搜了如果到好的项目组就是 1055，后悔，早知道最后面这个，居然还有这种外包😭。全部都是八股文。（其实正常外包应该都是这样吧，第一天背了半天八股没有怎么问，嗯应该也问了，但是没有这么频繁，感觉这边面试是八股文集合）</p>
+</blockquote>
+<h3 id="一面（八股）">一面（八股）</h3>
+<ol>
+<li class="lvl-3">
+<p><strong>自我介绍（+ 简单的英文自我介绍）</strong><br>
+英文，嗯，忘光了。</p>
+</li>
+<li class="lvl-3">
+<p><strong>ArrayList 和 LinkedList 区别</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>ArrayList 初始容量</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>HashMap 底层结构</strong></p>
+</li>
+<li class="lvl-3">
+<p><strong>HashMap 扩容机制</strong><br>
+卡住了，卡到 put 了，然后说说几倍就行</p>
+</li>
+<li class="lvl-3">
+<p><strong>AOP 的原理</strong>🤡</p>
+</li>
+<li class="lvl-3">
+<p><strong>SPI 机制</strong>🤡</p>
+</li>
+<li class="lvl-3">
+<p><strong>Java 中有哪些锁？</strong><br>
+只说了 Lock 和 synchronized，顺便提到了公平锁和非公平锁。</p>
+</li>
+<li class="lvl-3">
+<p><strong>还有吗？</strong><br>
+可能想问 CAS？还是锁的分类？不知道我直接说的没有了吧。。。</p>
+</li>
+<li class="lvl-4">
+<p><strong>线程的 run() 和 start() 有什么区别？</strong></p>
+</li>
+<li class="lvl-4">
+<p><strong>sleep() 和 wait() 有什么区别？</strong></p>
+</li>
+<li class="lvl-4">
+<p><strong>MySQL 的索引</strong><br>
+不知道具体要问什么。。。说了一下 innodb 是聚簇索引。然后问了一下这个要问什么。。。然后说不问了</p>
+</li>
+<li class="lvl-4">
+<p><strong>事务的几个特性？ACID 是什么</strong>🤡</p>
+</li>
+<li class="lvl-4">
+<p><strong>SQL 优化</strong></p>
+</li>
+<li class="lvl-4">
+<p><strong>有没有用过序列、触发器</strong><br>
+我说我不知道，问我有没有用过 Oracle</p>
+</li>
+<li class="lvl-4">
+<p><strong>MQ，有没有用过 Kafka</strong></p>
+</li>
+<li class="lvl-4">
+<p><strong>Linux 常见命令</strong>🤡</p>
+</li>
+<li class="lvl-4">
+<p><strong>怎么在系统中找到一个文件</strong><br>
+find。</p>
+</li>
+<li class="lvl-4">
+<p><strong>会不会前端</strong></p>
+</li>
+<li class="lvl-4">
+<p><strong>最后英语自我介绍，反问</strong><br>
+英语真的想不出来阿巴了半天，反问懒得问了就说没有。</p>
+</li>
+</ol>
 
                 </div>
                 
@@ -831,7 +979,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8E%E4%B8%BA-OD"><span class="nav-text">华为 OD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-text">刷题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#240328%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240328（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240330%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240330（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240402%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240402（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240404%EF%BC%88%E7%89%9B%E5%AE%A2%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98%E5%BA%93%E2%80%94%E2%80%94https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240404（牛客华为机试题库——https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240406%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240406（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240407%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240407（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240408%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240408（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240409%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240409（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240410%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240410（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240411%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240411（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E8%AF%95%EF%BC%88240417%EF%BC%89"><span class="nav-text">机试（240417）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-text">后续</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E8%82%A5%E8%8B%B1%E6%B3%BD%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%EF%BC%88%E5%A4%96%E5%8C%85%E5%88%B0%E4%B8%AD%E5%8D%8E%E4%BF%9D%E9%99%A9%EF%BC%89"><span class="nav-text">合肥英泽信息科技（外包到中华保险）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%9D%A2"><span class="nav-text">一面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E5%9B%9E%E7%AD%94%E7%82%B9"><span class="nav-text">面试题和回答点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text"></span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8E%E4%B8%BA-OD"><span class="nav-text">华为 OD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-text">刷题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#240328%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240328（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240330%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240330（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240402%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240402（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240404%EF%BC%88%E7%89%9B%E5%AE%A2%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98%E5%BA%93%E2%80%94%E2%80%94https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240404（牛客华为机试题库——https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240406%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240406（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240407%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240407（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240408%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240408（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240409%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240409（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240410%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240410（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240411%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240411（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E8%AF%95%EF%BC%88240417%EF%BC%89"><span class="nav-text">机试（240417）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-text">后续</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E8%82%A5%E8%8B%B1%E6%B3%BD%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%EF%BC%88%E5%A4%96%E5%8C%85%E4%B8%AD%E5%8D%8E%E4%BF%9D%E9%99%A9%EF%BC%89"><span class="nav-text">合肥英泽信息科技（外包中华保险）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%9D%A2"><span class="nav-text">一面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E5%9B%9E%E7%AD%94%E7%82%B9"><span class="nav-text">面试题和回答点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E5%90%BE%E7%A7%91%E6%8A%80"><span class="nav-text">中吾科技</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%9D%A2%EF%BC%88%E5%B0%B1%E4%B8%80%E9%9D%A2%EF%BC%89"><span class="nav-text">一面（就一面）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E6%96%B0%E6%81%92%E5%A4%A9%EF%BC%88%E5%A4%96%E6%B4%BE%E9%81%93%E5%AF%8C%EF%BC%89"><span class="nav-text">网新恒天（外派道富）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%9D%A2%EF%BC%88%E5%85%AB%E8%82%A1%EF%BC%89"><span class="nav-text">一面（八股）</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -1021,7 +1169,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8E%E4%B8%BA-OD"><span class="nav-text">华为 OD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-text">刷题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#240328%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240328（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240330%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240330（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240402%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240402（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240404%EF%BC%88%E7%89%9B%E5%AE%A2%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98%E5%BA%93%E2%80%94%E2%80%94https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240404（牛客华为机试题库——https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240406%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240406（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240407%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240407（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240408%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240408（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240409%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240409（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240410%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240410（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240411%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240411（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E8%AF%95%EF%BC%88240417%EF%BC%89"><span class="nav-text">机试（240417）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-text">后续</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E8%82%A5%E8%8B%B1%E6%B3%BD%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%EF%BC%88%E5%A4%96%E5%8C%85%E5%88%B0%E4%B8%AD%E5%8D%8E%E4%BF%9D%E9%99%A9%EF%BC%89"><span class="nav-text">合肥英泽信息科技（外包到中华保险）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%9D%A2"><span class="nav-text">一面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E5%9B%9E%E7%AD%94%E7%82%B9"><span class="nav-text">面试题和回答点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-text"></span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8E%E4%B8%BA-OD"><span class="nav-text">华为 OD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="nav-text">刷题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#240328%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240328（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240330%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240330（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240402%EF%BC%88https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240402（https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240404%EF%BC%88%E7%89%9B%E5%AE%A2%E5%8D%8E%E4%B8%BA%E6%9C%BA%E8%AF%95%E9%A2%98%E5%BA%93%E2%80%94%E2%80%94https-www-nowcoder-com-ta-huawei%EF%BC%89"><span class="nav-text">240404（牛客华为机试题库——https:&#x2F;&#x2F;www.nowcoder.com&#x2F;ta&#x2F;huawei）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240406%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240406（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240407%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240407（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240408%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240408（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240409%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240409（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240410%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240410（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#240411%EF%BC%88%E5%8D%8E%E4%B8%BA-OD-%E6%9C%BA%E8%AF%95-2024-%E5%B9%B4%E6%9C%80%E6%96%B0%E9%A2%98%E5%BA%93-C-%E5%8D%B7%EF%BC%89"><span class="nav-text">240411（华为 OD 机试 2024 年最新题库 -C 卷）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E8%AF%95%EF%BC%88240417%EF%BC%89"><span class="nav-text">机试（240417）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-text">后续</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%88%E8%82%A5%E8%8B%B1%E6%B3%BD%E4%BF%A1%E6%81%AF%E7%A7%91%E6%8A%80%EF%BC%88%E5%A4%96%E5%8C%85%E4%B8%AD%E5%8D%8E%E4%BF%9D%E9%99%A9%EF%BC%89"><span class="nav-text">合肥英泽信息科技（外包中华保险）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%9D%A2"><span class="nav-text">一面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E5%9B%9E%E7%AD%94%E7%82%B9"><span class="nav-text">面试题和回答点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E5%90%BE%E7%A7%91%E6%8A%80"><span class="nav-text">中吾科技</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%9D%A2%EF%BC%88%E5%B0%B1%E4%B8%80%E9%9D%A2%EF%BC%89"><span class="nav-text">一面（就一面）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E6%96%B0%E6%81%92%E5%A4%A9%EF%BC%88%E5%A4%96%E6%B4%BE%E9%81%93%E5%AF%8C%EF%BC%89"><span class="nav-text">网新恒天（外派道富）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%9D%A2%EF%BC%88%E5%85%AB%E8%82%A1%EF%BC%89"><span class="nav-text">一面（八股）</span></a></li></ol></li></ol>
     </div>
 </div>
 
