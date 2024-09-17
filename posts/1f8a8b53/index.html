@@ -248,7 +248,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Aug 20 2024 09:25:02 GMT+0800">2024-08-20 09:25:02</span>
+                <span class="datetime" data-updated="Tue Aug 27 2024 13:06:15 GMT+0800">2024-08-27 13:06:15</span>
             </span>
         
 
@@ -323,8 +323,8 @@
 <h2 id="引擎">引擎</h2>
 <h3 id="❗MySQL-有哪些常用的存储引擎？它们的区别是什么？怎么选择？">❗MySQL 有哪些常用的存储引擎？它们的区别是什么？怎么选择？</h3>
 <p>常见的存储引擎有：InnoDB（最常用），MyISAM（次常用），MEMORY（最次）。</p>
-<p>InnoDB：是最常用的存储引擎，采用 BTree 索引，最适用于需要增删改的表，支持事务，支持并发控制（MVCC），InnoDB 是现在 MySQL 默认的存储引擎。<em>分库分表、读写分离、主备切换</em>（技术方案很成熟）</p>
-<p>MyISAM：是 5.5 版本之前默认的存储引擎，采用 BTree 索引，访问速度快，但不支持事务和外键，所以只适用于查询需求的表。</p>
+<p>InnoDB：是最常用的存储引擎，采用 B+Tree 索引，最适用于需要增删改的表，支持事务，支持并发控制（MVCC），InnoDB 是现在 MySQL 默认的存储引擎。<em>分库分表、读写分离、主备切换</em>（技术方案很成熟）</p>
+<p>MyISAM：是 5.5 版本之前默认的存储引擎，采用 B-Tree 索引，访问速度快，但不支持事务和外键，所以只适用于查询需求的表。</p>
 <ul class="lvl-0">
 <li class="lvl-2">
 <p>基于 MyISAM 的报表系统，hadoop 前一天把报表数据查询然后保存到 MySQL，后面只要查询。<strong>MySQL 的单表建议控制数据量在几百万</strong>，一般是 500w。后面这种报表数据量会很大，sql 也很复杂，不适合用 MySQL。<br>
