@@ -248,10 +248,19 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Sep 17 2024 15:03:49 GMT+0800">2024-09-17 15:03:49</span>
+                <span class="datetime" data-updated="Wed Sep 18 2024 11:36:04 GMT+0800">2024-09-18 11:36:04</span>
             </span>
         
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -299,7 +308,8 @@
 
                     <ul class="lvl-0">
 <li class="lvl-2">
-<p>前言设计模式 - 责任链模式</p>
+<p>前言<br>
+设计模式 - 责任链模式</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
@@ -308,7 +318,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-09-13 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 <h2 id="简单理解">简单理解</h2>
-<p>可以简单的理解为，针对一个请求，做多层处理（ 不分先后），并且这些处理可能随着业务需求进行不断变更，这个时候就可以用责任链模式。比如说 Spring 中的 <code>Filter</code> 使用的就是责任链模式。* 这里理解与策略模式的不同在于：责任链有点像 if return 会每个匹配比较，而策略像 map get key 直接匹配一个；责任链多用于解耦，策略多用于封装 *</p>
+<p>可以简单的理解为，针对一个请求，做多层处理（ 不分先后），并且这些处理可能随着业务需求进行不断变更，这个时候就可以用责任链模式。比如说 Spring 中的 <code>Filter</code> 使用的就是责任链模式。*这里理解与策略模式的不同在于：责任链有点像 if return 会每个匹配比较，而策略像 map get key 直接匹配一个；责任链多用于解耦，策略多用于封装 *</p>
 <p>一般来说，这种多层处理可能代码中使用多个 if 来进行处理。处理方式可以如下：</p>
 <ol>
 <li class="lvl-3">
@@ -450,6 +460,22 @@
 
                 
                     <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/posts/ba3da13b/"
+                                   title="Windows 自带的 Linux 子系统"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Windows 自带的 Linux 子系统</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
                         
                         
                             <div class="next-post">
