@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kiml">
+    
+    <title>
+        
+            面试-反射、GC、JVM优化 |
+        
+        Kiml&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/sword.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"kiml.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"title":"Kiml's Blog","author":"Kiml","avatar":null,"font_size":null,"font_family":null,"primary_color":"#0066cc","logo":null,"favicon":"/images/sword.png"},"menu":{"Home":"/ || fa-solid fa-home","Archives":"/archives || fa-solid fa-box-archive","检索":{"icon":"fa-solid fa-book","children":[{"Tags":"/tags || fa-solid fa-tags"},{"Categories":"/categories || fa-solid fa-layer-group"}]},"tools":"/tools/ || fa-toolbox","About":"/about || fa-user-secret"},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240414/%E8%83%8C%E6%99%AF.webp","description":"我生来就是高山而非溪流 || 我欲于群峰之巅俯视平庸的沟壑","font_color":null,"hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kiml-rgb","email":"1162278448@qq.com"}},"scroll":{"progress_bar":true,"percent":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":"q1UTRN34B6O87bCsl1cg50tn-gzGzoHsz","appkey":"nwRaNMVMqNgK4gogSJCAyaUq","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":"https://comment.kiml.site/","reaction":false,"version":3}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2022,"icp":null,"site_deploy":{"enable":false,"provider":"github","url":null}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","home_article":{"category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":5}},"source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.ico"},{"name":"智谱清言","link":"https://chatglm.cn/","description":"智谱 AI 旗下的 AI 聊天对话工具","image":"/images/tools/Chat GLM.png"},{"name":"Kimi Chat","link":"https://kimi.moonshot.cn","description":"擅长长文本对话","image":"/images/tools/kimi.png"},{"category":"开发工具"},{"name":"it-tools","link":"https://it-tools.tech/","description":"汇集开发工具","image":"/images/tools/it-tools.png"},{"name":"markdown","link":"https://markdown.com.cn/cheat-sheet.html","description":"markdown语法速查","image":"/images/tools/markdown.png"},{"name":"codepen","link":"https://codepen.io/","description":"前端在线开发","image":"/images/tools/codepen.png"},{"name":"iconfont","link":"https://www.iconfont.cn/","description":"阿里巴巴矢量图库","image":"/images/tools/iconfont.png"},{"category":"部署托管"},{"name":"Vercel","link":"https://vercel.com/","description":"Vercel","image":"/images/tools/Vercel.png"},{"category":"AI 编程"},{"name":"Tabby","link":"https://tabby.tabbyml.com/","description":"可以本机部署，也可以独立本地部署","image":"/images/tools/Tabby.png"},{"name":"v0","link":"https://v0.dev/","description":"提需求或传图，生成 React 前端代码","image":"/images/tools/v0.png"}]},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Keep Theme" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               Kiml&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-book"></i>
+                                
+                                检索
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/tags">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                                
+                                                TAGS
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/categories">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                                
+                                                CATEGORIES
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools/">
+                                
+                                    <i class="menu-text-color menu-icon fa-toolbox"></i>
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-user-secret"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-book"></i>
+                                </span>
+                            
+                            检索
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/tags">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                            </span>
+                                        
+                                        TAGS
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/categories">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                            </span>
+                                        
+                                        CATEGORIES
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-toolbox"></i>
+                                </span>
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-user-secret"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        面试-反射、GC、JVM优化
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kiml</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-06-14 21:37:11</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sun Aug 18 2024 21:22:04 GMT+0800">2024-08-18 21:22:04</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>4.9k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>17 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>
+❗表示必掌握，❔表示基本不会问</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">24-06-14 初始记录 这JVM的图居然是我以前画的，一点都不记得了。</span><br><span class="line">24-06-16 补充JVM，部分问题没有深入，需要看新的视频。</span><br><span class="line">24-06-18 补充剩下的内容</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="类加载器与反射">类加载器与反射</h2>
+<h3 id="简述-java-类加载机制？">简述 java 类加载机制？</h3>
+<p>虚拟机把描述类的数据从 Class 文件加载到内存，并对数据进行校验，解析和初始化，最终形成可以被虚拟机直接使用的 java 类型。</p>
+<h3 id="描述一下-JVM-加载-Class-文件的原理机制？">描述一下 JVM 加载 Class 文件的原理机制？</h3>
+<p>Java 中的所有类，都需要由类加载器装载到 JVM 中才能运行。类加载器本身也是一个类，而它的工作就是把 class 文件从硬盘读取到内存中。在写程序的时候，我们几乎不需要关心类的加载，因为这些都是隐式装载的，除非我们有特殊的用法，像是反射，就需要显式的加载所需要的类。</p>
+<p>类装载方式，有两种 ：</p>
+<ol>
+<li class="lvl-3">
+<p>隐式装载， 程序在运行过程中当碰到通过 new 等方式生成对象时，隐式调用类装载器加载对应的类到 jvm 中</p>
+</li>
+<li class="lvl-3">
+<p>显式装载， 通过 class.forname() 等方法，显式加载需要的类</p>
+</li>
+</ol>
+<p>Java 类的加载是动态的，它并不会一次性将所有类全部加载后再运行，而是保证程序运行的基础类 (像是基类) 完全加载到 jvm 中，至于其他类，则在需要的时候才加载。这当然就是为了节省内存开销。</p>
+<h3 id="说一下类装载的执行过程？">说一下类装载的执行过程？</h3>
+<p>类装载分为以下 5 个步骤：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>加载：根据查找路径找到相应的 class 文件然后导入；</p>
+</li>
+<li class="lvl-2">
+<p>验证：检查加载的 class 文件的正确性；</p>
+</li>
+<li class="lvl-2">
+<p>准备：给类中的静态变量分配内存空间；</p>
+</li>
+<li class="lvl-2">
+<p>解析：虚拟机将常量池中的符号引用替换成直接引用的过程。符号引用就理解为一个标示，而在直接引用直接指向内存中的地址；</p>
+</li>
+<li class="lvl-2">
+<p>初始化：对静态变量和静态代码块执行初始化工作。</p>
+</li>
+</ul>
+<h3 id="什么是类加载器，类加载器有哪些">什么是类加载器，类加载器有哪些?</h3>
+<p>宏观来看只有两种类加载器：启动类加载器（c++ 实现）和其他所有的类加载器（java 语言）。</p>
+<p>主要有一下四种类加载器:</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>启动类加载器 (Bootstrap ClassLoader)：用来加载 java 核心类库，无法被 java 程序直接引用。</p>
+</li>
+<li class="lvl-2">
+<p>平台/扩展类加载器 (extensions class loader)：它用来加载 Java 的扩展库。Java 虚拟机的实现会提供一个扩展库目录。该类加载器在此目录里面查找并加载 Java 类。（JDK9 之后，扩展类加载器被重命名为平台类加载器）。</p>
+</li>
+<li class="lvl-2">
+<p>系统类加载器（system class loader）：它根据 Java 应用的类路径（CLASSPATH）来加载 Java 类。一般来说，Java 应用的类都是由它来完成加载的。可以通过 ClassLoader.getSystemClassLoader() 来获取它。</p>
+</li>
+<li class="lvl-2">
+<p>用户自定义类加载器，通过继承 java.lang.ClassLoader 类的方式实现。</p>
+</li>
+</ul>
+<h3 id="什么是反射机制？">什么是反射机制？</h3>
+<p>JAVA 反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取的信息以及动态调用对象的方法的功能称为 java 语言的反射机制。</p>
+<h3 id="什么是静态编译，什么是动态编译？">什么是静态编译，什么是动态编译？</h3>
+<p>静态编译：在编译时确定类型，绑定对象</p>
+<p>动态编译：运行时确定类型，绑定对象</p>
+<h3 id="反射机制的优缺点有哪些？">反射机制的优缺点有哪些？</h3>
+<p>优点： 运行期类型的判断，动态加载类，提高代码灵活度。</p>
+<p>缺点： 性能瓶颈：反射相当于一系列解释操作，通知 JVM 要做的事情，过程比直接的 java 代码要多了一步委托的过程，反射需要类加载器通过双亲委派模型实现动态编译，效率较低。</p>
+<h3 id="什么是双亲委派机制？">什么是双亲委派机制？</h3>
+<p>首先，JVM 中有三大类加载器：启动类加载器（最顶层），平台类加载器（中层），系统类加载器（下层）。</p>
+<p>双亲委派模型就是指一个类加载器收到了类加载请求，它不会直接自己先加载，而把请求委托给父类的加载器去执行，如果父类加载器还存在其父类加载器，就再往上委托，赴到最顶层的类加载器，如果父类加载器可以完成类加载任务，就成功返回，若不能，就向下传递，让子加载器去加载，这就是双亲委派模式。</p>
+<p>双亲委派模型主要是用来保证同一个类只能被一个类加载器加载。</p>
+<h3 id="怎么破坏双亲委派机制？">怎么破坏双亲委派机制？</h3>
+<p>一般在自定义类加载器中，我们不希望通过双亲委派机制一层层向上再下来，而是希望直接通过自己定义的类加载器直接实现类加载，来提升加载性能，比如 Tomcat 中的 web 容器类加载器就是破坏了双亲委托模式的，里面的 WebApplicationClassLoader 除了核心类库外，都是优先加载自己路径下的 Class。</p>
+<p>要打破双亲委派机制，只要在重写 loadclass 的过程中，不遵从 JVM 规范就行了，也就是不盲目优先向 Parednt 的 ClassLoader 查找即可。</p>
+<h3 id="你在哪些场景下用过反射？">你在哪些场景下用过反射？</h3>
+<p>反射在框架中有频繁的被使用，比如 JDK 动态代理，Spring 中的注入属性，调用方法等。</p>
+<p>反射更多是为了灵活舍弃一部分性能，自己使用一般用在工具类中，比如频繁通过参数名来调用指定的方法时，可以用通过反射去匹配指定的方法名，然后实现功能。</p>
+<h3 id="Java-中获取反射的三种方法是什么？">Java 中获取反射的三种方法是什么？</h3>
+<ol>
+<li class="lvl-3">
+<p>类名.class 属性</p>
+</li>
+<li class="lvl-3">
+<p>对象名.getClass() 方法</p>
+</li>
+<li class="lvl-3">
+<p>Class.forName(全类名) 方法</p>
+</li>
+</ol>
+<h3 id="反射可以获取私有方法或构造函数吗或私有成员变量吗？">反射可以获取私有方法或构造函数吗或私有成员变量吗？</h3>
+<p>可以。有专门反射私有构造函数的方法 <code>clazz.getDeclaredConstructor(int.class);</code> 来读取私有的构造函数，私有成员变量和私有方法也一样，但用这个方法读取完还需要设置一下暴力反射才行：<code>c.setAccessible(true)</code>。</p>
+<h2 id="JVM">JVM</h2>
+<p>内链：[[JVM.excalidraw]]</p>
+<p>外链：<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/Z2406/Snipaste_2024-06-17_15-35-20.png"
+                        alt=""
+                 ></p>
+<p>JVM 包含两个子系统和两个组件，两个子系统为 Class loader(类装载)、Execution engine(执行引擎)；两个组件为 Runtime data area(运行时数据区)、Native Interface(本地接口)。</p>
+<p>Class loader(类装载)：根据给定的全限定名类名 (如：java.lang.Object) 来装载 class 文件到 Runtime data area 中的 method area。</p>
+<p>Execution engine(执行引擎)：执行 classes 中的指令。</p>
+<p>Native Interface(本地接口)：与 native libraries 交互，是其它编程语言交互的接口。</p>
+<p>Runtime data area(运行时数据区域)：这就是我们常说的 JVM 的内存。</p>
+<p>顺序 ：</p>
+<ol>
+<li class="lvl-3">
+<p>首先通过编译器把 Java 代码转换成字节码，类加载器（ClassLoader）再把字节码加载到内存中，将其放在运行时数据区（Runtime data area）的方法区内。</p>
+</li>
+<li class="lvl-3">
+<p>而字节码文件只是 JVM 的一套指令集规范，并不能直接交给底层操作系统去执行，因此需要特定的命令解析器执行引擎（Execution Engine），将字节码翻译成底层系统指令。</p>
+</li>
+<li class="lvl-3">
+<p>再交由 CPU 去执行，而这个过程中需要调用其他语言的本地库接口（Native Interface）来实现整个程序的功能。</p>
+</li>
+</ol>
+<h3 id="❗JVM-中有哪几块内存区域？Java-8-之后对内存分代做了什么改进？">❗JVM 中有哪几块内存区域？Java 8 之后对内存分代做了什么改进？</h3>
+<blockquote>
+<p>首先：一般来说：Spring boot 会内置一个 tomcat，tomcat 自己是基于 java 来开发的。我们启动的其实是 tomcat（一个 JVM 进程），我们写的代码，会被 tomcat 加载到 JVM 中。</p>
+<p>tomcat 去负责接收请求，执行我们写好的代码（基于 Spring 框架的一堆代码）</p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p>程序计数器（Program Counter Register）：当前线程所执行的字节码的行号指示器，个人感觉的他就是为多线程准备的，程序计数器是每个线程独有的，所以是线程安全的。它主要用于记录每个线程的执行情况。</p>
+</li>
+<li class="lvl-3">
+<p>Java 虚拟机栈（Java Virtual Machine Stacks）：线程私有，用于存储局部变量表、操作数栈、动态链接、方法出口等信息。</p>
+</li>
+<li class="lvl-3">
+<p>本地方法栈（Native Method Stack）：线程私有，与虚拟机栈的作用是一样的，只不过虚拟机栈是服务 Java 方法的，而本地方法栈是为虚拟机调用 Native 方法服务的（Native 方法是 JVM 底层的 C 语言对其它系统或硬件进行交互）。</p>
+</li>
+<li class="lvl-3">
+<p>Java 堆（Java Heap）：Java 虚拟机中内存最大的一块，是被所有线程共享的，几乎所有的对象实例都在这里分配内存；Java 堆也叫 GC 堆，是垃圾收集器管理的主要区域，堆中可以细分为：新生代、老年代；再细致一点，新生代中又分为：Eden Space(伊甸园)、Survivor 空间，Survivor 空间又分为 From 区和 to 区。</p>
+</li>
+<li class="lvl-3">
+<p>方法区（Methed Area）：1.8 之后方法区用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译后的代码等数据。</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p><strong>方法区补充点：</strong></p>
+<ul class="lvl-2">
+<li class="lvl-6">在 JDK1.7 以前 HotSpot 虚拟机使用永久代来实现方法区，永久代的大小在启动 JVM 时可以设置一个固定值（-XX:MaxPermSize），不可变。</li>
+<li class="lvl-6">在 JDK1.7 中 存储在永久代的部分数据就已经转移到 Java Heap（堆）或者 Native memory。譬如符号引用 (Symbols) 转移到了 native memory，原本存放在永久代的字符常量池移出。但永久代仍存在于 JDK 1.7 中，并没有完全移除。</li>
+<li class="lvl-6">JDK1.8 中进行了较大改动：
+<ul class="lvl-4">
+<li class="lvl-10">移除了永久代（PermGen），替换为元空间（Metaspace）；</li>
+<li class="lvl-10">永久代中的 class metadata 转移到了 native memory（本地内存，而不是虚拟机）；</li>
+<li class="lvl-10">永久代中的 interned Strings 和 class static variables 转移到了 Java heap（堆）；</li>
+<li class="lvl-10">永久代参数 （PermSize MaxPermSize） -&gt; 元空间参数（MetaspaceSize MaxMetaspaceSize）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>永久代（元空间）</p>
+<ul class="lvl-2">
+<li class="lvl-6">在 Java8 中，永久代已经被移除，被一个称为“元数据区”（元空间，Metaspace）的区域所取代。</li>
+<li class="lvl-6">值得注意的是：元空间并不在虚拟机中，而是使用本地内存（之前，永久代是在 jvm 中）。</li>
+<li class="lvl-6">这样，解决了以前永久代的 OOM 问题，元数据和 class 对象存在永久代中，容易出现性能问题和内存溢出，毕竟是和老年代共享堆空间。java8 后，永久代升级为元空间独立后，也降低了老年代 GC 的复杂度。</li>
+</ul>
+</li>
+</ul>
+<h3 id="❔你知道-JVM-是如何运行起来的吗？我们的对象是如何分配的">❔你知道 JVM 是如何运行起来的吗？我们的对象是如何分配的</h3>
+<blockquote>
+<p>大白话：比如说我们有一个类里面包含了 main 方法，你去执行这个 main 方法，此时会启动一个 JVM 的进程。默认会有一个 main 线程，这个 main 线程就负责执行这个 main 方法的代码，进而创建各种对象。</p>
+<p>tomcat 也是一样的，类加载到 JVM 里面，Spring 将我们的类实例化成各种 Bean 容器。会有工作线程来执行我们 bean 实例对象里的方法和代码，进而也会创建其他的各种对象，实现业务逻辑。</p>
+</blockquote>
+<p>例子：Spring 容器中的 JVM。</p>
+<ol>
+<li class="lvl-3">
+<p>类加载器把我们写的类加载到元空间</p>
+</li>
+<li class="lvl-3">
+<p>Spring 容器通过反射技术，获取元空间中的类，创建 bean 实例对象对象存入堆内存。</p>
+</li>
+<li class="lvl-3">
+<p>tomcat 线程执行请求会在栈内存通过栈帧存放局部变量，引用堆内存中的实例变量</p>
+</li>
+</ol>
+<h3 id="❗JVM-在哪些情况下会触发垃圾回收">❗JVM 在哪些情况下会触发垃圾回收</h3>
+<blockquote>
+<p>在 JVM 内存里必然有一个内存的分代模型。比如说一个 4 核 8G 的机器，堆内存可能也就 4G 左右（其他例如栈内存、元空间区域存放类信息也需要空间）。</p>
+<p>堆内存内部再分，比如给年轻代 2GB、给老年代 2GB，默认情况下 Eden 和 s1、s2 的比例是：8:1:1。</p>
+</blockquote>
+<p>如果 Eden 满了，必然会触发垃圾回收（young GC）。<em>回收的对象就是没有人引用的对象</em>：方法执行过程中的局部变量引用对象、类中的静态变量引用的对象这两类对象不会被回收，其他对象基本上都可以被回收。</p>
+<h4 id="什么是-Full-GC？什么情况下会触发？">什么是 Full GC？什么情况下会触发？</h4>
+<p>Full GC 是指清理整个堆空间——包括年轻代和老年代。</p>
+<p>什么时候触发：</p>
+<ol>
+<li class="lvl-3">
+<p>调用 System.gc</p>
+</li>
+<li class="lvl-3">
+<p>方法区空间不足</p>
+</li>
+<li class="lvl-3">
+<p>老年代空间不足，包括：</p>
+<ol>
+<li class="lvl-7">新创建的对象都会被分配到 Eden 区，如果该对象占用内存非常大，则直接分配到老年代区，此时老年代空间不足。</li>
+<li class="lvl-7">做 minor gc 操作前，发现要移动的空间（Eden 区、From 区向 To 区复制时，To 区的内存空间不足）比老年代剩余空间要大，则触发 full gc，而不是 minor gc。</li>
+</ol>
+</li>
+</ol>
+<h4 id="❗JVM-年轻代的回收算法">❗JVM 年轻代的回收算法</h4>
+<blockquote>
+<p>垃圾回收的时候有一个概念：stop the world。停止 jvm 内的工作线程的运行，然后扫描所有的对象，判断哪些可以回收，哪些不可以回收。</p>
+<p>年轻代内大部分都是垃圾对象。</p>
+</blockquote>
+<p>垃圾回收：<strong>复制算法</strong>。</p>
+<ol>
+<li class="lvl-3">
+<p>把年轻代内的存活对象复制到 s1，触发 young GC 把 Eden 清空。</p>
+</li>
+<li class="lvl-3">
+<p>第二次满，把年轻代内的存活对象和 s1 内存活的对象，复制到 s2。然后把 Eden 和 s1 清空</p>
+</li>
+<li class="lvl-3">
+<p>Eden 又满，把年轻代内的存活对象和 s2 内存活的对象，复制到 s1。然后把 Eden 和 s2 清空</p>
+</li>
+</ol>
+<h4 id="❗对象什么时候会转移到老年代中">❗对象什么时候会转移到老年代中</h4>
+<ol>
+<li class="lvl-3">
+<p>有的对象在年轻代里熬过了很多次垃圾回收（默认是 15 次，可以设置），就会被认为是长期存活的对象，会从年轻代转移到老年代。（例如：<em>Spring 容器内的一些 Bean 对象</em>）</p>
+</li>
+<li class="lvl-3">
+<p>Eden 垃圾回收时，发现存活对象的大小，比 Suivivor 区还要大，就会直接放入老年代。</p>
+</li>
+<li class="lvl-3">
+<p>很大的对象，会直接存入老年代。</p>
+</li>
+</ol>
+<h4 id="❗JVM-老年代的回收算法">❗JVM 老年代的回收算法</h4>
+<blockquote>
+<p>老年代内的对象，很多都是长期被引用的，不能用复制算法，效率比较低。</p>
+</blockquote>
+<p>老年代使用的算法是<strong>标记清除（回收）算法</strong>或者<strong>标记压缩算法</strong>。</p>
+<p>标记清除（回收）：</p>
+<ol>
+<li class="lvl-3">
+<p>首先会从 GC root 进行遍历，把可达对象（存过的对象）打标记</p>
+</li>
+<li class="lvl-3">
+<p>再从 GC root 二次遍历，将没有被打上标记的对象清除掉。优点：老年代对象一般是比较稳定的，相比复制算法，不需要复制大量对象。之所以将所有对象扫描 2 次，看似比较消耗时间，其实不然，是节省了时间。举个栗子，数组 1,2,3,4,5,6。删除 2,3,4，如果每次删除一个数字，那么 5,6 要移动 3 次，如果删除 1 次，那么 5,6 只需移动 1 次。</p>
+</li>
+</ol>
+<p>缺点：这种方式需要中断其他线程（STW），相比复制算法，可能产生内存碎片。</p>
+<p>标记压缩：和标记清除算法基本相同，不同的就是，在清除完成之后，会把存活的对象向内存的一边进行压缩，这样就可以解决内存碎片问题。</p>
+<p>当老年代也满了装不下的时候，就会抛出 OOM（Out of Memory）异常。</p>
+<h4 id="怎么判断对象是否可以被回收？">怎么判断对象是否可以被回收？</h4>
+<p>垃圾收集器在做垃圾回收的时候，首先需要判定的就是哪些内存是需要被回收的，哪些对象是「存活」的，是不可以被回收的；哪些对象已经「死掉」了，需要被回收。</p>
+<p>一般有两种方法来判断：</p>
+<ol>
+<li class="lvl-3">
+<p>引用计数器法：为每个对象创建一个引用计数，有对象引用时计数器 +1，引用被释放时计数 -1，当计数器为 0 时就可以被回收。它有一个缺点不能解决循环引用的问题；</p>
+</li>
+<li class="lvl-3">
+<p>可达性分析算法：从 GC Roots 开始向下搜索，搜索所走过的路径称为引用链。当一个对象到 GC Roots 没有任何引用链相连时，则证明此对象是可以被回收的。</p>
+</li>
+</ol>
+<h4 id="❗常用的垃圾回收器">❗常用的垃圾回收器</h4>
+<ol>
+<li class="lvl-3">
+<p>parnew+cms 的组合（jdk8 以及 8 以前）<br>
+parnew 是新生代回收器，多线程。cms 是老年代垃圾回收（比较慢，一般比年轻代慢 10 倍以上），cms 的垃圾回收算法，刚开始用标记清理，然后整理。会产生几个阶段，尽可能并发进行</p>
+</li>
+<li class="lvl-3">
+<p>G1(Garbage First)（从 jdk9 往后主推）回收整个堆。</p>
+</li>
+</ol>
+<h3 id="❗生产环境中的-Tomcat-如何设置-JVM-参数。如何检查-JVM-运行情况">❗生产环境中的 Tomcat 如何设置 JVM 参数。如何检查 JVM 运行情况</h3>
+<blockquote>
+<p>Java Web 系统，在 tomcat 的一个配置脚本，catalina 脚本里找一下。</p>
+</blockquote>
+<p>核心了解点：</p>
+<ol>
+<li class="lvl-3">
+<p>内存区域大小的分配，每个线程的栈大小，metaspace 大小，堆内存的大小，年轻代和老年代分别的大小，eden 和 survivor 区域的大小。（没有设置，会有默认值，可以通过命令行查看）</p>
+</li>
+<li class="lvl-3">
+<p>垃圾回收器用了什么，每种垃圾回收器是否有对应的一些特殊的参数设置，那些特殊的参数分别用来干什么的。</p>
+</li>
+</ol>
+<p>❗为什么要这么设置？当前系统运行的时候，jvm 的表现如何？</p>
+<p>// todo 额，这部分都在打广告，打算看了另一个视频再补充。</p>
+<h4 id="❗实际项目中是否做过-JVM-GC-优化，怎么做的？">❗实际项目中是否做过 JVM GC 优化，怎么做的？</h4>
+<blockquote>
+<p>没做过，直接单机压测，然后调优。</p>
+</blockquote>
+<p>// todo</p>
+<h4 id="❗发生-OOM-之后，应该如何排查和处理线上系统的-OOM-问题？">❗发生 OOM 之后，应该如何排查和处理线上系统的 OOM 问题？</h4>
+<p>解决的一个思路：在 JVM 里可以设置几个参数，如果一旦 JVM 发生了 OOM 之后，就会导出一份内存的快照。可以用类似 MAT 这样的工具去分析（<em>找出当时的内存占用最大的对象是谁，找出那些对象是在哪些地方创建出来的，一般来说是对内存去做一个调优</em>）。</p>
+<p>// todo 这里要结合业务去思考，结合项目（模拟）</p>
+<h3 id="Java-会存在内存泄漏吗？请简单描述">Java 会存在内存泄漏吗？请简单描述</h3>
+<p>内存泄漏是指不再被使用的对象或者变量一直被占据在内存中。理论上来说，Java 是有 GC 垃圾回收机制的，也就是说，不再被使用的对象，会被 GC 自动回收掉，自动从内存中清除。</p>
+<p>但是，即使这样，Java 也还是存在着内存泄漏的情况，java 导致内存泄露的原因很明确：长生命周期的对象持有短生命周期对象的引用就很可能发生内存泄露，尽管短生命周期对象已经不再需要，但是因为长生命周期对象持有它的引用而导致不能被回收，这就是 java 中内存泄露的发生场景。</p>
+<h3 id="有遇到过栈溢出吗？一般是什么问题导致？">有遇到过栈溢出吗？一般是什么问题导致？</h3>
+<p>栈溢出（StackOverflowError）是指栈内容全部被占用，而数据还要往里放。一般是递归错误或者出现死循环导致。</p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                面试-反射、GC、JVM优化
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                posts/6f2f510a/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">Kiml</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-06-14 21:37</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/posts/253a4d3a/"
+                                   title="代码随想录算法训练营第三十天-452用最少数量的箭引爆气球、435无重叠区间、763划分字母区间"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第三十天-452用最少数量的箭引爆气球、435无重叠区间、763划分字母区间</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/posts/d65e5e22/"
+                                   title="代码随想录算法训练营第二十九天-134加油站、135分发糖果、860柠檬水找零、406根据身高重建队列"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第二十九天-134加油站、135分发糖果、860柠檬水找零、406根据身高重建队列</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://comment.kiml.site/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'false' === 'true'
+        </script>
+
+        
+
+        
+            <script data-pjax
+                    async
+                    type="module"
+            >
+              import { init } from 'https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('true' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E4%B8%8E%E5%8F%8D%E5%B0%84"><span class="nav-text">类加载器与反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">简述 java 类加载机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-JVM-%E5%8A%A0%E8%BD%BD-Class-%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">描述一下 JVM 加载 Class 文件的原理机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%B1%BB%E8%A3%85%E8%BD%BD%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">说一下类装载的执行过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8C%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-text">什么是类加载器，类加载器有哪些?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是反射机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%9F"><span class="nav-text">什么是静态编译，什么是动态编译？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">反射机制的优缺点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是双亲委派机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E7%A0%B4%E5%9D%8F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">怎么破坏双亲委派机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E8%BF%87%E5%8F%8D%E5%B0%84%EF%BC%9F"><span class="nav-text">你在哪些场景下用过反射？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Java 中获取反射的三种方法是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E6%88%96%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%90%97%E6%88%96%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%90%97%EF%BC%9F"><span class="nav-text">反射可以获取私有方法或构造函数吗或私有成员变量吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM"><span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E4%B8%AD%E6%9C%89%E5%93%AA%E5%87%A0%E5%9D%97%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%EF%BC%9FJava-8-%E4%B9%8B%E5%90%8E%E5%AF%B9%E5%86%85%E5%AD%98%E5%88%86%E4%BB%A3%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B%EF%BC%9F"><span class="nav-text">❗JVM 中有哪几块内存区域？Java 8 之后对内存分代做了什么改进？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E4%BD%A0%E7%9F%A5%E9%81%93-JVM-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84%E5%90%97%EF%BC%9F%E6%88%91%E4%BB%AC%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%86%E9%85%8D%E7%9A%84"><span class="nav-text">❔你知道 JVM 是如何运行起来的吗？我们的对象是如何分配的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-text">❗JVM 在哪些情况下会触发垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Full-GC%EF%BC%9F%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%EF%BC%9F"><span class="nav-text">什么是 Full GC？什么情况下会触发？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97JVM-%E5%B9%B4%E8%BD%BB%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 年轻代的回收算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9%E8%B1%A1%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E8%BD%AC%E7%A7%BB%E5%88%B0%E8%80%81%E5%B9%B4%E4%BB%A3%E4%B8%AD"><span class="nav-text">❗对象什么时候会转移到老年代中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97JVM-%E8%80%81%E5%B9%B4%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 老年代的回收算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-text">怎么判断对象是否可以被回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-text">❗常用的垃圾回收器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84-Tomcat-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE-JVM-%E5%8F%82%E6%95%B0%E3%80%82%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5-JVM-%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5"><span class="nav-text">❗生产环境中的 Tomcat 如何设置 JVM 参数。如何检查 JVM 运行情况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%81%9A%E8%BF%87-JVM-GC-%E4%BC%98%E5%8C%96%EF%BC%8C%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84%EF%BC%9F"><span class="nav-text">❗实际项目中是否做过 JVM GC 优化，怎么做的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%8F%91%E7%94%9F-OOM-%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E5%92%8C%E5%A4%84%E7%90%86%E7%BA%BF%E4%B8%8A%E7%B3%BB%E7%BB%9F%E7%9A%84-OOM-%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">❗发生 OOM 之后，应该如何排查和处理线上系统的 OOM 问题？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%BC%9A%E5%AD%98%E5%9C%A8%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%90%97%EF%BC%9F%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0"><span class="nav-text">Java 会存在内存泄漏吗？请简单描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E9%81%87%E5%88%B0%E8%BF%87%E6%A0%88%E6%BA%A2%E5%87%BA%E5%90%97%EF%BC%9F%E4%B8%80%E8%88%AC%E6%98%AF%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E5%AF%BC%E8%87%B4%EF%BC%9F"><span class="nav-text">有遇到过栈溢出吗？一般是什么问题导致？</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kiml</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E4%B8%8E%E5%8F%8D%E5%B0%84"><span class="nav-text">类加载器与反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">简述 java 类加载机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%8F%E8%BF%B0%E4%B8%80%E4%B8%8B-JVM-%E5%8A%A0%E8%BD%BD-Class-%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%9F%E7%90%86%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">描述一下 JVM 加载 Class 文件的原理机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E7%B1%BB%E8%A3%85%E8%BD%BD%E7%9A%84%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%EF%BC%9F"><span class="nav-text">说一下类装载的执行过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%8C%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-text">什么是类加载器，类加载器有哪些?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是反射机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%99%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E7%BC%96%E8%AF%91%EF%BC%9F"><span class="nav-text">什么是静态编译，什么是动态编译？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">反射机制的优缺点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">什么是双亲委派机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E7%A0%B4%E5%9D%8F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-text">怎么破坏双亲委派机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E5%9C%A8%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%94%A8%E8%BF%87%E5%8F%8D%E5%B0%84%EF%BC%9F"><span class="nav-text">你在哪些场景下用过反射？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">Java 中获取反射的三种方法是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%8F%96%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95%E6%88%96%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%90%97%E6%88%96%E7%A7%81%E6%9C%89%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%90%97%EF%BC%9F"><span class="nav-text">反射可以获取私有方法或构造函数吗或私有成员变量吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM"><span class="nav-text">JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E4%B8%AD%E6%9C%89%E5%93%AA%E5%87%A0%E5%9D%97%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%EF%BC%9FJava-8-%E4%B9%8B%E5%90%8E%E5%AF%B9%E5%86%85%E5%AD%98%E5%88%86%E4%BB%A3%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E6%94%B9%E8%BF%9B%EF%BC%9F"><span class="nav-text">❗JVM 中有哪几块内存区域？Java 8 之后对内存分代做了什么改进？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E4%BD%A0%E7%9F%A5%E9%81%93-JVM-%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E8%B5%B7%E6%9D%A5%E7%9A%84%E5%90%97%EF%BC%9F%E6%88%91%E4%BB%AC%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%86%E9%85%8D%E7%9A%84"><span class="nav-text">❔你知道 JVM 是如何运行起来的吗？我们的对象是如何分配的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97JVM-%E5%9C%A8%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-text">❗JVM 在哪些情况下会触发垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Full-GC%EF%BC%9F%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BC%9A%E8%A7%A6%E5%8F%91%EF%BC%9F"><span class="nav-text">什么是 Full GC？什么情况下会触发？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97JVM-%E5%B9%B4%E8%BD%BB%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 年轻代的回收算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%AF%B9%E8%B1%A1%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BC%9A%E8%BD%AC%E7%A7%BB%E5%88%B0%E8%80%81%E5%B9%B4%E4%BB%A3%E4%B8%AD"><span class="nav-text">❗对象什么时候会转移到老年代中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97JVM-%E8%80%81%E5%B9%B4%E4%BB%A3%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-text">❗JVM 老年代的回收算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%A2%AB%E5%9B%9E%E6%94%B6%EF%BC%9F"><span class="nav-text">怎么判断对象是否可以被回收？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8"><span class="nav-text">❗常用的垃圾回收器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84-Tomcat-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE-JVM-%E5%8F%82%E6%95%B0%E3%80%82%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5-JVM-%E8%BF%90%E8%A1%8C%E6%83%85%E5%86%B5"><span class="nav-text">❗生产环境中的 Tomcat 如何设置 JVM 参数。如何检查 JVM 运行情况</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%98%AF%E5%90%A6%E5%81%9A%E8%BF%87-JVM-GC-%E4%BC%98%E5%8C%96%EF%BC%8C%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84%EF%BC%9F"><span class="nav-text">❗实际项目中是否做过 JVM GC 优化，怎么做的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%9D%97%E5%8F%91%E7%94%9F-OOM-%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E5%92%8C%E5%A4%84%E7%90%86%E7%BA%BF%E4%B8%8A%E7%B3%BB%E7%BB%9F%E7%9A%84-OOM-%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">❗发生 OOM 之后，应该如何排查和处理线上系统的 OOM 问题？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%BC%9A%E5%AD%98%E5%9C%A8%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%90%97%EF%BC%9F%E8%AF%B7%E7%AE%80%E5%8D%95%E6%8F%8F%E8%BF%B0"><span class="nav-text">Java 会存在内存泄漏吗？请简单描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E9%81%87%E5%88%B0%E8%BF%87%E6%A0%88%E6%BA%A2%E5%87%BA%E5%90%97%EF%BC%9F%E4%B8%80%E8%88%AC%E6%98%AF%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%E5%AF%BC%E8%87%B4%EF%BC%9F"><span class="nav-text">有遇到过栈溢出吗？一般是什么问题导致？</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/lazyload.min.js"></script>
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

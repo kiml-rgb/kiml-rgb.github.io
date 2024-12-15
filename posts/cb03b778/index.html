@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Kiml">
+    
+    <title>
+        
+            面试-计算机基础 |
+        
+        Kiml&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/sword.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"kiml.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"title":"Kiml's Blog","author":"Kiml","avatar":null,"font_size":null,"font_family":null,"primary_color":"#0066cc","logo":null,"favicon":"/images/sword.png"},"menu":{"Home":"/ || fa-solid fa-home","Archives":"/archives || fa-solid fa-box-archive","检索":{"icon":"fa-solid fa-book","children":[{"Tags":"/tags || fa-solid fa-tags"},{"Categories":"/categories || fa-solid fa-layer-group"}]},"tools":"/tools/ || fa-toolbox","About":"/about || fa-user-secret"},"first_screen":{"enable":true,"header_transparent":true,"background_img":"https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240414/%E8%83%8C%E6%99%AF.webp","description":"我生来就是高山而非溪流 || 我欲于群峰之巅俯视平庸的沟壑","font_color":null,"hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/kiml-rgb","email":"1162278448@qq.com"}},"scroll":{"progress_bar":true,"percent":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true},"word_count":{"enable":true,"wordcount":true,"min2read":true},"img_align":"left","copyright_info":true},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":"q1UTRN34B6O87bCsl1cg50tn-gzGzoHsz","appkey":"nwRaNMVMqNgK4gogSJCAyaUq","server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":"https://comment.kiml.site/","reaction":false,"version":3}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2022,"icp":null,"site_deploy":{"enable":false,"provider":"github","url":null}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","home_article":{"category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":5}},"source_data":{"tools":[{"category":"聊天 AI"},{"name":"ChatGPT","link":"https://chat.openai.com/","description":"OpenAI 旗下 AI 聊天对话工具","image":"/images/tools/chatgpt.ico"},{"name":"智谱清言","link":"https://chatglm.cn/","description":"智谱 AI 旗下的 AI 聊天对话工具","image":"/images/tools/Chat GLM.png"},{"name":"Kimi Chat","link":"https://kimi.moonshot.cn","description":"擅长长文本对话","image":"/images/tools/kimi.png"},{"category":"开发工具"},{"name":"it-tools","link":"https://it-tools.tech/","description":"汇集开发工具","image":"/images/tools/it-tools.png"},{"name":"markdown","link":"https://markdown.com.cn/cheat-sheet.html","description":"markdown语法速查","image":"/images/tools/markdown.png"},{"name":"codepen","link":"https://codepen.io/","description":"前端在线开发","image":"/images/tools/codepen.png"},{"name":"iconfont","link":"https://www.iconfont.cn/","description":"阿里巴巴矢量图库","image":"/images/tools/iconfont.png"},{"category":"部署托管"},{"name":"Vercel","link":"https://vercel.com/","description":"Vercel","image":"/images/tools/Vercel.png"},{"category":"AI 编程"},{"name":"Tabby","link":"https://tabby.tabbyml.com/","description":"可以本机部署，也可以独立本地部署","image":"/images/tools/Tabby.png"},{"name":"v0","link":"https://v0.dev/","description":"提需求或传图，生成 React 前端代码","image":"/images/tools/v0.png"}]},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Keep Theme" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               Kiml&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-book"></i>
+                                
+                                检索
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/tags">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                                
+                                                TAGS
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/categories">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                                
+                                                CATEGORIES
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tools/">
+                                
+                                    <i class="menu-text-color menu-icon fa-toolbox"></i>
+                                
+                                工具
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-user-secret"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-book"></i>
+                                </span>
+                            
+                            检索
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/tags">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-tags"></i>
+                                            </span>
+                                        
+                                        TAGS
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/categories">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-layer-group"></i>
+                                            </span>
+                                        
+                                        CATEGORIES
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tools/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-toolbox"></i>
+                                </span>
+                            
+                            工具
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-user-secret"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        面试-计算机基础
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">Kiml</span>
+                                
+                                    <span class="author-badge">Lv5</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-06-18 15:09:51</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Aug 19 2024 16:51:46 GMT+0800">2024-08-19 16:51:46</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>4.2k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>15 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>
+❗表示必掌握，❔表示基本不会问</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">24-06-18 初始记录</span><br><span class="line">24-06-21 网络安全</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="网络">网络</h2>
+<h3 id="❗TCP-IP-四层网络模型、OSI-七层网络模型">❗TCP IP 四层网络模型、OSI 七层网络模型</h3>
+<blockquote>
+<p>大白话描述。</p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p>物理层：网线，电缆，在物理层面连接网络。（可以发送 0，1 信号）</p>
+</li>
+<li class="lvl-3">
+<p>数据链路层：定义一套协议，对 01 数据进行分组。把一堆 0/1 电路信号，封装成数据包，包含头和数据，头包含了目标的 mac 地址（从一台电脑的网卡发送到另一台网卡）。</p>
+<p>以太网规定了每个网卡包含一个 mac 地址（唯一）。</p>
+<p>在一个局域网/子网内，电脑是广播给所有的电脑（通过<strong>网络交换机</strong>），通过头的 mac 地址，实现通信。</p>
+</li>
+<li class="lvl-3">
+<p>网络层：<strong>IP 协议</strong>。如果计算机不在子网内，需要路由器进行子网的连接（子网内的请求把路由器的 mac 地址和请求的 mac 地址都写上，路由器把请求转发出去：<em>这里可能是多个网关不断转发</em>）</p>
+<p>判断两个 ip 是不是在同一个子网内，要用子网掩码做与运算。再比较前 3 位是否一致（代表网络）。</p>
+<p>ARP 协议：局域网内，每个 ip 地址对应一个 mac 地址，局域网内的设备是互相知道的。</p>
+<p><strong>网关</strong>：其实就是路由器的一种。可以把路由器上的 ip 地址认为是网关。</p>
+</li>
+<li class="lvl-3">
+<p>传输层：tcp 协议、udp 协议。端口对端口。（<em>端口号是 <code>0~65536</code>，<code>0~1023</code> 被占用，别的要用 1024 以上的端口</em>）</p>
+<p>传输层的 tcp 协议，仅仅是规定了一套基于端口的点对点通信协议，包括如何建立连接，发送和读取消息，实际上要基于 tcp 协议开发，一般使用 socket。</p>
+</li>
+<li class="lvl-3">
+<p>应用层：http 协议，stp 协议（邮件）。读取数据，处理数据，发送响应……。</p>
+</li>
+</ol>
+<p><strong>4 层模型</strong>：数据链路层 -&gt; 网络层 -&gt; 传输层 -&gt; 应用层</p>
+<p><strong>7 层模型</strong>：物理层 -&gt; 4 层模型（其中：会话层（SQL）、表示层（加密、ASCII）、应用层（HTTP） -&gt; 应用层）</p>
+<p><strong>DNS 地址</strong>：把域名地址发送给 DNS 服务器，DNS 服务器（8.8.8.8）告诉你域名地址对应的 ip 和端口号。</p>
+<h3 id="HTTP-协议的特点有哪些？">HTTP 协议的特点有哪些？</h3>
+<ol>
+<li class="lvl-3">
+<p>默认端口为 80；</p>
+</li>
+<li class="lvl-3">
+<p>一次请求对应一次响应；</p>
+</li>
+<li class="lvl-3">
+<p>无状态：多次请求和响应间的数据是不共享的，可以通过会话技术解决该问题。</p>
+</li>
+</ol>
+<h3 id="❗浏览器请求一个链接的全过程">❗浏览器请求一个链接的全过程</h3>
+<ol>
+<li class="lvl-3">
+<p>把域名地址发送给 DNS 服务器，DNS 解析域名到服务器地址</p>
+</li>
+<li class="lvl-3">
+<p>先会判断 ip 地址是不是在一个子网内，不是就走网关。直接把浏览器发送的数据按应用层协议，比如 http 协议打包成一个应用层数据包（包含 http 请求报文）。</p>
+</li>
+<li class="lvl-3">
+<p>按 tcp 协议的规定，生成 tcp 数据包，请求头包含，发送的端口和请求的端口；tcp 数据包包含 http 数据包。</p>
+</li>
+<li class="lvl-3">
+<p>按 ip 协议的规定，生成 ip 数据包，请求头包含，发送的 ip 地址和请求的 ip 地址；ip 数据包包含 tcp 数据包。</p>
+</li>
+<li class="lvl-3">
+<p>按以太网的协议，生成以太网数据包，请求头包含，发送的网卡 mac 地址和请求的网卡 mac 地址（网关的 mac 地址）；以太网数据包，包含 ip 数据包。以太网数据包限制大小 1500 字节，所以会进行切割。</p>
+</li>
+<li class="lvl-3">
+<p>打包完毕，把以太网数据包通过<strong>网络交换机</strong>发送给（路由器）<strong>网关</strong>，经过网关的多次转发，发送给请求域名的服务器。服务器按包的序号重新拼接、层层解包，获取 http 请求报文。程序获取请求，做出响应，一层层封装再响应。</p>
+</li>
+</ol>
+<h3 id="❗画一下-TCP-三次握手、四次挥手流程图。为什么是三次？">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</h3>
+<p>三次握手：客户端 -&gt;服务端 -&gt;客户端</p>
+<p>四次挥手：客户端 -&gt;服务端 -&gt;服务端 -&gt;客户端</p>
+<p><strong>为什么是三次</strong>：如果只有二次握手，<em>可能会出现比如：发送一次请求，卡在半路；发送二次请求，握手成功。这时一次请求发送成功，服务端建立连接，但是客户端无响应，资源浪费</em>。如果是三次握手，第三次握手可以复位连接，释放资源。</p>
+<h3 id="❗http-的工作流程？http1-0、http1-1、http2-0-具体有哪些区别？">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</h3>
+<p>工作流程就是<strong>浏览器请求一个链接的全过程</strong>。</p>
+<p>http1.0：tcp 短连接。三次握手、四次挥手，断开连接。</p>
+<p>http1.1：默认支持长连接，第一次打开网页，就会打开一个 tcp 连接，接着一段时间内都不关闭。所有网页资源的获取走同一个 tcp 连接，直到获取完毕，关闭连接。但是每个通道都需要一个线程守护，大大影响服务器的并发能力（目前是主流版本 BIO）。</p>
+<p>http2.0：支持多路复用，一个 tcp 连接可以并行发送多个请求以及接收响应数据。二进制分帧，将传输数据拆分成更小的包。（底层基于 NIO 的选择器技术实现，未普及）</p>
+<h3 id="BIO、NIO、AIO-有什么区别？">BIO、NIO、AIO 有什么区别？</h3>
+<p>BIO：Block IO 同步阻塞式 IO，就是我们平常使用的传统 IO，它的特点是模式简单、使用方便，并发处理能力低。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>每个客户端与服务端通信都会建一个配对的 socket 线程。缺点：连接客户端过多，服务器会宕机。优化：建一个线程池。</p>
+</li>
+</ul>
+<p>NIO（<em>比较常用</em>）：Non IO 同步非阻塞 IO，是传统 IO 的升级，客户端和服务器端通过 Channel（通道）通讯，实现了多路复用。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>服务端有一个 selector 线程（一般 +Cached 线程池），每个客户端连接，注册创建一个 channel。如果客户端发送请求，对 channel 创建一个线程（从线程池），处理完请求线程被销毁。</p>
+</li>
+</ul>
+<p>AIO：Asynchronous IO 是 NIO 的升级，也叫 NIO2，实现了异步非堵塞 IO ，异步 IO 的操作基于事件和回调机制。</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>NIO 比 BIO 多了一个 buffer（缓冲区）的概念，线程从 channel 读取数据会从缓冲区读取（这个读取是直接交给操作系统来干的，是异步的，操作系统读完数据，再告诉线程去处理），写入缓冲区（这个也是异步的）。</p>
+</li>
+</ul>
+<p>小结：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>BIO 是一个连接一个线程。（只要连接，就分配一个线程）</p>
+</li>
+<li class="lvl-2">
+<p>NIO 是一个请求一个线程。（只有 IO 请求，才分配一个线程）</p>
+</li>
+<li class="lvl-2">
+<p>AIO 是一个有效请求一个线程。（AIO 是异步的 NIO）</p>
+</li>
+</ul>
+<h4 id="同步阻塞、同步非阻塞、异步非阻塞">同步阻塞、同步非阻塞、异步非阻塞</h4>
+<p>BIO 同步阻塞。不是完全网络通信模型，是针对磁盘文件的 IO 读写。</p>
+<p>NIO 是同步非阻塞。发起请求后可以去干别的事，但是还是需要主动轮询操作系统。</p>
+<p>AIO 是异步非阻塞。操作系统异步通知。</p>
+<p>// todo 看 demo 代码</p>
+<h3 id="❗聊聊-HTTPS-的工作原理？为什么用-HTTPS-就可以加密通信？">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</h3>
+<ol>
+<li class="lvl-3">
+<p>浏览器把支持的加密规则发送给网站。网站选择一套加密算法和 hash 算法。</p>
+</li>
+<li class="lvl-3">
+<p>网站发自己的证书（网站地址、加密公钥、颁发机构）</p>
+</li>
+<li class="lvl-3">
+<p>浏览器去验证证书是否合法（合法链接会有一把锁）。浏览器接着生成<strong>一串随机数密码，然后用证书里的公钥进行加密</strong>，这块走的非对称加密；<strong>发送消息的 hash 值（这个是用随机密码加密过的）</strong></p>
+</li>
+<li class="lvl-3">
+<p>网站从消息里提出公钥加密后的随机数密码（用私钥解密），用随机数密码再对消息进行解密，然后用 hash 算法对消息计算 hash 值并与浏览器发送的 hash 值进行比对。网站同样上面的步骤发送，浏览器同样解密。</p>
+</li>
+<li class="lvl-3">
+<p>之后浏览器和网站进行的通信，都是走随机密码加密，此时随机密码已经存在浏览器和网站的本地。后续不用再针对这个进行加密解密。（<strong>因为这个加密解密只在第一次链接发送，并且要证书才能加密解密，所以安全性较高</strong>）</p>
+</li>
+</ol>
+<h3 id="http-的长连接的工作原理是什么？">http 的长连接的工作原理是什么？</h3>
+<blockquote>
+<p>dubbo 协议走的长连接，可能会带到这个。</p>
+</blockquote>
+<p>http1.0 底层 tcp 是短连接，http1.1 即以后都是长连接（建立了连接之后，无论有多少次请求都是走一个 tcp 连接）。</p>
+<h3 id="GET-请求和-POST-请求方式有什么区别吗？">GET 请求和 POST 请求方式有什么区别吗？</h3>
+<ol>
+<li class="lvl-3">
+<p>请求参数的携带方式同：get 请求放在请求行中，post 放在请求体中。</p>
+</li>
+<li class="lvl-3">
+<p>get 请求，请求参数是在请求行中，数据的大小受到浏览器限制；post 请求则是放在请求体中，数据无大小限制。</p>
+</li>
+<li class="lvl-3">
+<p>get 请求的安全性低，post 请求相对安全性高（不会作为 url 的一部分，不会被缓存、保存在服务器日志、以及浏览器浏览记录中），且 post 可以进行加密操作。</p>
+</li>
+<li class="lvl-3">
+<p>get 的效率比 post 更高，因为 post 请求在真正接受数据之前会先将请求头发送给服务器进行确认，然后才真正发送数据，所以 get 一定是先于 post 执行的。</p>
+</li>
+</ol>
+<p><strong>但是：</strong> 本质上来说，GET 请求和 POST 请求没什么区别，只是在浏览器端对它们的使用不同而已，它们底层都是基于 TCP（三次握手、四次挥手）的 Socket 进行数据传输的。</p>
+<h3 id="Socket-工作原理">Socket 工作原理</h3>
+<blockquote>
+<p>socket 是属于传输层的编程规范。<em>按照视频讲述的内容：就是浏览器发送一个请求链接的部分</em></p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p>按 tcp 协议的规定，生成 tcp 数据包，请求头包含，发送的端口和请求的端口；tcp 数据包包含 http 数据包。</p>
+</li>
+<li class="lvl-3">
+<p>按 ip 协议的规定，生成 ip 数据包，请求头包含，发送的 ip 地址和请求的 ip 地址；ip 数据包包含 tcp 数据包。</p>
+</li>
+<li class="lvl-3">
+<p>按以太网的协议，生成以太网数据包，请求头包含，发送的网卡 mac 地址和请求的网卡 mac 地址（网关的 mac 地址）；以太网数据包，包含 ip 数据包。以太网数据包限制大小 1500 字节，所以会进行切割。</p>
+</li>
+<li class="lvl-3">
+<p>打包完毕，把以太网数据包通过<strong>网络交换机</strong>发送给（路由器）<strong>网关</strong>，经过网关的多次转发，发送给请求域名的服务器。服务器按包的序号重新拼接、层层解包，获取 http 请求报文。程序获取请求，做出响应，一层层封装再响应。</p>
+</li>
+</ol>
+<h3 id="❔进程间是如何通信的">❔进程间是如何通信的</h3>
+<p>进程间的通信：管道（半双工）、命名管道（半双工）、消息队列、共享内存</p>
+<h3 id="❔线程间又如何切换">❔线程间又如何切换</h3>
+<p>上下文切换、时间片算法。</p>
+<h2 id="场景题">场景题</h2>
+<h3 id="线上服务器的-cpu-使用到达-100-，如何排查、定位、解决问题？">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</h3>
+<blockquote>
+<p>就是找哪段代码出了问题。</p>
+<p>场景：catch 时写了死循环。在 catch 中调用了自己的方法</p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p>定位耗费 cpu 的进程</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示进程列表</span></span><br><span class="line">top -c</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">然后输入 P，按照 cpu 使用率排序</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入 M，按照内存排序</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-3">
+<p>定位耗费 cpu 的线程</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里的 pid 就是上一步查出来的 pid</span></span><br><span class="line">top -Hp pid</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这样可以获取线程的 pid</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">然后输入 P，按照 cpu 使用率排序</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li class="lvl-3">
+<p>定位哪段代码导致的 cpu 过高</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里的 pid 是上一步获取到的 线程 pid 为了获取它的16进制表示</span></span><br><span class="line">printf &quot;%x\n&quot; pid</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">jstack 进行分析</span></span><br><span class="line">jstack 进程pid | grep &#x27;线程pid&#x27; -C -color</span><br></pre></td></tr></table></figure>
+<h3 id="线上进程-kill-不掉怎么办？">线上进程 kill 不掉怎么办？</h3>
+<blockquote>
+<p>场景：发布系统搞了一个子进程，子进程是系统进程。杀不掉。</p>
+</blockquote>
+<p>kill 一个进程 kill 不掉，这个进程就是变成了一个僵尸进程（zombie）状态。因为这个进程释放了资源，但是父进程没有确认。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示所有进程和其状态，可以加 grep 过滤</span></span><br><span class="line">ps aux </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 STAT 那一栏，如果是 Z，就是僵尸进程</span></span><br><span class="line">ps -ef|grep 僵尸进程id，可以找到父进程id</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">然后先 <span class="built_in">kill</span> 父进程，再 <span class="built_in">kill</span> 子进程</span></span><br></pre></td></tr></table></figure>
+<h3 id="服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</h3>
+<ol>
+<li class="lvl-3">
+<p>一般来说，可能是日志写满了。可以去 spring boot 下的日志去看看。还可以写个 shell 脚本，crontab 定时，定期删除 7 天以前的日志。</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看磁盘使用情况</span></span><br><span class="line">df -h</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li class="lvl-3">
+<p>要是不行</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">找大于100M的文件</span></span><br><span class="line">find / -size +100M |xargs ls -lh</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">看各个目录占用的磁盘大小。这个命令可以把占用大小导出</span></span><br><span class="line">du -h &gt;fs_du.log</span><br></pre></td></tr></table></figure>
+<h2 id="安全">安全</h2>
+<h3 id="❗黑客常用的-XSS-网络攻击原理">❗黑客常用的 XSS 网络攻击原理</h3>
+<p>XSS 攻击和 SQL 注入是大部分的黑客进行网络攻击的手段，除此之外还有 CSRF、Session 劫持之类的。</p>
+<p>XSS 攻击：</p>
+<ol>
+<li class="lvl-3">
+<p>反射型攻击（在 URL 链接里嵌入自己的恶意脚本）。这个 URL 地址指向黑客的服务器，他的服务器会返回一段 html+javascript 恶意脚本（跨站点脚本），在网页内运行（跳转、下载、病毒、流氓软件）。</p>
+<ul class="lvl-2">
+<li class="lvl-6">这个脚本，可以通过浏览器获取大量的信息，比如说一些 cookie/密码。可以利用 cookie 伪造用户登录的 session 状态，以用户的名义干一些事情。</li>
+<li class="lvl-6"><strong>处理方法</strong>：HttpOnly 方式，在浏览器存放 cookie 时，设置一个 HttpOnly 属性。</li>
+</ul>
+</li>
+<li class="lvl-3">
+<p>持久型攻击。把恶意脚本放到评论内容里面，这个内容会存到数据库，用户访问浏览器就会访问这个恶意脚本。</p>
+<ul class="lvl-2">
+<li class="lvl-6"><strong>处理方法</strong>：对评论内容进行消毒，就是进行一些转义，比如把 <code>&gt;</code> 转义为 <code>&amp;gt</code> 之类的。这样就可以把恶意脚本里的 html、js 脚本之类的失效。</li>
+</ul>
+</li>
+</ol>
+<h3 id="❗SQL-注入攻击背后的原理">❗SQL 注入攻击背后的原理</h3>
+<blockquote>
+<p>执行 SQL 注入必须要知道你的数据库表结构。</p>
+<ol>
+<li class="lvl-3">开源软件，会被知道表结构</li>
+<li class="lvl-3">错误回显。堆栈信息被暴露到前端。</li>
+<li class="lvl-3">根据参数的名称，大致推测（一般不现实）</li>
+</ol>
+</blockquote>
+<p><strong>参数使用预编译可以预防</strong>。例：mybatis 使用 <code>#</code> 不使用 <code>$</code></p>
+<h3 id="❗CSRF-攻击及背后原理">❗CSRF 攻击及背后原理</h3>
+<p>(Cross Site Request Forgery) 跨站点请求伪造。通过恶意脚本获取用户 cookie，通过伪造 cookie，伪造请求获取信息。</p>
+<p><strong>处理方法</strong></p>
+<ol>
+<li class="lvl-3">
+<p>防止 cookie 被窃取。给网站的 cookie 设置 HttpOnly 属性。</p>
+</li>
+<li class="lvl-3">
+<p>随机 token。请求携带随机 token，存放在 redis 里。</p>
+</li>
+<li class="lvl-3">
+<p>验证码。</p>
+</li>
+<li class="lvl-3">
+<p>验证请求中的 referer。</p>
+</li>
+</ol>
+<h3 id="❗如果系统允许用户上传文件，有可能会遭到什么攻击">❗如果系统允许用户上传文件，有可能会遭到什么攻击</h3>
+<blockquote>
+<p>文件可能是可执行的脚本、病毒。</p>
+</blockquote>
+<p><strong>处理方法</strong></p>
+<ol>
+<li class="lvl-3">
+<p>白名单校验。限制上传文件的类型（根据开头字节的 magic number 来判断文件的类型。<em>例：FFD8FF:JEPG、89504E47:PNG</em>）。限制文件大小。对文件重命名。对文件进行一定的压缩。</p>
+</li>
+</ol>
+<h3 id="❗DDos-攻击是什么">❗DDos 攻击是什么</h3>
+<p>distributed denial of service，分布式拒绝服务攻击。</p>
+<p>Dos。假设你的系统每秒能接受的请求为 1000，黑客以每秒 1000 的请求访问，机器就会宕机。Dos 攻击是一对一的。但是，现在系统都设计了集群。攻击一台服务器，其他服务器还是可以接受请求。</p>
+<p>DDos。控制大量的机器（<em>肉鸡</em>），比如一些共公司的服务器（被木马植入给控制了），一起攻击目标。</p>
+<ol>
+<li class="lvl-3">
+<p>SYN Flood 模式的 DDos 攻击三次握手。服务器返回 SYN+ACK 后，如果没有接收到返回，会进入等待列表（会为等待的客户端预留网络资源）。这个模式是一个漏洞。黑客利用<em>肉鸡</em>，发送大量的 SYN 请求，服务器会为它们预留网络资源（网络资源耗尽）。正常用户访问就会拒绝连接。</p>
+</li>
+<li class="lvl-3">
+<p>基于 DNS Query Flood 的 DDos 攻击控制<em>肉鸡</em>伪造大量不存在的域名，把 DNS 服务器瘫痪。这时用户访问域名地址就会失败。</p>
+</li>
+<li class="lvl-3">
+<p>基于 Http Flood 的 DDos 攻击（cc 攻击）控制大量 HTTP 代理服务器，去给目标服务器发送大量的 HTTP 请求。</p>
+</li>
+</ol>
+<p><strong>处理方法</strong><br>
+采购云厂商的安全服务。<mark>DDos 高防 IP</mark>，可以把攻击流量都导入到云厂商的高防 IP 服务器上。</p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                面试-计算机基础
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                posts/cb03b778/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">Kiml</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2024-06-18 15:09</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/posts/bc2708e7/"
+                                   title="【AI 大模型全栈】Prompt Engineering"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【AI 大模型全栈】Prompt Engineering</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/posts/6e6eec5c/"
+                                   title="【AI大模型全栈】大模型应用开发基础"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">【AI大模型全栈】大模型应用开发基础</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://comment.kiml.site/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'false' === 'true'
+        </script>
+
+        
+
+        
+            <script data-pjax
+                    async
+                    type="module"
+            >
+              import { init } from 'https://cdnjs.cloudflare.com/ajax/libs/waline/3.2.1/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('true' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E%E3%80%81%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E%E3%80%81%E5%BC%82%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-text">同步阻塞、同步非阻塞、异步非阻塞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">Socket 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%98%AF%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1%E7%9A%84"><span class="nav-text">❔进程间是如何通信的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%8F%88%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2"><span class="nav-text">❔线程间又如何切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%A2%98"><span class="nav-text">场景题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-cpu-%E4%BD%BF%E7%94%A8%E5%88%B0%E8%BE%BE-100-%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E3%80%81%E5%AE%9A%E4%BD%8D%E3%80%81%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E8%BF%9B%E7%A8%8B-kill-%E4%B8%8D%E6%8E%89%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-text">线上进程 kill 不掉怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E5%BF%AB%E6%BB%A1%E4%BA%86%EF%BC%8C%E5%9C%A8%E4%B8%8D%E5%BD%B1%E5%93%8D%E6%9C%8D%E5%8A%A1%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-text">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8"><span class="nav-text">安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E9%BB%91%E5%AE%A2%E5%B8%B8%E7%94%A8%E7%9A%84-XSS-%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="nav-text">❗黑客常用的 XSS 网络攻击原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97SQL-%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E8%83%8C%E5%90%8E%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-text">❗SQL 注入攻击背后的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97CSRF-%E6%94%BB%E5%87%BB%E5%8F%8A%E8%83%8C%E5%90%8E%E5%8E%9F%E7%90%86"><span class="nav-text">❗CSRF 攻击及背后原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%A6%82%E6%9E%9C%E7%B3%BB%E7%BB%9F%E5%85%81%E8%AE%B8%E7%94%A8%E6%88%B7%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%EF%BC%8C%E6%9C%89%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%AD%E5%88%B0%E4%BB%80%E4%B9%88%E6%94%BB%E5%87%BB"><span class="nav-text">❗如果系统允许用户上传文件，有可能会遭到什么攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97DDos-%E6%94%BB%E5%87%BB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">❗DDos 攻击是什么</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2022</span>&nbsp;-&nbsp;2024
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">Kiml</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C"><span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97TCP-IP-%E5%9B%9B%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E3%80%81OSI-%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">❗TCP IP 四层网络模型、OSI 七层网络模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-text">HTTP 协议的特点有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82%E4%B8%80%E4%B8%AA%E9%93%BE%E6%8E%A5%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-text">❗浏览器请求一个链接的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E7%94%BB%E4%B8%80%E4%B8%8B-TCP-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E3%80%81%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E6%B5%81%E7%A8%8B%E5%9B%BE%E3%80%82%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E6%AC%A1%EF%BC%9F"><span class="nav-text">❗画一下 TCP 三次握手、四次挥手流程图。为什么是三次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97http-%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%9Fhttp1-0%E3%80%81http1-1%E3%80%81http2-0-%E5%85%B7%E4%BD%93%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">❗http 的工作流程？http1.0、http1.1、http2.0 具体有哪些区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-text">BIO、NIO、AIO 有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E9%98%BB%E5%A1%9E%E3%80%81%E5%90%8C%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E%E3%80%81%E5%BC%82%E6%AD%A5%E9%9D%9E%E9%98%BB%E5%A1%9E"><span class="nav-text">同步阻塞、同步非阻塞、异步非阻塞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E8%81%8A%E8%81%8A-HTTPS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-HTTPS-%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-text">❗聊聊 HTTPS 的工作原理？为什么用 HTTPS 就可以加密通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-%E7%9A%84%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">http 的长连接的工作原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-%E8%AF%B7%E6%B1%82%E5%92%8C-POST-%E8%AF%B7%E6%B1%82%E6%96%B9%E5%BC%8F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%E5%90%97%EF%BC%9F"><span class="nav-text">GET 请求和 POST 请求方式有什么区别吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">Socket 工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%98%AF%E5%A6%82%E4%BD%95%E9%80%9A%E4%BF%A1%E7%9A%84"><span class="nav-text">❔进程间是如何通信的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%94%E7%BA%BF%E7%A8%8B%E9%97%B4%E5%8F%88%E5%A6%82%E4%BD%95%E5%88%87%E6%8D%A2"><span class="nav-text">❔线程间又如何切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E9%A2%98"><span class="nav-text">场景题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84-cpu-%E4%BD%BF%E7%94%A8%E5%88%B0%E8%BE%BE-100-%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%E3%80%81%E5%AE%9A%E4%BD%8D%E3%80%81%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-text">线上服务器的 cpu 使用到达 100%，如何排查、定位、解决问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E4%B8%8A%E8%BF%9B%E7%A8%8B-kill-%E4%B8%8D%E6%8E%89%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-text">线上进程 kill 不掉怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E5%BF%AB%E6%BB%A1%E4%BA%86%EF%BC%8C%E5%9C%A8%E4%B8%8D%E5%BD%B1%E5%93%8D%E6%9C%8D%E5%8A%A1%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-text">服务器存储空间快满了，在不影响服务正常运行的情况下怎么解决？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E5%85%A8"><span class="nav-text">安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E9%BB%91%E5%AE%A2%E5%B8%B8%E7%94%A8%E7%9A%84-XSS-%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB%E5%8E%9F%E7%90%86"><span class="nav-text">❗黑客常用的 XSS 网络攻击原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97SQL-%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB%E8%83%8C%E5%90%8E%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-text">❗SQL 注入攻击背后的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97CSRF-%E6%94%BB%E5%87%BB%E5%8F%8A%E8%83%8C%E5%90%8E%E5%8E%9F%E7%90%86"><span class="nav-text">❗CSRF 攻击及背后原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97%E5%A6%82%E6%9E%9C%E7%B3%BB%E7%BB%9F%E5%85%81%E8%AE%B8%E7%94%A8%E6%88%B7%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%EF%BC%8C%E6%9C%89%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%AD%E5%88%B0%E4%BB%80%E4%B9%88%E6%94%BB%E5%87%BB"><span class="nav-text">❗如果系统允许用户上传文件，有可能会遭到什么攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9D%97DDos-%E6%94%BB%E5%87%BB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-text">❗DDos 攻击是什么</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/lazyload.min.js"></script>
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
