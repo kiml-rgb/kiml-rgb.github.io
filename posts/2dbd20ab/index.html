@@ -9,7 +9,7 @@
     
     <title>
         
-            装机-软件安装（Linux） |
+            Activiti7 + dynamic-datasource 多数据源配置 |
         
         Kiml&#39;s Blog
     </title>
@@ -249,7 +249,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        装机-软件安装（Linux）
+                        Activiti7 + dynamic-datasource 多数据源配置
                     </div>
                 
 
@@ -273,36 +273,24 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-09-12 13:59:25</span>
+                <span class="datetime">2025-03-03 11:23:07</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sun Feb 09 2025 17:03:37 GMT+0800">2025-02-09 17:03:37</span>
+                    <span class="datetime" data-updated="Tue Mar 04 2025 21:40:04 GMT+0800">2025-03-04 21:40:04</span>
                 </span>
             
         
 
-        
-            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
-                <ul class="post-category-ul">
-                    
-                            <li class="category-item"><a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">环境搭建</a></li>
-                        
-                    
-                </ul>
-            </span>
         
 
         
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Linux/">Linux</a></li>
-                        
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java/">Java</a></li>
                         
                     
                 </ul>
@@ -312,12 +300,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>390 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
             </span>
         
         
@@ -341,213 +329,22 @@
                     
                          <ul class="lvl-0">
 <li class="lvl-2">
-<p>前言<br>记录 Linux 安装教程</p>
+<p>前言<br>之前数据库不涉及多数据源的问题，本次引入Activiti7后需要配置单独的数据源。网上的方法都是自己写bean注入，然后在SpringProcessEngineConfiguration内进行set操作，但是出现了很大的问题。。。</p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-09-12 初始记录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">25-03-03 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<p>默认操作为 root 权限，权限不足命令前加 sudo</p>
-<h2 id="MySQL">MySQL</h2>
-<ol>
-<li class="lvl-3">
-<p>MySQL 8.0.26 下载</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://downloads.mysql.com/archives/get/p/23/file/mysql-8.0.26-linux-glibc2.12-x86_64.tar.xz</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li class="lvl-3">
-<p>解压缩文件</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf mysql-8.0.26-linux-glibc2.12-x86_64.tar.xz</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li class="lvl-3">
-<p>移动文件</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv mysql-8.0.26-linux-glibc2.12-x86_64 /usr/local/mysql</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li class="lvl-3">
-<p>创建数据存放目录</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">cd</span>到安装目录下</span></span><br><span class="line">mkdir data</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li class="lvl-3">
-<p>创建用户组和用户</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line"></span><br><span class="line">useradd -g mysql mysql</span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li class="lvl-3">
-<p>改变 mysql 目录权限</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql.mysql /usr/local/mysql/</span><br><span class="line"></span><br><span class="line">chown -R mysql .</span><br><span class="line">chgrp -R mysql .</span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li class="lvl-3">
-<p>数据库初始化（<em>需要记住临时密码</em>）</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/mysqld --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --initialize</span><br></pre></td></tr></table></figure>
-<ol start="8">
-<li class="lvl-3">
-<p>修改 my.cnf 文件</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/my.cnf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文件内内容</span></span><br><span class="line">[mysqld]</span><br><span class="line">    basedir = /usr/local/mysql</span><br><span class="line">    datadir = /usr/local/mysql/data</span><br><span class="line">    socket = /usr/local/mysql/mysql.sock</span><br><span class="line">    character-set-server=utf8</span><br><span class="line">    port = 3306</span><br><span class="line">   sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</span><br><span class="line"> [client]</span><br><span class="line">   socket = /usr/local/mysql/mysql.sock</span><br><span class="line">   default-character-set=utf8</span><br></pre></td></tr></table></figure>
-<ol start="9">
-<li class="lvl-3">
-<p>创建 mysql 服务</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将 mysql.server 启动文件复制到 /etc/init.d 目录</span></span><br><span class="line">cp -a /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">赋予权限</span></span><br><span class="line">chmod +x /etc/rc.d/init.d/mysqld</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建 mysql 服务</span></span><br><span class="line">chkconfig --add mysqld</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检查服务是否生效</span></span><br><span class="line">chkconfig --list mysqld</span><br></pre></td></tr></table></figure>
-<ol start="10">
-<li class="lvl-4">
-<p>配置全局环境</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加如下配置</span></span><br><span class="line">export PATH=$PATH:/usr/local/mysql/bin:/usr/local/mysql/lib</span><br><span class="line">export PATH</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使环境变量设置生效</span></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-<ol start="11">
-<li class="lvl-4">
-<p>启动 mysql 服务</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br><span class="line"></span><br><span class="line">service mysql status</span><br></pre></td></tr></table></figure>
-<ol start="12">
-<li class="lvl-4">
-<p>登录 mysql 修改密码</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">密码为之前的临时密码</span></span><br><span class="line">mysql -uroot -p</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">修改密码</span></span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;;</span><br></pre></td></tr></table></figure>
-<ol start="13">
-<li class="lvl-4">
-<p>设置 mysql 远程登录</p>
-</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 允许任何主机使用 root 进行连接</span></span><br><span class="line"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> host<span class="operator">=</span><span class="string">&#x27;%&#x27;</span> <span class="keyword">where</span> <span class="keyword">user</span><span class="operator">=</span><span class="string">&#x27;root&#x27;</span> limit <span class="number">1</span>;</span><br><span class="line"><span class="comment">-- 创建一个允许远程访问的 MySQL 账户</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;your_user&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;your_password&#x27;</span>; </span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;your_user&#x27;</span>@<span class="string">&#x27;%&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-<h2 id="Redis">Redis</h2>
-<ol>
-<li class="lvl-3">
-<p>源码安装与编译</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/redis-stable.tar.gz</span><br><span class="line">tar -xzvf redis-stable.tar.gz</span><br><span class="line">cd redis-stable</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-<p>执行完 make 命令后，src 目录下会出现编译后的 redis 服务程序 <code>redis-server</code>，还有用于测试的客户端程序 <code>redis-cli</code>，两个程序位于安装目录 src 目录下</p>
-<ol start="2">
-<li class="lvl-3">
-<p>安装可执行程序到 <code>/usr/local/bin</code></p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li class="lvl-3">
-<p>前台运行启动</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">redis-server</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用指定配置文件启动</span></span><br><span class="line">cp redis.conf /etc/redis.conf</span><br><span class="line">redis-server /etc/redis.conf</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li class="lvl-3">
-<p>其他命令</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line"><span class="meta prompt_">redis&gt; </span><span class="language-bash"><span class="built_in">set</span> foo bar</span></span><br><span class="line">OK</span><br><span class="line"><span class="meta prompt_">redis&gt; </span><span class="language-bash">get foo</span></span><br><span class="line">&quot;bar&quot;</span><br><span class="line"></span><br><span class="line">redis-cli shutdown</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">直接关闭不保存内存</span></span><br><span class="line">redis-cli shutdown nosave</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li class="lvl-3">
-<p>配置 Redis 为后台服务将配置文件中的 daemonize no 改成 daemonize yes，配置 redis 为后台启动。</p>
-</li>
-<li class="lvl-3">
-<p>Redis 设置访问密码在配置文件中找到 requirepass，去掉前面的注释，并修改后面的密码。</p>
-</li>
-<li class="lvl-3">
-<p>设置远程可访问</p>
-</li>
-</ol>
-<p>在配置文件中找到 bind 127.0.0.1 这一行，注释。</p>
-<p><strong>如果 redis3.2 版本以上的，需要将保护模式（protected-mode）修改成 no</strong></p>
-<ol start="8">
-<li class="lvl-3">
-<p>常用的配置文件</p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#默认端口6379</span><br><span class="line">port 6379</span><br><span class="line">#绑定ip，如果是内网可以直接绑定 127.0.0.1, 或者忽略, 0.0.0.0是外网</span><br><span class="line">bind 0.0.0.0</span><br><span class="line">#守护进程启动</span><br><span class="line">daemonize yes</span><br><span class="line">#超时</span><br><span class="line">timeout 300</span><br><span class="line">loglevel notice</span><br><span class="line">#分区</span><br><span class="line">databases 16</span><br><span class="line">save 900 1</span><br><span class="line">save 300 10</span><br><span class="line">save 60 10000</span><br><span class="line">rdbcompression yes</span><br><span class="line">#存储文件</span><br><span class="line">dbfilename dump.rdb</span><br><span class="line">#密码 abcd123</span><br><span class="line">requirepass abcd123</span><br></pre></td></tr></table></figure>
-<h2 id="Docker-和-Docker-compose">Docker 和 Docker-compose</h2>
-<ol>
-<li class="lvl-3">
-<p>安装 GCC 相关的环境</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc</span><br><span class="line"></span><br><span class="line">yum -y install gcc-c++</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li class="lvl-3">
-<p>安装 Docker 需要的依赖软件包</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li class="lvl-3">
-<p>设置国内的镜像</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li class="lvl-3">
-<p>更新 yum 软件包索引</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache fast</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li class="lvl-3">
-<p>安装 DOCKER CE(注意：Docker 分为 CE 版和 EE 版，一般我们用 CE 版就够用了)</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker-ce</span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li class="lvl-3">
-<p>启动 Docker</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line"></span><br><span class="line">docker version</span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li class="lvl-3">
-<p>下载 Docker Compose 的当前稳定版本</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<ol start="8">
-<li class="lvl-3">
-<p>将可执行权限应用于二进制文件</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<ol start="9">
-<li class="lvl-3">
-<p>创建软链</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
-<ol start="10">
-<li class="lvl-4">
-<p>测试是否安装成功</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
-<h2 id="Minio"><a class="link"   target="_blank" rel="noopener" href="https://min.io/" >Minio<i class="fas fa-external-link-alt"></i></a></h2>
-<ol>
-<li class="lvl-3">
-<p>服务器安装</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.min.io/server/minio/release/linux-amd64/minio</span><br><span class="line">chmod +x minio</span><br><span class="line">MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=password ./minio server /mnt/data --console-address &quot;:9001&quot;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li class="lvl-3">
-<p>客户端安装</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.min.io/client/mc/release/linux-amd64/mc </span><br><span class="line">chmod +x mc mc alias </span><br><span class="line">set myminio/ http://MINIO-SERVER MYUSER MYPASSWORD</span><br></pre></td></tr></table></figure>
+<h2 id="问题">问题</h2>
+<p>原参考文章如下：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20391065/article/details/89475435" >SpringBoot 给Activiti7配置单独数据源<i class="fas fa-external-link-alt"></i></a>。</p>
+<p>根据文章配置，出现了原来配置的其他数据源失效，原先的事物注解<code>@Transactional</code>失效等问题。</p>
+<h2 id="原因">原因</h2>
+<p>具体原因不清楚，目前只知道<code>@Bean</code>配置<code>PlatformTransactionManager</code>和<code>DataSource</code>会导致dynamic-datasource配置的默认数据源失效。</p>
+<h2 id="解决">解决</h2>
+<p>从<code>DynamicDataSourceProvider</code>获取数据源并构建事物管理，具体配置信息如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ActivitiDataSourceConfig</span> <span class="keyword">extends</span> <span class="title class_">AbstractProcessEngineAutoConfiguration</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Resource</span>  </span><br><span class="line">    <span class="keyword">private</span> DynamicDataSourceProvider dynamicDataSourceProvider;  </span><br><span class="line">  </span><br><span class="line">    <span class="meta">@Bean</span>  </span><br><span class="line">    <span class="keyword">public</span> SpringProcessEngineConfiguration <span class="title function_">springProcessEngineConfiguration</span><span class="params">(ActivitiProperties activitiProperties)</span> &#123;  </span><br><span class="line">        <span class="type">SpringProcessEngineConfiguration</span> <span class="variable">conf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SpringProcessEngineConfiguration</span>();  </span><br><span class="line">        <span class="type">DataSource</span> <span class="variable">dataSource</span> <span class="operator">=</span> dynamicDataSourceProvider.loadDataSources().get(DBConstants.DATASOURCE_WORKFLOW);  </span><br><span class="line">        conf.setDataSource(dataSource);  </span><br><span class="line">        conf.setTransactionManager(<span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(dataSource));  </span><br><span class="line">        conf.setDeploymentName(activitiProperties.getDeploymentName());  </span><br><span class="line">        conf.setDatabaseSchema(activitiProperties.getDatabaseSchema());  </span><br><span class="line">        conf.setDatabaseSchemaUpdate(activitiProperties.getDatabaseSchemaUpdate());  </span><br><span class="line">        conf.setDbHistoryUsed(activitiProperties.isDbHistoryUsed());  </span><br><span class="line">        conf.setAsyncExecutorActivate(activitiProperties.isAsyncExecutorActivate());  </span><br><span class="line">        <span class="keyword">if</span> (!activitiProperties.isAsyncExecutorActivate()) &#123;  </span><br><span class="line">            <span class="type">ValidatorSet</span> <span class="variable">springBootStarterValidatorSet</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ValidatorSet</span>(<span class="string">&quot;activiti-spring-boot-starter&quot;</span>);  </span><br><span class="line">            springBootStarterValidatorSet.addValidator(<span class="keyword">new</span> <span class="title class_">AsyncPropertyValidator</span>());  </span><br><span class="line">            <span class="keyword">if</span> (conf.getProcessValidator() == <span class="literal">null</span>) &#123;  </span><br><span class="line">                <span class="type">ProcessValidatorImpl</span> <span class="variable">processValidator</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ProcessValidatorImpl</span>();  </span><br><span class="line">                processValidator.addValidatorSet(springBootStarterValidatorSet);  </span><br><span class="line">                conf.setProcessValidator(processValidator);  </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                conf.getProcessValidator().getValidatorSets().add(springBootStarterValidatorSet);  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">        conf.setMailServerHost(activitiProperties.getMailServerHost());  </span><br><span class="line">        conf.setMailServerPort(activitiProperties.getMailServerPort());  </span><br><span class="line">        conf.setMailServerUsername(activitiProperties.getMailServerUserName());  </span><br><span class="line">        conf.setMailServerPassword(activitiProperties.getMailServerPassword());  </span><br><span class="line">        conf.setMailServerDefaultFrom(activitiProperties.getMailServerDefaultFrom());  </span><br><span class="line">        conf.setMailServerUseSSL(activitiProperties.isMailServerUseSsl());  </span><br><span class="line">        conf.setMailServerUseTLS(activitiProperties.isMailServerUseTls());  </span><br><span class="line">  </span><br><span class="line">        conf.setHistoryLevel(activitiProperties.getHistoryLevel());  </span><br><span class="line">        conf.setCopyVariablesToLocalForTasks(activitiProperties.isCopyVariablesToLocalForTasks());  </span><br><span class="line">        conf.setSerializePOJOsInVariablesToJson(activitiProperties.isSerializePOJOsInVariablesToJson());  </span><br><span class="line">        conf.setJavaClassFieldForJackson(activitiProperties.getJavaClassFieldForJackson());  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> (activitiProperties.getCustomMybatisMappers() != <span class="literal">null</span>) &#123;  </span><br><span class="line">            conf.setCustomMybatisMappers(getCustomMybatisMapperClasses(activitiProperties.getCustomMybatisMappers()));  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> (activitiProperties.getCustomMybatisXMLMappers() != <span class="literal">null</span>) &#123;  </span><br><span class="line">            conf.setCustomMybatisXMLMappers(<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(activitiProperties.getCustomMybatisXMLMappers()));  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> (activitiProperties.getCustomMybatisXMLMappers() != <span class="literal">null</span>) &#123;  </span><br><span class="line">            conf.setCustomMybatisXMLMappers(<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(activitiProperties.getCustomMybatisXMLMappers()));  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> (activitiProperties.isUseStrongUuids()) &#123;  </span><br><span class="line">            conf.setIdGenerator(<span class="keyword">new</span> <span class="title class_">StrongUuidGenerator</span>());  </span><br><span class="line">        &#125;  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">if</span> (activitiProperties.getDeploymentMode() != <span class="literal">null</span>) &#123;  </span><br><span class="line">            conf.setDeploymentMode(activitiProperties.getDeploymentMode());  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> conf;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                     
                 </div>
@@ -558,11 +355,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                装机-软件安装（Linux）
+                Activiti7 + dynamic-datasource 多数据源配置
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/dada24a1/
+                posts/2dbd20ab/
             </div>
         </div>
 
@@ -578,7 +375,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-09-12 13:59</div>
+                <div class="content">2025-03-03 11:23</div>
             </div>
 
 
@@ -614,11 +411,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Linux/">Linux</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java/">Java</a>
                                     </li>
                                 
                             </ul>
@@ -634,31 +427,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/posts/4f08dd5e/"
-                                   title="消息平台-核心代码"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">消息平台-核心代码</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/2b76eac7/"
-                                   title="消息平台-项目介绍"
+                                   href="/posts/da8246e5/"
+                                   title="01 基于社区的中老年志愿者平台-项目介绍"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">消息平台-项目介绍</span>
+                                        <span class="post-nav-title-item text-ellipsis">01 基于社区的中老年志愿者平台-项目介绍</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -764,7 +541,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL"><span class="nav-text">MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-%E5%92%8C-Docker-compose"><span class="nav-text">Docker 和 Docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minio"><span class="nav-text">Minio</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-text">解决</span></a></li></ol>
     </div>
 </div>
 
@@ -960,7 +737,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL"><span class="nav-text">MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-text">Redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-%E5%92%8C-Docker-compose"><span class="nav-text">Docker 和 Docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minio"><span class="nav-text">Minio</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-text">解决</span></a></li></ol>
     </div>
 </div>
 
