@@ -9,7 +9,7 @@
     
     <title>
         
-            Docker拉取失败 |
+            基于社区的中老年志愿者平台-项目介绍 |
         
         Kiml&#39;s Blog
     </title>
@@ -242,14 +242,14 @@
 
                     
 <div class="fade-in-down-animation">
-    <div class="post-page-container border-box">
+    <div class="post-page-container border-box encrypt">
         <div class="post-content-container border-box">
             
 
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Docker拉取失败
+                        基于社区的中老年志愿者平台-项目介绍
                     </div>
                 
 
@@ -273,13 +273,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-12-12 22:27:28</span>
+                <span class="datetime">2025-02-02 15:13:08</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sun Dec 15 2024 20:04:42 GMT+0800">2024-12-15 20:04:42</span>
+                    <span class="datetime" data-updated="Tue Mar 04 2025 21:42:32 GMT+0800">2025-03-04 21:42:32</span>
                 </span>
             
         
@@ -288,31 +288,22 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/bug%E8%AE%B0%E5%BD%95/">bug记录</a></li>
+                            <li class="category-item"><a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">后端项目</a></li>
                         
                     
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/bug%E8%AE%B0%E5%BD%95/2024/">2024</a></li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E5%9F%BA%E4%BA%8E%E7%A4%BE%E5%8C%BA%E7%9A%84%E4%B8%AD%E8%80%81%E5%B9%B4%E4%BA%BA%E5%BF%97%E6%84%BF%E8%80%85%E5%B9%B3%E5%8F%B0/">基于社区的中老年人志愿者平台</a></li>
                         
                     
                 </ul>
             </span>
         
 
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
-                    
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/docker/">docker</a></li>
-                        
-                    
-                </ul>
-            </span>
         
 
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>243 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>6 字</span>
             </span>
         
         
@@ -339,51 +330,15 @@
                     
 
                     
-                         <ul class="lvl-0">
-<li class="lvl-2">
-<p>前言<br>参考文章：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/2301_79849395/article/details/142829852" >彻底解决docker：docker: Get https://registry-1.docker.io/v2/: net/http: request canceled 报错<i class="fas fa-external-link-alt"></i></a></p>
-</li>
-<li class="lvl-2">
-<p>更新</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24-12-12 初始记录</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h2 id="问题">问题</h2>
-<p>docker配置了镜像，拉取失败。报错信息：<code>ERROR: Get &quot;https://registry-1.docker.io/v2/&quot;: net/http: request canceled while waiting for connection</code></p>
-<h2 id="原因">原因</h2>
-<p>镜像地址失效。</p>
-<h2 id="解决">解决</h2>
-<h3 id="换源">换源</h3>
-<blockquote>
-<p>本次未使用，需要换源重启，但是原docker中含有跳板机，需要跳板机才能连接上服务器，重启会导致跳板机连接失败。</p>
-</blockquote>
-<ol>
-<li class="lvl-3">
-<p>修改 <code>/etc/docker/daemon.json</code>文件</p>
-</li>
-<li class="lvl-3">
-<p>加入镜像配置</p>
-</li>
-<li class="lvl-3">
-<p>重启</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload   </span><br><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
-<h3 id="修改DNS服务配置">修改DNS服务配置</h3>
-<blockquote>
-<p>未使用</p>
-</blockquote>
-<h3 id="手动拉取">手动拉取</h3>
-<blockquote>
-<p>解决。需要注意的是手动拉取后，使用docker-compose进行部署，需要填写拉取的镜像（加上仓库名），不然依旧会从原地址拉取</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker pull 仓库名/镜像名:版本号</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">暂时可用的一个仓库</span></span><br><span class="line">docker.m.daocloud.io</span><br></pre></td></tr></table></figure>
-<h3 id="给docker配置一个代理">给docker配置一个代理</h3>
-<blockquote>
-<p>未使用。</p>
-</blockquote>
-
+                        <div class="post-encrypt-box border-box"
+                             data-secret="d72f23eda9959740ce143a01bd07764fb6ff938fc4b580b75806dcc0f8c7f8b7"
+                             data-iv="73b82d3997d59022be595dfeadb0f598"
+                             data-ep="8570aae85902be7a07af0eec765ce002094525a136f07d156bc585e68bd79c37"
+                             data-content="7a1c56680e936bbf2bc814161e41adea69b7a91c77a8b77233d9ef653a4c65e4ae6ffeba56bcd504d6acd08915b38b209f33866997654a3ad4a64745fae9a915700d830dc98410f2852238cea07c5296de261f9d22a062cf3723a041912e6829f0fc5f3b8c145ecaa0bf289a0b445a584950d3721a326e486ad781b7788778c988de32efdc05d112f9c91aee4ce70449955af56d1b48013634c369105711eb882d45d684a7f884607918814c1b22637bcb023ea56af4f0b90c77cf0a51cd08d7e8c551be67fea72f36a3ff89063d972d6ce3fbd7fdc5f96967cee53fdaf6d89979565e67f257b1ffe573cec09751961cd2a140744822e86e91ce4c273b7c625cb8081118db618cc5c36673a25ad8673101aaf48c4af5dc86a61b9b5515e1e03adfd510e8da62c35ee5ef8d352988e44003c323a891be41587aa8f3558e4e5d84ccb44923fea33e44c8d3d397aa02bce8ceb19a05f0ebdc7bf7a4ec008ce42e0e80cd18b6beb41bce7cea35cfe30a7f6e67926e289b53bd8db144a33a7decb1c8d2a0a181537ec4237e6f49851cec61d8c58b886dc486a9927defe4cef4700b62962ad9a17a911281ed8513ff7b413aa7889ca7172b10ac9dbcf7796d4761dce2b74a57d2701d2b6a40e03387360fac8c98b8a450503b37cb2f8e5b96782d7073de8d0f83db67aad1e86cf8dc204bbb06667c795b760cc580cc1dd123a04e02e54c4b26e4d8c275a5230e715ffa21d3760a109b3a99c201f2a1894a2252bbb062107e379fa4e6e4c70d85123fdc78160d817c8372078e290904e73a55a652b1f4c7701e9f19c002bab498cab6f5716a6d3e79cb30b57e8c700d109648a79b6974e456ade3db3968e9b05d333823331ebed47065e811ce63ebe777cec42fc6cc2cd44d1f202a6816874c71757450517bdc0d57f2cc9f7cc1da392c0e94fe1f23aec465bcfddbdf36cbd5ecfbb08fac67d6ed1ba840a05c9f0ec813273f1b872029a58fc5afe669babfc21eff5e64a75d9df2636ac0ab8a88a184c033bb547125856aef2e2482abaa9a9ec76b11eec4050f9759f8e8dbbf1a7efa35c5f698111793e633b767ace90c5d73cac3ddf268c0f07630a3356dbf7daee7c8731387c83ad6cd5f654da96f9486fe1809f7970df9a798ac7131d245268c664687480e2ba29964c969d415a4df2221ece7493002ac7223a4669dbd3049c2486e0bdfa4ac427bca52dcf4a37774fb0a026f8ac8ba8ba593c58d0abdeb4241bcc3770ce992bf6af3ddeadd982023e2feae97a388a5cb267ff36e403a9895aa3e0917a62fef87210f0297a88332e36f1c477deef70a5b2927565e3daf36b73ab5abc3ca866e0d83e72048ef163cd62a6becbdf16fdca93df924e2e4a0fc834228f4ca3a5c24e1785b49276eea5b9102953bdbef70648f734af9b1c8f553232125d13b07ad2e2dc1a286b6df2f4ea6fe4bc52d0852ab09bc19a699792bd790030c1a1328eda0710a3e84b20e91f176db95676929bcef87f6938e26f866bf527fd9413dafec0d4f77beeae467a40279c3e40ccbb0139c496b201d9a3b18d2f1aa976458859de51d18a2579e45cce075fb4c37b5a10dd50213a9ccf035cd2daefd23e36fab4d5809f8"
+                        >
+                            <input type="password" class="password-input border-box" placeholder="请输入密码...">
+                        </div>
+                        <div class="post"></div>
                     
                 </div>
 
@@ -393,11 +348,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                Docker拉取失败
+                基于社区的中老年志愿者平台-项目介绍
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/4512ff84/
+                posts/25cfff2e/
             </div>
         </div>
 
@@ -413,7 +368,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-12-12 22:27</div>
+                <div class="content">2025-02-02 15:13</div>
             </div>
 
 
@@ -446,14 +401,6 @@
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
                         
-                            <ul class="post-tags-box border-box">
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/docker/">docker</a>
-                                    </li>
-                                
-                            </ul>
-                        
                     </div>
                     <div>
                         
@@ -468,14 +415,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/posts/25cfff2e/"
-                                   title="基于社区的中老年志愿者平台-项目介绍"
+                                   href="/posts/2dbd20ab/"
+                                   title="Activiti7 + dynamic-datasource 多数据源配置"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">基于社区的中老年志愿者平台-项目介绍</span>
+                                        <span class="post-nav-title-item text-ellipsis">Activiti7 + dynamic-datasource 多数据源配置</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -485,11 +432,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/7d0e1c35/"
-                                   title="SonarQube与GitLab集成"
+                                   href="/posts/4512ff84/"
+                                   title="Docker拉取失败"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">SonarQube与GitLab集成</span>
+                                        <span class="post-nav-title-item text-ellipsis">Docker拉取失败</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -595,7 +542,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-text">解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9DNS%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE"><span class="nav-text">修改DNS服务配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E6%8B%89%E5%8F%96"><span class="nav-text">手动拉取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99docker%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%90%86"><span class="nav-text">给docker配置一个代理</span></a></li></ol></li></ol>
+        
     </div>
 </div>
 
@@ -657,6 +604,13 @@
             <div class="post-tools-container border-box">
     <ul class="post-tools-list border-box">
         <!-- PC encrypt again -->
+        
+            <li class="status-item flex-center post-lock border-box"
+                data-tooltip-content="重新加密"
+            >
+                <i class="fa-solid fa-lock"></i>
+                <i class="fa-solid fa-lock-open"></i>
+            </li>
         
 
         <!-- PC TOC show toggle -->
@@ -791,7 +745,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0"><span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-text">解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9DNS%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE"><span class="nav-text">修改DNS服务配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E6%8B%89%E5%8F%96"><span class="nav-text">手动拉取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99docker%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E4%BB%A3%E7%90%86"><span class="nav-text">给docker配置一个代理</span></a></li></ol></li></ol>
+        
     </div>
 </div>
 
