@@ -279,7 +279,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Fri Sep 13 2024 11:41:45 GMT+0800">2024-09-13 11:41:45</span>
+                    <span class="datetime" data-updated="Mon Apr 07 2025 17:39:02 GMT+0800">2025-04-07 17:39:02</span>
                 </span>
             
         
@@ -312,12 +312,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.8k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.4k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>9 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>12 分钟</span>
             </span>
         
         
@@ -341,20 +341,118 @@
                     
                          <ul class="lvl-0">
 <li class="lvl-2">
-<p>前言<br>第一部分 - 商户注册和资质申请第二部分 - 对接 SAAS<br>
-第三部分 - 闪聚支付</p>
+<p>前言<br>之前的项目已经接触了支付宝、微信、银联三种支付方式了。正好把这个项目写一遍，看了技术栈有一些是没有接触过的，应该能学到很多。项目 git 地址：<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/kiml_rgb/shanjupay.git" >https://gitee.com/kiml_rgb/shanjupay.git<i class="fas fa-external-link-alt"></i></a><br>
+前端项目地址：<a class="link"   target="_blank" rel="noopener" href="https://gitee.com/kiml_rgb/shanjupay_web" >https://gitee.com/kiml_rgb/shanjupay_web<i class="fas fa-external-link-alt"></i></a></p>
 </li>
 <li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">24.05.23 初始记录（商户注册&amp;资质申请）</span><br><span class="line">24.05.29 获取短信验证码</span><br><span class="line">24.05.30 文件上传</span><br><span class="line">24.06.02 Saas对接</span><br><span class="line">24.06.04 bug新增，烦，遇到bug，进展很缓慢。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">25-04-07 迁移原笔记</span><br></pre></td></tr></table></figure>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>总结其实除了之前做过的内容，这个项目资料里只有一点重要：<strong>根据代码，项目中的聚合支付实现主要依靠==扫码接口的 request 中的 user-agent ==来判断浏览器类型</strong></p>
+<p>总结<br>其实除了之前做过的内容，这个项目资料里只有一点重要：<strong>根据代码，项目中的聚合支付实现主要依靠==扫码接口的 request 中的 user-agent ==来判断浏览器类型，从而判断支付渠道，达到聚合支付的效果</strong></p>
 </li>
 </ul>
 <span id="more"></span>
+<h2 id="项目概述">项目概述</h2>
+<p>聚合支付目前主要的做法就是线上聚合收银台 (开放 API)，线下 C2B 一码多付、线下 B2C 商家扫码。平台应以 SaaS 服务形式提供给各商户订单管理、门店管理、财务数据统计等基础服务，闪聚支付还以支付为入口，通过广告、营销、金融等服务，构建一个移动支付的全生态系统。</p>
+<h2 id="功能模块">功能模块</h2>
+<p>平台主要包括三个模块：官网&amp;开放平台、商户平台、运营平台，详细功能如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240515/Snipaste_2024-05-15_16-28-50.png"
+                        alt=""
+                 ></p>
+<table>
+<thead>
+<tr>
+<th>功能模块名称</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>官网&amp;开放平台</td>
+<td>产品展示、功能介绍、帮助中心和开发者中心</td>
+</tr>
+<tr>
+<td>商户平台 - 首页</td>
+<td>提供商户注册、登录、基本信息查看、数据看板</td>
+</tr>
+<tr>
+<td>商户平台 - 账户管理</td>
+<td>提供商户企业资质认证、企业信息查看和套餐购买</td>
+</tr>
+<tr>
+<td>商户平台 - 支付管理</td>
+<td>为商户提供应用创建、渠道参数配置、交易总览和开启支付 (生成二维码) 等</td>
+</tr>
+<tr>
+<td>商户平台 - 门店管理</td>
+<td>为商户提供新增门店、店长分配、门店导入等</td>
+</tr>
+<tr>
+<td>商户平台 - 员工管理</td>
+<td>为商户提供新增员工、定义角色、分配角色等</td>
+</tr>
+<tr>
+<td>商户平台 - 优惠管理</td>
+<td>为商户提供优惠券管理、活动统计等</td>
+</tr>
+<tr>
+<td>运营平台 - 商户管理</td>
+<td>对商户进行检索、审核和订单统计</td>
+</tr>
+<tr>
+<td>运营平台 - 优惠管理</td>
+<td>为商户设置优惠策略和优惠券发送</td>
+</tr>
+<tr>
+<td>运营平台 - 管理员管理</td>
+<td>运营平台 - 管理员管理</td>
+</tr>
+</tbody>
+</table>
+<h2 id="业务主体流程">业务主体流程</h2>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240516/Snipaste_2024-05-16_08-25-34.png"
+                        alt=""
+                 ></p>
+<h2 id="项目技术架构">项目技术架构</h2>
+<h3 id="技术架构">技术架构</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240515/Snipaste_2024-05-15_17-47-45.png"
+                        alt=""
+                 ></p>
+<h3 id="技术栈">技术栈</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://blog-resources.oss-cn-hangzhou.aliyuncs.com/240515/Snipaste_2024-05-15_18-09-38.png"
+                        alt=""
+                 ></p>
+<p>重点了解微服务技术栈：</p>
+<p>服务端基于 Spring Boot 构建，采用 Spring Cloud Alibaba 微服务架构。</p>
+<ol>
+<li class="lvl-3">
+<p>基础设施业务数据持久化采用 MySQL，数据缓存采用 Redis，采用 RocketMQ 的事务消息机制完成部分场景下的分布式事务控制，采用第三方云平台完成文件上传与分布式存储。</p>
+</li>
+<li class="lvl-3">
+<p>组件系统微服务基于 SpringBoot 开发，数据库连接池采用 Druid，POJO 构建采用 Lombok，日志系统采用 Log4j2， Guava 工具类库，Mybatis Plus 持久层接口实现，Sharding-jdbc 分库分表组件，Swagger 接口规范组件，XXL-job 分布式任务调度组件，Sentinel 限流组件等。</p>
+</li>
+<li class="lvl-3">
+<p>接入 Zuul 网关完成客户端认证、路由转发等功能，Dubbo RPC 完成微服务远程调用，JWT 提供前后端令牌管理方案。</p>
+</li>
+<li class="lvl-3">
+<p>视图平台支持 H5、PC 等各种前端。</p>
+</li>
+</ol>
 <h2 id="商户注册-资质申请">商户注册&amp;资质申请</h2>
 <h3 id="系统交互流程">系统交互流程</h3>
 <p><img  
@@ -527,14 +625,14 @@
 </ol>
 <blockquote>
 <p>支付宝支付相关内容：</p>
-<p>内链：[[04 聚合支付-【代码模板】支付宝支付接入]]</p>
-<p>外链：<a href="">聚合支付-【代码模板】支付宝支付接入</a></p>
+<p>内链：[[【代码模板】支付宝支付接入]]</p>
+<p>外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/fc17a9b8/" >【代码模板】支付宝支付接入<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
 <p>微信支付接口对接：</p>
 <blockquote>
 <p>微信支付相关内容：</p>
-<p>内链：[[05 聚合支付-【代码模板】微信支付接入]]</p>
-<p>外链：<a href="">聚合支付-【代码模板】微信支付接入</a></p>
+<p>内链：[[【代码模板】微信支付接入]]</p>
+<p>外链：<a href="">【代码模板】微信支付接入</a></p>
 </blockquote>
 <h3 id="获取支付结果（RocketMQ）">获取支付结果（RocketMQ）</h3>
 <blockquote>
@@ -814,7 +912,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%88%B7%E6%B3%A8%E5%86%8C-%E8%B5%84%E8%B4%A8%E7%94%B3%E8%AF%B7"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E4%BB%98%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%89%AB-B"><span class="nav-text">C 扫 B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%94%AF%E4%BB%98%E7%BB%93%E6%9E%9C%EF%BC%88RocketMQ%EF%BC%89"><span class="nav-text">获取支付结果（RocketMQ）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8E%A5-SAAS"><span class="nav-text">对接 SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BUG-%E8%AE%B0%E5%BD%95"><span class="nav-text">BUG 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-%E4%BD%BF%E7%94%A8-GET-%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate 使用 GET 请求，返回中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AE-Swagger-%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问 Swagger 地址，404（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mapstruct-%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99-Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用 mapstruct 转换对象，报错 Cannot find implementation for……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF-JS-%E5%9C%A8-Long-%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E-17-%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-git-%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99%EF%BC%9Aerror-RPC-failed-HTTP-413-curl-22-The-requested-URL-returned-error-413"><span class="nav-text">使用 git 提交报错：error RPC failed; HTTP 413 curl 22 The requested URL returned error 413</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="nav-text">项目概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-text">功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E4%B8%BB%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-text">业务主体流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="nav-text">项目技术架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="nav-text">技术架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-text">技术栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%88%B7%E6%B3%A8%E5%86%8C-%E8%B5%84%E8%B4%A8%E7%94%B3%E8%AF%B7"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E4%BB%98%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%89%AB-B"><span class="nav-text">C 扫 B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%94%AF%E4%BB%98%E7%BB%93%E6%9E%9C%EF%BC%88RocketMQ%EF%BC%89"><span class="nav-text">获取支付结果（RocketMQ）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8E%A5-SAAS"><span class="nav-text">对接 SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BUG-%E8%AE%B0%E5%BD%95"><span class="nav-text">BUG 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-%E4%BD%BF%E7%94%A8-GET-%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate 使用 GET 请求，返回中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AE-Swagger-%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问 Swagger 地址，404（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mapstruct-%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99-Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用 mapstruct 转换对象，报错 Cannot find implementation for……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF-JS-%E5%9C%A8-Long-%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E-17-%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-git-%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99%EF%BC%9Aerror-RPC-failed-HTTP-413-curl-22-The-requested-URL-returned-error-413"><span class="nav-text">使用 git 提交报错：error RPC failed; HTTP 413 curl 22 The requested URL returned error 413</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -1010,7 +1108,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%88%B7%E6%B3%A8%E5%86%8C-%E8%B5%84%E8%B4%A8%E7%94%B3%E8%AF%B7"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E4%BB%98%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%89%AB-B"><span class="nav-text">C 扫 B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%94%AF%E4%BB%98%E7%BB%93%E6%9E%9C%EF%BC%88RocketMQ%EF%BC%89"><span class="nav-text">获取支付结果（RocketMQ）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8E%A5-SAAS"><span class="nav-text">对接 SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BUG-%E8%AE%B0%E5%BD%95"><span class="nav-text">BUG 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-%E4%BD%BF%E7%94%A8-GET-%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate 使用 GET 请求，返回中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AE-Swagger-%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问 Swagger 地址，404（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mapstruct-%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99-Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用 mapstruct 转换对象，报错 Cannot find implementation for……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF-JS-%E5%9C%A8-Long-%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E-17-%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-git-%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99%EF%BC%9Aerror-RPC-failed-HTTP-413-curl-22-The-requested-URL-returned-error-413"><span class="nav-text">使用 git 提交报错：error RPC failed; HTTP 413 curl 22 The requested URL returned error 413</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="nav-text">项目概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%9D%97"><span class="nav-text">功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%9A%E5%8A%A1%E4%B8%BB%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-text">业务主体流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="nav-text">项目技术架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84"><span class="nav-text">技术架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-text">技术栈</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%86%E6%88%B7%E6%B3%A8%E5%86%8C-%E8%B5%84%E8%B4%A8%E7%94%B3%E8%AF%B7"><span class="nav-text">商户注册&amp;资质申请</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="nav-text">获取短信验证码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%AF%E4%BB%98%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE"><span class="nav-text">支付参数配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-2"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E6%89%AB-B"><span class="nav-text">C 扫 B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%94%AF%E4%BB%98%E7%BB%93%E6%9E%9C%EF%BC%88RocketMQ%EF%BC%89"><span class="nav-text">获取支付结果（RocketMQ）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E6%8E%A5-SAAS"><span class="nav-text">对接 SAAS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E4%BA%A4%E4%BA%92%E6%B5%81%E7%A8%8B-3"><span class="nav-text">系统交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A4%E8%AF%81%E9%9C%80%E6%B1%82"><span class="nav-text">分布式认证需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BUG-%E8%AE%B0%E5%BD%95"><span class="nav-text">BUG 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RestTemplate-%E4%BD%BF%E7%94%A8-GET-%E8%AF%B7%E6%B1%82%EF%BC%8C%E8%BF%94%E5%9B%9E%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="nav-text">RestTemplate 使用 GET 请求，返回中文乱码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BF%E9%97%AE-Swagger-%E5%9C%B0%E5%9D%80%EF%BC%8C404%EF%BC%88%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%89"><span class="nav-text">项目中访问 Swagger 地址，404（未解决）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-mapstruct-%E8%BD%AC%E6%8D%A2%E5%AF%B9%E8%B1%A1%EF%BC%8C%E6%8A%A5%E9%94%99-Cannot-find-implementation-for%E2%80%A6%E2%80%A6"><span class="nav-text">使用 mapstruct 转换对象，报错 Cannot find implementation for……</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF-JS-%E5%9C%A8-Long-%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E-17-%E4%BD%8D%E6%97%B6%EF%BC%8C%E5%87%BA%E7%8E%B0%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">前端 JS 在 Long 长度大于 17 位时，出现精度丢失的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-git-%E6%8F%90%E4%BA%A4%E6%8A%A5%E9%94%99%EF%BC%9Aerror-RPC-failed-HTTP-413-curl-22-The-requested-URL-returned-error-413"><span class="nav-text">使用 git 提交报错：error RPC failed; HTTP 413 curl 22 The requested URL returned error 413</span></a></li></ol></li></ol>
     </div>
 </div>
 
