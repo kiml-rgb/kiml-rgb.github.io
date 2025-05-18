@@ -273,17 +273,32 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2025-04-06 16:35:14</span>
+                <span class="datetime">2025-05-18 14:58:47</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Mon Apr 07 2025 23:10:42 GMT+0800">2025-04-07 23:10:42</span>
+                    <span class="datetime" data-updated="Sun May 18 2025 19:40:41 GMT+0800">2025-05-18 19:40:41</span>
                 </span>
             
         
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E8%BD%AF%E8%80%83/">软考</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E8%BD%AF%E8%80%83/%E4%B8%AD%E7%BA%A7-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88/">中级-软件设计师</a></li>
+                        
+                    
+                </ul>
+            </span>
         
 
         
@@ -300,12 +315,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.6k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>5k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>9 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>18 分钟</span>
             </span>
         
         
@@ -634,6 +649,166 @@
 <p><strong>流水线的加速比</strong>：完成同样一批任务，不使用流水线所用的时间与使用流水线所用的时间之比。计算公式：<strong>S=不使用流水线执行时间/使用流水线执行时间</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">S = (2ns + 2ns + 1ns) * 100 / [2ns + 2ns + 1ns + (100 - 1) * 2ns] = 500 / 103</span><br></pre></td></tr></table></figure>
 <h3 id="输入输出技术">输入输出技术</h3>
+<h4 id="CPU-与外设之间的数据传输方式">CPU 与外设之间的数据传输方式</h4>
+<ol>
+<li class="lvl-3">
+<p>直接程序控制方式直接程序控制方式是指在完成数据的输入/输出中，整个输入/输出的过程是<strong>在 CPU 执行程序的控制下完成的</strong>。这种方式还可以分为以下两种：</p>
+<ol>
+<li class="lvl-7">无条件传输方式：无条件地与 CPU 交换数据。</li>
+<li class="lvl-7">程序查询方式：先通过 CPU 查询外设状态，准备好之后再与 CPU 交换数据。</li>
+</ol>
+</li>
+<li class="lvl-3">
+<p>中断方式中断方式利用中断机制，使 I/O 系统在与外设交换数据时，<strong>CPU 无须等待，也不必查询 I/O 状态</strong>，即可以抽身出来处理其他任务，因此提高了系统效率。</p>
+</li>
+<li class="lvl-3">
+<p>直接存储器存取方式（<strong>DMA</strong>）是在存储器与 I/O 设备间直接传送数据，即在内存与 I/O 设备之间传送一个数据块的过程中，不需要 CPU 的任何干涉，是一种<strong>完全由 DMA 硬件完成</strong> I/O 操作的方式。</p>
+</li>
+<li class="lvl-3">
+<p>输入/输出处理机（<strong>IOP</strong>）是一个专用处理机，用于完成主机的输入/输出操作。IOP 根据主机的 I/O 命令，完成对外设数据的输入/输出。</p>
+</li>
+</ol>
+<h2 id="存储系统">存储系统</h2>
+<h3 id="层次结构">层次结构</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CPU</span><br><span class="line">高速缓存（Cache）-辅助硬件</span><br><span class="line">主存-辅助硬件/软件</span><br><span class="line">辅存</span><br></pre></td></tr></table></figure>
+<p>主存 - 辅存（硬件 + 操作系统）：实现虚拟系统存储，<strong>解决了主存容量不够的问题</strong></p>
+<p>Cache - 主存（硬件自动完成）：解决了<strong>主存与 CPU 速度不匹配的问题</strong></p>
+<h3 id="分类">分类</h3>
+<ol>
+<li class="lvl-3">
+<p>按位置分类：可以分为内存和外存内存（主存）：用来存储当前运行所需要的程序和数据，速度快、容量小。外存（辅存）：用来存储当前不参与运行的数据，容量大，速度慢。</p>
+</li>
+<li class="lvl-3">
+<p>按材料分类，可分为磁存储器、半导体存储器和光存储器。磁存储器：用磁性介质做成，如磁芯、磁泡、磁盘、磁带等半导体存储器：根据所用元件又可分为双极型和 MOS 型两类；根据是否需要刷新又可分为静态和动态两类。光存储器：由光学、电学和机械部件等组成，如光盘存储器。</p>
+</li>
+<li class="lvl-3">
+<p>按工作方式分，可分为读/写存储器和只读存储器。读/写存储器（RAM）它指既能读取数据也能存入数据的存储器。只读存储器（ROM）工作过程中仅能读取的存储器。</p>
+</li>
+</ol>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>固定只读存储器（ROM）。这种存储器是在厂家生产时就写好数据的，其内容只能读出，不能改变。一般用于存放<strong>系统程序 BIOS</strong>和用于<strong>微程序控制</strong>。</p>
+</li>
+<li class="lvl-2">
+<p>可编程的只读存储器（PROM）。其中的内容可以由用户<strong>一次性地写入</strong>，写入后<strong>不能再修改</strong>。</p>
+</li>
+<li class="lvl-2">
+<p>可擦除可编程的的只读存储器（EPROM）。其中的内容既可以读出，也可以由用户写入，写入后还可以修改，<strong>紫外线照射擦除信息</strong>。</p>
+</li>
+<li class="lvl-2">
+<p>电擦除可编程的的只读存储器（EEPROM）。与 EPROM 相似，EEPROM 中的内容既可以读出，也可以进行改写，<strong>电擦除</strong>的方法进行数据的改写。</p>
+</li>
+<li class="lvl-2">
+<p>闪存存储器（Flash Memory）。简称闪存，闪存的特性介于 EPROM 和 EEPROM 之间，类似于 EEPROM，也可以使用电信号进行信息的擦除操作。整块闪存可以在数秒内删除，<strong>速度远快于 EPROM</strong>。</p>
+</li>
+</ul>
+<h3 id="高速缓存-Cache">高速缓存 -Cache</h3>
+<p>高速缓存（Cache）是位于 CPU 和主存之间的高速存储子系统。</p>
+<p>目的：提高存储器的平均访问速度，使存储器的速度与 CPU 的速度相匹配。</p>
+<p>地址变换和数据块的替换算法均由硬件实现。</p>
+<p>通常被集成到 CPU 内，以提高访问速度，其主要特点是容量小、速度快、成本高。</p>
+<h4 id="Cache-的组成">Cache 的组成</h4>
+<ol>
+<li class="lvl-3">
+<p>Cache 存储器部分：用来存放<strong>主存的部分复制信息</strong>。</p>
+</li>
+<li class="lvl-3">
+<p>控制部分的功能：判断 CPU 要访问的信息是否在 Cache 存储器中，若在，即为命中，若不在则没有命中。</p>
+</li>
+</ol>
+<h4 id="Cache-的三种地址映射">Cache 的三种地址映射</h4>
+<p>地址映像：把<strong>主存中的地址映射成 Cache 存储器中的地址</strong></p>
+<ol>
+<li class="lvl-3">
+<p>直接映射：就是主存的块与 Cache 中块的对应关系是固定的。主存中的块只能存放在 Cache 存储器的相同块号中。因此，只要主存地址中的主存区号与 Cache 中的主存区号相同，则表明访问 Cache 命中。优点：<strong>地址变换很简单</strong>，缺点：<strong>灵活性差</strong>。Cache 分块，主存分区，每个区再分块，并且每个区的块数和 Cache 的分块相同。</p>
+</li>
+<li class="lvl-3">
+<p>全相联映像：允许主存中的任一块可以调入 Cache 的任一块的空间。在地址变换时，将主存地址高位表示的主存块号与 Cache 中的主存块号进行比较，若相同则为命中。优点：主存的块调入 Cache 的位置<strong>不受限制，十分灵活</strong>。其缺点是无法从主存块号中获得 Cache 的块号，<strong>变换比较复杂，速度比较慢</strong></p>
+</li>
+<li class="lvl-3">
+<p>组相联映像：这种方式是前面两种方式的折中。具体方法是将 Cache 先分成组再分块。组组相联映像就是<strong>组间采用直接映像方式</strong>，而<strong>组内的块采用全相联映像方式</strong>。</p>
+</li>
+</ol>
+<h4 id="Cache-的性能分析">Cache 的性能分析</h4>
+<blockquote>
+<p>若 H 为 Cache 的命中率，tc 为 Cache 的存取时间，tm 为主存的访问时间，则 Cache 的等效访问时间 ta 为</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ta = H * tc + (1 - H) * tm</span><br></pre></td></tr></table></figure>
+<p>使用 Cache 比不使用 Cache 的 CPU 访问存储器速度提高的倍数 r 可以用下式求得</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = tm / ta</span><br></pre></td></tr></table></figure>
+<h3 id="主存的扩展">主存的扩展</h3>
+<p>位扩展</p>
+<p>字扩展</p>
+<h3 id="主存的编址">主存的编址</h3>
+<blockquote>
+<p>内存地址从 AC000H 到 C7FFFH，共有 ？K 个地址单元，如果该内存地址按字（16bit）编址，由 28 片存储器芯片构成。已知构成此内存的芯片每片有 16K 个存储单元，则该芯片每个存储单元存储 ？位。<br>
+1K=2^10<br>
+1M=2^20<br>
+1G=2^30</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C7FFFH - AC000H + 1 </span><br><span class="line">= 1C000H </span><br><span class="line">= 1 * 2^4^4 + 12 * 2^4^3 </span><br><span class="line">= (2^4 + 12)*2^12</span><br><span class="line">= 28 * 2^12</span><br><span class="line"></span><br><span class="line">地址单元 = 28 * 2^12 / 2^10 = 28 * 2^2 = 112 K</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">112K * 16 = 28 * 16K * 存储位数</span><br><span class="line">存储位数 = 4 bit</span><br></pre></td></tr></table></figure>
+<h3 id="虚拟存储器">虚拟存储器</h3>
+<p>虚拟存储器是由主存、辅存、存储管理单元及操作系统中的存储管理软件组成的存储系统。程序员使用该存储系统时，可以使用的内存空间可远大于主存的物理空间，但实际上并不存在那么大的主存，顾称其为虚拟存储器。</p>
+<p>虚拟存储器使存储系<strong>统既具有相当于外存的容量</strong>又<strong>具有接近于主存的访问速度</strong>。</p>
+<h3 id="磁盘存储器">磁盘存储器</h3>
+<p>存取时间 = 寻道时间 + 等待时间（平均定位时间 + 转动延迟）</p>
+<p>注意：寻道时间是指磁头移动到磁道所需的时间；等待时间为等待读写的扇区转到磁头下方所用的时间。</p>
+<h2 id="总线系统">总线系统</h2>
+<ol>
+<li class="lvl-3">
+<p>片内总线（内部总线）片内总线是芯片内部的总线。它是 CPU 芯片内部寄存器与寄存器之间、寄存器与 ALU 之间的公共连接线。</p>
+</li>
+<li class="lvl-3">
+<p>系统总线系统总线是计算机系统内各功能部件（CPU、主存、I/O 接口）之间相互连接的总线。按系统总线<strong>传输信息内容的不同</strong>，又可以分为 3 类：<strong>数据总线、地址总线和控制总线</strong>。</p>
+</li>
+<li class="lvl-3">
+<p>通信总线（外部总线）用于设备一级的互连，计算机可通过该总线和其他设备进行信息与数据交换。</p>
+</li>
+</ol>
+<h2 id="磁盘阵列技术（RAID）">磁盘阵列技术（RAID）</h2>
+<p>磁盘阵列由多台磁盘存储器组成，是快速、大容量且高可靠的外存子系统。现在常见的独立冗余磁盘阵列（RAID）就是一种由多块独立磁盘构成的冗余阵列。RAID 技术分为几种不同的等级，分别可以提供不同的速度、安全性和性价比。</p>
+<table>
+<thead>
+<tr>
+<th>RAID 级</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RAID-0</td>
+<td>一种不具备容错能力的磁盘阵列</td>
+</tr>
+<tr>
+<td>RAID-1</td>
+<td>是采用镜像容错技术改善可靠性的一种磁盘阵列</td>
+</tr>
+<tr>
+<td>RAID-2</td>
+<td>是采用海明码进行错误检测的一种磁盘阵列</td>
+</tr>
+<tr>
+<td>RAID-3</td>
+<td>减少了用于检验的磁盘存储器台数，从而提高了磁盘阵列的有效容量，一般只有一个检验盘</td>
+</tr>
+<tr>
+<td>RAID-4</td>
+<td>是一种可以独立地对组内各磁盘进行读写的磁盘阵列，该阵列也只用一个检验盘</td>
+</tr>
+<tr>
+<td>RAID-5</td>
+<td>是对 RAID-4 的一种改进，他不设置专门的检验盘。同一台磁盘上既记录数据，也记录检测信息。这就解决了前面多台磁盘机争用一台检验盘的问题</td>
+</tr>
+<tr>
+<td>RAID-6</td>
+<td>采用两级数据冗余和新的数据编码以解决数据恢复问题，在两个磁盘出现故障时仍然能够正常工作。在进行写操作时，分别进行两个独立的校验运算，形成两个独立的冗余数据，并写入两个不同的磁盘。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="计算机可靠性">计算机可靠性</h2>
+<p>计算机系统的可靠性是指从它开始运行（t=0）到某个时刻 t 这段时间内能正常运行的概率，用 R(t) 表示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">串联部件的可靠度 = 各部件的可靠度的乘积</span><br><span class="line">串联部件的可靠度 = 1 - 各部件失效率的乘积</span><br></pre></td></tr></table></figure>
 
                     
                 </div>
@@ -664,7 +839,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2025-04-06 16:35</div>
+                <div class="content">2025-05-18 14:58</div>
             </div>
 
 
@@ -719,14 +894,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/posts/a1d28c6/"
-                                   title="Let’s Encrypt 免费申请泛域名 SSL 证书，并实现自动续期"
+                                   href="/posts/92102162/"
+                                   title="第二章：数据结构与算法基础"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Let’s Encrypt 免费申请泛域名 SSL 证书，并实现自动续期</span>
+                                        <span class="post-nav-title-item text-ellipsis">第二章：数据结构与算法基础</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -736,11 +911,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/51138262/"
-                                   title="Java Streams API、Lambda 表达式、Optional 类"
+                                   href="/posts/6041b6ab/"
+                                   title="SonarQube 与 GitLab 集成（二）"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Java Streams API、Lambda 表达式、Optional 类</span>
+                                        <span class="post-nav-title-item text-ellipsis">SonarQube 与 GitLab 集成（二）</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -846,7 +1021,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">数值及其转换和数据的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">计算机内数据的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E5%80%BC%E4%B8%8E%E6%9C%BA%E5%99%A8%E6%95%B0"><span class="nav-text">真值与机器数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81"><span class="nav-text">原码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E7%A0%81"><span class="nav-text">反码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81"><span class="nav-text">补码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E7%A0%81"><span class="nav-text">移码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0-%E5%92%8C-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-text">定点数 和 浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-text">校验码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C"><span class="nav-text">奇偶校验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81-CRC"><span class="nav-text">循环冗余校验码 CRC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%A0%81"><span class="nav-text">海明码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="nav-text">计算机系统组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E5%A4%A7%E9%83%A8%E4%BB%B6"><span class="nav-text">五大部件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-text">主存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-text">CPU - 运算器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-text">CPU - 控制器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">计算机体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flynn-%E5%88%86%E7%B1%BB%E6%B3%95"><span class="nav-text">Flynn 分类法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E7%A7%8D%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="nav-text">七种寻址方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E6%8C%87%E4%BB%A4%E9%9B%86%E8%AE%A1%E7%AE%97%E6%9C%BA-CISC%E3%80%81%E7%B2%BE%E7%AE%80%E6%8C%87%E4%BB%A4%E9%9B%86%E8%AE%A1%E7%AE%97%E6%9C%BA-RISC"><span class="nav-text">复杂指令集计算机 - CISC、精简指令集计算机 - RISC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%9A%84%E6%B5%81%E6%B0%B4%E5%A4%84%E7%90%86"><span class="nav-text">指令的流水处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-text">流水线的计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%8A%80%E6%9C%AF"><span class="nav-text">输入输出技术</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">数值及其转换和数据的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">计算机内数据的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E5%80%BC%E4%B8%8E%E6%9C%BA%E5%99%A8%E6%95%B0"><span class="nav-text">真值与机器数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81"><span class="nav-text">原码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E7%A0%81"><span class="nav-text">反码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81"><span class="nav-text">补码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E7%A0%81"><span class="nav-text">移码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0-%E5%92%8C-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-text">定点数 和 浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-text">校验码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C"><span class="nav-text">奇偶校验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81-CRC"><span class="nav-text">循环冗余校验码 CRC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%A0%81"><span class="nav-text">海明码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="nav-text">计算机系统组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E5%A4%A7%E9%83%A8%E4%BB%B6"><span class="nav-text">五大部件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-text">主存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-text">CPU - 运算器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-text">CPU - 控制器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">计算机体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flynn-%E5%88%86%E7%B1%BB%E6%B3%95"><span class="nav-text">Flynn 分类法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E7%A7%8D%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="nav-text">七种寻址方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E6%8C%87%E4%BB%A4%E9%9B%86%E8%AE%A1%E7%AE%97%E6%9C%BA-CISC%E3%80%81%E7%B2%BE%E7%AE%80%E6%8C%87%E4%BB%A4%E9%9B%86%E8%AE%A1%E7%AE%97%E6%9C%BA-RISC"><span class="nav-text">复杂指令集计算机 - CISC、精简指令集计算机 - RISC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%9A%84%E6%B5%81%E6%B0%B4%E5%A4%84%E7%90%86"><span class="nav-text">指令的流水处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-text">流水线的计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%8A%80%E6%9C%AF"><span class="nav-text">输入输出技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU-%E4%B8%8E%E5%A4%96%E8%AE%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F"><span class="nav-text">CPU 与外设之间的数据传输方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="nav-text">存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="nav-text">层次结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98-Cache"><span class="nav-text">高速缓存 -Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-text">Cache 的组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-%E7%9A%84%E4%B8%89%E7%A7%8D%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84"><span class="nav-text">Cache 的三种地址映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-text">Cache 的性能分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E7%9A%84%E6%89%A9%E5%B1%95"><span class="nav-text">主存的扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E7%9A%84%E7%BC%96%E5%9D%80"><span class="nav-text">主存的编址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-text">虚拟存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-text">磁盘存储器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BA%BF%E7%B3%BB%E7%BB%9F"><span class="nav-text">总线系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97%E6%8A%80%E6%9C%AF%EF%BC%88RAID%EF%BC%89"><span class="nav-text">磁盘阵列技术（RAID）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="nav-text">计算机可靠性</span></a></li></ol>
     </div>
 </div>
 
@@ -1042,7 +1217,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">数值及其转换和数据的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">计算机内数据的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E5%80%BC%E4%B8%8E%E6%9C%BA%E5%99%A8%E6%95%B0"><span class="nav-text">真值与机器数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81"><span class="nav-text">原码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E7%A0%81"><span class="nav-text">反码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81"><span class="nav-text">补码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E7%A0%81"><span class="nav-text">移码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0-%E5%92%8C-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-text">定点数 和 浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-text">校验码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C"><span class="nav-text">奇偶校验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81-CRC"><span class="nav-text">循环冗余校验码 CRC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%A0%81"><span class="nav-text">海明码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="nav-text">计算机系统组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E5%A4%A7%E9%83%A8%E4%BB%B6"><span class="nav-text">五大部件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-text">主存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-text">CPU - 运算器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-text">CPU - 控制器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">计算机体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flynn-%E5%88%86%E7%B1%BB%E6%B3%95"><span class="nav-text">Flynn 分类法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E7%A7%8D%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="nav-text">七种寻址方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E6%8C%87%E4%BB%A4%E9%9B%86%E8%AE%A1%E7%AE%97%E6%9C%BA-CISC%E3%80%81%E7%B2%BE%E7%AE%80%E6%8C%87%E4%BB%A4%E9%9B%86%E8%AE%A1%E7%AE%97%E6%9C%BA-RISC"><span class="nav-text">复杂指令集计算机 - CISC、精简指令集计算机 - RISC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%9A%84%E6%B5%81%E6%B0%B4%E5%A4%84%E7%90%86"><span class="nav-text">指令的流水处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-text">流水线的计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%8A%80%E6%9C%AF"><span class="nav-text">输入输出技术</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E5%8F%8A%E5%85%B6%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">数值及其转换和数据的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%86%85%E6%95%B0%E6%8D%AE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-text">计算机内数据的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%9F%E5%80%BC%E4%B8%8E%E6%9C%BA%E5%99%A8%E6%95%B0"><span class="nav-text">真值与机器数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81"><span class="nav-text">原码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E7%A0%81"><span class="nav-text">反码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81"><span class="nav-text">补码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E7%A0%81"><span class="nav-text">移码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0-%E5%92%8C-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-text">定点数 和 浮点数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%A1%E9%AA%8C%E7%A0%81"><span class="nav-text">校验码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C"><span class="nav-text">奇偶校验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%E7%A0%81-CRC"><span class="nav-text">循环冗余校验码 CRC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%A0%81"><span class="nav-text">海明码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%84%E6%88%90"><span class="nav-text">计算机系统组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E5%A4%A7%E9%83%A8%E4%BB%B6"><span class="nav-text">五大部件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-text">主存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-text">CPU - 运算器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-text">CPU - 控制器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">计算机体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flynn-%E5%88%86%E7%B1%BB%E6%B3%95"><span class="nav-text">Flynn 分类法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-text">指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E7%A7%8D%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="nav-text">七种寻址方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E6%8C%87%E4%BB%A4%E9%9B%86%E8%AE%A1%E7%AE%97%E6%9C%BA-CISC%E3%80%81%E7%B2%BE%E7%AE%80%E6%8C%87%E4%BB%A4%E9%9B%86%E8%AE%A1%E7%AE%97%E6%9C%BA-RISC"><span class="nav-text">复杂指令集计算机 - CISC、精简指令集计算机 - RISC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%9A%84%E6%B5%81%E6%B0%B4%E5%A4%84%E7%90%86"><span class="nav-text">指令的流水处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-text">流水线的计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%8A%80%E6%9C%AF"><span class="nav-text">输入输出技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU-%E4%B8%8E%E5%A4%96%E8%AE%BE%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F"><span class="nav-text">CPU 与外设之间的数据传输方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="nav-text">存储系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="nav-text">层次结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98-Cache"><span class="nav-text">高速缓存 -Cache</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-text">Cache 的组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-%E7%9A%84%E4%B8%89%E7%A7%8D%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84"><span class="nav-text">Cache 的三种地址映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cache-%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-text">Cache 的性能分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E7%9A%84%E6%89%A9%E5%B1%95"><span class="nav-text">主存的扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E5%AD%98%E7%9A%84%E7%BC%96%E5%9D%80"><span class="nav-text">主存的编址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-text">虚拟存储器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%99%A8"><span class="nav-text">磁盘存储器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BA%BF%E7%B3%BB%E7%BB%9F"><span class="nav-text">总线系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E9%98%B5%E5%88%97%E6%8A%80%E6%9C%AF%EF%BC%88RAID%EF%BC%89"><span class="nav-text">磁盘阵列技术（RAID）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%AF%E9%9D%A0%E6%80%A7"><span class="nav-text">计算机可靠性</span></a></li></ol>
     </div>
 </div>
 

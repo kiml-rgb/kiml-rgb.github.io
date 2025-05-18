@@ -9,7 +9,7 @@
     
     <title>
         
-            Java Streams API、Lambda 表达式、Optional 类 |
+            第二章：数据结构与算法基础 |
         
         Kiml&#39;s Blog
     </title>
@@ -249,7 +249,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Java Streams API、Lambda 表达式、Optional 类
+                        第二章：数据结构与算法基础
                     </div>
                 
 
@@ -273,27 +273,28 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2025-04-02 22:08:50</span>
+                <span class="datetime">2025-05-18 14:59:42</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sun Apr 06 2025 16:44:55 GMT+0800">2025-04-06 16:44:55</span>
+                    <span class="datetime" data-updated="Sun May 18 2025 20:07:35 GMT+0800">2025-05-18 20:07:35</span>
                 </span>
             
         
 
         
-
-        
-            <span class="post-tag meta-info-item border-box">
-                <ul class="post-tag-ul">
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></li>
+                            <li class="category-item"><a href="/categories/%E9%9D%A2%E8%AF%95/">面试</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E8%BD%AF%E8%80%83/">软考</a></li>
+                        
+                    
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%9D%A2%E8%AF%95/%E8%BD%AF%E8%80%83/%E4%B8%AD%E7%BA%A7-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88/">中级-软件设计师</a></li>
                         
                     
                 </ul>
@@ -301,14 +302,16 @@
         
 
         
+
+        
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>55 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>871 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 分钟</span>
             </span>
         
         
@@ -332,21 +335,95 @@
                     
                          <ul class="lvl-0">
 <li class="lvl-2">
-<p>前言<br></p>
-</li>
-<li class="lvl-2">
 <p>更新</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">25-04-06 初始记录</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">25-05-18 初始记录</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h2 id="Java-Streams-API">Java Streams API</h2>
-<h3 id="创建-Stream">创建 Stream</h3>
+<h2 id="基本概念与三要素">基本概念与三要素</h2>
+<p>数据：数据是<strong>信息的载体</strong>，是描述客观事物属性的数、字符及所有能输入到计算机中并被计算机程序识别和处理的符号的集合。<strong>数据是计算机程序加工的原料</strong>。</p>
+<p>数据元素、数据项：数据元素是数据的基本单位，通常作为一个整体进行考虑和处理。一个数据元素可由<strong>若干数据项</strong>组成，数据项是构成数据元素的不可分割的<strong>最小单位</strong>。</p>
+<p>数据结构：是相互之间存在一种或多种<strong>特定关系</strong>d 的数据元素的集合。</p>
+<p>三要素：逻辑结构、物理结构（存储结构）、数据的运算</p>
+<h3 id="三要素-逻辑结构">三要素 - 逻辑结构</h3>
+<p>集合：各个元素同属于一个集合，别无其它关系。</p>
+<p>线性结构：数据元素之间时一对一的关系。除了第一个元素，所有的元素都有唯一前驱；除了最后一个元素，所有元素都有唯一后继。</p>
+<p>树形结构：数据元素之间是一对多的关系。</p>
+<p>图结构：数据元素之间是多对多的关系。</p>
+<h3 id="三要素-物理结构">三要素 - 物理结构</h3>
+<p>顺序结构：把逻辑上相邻的元素存储在屋里位置上也相邻的存储单元中</p>
+<p>联是存储：逻辑上相邻的元素在物理位置上可以不相邻</p>
+<p>索引存储：在存储元素信息的同时，还建立附加的索引表</p>
+<p>散列存储：根据元素的关键字直接计算出该元素的存储地址，又称哈希存储</p>
+<h2 id="算法">算法</h2>
+<h3 id="五个特性">五个特性</h3>
+<p>有穷性：一个算法必须总在执行有穷步之后结束，且每一步都可在有穷时间内完成。</p>
+<p>确定性：算法中每条指令必须有确切的含义，对于<strong>相同的输入</strong>只能得出<strong>相同的输出</strong>。</p>
+<p>可行性：算法中描述的操作都可以通过已经实现的<strong>基本运算执行有限次</strong>来实现。</p>
+<p>输入：一个算法<strong>有零个或多个输入</strong>，这些输入取自于某个特定的对象的集合。</p>
+<p>输出：一个算法有<strong>一个或多个输出</strong>，这些输出是与输入有着某种特定的关系的量。</p>
+<h3 id="算法效率的度量">算法效率的度量</h3>
+<p>时间复杂度：时间开销与问题规模 n 之间的关系</p>
+<p>空间复杂度：空间开销（内存开销）与问题规模 n 之间的关系。</p>
+<p><mark>递归调用带来的内存开销：S(n) = O(n) <strong>空间复杂度 = 递归调用的深度</strong></mark></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O(1) &lt; O(log2n) &lt; O(n) &lt; O(nlog2n) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) &lt; O(n!) &lt; O(n^n)</span><br></pre></td></tr></table></figure>
+<h2 id="线性表">线性表</h2>
+<h3 id="存储结构">存储结构</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|- 顺序表</span><br><span class="line">|- 链表 </span><br><span class="line">|-- 单链表</span><br><span class="line">|-- 循环链表</span><br><span class="line">|-- 双向链表</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>性能类别</th>
+<th>具体项目</th>
+<th>顺序存储</th>
+<th>链式存储</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>空间性能</td>
+<td>存储密度</td>
+<td><strong>=1</strong></td>
+<td>&lt;1</td>
+</tr>
+<tr>
+<td></td>
+<td>容量分配</td>
+<td>事先确定</td>
+<td><strong>动态改变</strong></td>
+</tr>
+<tr>
+<td>时间性能</td>
+<td>查找运算</td>
+<td>O(n/2)</td>
+<td>O(n/2)</td>
+</tr>
+<tr>
+<td></td>
+<td>读运算</td>
+<td><strong>O(1)</strong></td>
+<td>O([n + 1]/2)，最好情况为 1，最坏情况为 n</td>
+</tr>
+<tr>
+<td></td>
+<td>插入运算</td>
+<td>O(n/2)，最好情况为 0，最坏情况为 n</td>
+<td><strong>O(1)</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>删除运算</td>
+<td>([n - 1]/2)，</td>
+<td><strong>O(1)</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="其他">其他</h2>
+<p>算法问题直接看之前的算法笔记。</p>
 <blockquote>
-<p>Stream 可以从不同的数据源创建，最常见的是通过集合、数组、文件或 I/O 流创建。</p>
+<p>内链：[[面试-数据结构和算法]]<br>
+外链：<a class="link"   target="_blank" rel="noopener" href="https://kiml.site/posts/1b906b1a/" >面试-数据结构和算法<i class="fas fa-external-link-alt"></i></a></p>
 </blockquote>
-<p><strong>构建一个空流</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
                     
                 </div>
@@ -357,11 +434,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                Java Streams API、Lambda 表达式、Optional 类
+                第二章：数据结构与算法基础
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/51138262/
+                posts/92102162/
             </div>
         </div>
 
@@ -377,7 +454,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2025-04-02 22:08</div>
+                <div class="content">2025-05-18 14:59</div>
             </div>
 
 
@@ -410,18 +487,6 @@
                 <div class="post-bottom-tags-and-share border-box">
                     <div>
                         
-                            <ul class="post-tags-box border-box">
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
-                                    </li>
-                                
-                                    <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
-                                    </li>
-                                
-                            </ul>
-                        
                     </div>
                     <div>
                         
@@ -433,31 +498,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/posts/3f3c39e1/"
-                                   title="第一章：计算机系统知识"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">第一章：计算机系统知识</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/bc551f67/"
-                                   title="【代码模板】Nginx"
+                                   href="/posts/3f3c39e1/"
+                                   title="第一章：计算机系统知识"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">【代码模板】Nginx</span>
+                                        <span class="post-nav-title-item text-ellipsis">第一章：计算机系统知识</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -563,7 +612,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-Streams-API"><span class="nav-text">Java Streams API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Stream"><span class="nav-text">创建 Stream</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-text">基本概念与三要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E8%A6%81%E7%B4%A0-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-text">三要素 - 逻辑结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E8%A6%81%E7%B4%A0-%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="nav-text">三要素 - 物理结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E4%B8%AA%E7%89%B9%E6%80%A7"><span class="nav-text">五个特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87%E7%9A%84%E5%BA%A6%E9%87%8F"><span class="nav-text">算法效率的度量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-text">存储结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li></ol>
     </div>
 </div>
 
@@ -759,7 +808,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-Streams-API"><span class="nav-text">Java Streams API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Stream"><span class="nav-text">创建 Stream</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-text">基本概念与三要素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E8%A6%81%E7%B4%A0-%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-text">三要素 - 逻辑结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E8%A6%81%E7%B4%A0-%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="nav-text">三要素 - 物理结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E4%B8%AA%E7%89%B9%E6%80%A7"><span class="nav-text">五个特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87%E7%9A%84%E5%BA%A6%E9%87%8F"><span class="nav-text">算法效率的度量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-text">线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-text">存储结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a></li></ol>
     </div>
 </div>
 

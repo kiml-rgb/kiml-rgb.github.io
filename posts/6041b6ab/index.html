@@ -9,7 +9,7 @@
     
     <title>
         
-            实操：AI编程 |
+            SonarQube 与 GitLab 集成（二） |
         
         Kiml&#39;s Blog
     </title>
@@ -242,14 +242,14 @@
 
                     
 <div class="fade-in-down-animation">
-    <div class="post-page-container border-box encrypt">
+    <div class="post-page-container border-box">
         <div class="post-content-container border-box">
             
 
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        实操：AI编程
+                        SonarQube 与 GitLab 集成（二）
                     </div>
                 
 
@@ -273,13 +273,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-06-21 15:24:04</span>
+                <span class="datetime">2025-04-11 14:24:36</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Jun 25 2024 15:51:44 GMT+0800">2024-06-25 15:51:44</span>
+                    <span class="datetime" data-updated="Sun May 18 2025 19:40:41 GMT+0800">2025-05-18 19:40:41</span>
                 </span>
             
         
@@ -288,10 +288,10 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/%E9%98%85%E8%AF%BB/">阅读</a></li>
+                            <li class="category-item"><a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/">后端项目</a></li>
                         
                     
-                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E9%98%85%E8%AF%BB/AI%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%85%A8%E6%A0%88/">AI大模型全栈</a></li>
+                            <li class="category-item">&nbsp;<i class="icon fas fa-angle-right"></i>&nbsp;<a href="/categories/%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/">准备工作</a></li>
                         
                     
                 </ul>
@@ -302,7 +302,10 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/AI/">AI</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/GitLab/">GitLab</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/SonarQube/">SonarQube</a></li>
                         
                     
                 </ul>
@@ -312,12 +315,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>6 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>884 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
             </span>
         
         
@@ -339,15 +342,78 @@
                     
 
                     
-                        <div class="post-encrypt-box border-box"
-                             data-secret=""
-                             data-iv=""
-                             data-ep=""
-                             data-content=""
-                        >
-                            <input type="password" class="password-input border-box" placeholder="请输入密码...">
-                        </div>
-                        <div class="post"></div>
+                         <ul class="lvl-0">
+<li class="lvl-2">
+<p>前言<br>sonar 脚本之前一直在测试分支上跑，虽然有每次构建拉取事件很长的毛病，但影响不大还能忍受。最近把 sonar 上到 master 环境中，出现了大问题。。。</p>
+</li>
+<li class="lvl-2">
+<p>更新</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">25-04-11 初始记录</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="问题">问题</h2>
+<ol>
+<li class="lvl-3">
+<p>gitlab CI cancel 之后，后台 maven 子进程并没有被杀死，导致第二个 runner 服务依旧处于 pedding 状态。前台多次操作 cancel 并重启后，服务器资源直接耗尽，需要重启 sonar 所在的服务器才行。<mark>未解决</mark>（加了每次服务启动前关闭别的扫描服务，好像并没有什么用）</p>
+</li>
+<li class="lvl-3">
+<p>虽然之前添加了插件，但是没有使用 sonar 的 PR/MR 扫描模式，每次都是全量进行扫描，并且加上了 merge 阻断，导致每次都需要 merge 前等待，耗时较久。<mark>已解决</mark></p>
+</li>
+<li class="lvl-3">
+<p>sonar 的 webhook 要转发到飞书，之前偷懒没有写一个服务进行转发，导致卡片样式比较难看。<mark>已解决</mark></p>
+</li>
+</ol>
+<h3 id="PR-MR-扫描模式">PR/MR 扫描模式</h3>
+<blockquote>
+<p>添加了这种扫描模式之后，由于新代码是与 master 分支进行比较，需要写一个定时的 ci 对 master 分支进行全量的扫描</p>
+</blockquote>
+<h4 id="gitlab-ci-yml"><code>.gitlab-ci.yml</code></h4>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stages:</span>  </span><br><span class="line">  <span class="bullet">-</span> <span class="string">sonarqube</span>  </span><br><span class="line">  <span class="bullet">-</span> <span class="string">noop</span>  </span><br><span class="line"><span class="attr">sonarqube-check:</span>  </span><br><span class="line">  <span class="attr">stage:</span> <span class="string">sonarqube</span>  </span><br><span class="line">  <span class="attr">tags:</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">sonar</span>  </span><br><span class="line">  <span class="attr">variables:</span>  </span><br><span class="line">    <span class="attr">SONAR_USER_HOME:</span> <span class="string">&quot;$&#123;CI_PROJECT_DIR&#125;/.sonar&quot;</span>  <span class="comment"># Defines the location of the analysis task cache  </span></span><br><span class="line">    <span class="attr">GIT_DEPTH:</span> <span class="string">&quot;0&quot;</span>  <span class="comment"># Tells git to fetch all the branches of the project, required by the analysis task  </span></span><br><span class="line">  <span class="attr">cache:</span>  </span><br><span class="line">    <span class="attr">key:</span> <span class="string">sonar-cache</span>  </span><br><span class="line">    <span class="attr">paths:</span>  </span><br><span class="line">      <span class="bullet">-</span> <span class="string">.sonar/cache</span>  </span><br><span class="line">  <span class="attr">before_script:</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">echo</span> <span class="string">&quot;检查并终止之前的 Maven 进程...&quot;</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">|  </span></span><br><span class="line"><span class="string">      # 查找并终止之前的 Maven 进程  </span></span><br><span class="line"><span class="string">      maven_pids=$(pgrep -f &quot;gitlab_sonarci_run&quot; || true)  </span></span><br><span class="line"><span class="string">      if [ -n &quot;$maven_pids&quot; ]; then  </span></span><br><span class="line"><span class="string">          echo &quot;发现之前的 Maven 进程，正在终止...&quot;  </span></span><br><span class="line"><span class="string">          echo &quot;$maven_pids&quot; | xargs kill -TERM || true  </span></span><br><span class="line"><span class="string">          echo &quot;$maven_pids &quot; | xargs wait || true  </span></span><br><span class="line"><span class="string">      else  </span></span><br><span class="line"><span class="string">          echo &quot;未发现之前的 Maven 进程。&quot;  </span></span><br><span class="line"><span class="string">      fi  </span></span><br><span class="line"><span class="string"></span>  <span class="attr">script:</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">JAVA_HOME=你的服务地址</span> <span class="string">&amp;&amp;</span> <span class="string">export</span> <span class="string">JAVA_HOME</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">export</span> <span class="string">SONAR_JAVA_OPTS=&quot;-Xmx2G</span> <span class="string">-Xms1G&quot;</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">|  </span></span><br><span class="line"><span class="string">      echo &quot;启动 SonarQube 分析...&quot;  </span></span><br><span class="line"><span class="string">      run_scan() &#123;  </span></span><br><span class="line"><span class="string">        mvn verify sonar:sonar -T 2 \  </span></span><br><span class="line"><span class="string">        -Dsonar.projectKey=你的key \  </span></span><br><span class="line"><span class="string">        # 这部分数据会在 merge_request_event 时由 gitlab 进行填充</span></span><br><span class="line"><span class="string">        -Dsonar.pullrequest.key=$CI_MERGE_REQUEST_IID \  </span></span><br><span class="line"><span class="string">        -Dsonar.pullrequest.branch=$CI_COMMIT_REF_NAME \  </span></span><br><span class="line"><span class="string">        -Dsonar.pullrequest.base=$CI_MERGE_REQUEST_TARGET_BRANCH_NAME \  </span></span><br><span class="line"><span class="string">        -Dmaven.test.skip=true \  </span></span><br><span class="line"><span class="string">        -Dsonar.qualitygate.wait=true \  </span></span><br><span class="line"><span class="string">        -Dsonar.ce.parallel=1 \  </span></span><br><span class="line"><span class="string">        -Dmaven.repo.local=你的本地仓库 \  </span></span><br><span class="line"><span class="string">        -s 你的maven配置地址 \  </span></span><br><span class="line"><span class="string">        -Dci.tag=gitlab_sonarci_run &amp;  </span></span><br><span class="line"><span class="string">      &#125;  </span></span><br><span class="line"><span class="string">      run_scan  </span></span><br><span class="line"><span class="string"></span>  <span class="attr">allow_failure:</span> <span class="literal">false</span>  </span><br><span class="line">  <span class="attr">rules:</span>  </span><br><span class="line">    <span class="comment"># 如果 SKIP_SONAR 为 &quot;true&quot;，跳过任务  </span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">if:</span> <span class="string">&#x27;$SKIP_SONAR == &quot;true&quot;&#x27;</span>  </span><br><span class="line">      <span class="attr">when:</span> <span class="string">never</span>  </span><br><span class="line">    <span class="comment"># 在合并请求时触发  </span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">if:</span> <span class="string">&#x27;$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot; &amp;&amp; $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == &quot;master&quot;&#x27;</span>  </span><br><span class="line">  </span><br><span class="line"><span class="attr">noop:</span>  </span><br><span class="line">  <span class="attr">tags:</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">sonar</span>  </span><br><span class="line">  <span class="attr">stage:</span> <span class="string">noop</span>  </span><br><span class="line">  <span class="attr">script:</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">echo</span> <span class="string">&quot;Pipeline skipped all main jobs.&quot;</span>  </span><br><span class="line">  <span class="attr">rules:</span>  </span><br><span class="line">    <span class="comment"># 在合并请求时触发  </span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">if:</span> <span class="string">&#x27;$CI_PIPELINE_SOURCE == &quot;merge_request_event&quot; &amp;&amp; $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == &quot;master&quot;&#x27;</span></span><br><span class="line">  </span><br><span class="line"><span class="attr">sonarqube-master-daily:</span>  </span><br><span class="line">  <span class="attr">tags:</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">sonar</span>  </span><br><span class="line">  <span class="attr">stage:</span> <span class="string">sonarqube</span>  </span><br><span class="line">  <span class="attr">script:</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">JAVA_HOME=你的服务地址</span> <span class="string">&amp;&amp;</span> <span class="string">export</span> <span class="string">JAVA_HOME</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">export</span> <span class="string">SONAR_JAVA_OPTS=&quot;-Xmx2G</span> <span class="string">-Xms1G&quot;</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="string">|  </span></span><br><span class="line"><span class="string">      echo &quot;启动 SonarQube 分析...&quot;  </span></span><br><span class="line"><span class="string">      run_scan() &#123;  </span></span><br><span class="line"><span class="string">        mvn verify sonar:sonar -T 2 \  </span></span><br><span class="line"><span class="string">        -Dsonar.projectKey=你的key \  </span></span><br><span class="line"><span class="string">        -Dsonar.branch.name=master \  </span></span><br><span class="line"><span class="string">        -Dmaven.test.skip=true \  </span></span><br><span class="line"><span class="string">        -Dsonar.qualitygate.wait=true \  </span></span><br><span class="line"><span class="string">        -Dsonar.ce.parallel=1 \  </span></span><br><span class="line"><span class="string">        -Dmaven.repo.local=你的仓库地址 \  </span></span><br><span class="line"><span class="string">        -s 你的maven配置文件地址 \  </span></span><br><span class="line"><span class="string">        -Dci.tag=gitlab_sonarci_run &amp;  </span></span><br><span class="line"><span class="string">      &#125;  </span></span><br><span class="line"><span class="string">      run_scan  </span></span><br><span class="line"><span class="string"></span>  <span class="attr">rules:</span>  </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">if:</span> <span class="string">&#x27;$CI_COMMIT_BRANCH == &quot;master&quot; &amp;&amp; $CI_PIPELINE_SOURCE == &quot;schedule&quot;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h4 id="定时-ci-添加">定时 ci 添加</h4>
+<blockquote>
+<p>gitlab 定时 CI 会去扫 master 下的 <code>.gitlab-ci.yml</code> 文件，</p>
+</blockquote>
+<h3 id="webhook-转发">webhook 转发</h3>
+<blockquote>
+<p>node.js 代码地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/kiml-rgb/sonar-feishu-webhook.git" >https://github.com/kiml-rgb/sonar-feishu-webhook.git<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<ol>
+<li class="lvl-3">
+<p><strong>创建一个中间服务</strong>（建议使用 Spring Boot 或 Node.js）监听 SonarQube Webhook。</p>
+</li>
+<li class="lvl-3">
+<p>接收到 Webhook 后，解析 payload，构造上面的卡片格式 JSON。</p>
+</li>
+<li class="lvl-3">
+<p><strong>将卡片格式消息 POST 到飞书机器人地址</strong></p>
+</li>
+</ol>
+<h4 id="项目结构">项目结构</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sonar-feishu-webhook/</span><br><span class="line">├── app.js</span><br><span class="line">├── feishu.js</span><br><span class="line">├── Dockerfile</span><br><span class="line">├── package.json</span><br><span class="line">└── .env</span><br></pre></td></tr></table></figure>
+<h4 id="部署">部署</h4>
+<ol>
+<li class="lvl-3">
+<p>项目文件准备</p>
+</li>
+<li class="lvl-3">
+<p>构建镜像</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t sonar-webhook-feishu .</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li class="lvl-3">
+<p>运行容器</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name sonar-feishu \</span><br><span class="line">  -p 9999:3000 \</span><br><span class="line">  --env-file .env \</span><br><span class="line">sonar-webhook-feishu</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li class="lvl-3">
+<p>在 SonarQube 后台 Webhook 中配置</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">your-address/webhook/sonar</span><br></pre></td></tr></table></figure>
+
                     
                 </div>
 
@@ -357,11 +423,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                实操：AI编程
+                SonarQube 与 GitLab 集成（二）
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                posts/6501e090/
+                posts/6041b6ab/
             </div>
         </div>
 
@@ -377,7 +443,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2024-06-21 15:24</div>
+                <div class="content">2025-04-11 14:24</div>
             </div>
 
 
@@ -413,7 +479,11 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/AI/">AI</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/GitLab/">GitLab</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/SonarQube/">SonarQube</a>
                                     </li>
                                 
                             </ul>
@@ -432,14 +502,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/posts/b717497e/"
-                                   title="代码随想录算法训练营第三十六天-完全背包、518零钱兑换 II、377组合总和 Ⅳ、CM70爬楼梯（进阶）"
+                                   href="/posts/3f3c39e1/"
+                                   title="第一章：计算机系统知识"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第三十六天-完全背包、518零钱兑换 II、377组合总和 Ⅳ、CM70爬楼梯（进阶）</span>
+                                        <span class="post-nav-title-item text-ellipsis">第一章：计算机系统知识</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -449,11 +519,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/posts/bde30672/"
-                                   title="代码随想录算法训练营第三十五天-1049最后一块石头的重量 II、494目标和、474一和零"
+                                   href="/posts/a1d28c6/"
+                                   title="Let’s Encrypt 免费申请泛域名 SSL 证书，并实现自动续期"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">代码随想录算法训练营第三十五天-1049最后一块石头的重量 II、494目标和、474一和零</span>
+                                        <span class="post-nav-title-item text-ellipsis">Let’s Encrypt 免费申请泛域名 SSL 证书，并实现自动续期</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -559,7 +629,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PR-MR-%E6%89%AB%E6%8F%8F%E6%A8%A1%E5%BC%8F"><span class="nav-text">PR&#x2F;MR 扫描模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gitlab-ci-yml"><span class="nav-text">.gitlab-ci.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6-ci-%E6%B7%BB%E5%8A%A0"><span class="nav-text">定时 ci 添加</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webhook-%E8%BD%AC%E5%8F%91"><span class="nav-text">webhook 转发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-text">部署</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
@@ -621,13 +691,6 @@
             <div class="post-tools-container border-box">
     <ul class="post-tools-list border-box">
         <!-- PC encrypt again -->
-        
-            <li class="status-item flex-center post-lock border-box"
-                data-tooltip-content="重新加密"
-            >
-                <i class="fa-solid fa-lock"></i>
-                <i class="fa-solid fa-lock-open"></i>
-            </li>
         
 
         <!-- PC TOC show toggle -->
@@ -762,7 +825,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PR-MR-%E6%89%AB%E6%8F%8F%E6%A8%A1%E5%BC%8F"><span class="nav-text">PR&#x2F;MR 扫描模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gitlab-ci-yml"><span class="nav-text">.gitlab-ci.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6-ci-%E6%B7%BB%E5%8A%A0"><span class="nav-text">定时 ci 添加</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webhook-%E8%BD%AC%E5%8F%91"><span class="nav-text">webhook 转发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-text">部署</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
 
