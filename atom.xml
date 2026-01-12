@@ -6,7 +6,7 @@
   <link href="https://kiml.github.io/atom.xml" rel="self"/>
   
   <link href="https://kiml.github.io/"/>
-  <updated>2026-01-11T10:12:48.350Z</updated>
+  <updated>2026-01-11T10:25:28.442Z</updated>
   <id>https://kiml.github.io/</id>
   
   <author>
@@ -17,26 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>我为什么重新拆了自己的笔记体系</title>
+    <title>我为什么又重建了自己的笔记体系</title>
     <link href="https://kiml.github.io/posts/f476286f/"/>
     <id>https://kiml.github.io/posts/f476286f/</id>
     <published>2026-01-11T10:03:07.000Z</published>
-    <updated>2026-01-11T10:12:48.350Z</updated>
+    <updated>2026-01-11T10:25:28.442Z</updated>
     
-    <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>前言<br>这个网站已经停更很久了。<br>不是我没在学，而是我越来越不知道，这里到底该写什么。</p></li></ul><p>最早用 Obsidian，是想把知识整理清楚；<br>后来为了面试，又把这些笔记做成了网站，希望顺便当作技术积累的展示。</p><p>但慢慢地，两件事开始互相干扰。<br>我一边在给自己写笔记，一边又想着这些内容“能不能发到网站上”，<br>结果是：笔记写得别扭，网站也越来越没东西可写。</p><span id="more"></span><h2 id="系统失效">系统失效</h2><p>备考软考的时候，我开始大量使用 XMind。<br>一张图能装下一整章知识点，记忆效率比在 Obsidian 里写成一堆 Markdown 高太多。</p><p>问题也从这里开始显现：</p><ul class="lvl-0"><li class="lvl-2"><p>XMind 适合搭框架，却承载不了细节；</p></li><li class="lvl-2"><p>Obsidian 能写细节，但维护成本越来越高；</p></li><li class="lvl-2"><p>两边的数据完全割裂，我却还执着于“能不能统一管理”。</p></li></ul><p>后来我甚至用过抄写来加深记忆，<br>最后发现：抄两小时，不如坐着背半小时来得实在。</p><p>那一刻我才意识到：<br>不是工具的问题，是我整个记录方式本身就不对。</p><hr><h2 id="职责错位">职责错位</h2><p>我以前的想法很简单：</p><blockquote><p>既然都记了，干脆顺手放到网站上，一举两得。</p></blockquote><p>现在回头看，这正是所有混乱的起点。</p><p>笔记本质是过程，是凌乱的、临时的、甚至是错误的；<br>而网站呈现的是结果，需要清晰、有重点、有结构。</p><p>当我在写笔记时还要考虑“这段以后能不能给别人看”，<br>其实已经把最重要的一件事搞丢了：<br>我不再是为自己思考，而是在为展示而写。</p><hr><h2 id="体系重构">体系重构</h2><p>我给两套系统重新划了边界。</p><ul class="lvl-0"><li class="lvl-2"><p>Obsidian 只做三件事：</p><ol><li class="lvl-7"><p>记录想法</p></li><li class="lvl-7"><p>拆解问题</p></li><li class="lvl-7"><p>保存原始素材</p></li></ol></li><li class="lvl-2"><p>个人网站只保留一种内容：<br>我已经想清楚、并且值得对外表达的结论。</p></li></ul><p>博客以后只写三类东西：</p><ul class="lvl-0"><li class="lvl-2"><p>为什么要这样设计一个模块</p></li><li class="lvl-2"><p>一个方案是如何一步步演化出来的</p></li><li class="lvl-2"><p>在真实项目里踩过哪些坑，又是怎么补回来的博客</p></li></ul><hr><h2 id="重启记录">重启记录</h2><p>这篇文章算是一个分界点。<br>不是否定过去，而是重新定义这里的意义。</p><p>从现在开始，这里写的不是我<strong>记了什么</strong>， 而是我<strong>真正理解了什么</strong>。</p>]]></content>
+    <content type="html"><![CDATA[<ul class="lvl-0"><li class="lvl-2"><p>前言<br>这个网站已经停更很久了。越来越不知道，这里到底该写什么。</p><p>最早用 Obsidian，是想把知识整理清楚；<br>后来为了面试，又把这些笔记做成了网站，希望顺便当作技术积累的展示。</p><p>但慢慢地，两件事开始互相干扰。<br>我一边在给自己写笔记，一边又想着这些内容“能不能发到网站上”，<br>结果是：笔记写得别扭，网站也越来越没东西可写。</p></li></ul><span id="more"></span><h2 id="系统失效">系统失效</h2><p>备考软考的时候，我开始大量使用 XMind。<br>一张图能装下一整章知识点，记忆效率比在 Obsidian 里写成一堆 Markdown 高太多。</p><p>问题也从这里开始显现：</p><ul class="lvl-0"><li class="lvl-2"><p>XMind 适合搭框架，却承载不了细节；</p></li><li class="lvl-2"><p>Obsidian 能写细节，但维护成本越来越高；</p></li><li class="lvl-2"><p>两边的数据完全割裂，我却还执着于“能不能统一管理”。</p></li></ul><p>后来我甚至用过抄写来加深记忆，<br>最后发现：抄两小时，不如坐着背半小时来得实在。</p><p>那一刻我才意识到：<br>不是工具的问题，是我整个记录方式本身就不对。</p><hr><h2 id="职责错位">职责错位</h2><p>我以前的想法很简单：</p><blockquote><p>既然都记了，干脆顺手放到网站上，一举两得。</p></blockquote><p>现在回头看，这正是所有混乱的起点。</p><p>笔记本质是过程，是凌乱的、临时的、甚至是错误的；<br>而网站呈现的是结果，需要清晰、有重点、有结构。</p><p>当我在写笔记时还要考虑“这段以后能不能给别人看”，<br>其实已经把最重要的一件事搞丢了：<br>我不再是为自己思考，而是在为展示而写。</p><hr><h2 id="体系重构">体系重构</h2><p>我给两套系统重新划了边界。</p><ul class="lvl-0"><li class="lvl-2"><p>Obsidian 只做三件事：</p><ol><li class="lvl-7"><p>记录想法</p></li><li class="lvl-7"><p>拆解问题</p></li><li class="lvl-7"><p>保存原始素材</p></li></ol></li><li class="lvl-2"><p>个人网站只保留一种内容：<br>我已经想清楚、并且值得对外表达的结论。</p></li></ul><p>博客以后只写三类东西：</p><ul class="lvl-0"><li class="lvl-2"><p>为什么要这样设计一个模块</p></li><li class="lvl-2"><p>一个方案是如何一步步演化出来的</p></li><li class="lvl-2"><p>在真实项目里踩过哪些坑，又是怎么补回来的博客</p></li></ul><hr><h2 id="重启记录">重启记录</h2><p>这篇文章算是一个分界点。<br>不是否定过去，而是重新定义这里的意义。</p><p>从现在开始，这里写的不是我<strong>记了什么</strong>， 而是我<strong>真正理解了什么</strong>。</p>]]></content>
     
     
     <summary type="html">&lt;ul class=&quot;lvl-0&quot;&gt;
 &lt;li class=&quot;lvl-2&quot;&gt;
-&lt;p&gt;前言&lt;br&gt;这个网站已经停更很久了。&lt;br&gt;
-不是我没在学，而是我越来越不知道，这里到底该写什么。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;前言&lt;br&gt;这个网站已经停更很久了。越来越不知道，这里到底该写什么。&lt;/p&gt;
 &lt;p&gt;最早用 Obsidian，是想把知识整理清楚；&lt;br&gt;
 后来为了面试，又把这些笔记做成了网站，希望顺便当作技术积累的展示。&lt;/p&gt;
 &lt;p&gt;但慢慢地，两件事开始互相干扰。&lt;br&gt;
 我一边在给自己写笔记，一边又想着这些内容“能不能发到网站上”，&lt;br&gt;
-结果是：笔记写得别扭，网站也越来越没东西可写。&lt;/p&gt;</summary>
+结果是：笔记写得别扭，网站也越来越没东西可写。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
